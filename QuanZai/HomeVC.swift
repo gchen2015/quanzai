@@ -101,6 +101,7 @@ extension HomeVC {
     func setupTimeShareVC() {
         
         let timeShareVC = TimeShareVC()
+        timeShareVC.delegate = self
         self.addChildViewController(timeShareVC)
         timeShareVC.view.frame = ccr(0,
                                      y: 300-k_NAV_BAR_H,
@@ -126,6 +127,19 @@ extension HomeVC: actionProtocol {
     func itemTapped(index: Int) {
         print(index)
         self.fetchData()
+    }
+}
+
+// MARK: - TimeShareVCProtocol
+
+extension HomeVC: TimeShareVCProtocol {
+    
+    func searchFor(url: String) {
+        print(url)
+    }
+    
+    func orderBtnTapped() {
+        print("orderBtnTapped")
     }
 }
 

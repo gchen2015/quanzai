@@ -6,7 +6,14 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+protocol TimeShareVCProtocol : class{
+    func searchFor(url: String)
+    func orderBtnTapped()
+}
+
 class TimeShareVC: BaseVC {
+    
+    var delegate : TimeShareVCProtocol!
     
     var aroundCarsBtn : UIButton!
     var allCarsBtn : UIButton!
@@ -22,7 +29,6 @@ class TimeShareVC: BaseVC {
     var allStoreIsShow : Bool = false
     
     let CellIdentifier: String!  = "CellIdentifier";
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -202,7 +208,7 @@ extension TimeShareVC {
                                   titleEdgeInsets: UIEdgeInsetsMake(0, 10, 0, 0),
                                   contentHorizontalAlignment: UIControlContentHorizontalAlignment.Center,
                                   onTapBlock: { (aroundCarsBtn) in
-                                    
+                                    self.delegate.orderBtnTapped()
                                     
         })
         self.ordersBtn.setTitleColor(UIColorFromRGB(0x000000), forState: UIControlState.Highlighted)
@@ -218,6 +224,8 @@ extension TimeShareVC {
         self.ordersBtn.addSubview(icon)
     }
 }
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension TimeShareVC : UITableViewDelegate, UITableViewDataSource {
     
@@ -243,11 +251,15 @@ extension TimeShareVC : UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
 }
+
+// MARK: - Actions
+
 extension TimeShareVC {
     
     func showAroundCars(show: Bool) {
         
         if show {
+            self.delegate.searchFor("附近车辆")
             self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x000000), forState: .Normal)
             self.allCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.aroundStoresBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
@@ -261,6 +273,7 @@ extension TimeShareVC {
     func showAllCars(show: Bool) {
         
         if show {
+            self.delegate.searchFor("全部车辆")
             self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.allCarsBtn.setTitleColor(UIColorFromRGB(0x000000), forState: .Normal)
             self.aroundStoresBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
@@ -275,6 +288,7 @@ extension TimeShareVC {
         
         self.showTableView(show)
         if show {
+            self.delegate.searchFor("附近车场")
             self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.allCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.aroundStoresBtn.setTitleColor(UIColorFromRGB(0x000000), forState: .Normal)
@@ -288,6 +302,7 @@ extension TimeShareVC {
         
         self.showTableView(show)
         if show {
+            self.delegate.searchFor("全部车场")
             self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.allCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.aroundStoresBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
