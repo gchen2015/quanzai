@@ -8,10 +8,15 @@
 
 //未选中状态的字体颜色是575757
 import SlideMenuControllerSwift
+import Alamofire
+import SwiftyJSON
+import AlamofireObjectMapper
 
 class HomeVC: BaseVC {
     
     var mapVC:MapVC?
+    var categoryList : NSArray?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +25,58 @@ class HomeVC: BaseVC {
         self.setupMapView()
         self.setupTimeShareVC()
         self.setupActionBar()
-        
+        self.fetchData()
     }
+    
+}
+
+// MARK: - API
+
+extension HomeVC {
+    
+    func fetchData() {
+        
+        Alamofire.request(Router.CategoryList()).responseArray(keyPath: "data") { (response: Response<[CategoryModel], NSError>) in
+            
+            switch response.result {
+            case .Success:
+                
+                self.categoryList = response.result.value
+                
+                
+                //
+                //                if let value = response.result.value {
+                //                    let json = JSON(value)
+                //                    if let name = json["data"][0]["name"].string {
+                //                        print("第一个分类名称是：",name)
+                //                    }
+            //                }
+            case .Failure(let error):
+                print(error)
+            }
+            
+        }
+        
+        //        Alamofire.request(Router.CategoryList()).responseJSON { response in
+        //            switch response.result {
+        //            case .Success:
+        //                if let value = response.result.value {
+        //                    let json = JSON(value)
+        //                    if let name = json["data"][0]["name"].string {
+        //                        print("第一个分类名称是：",name)
+        //                    }
+        //                }
+        //            case .Failure(let error):
+        //                print(error)
+        //            }
+        //        }
+    }
+    
+}
+
+// MARK: - SetupUI
+
+extension HomeVC {
     
     func setupNavBar() {
         
@@ -47,7 +102,10 @@ class HomeVC: BaseVC {
         
         let timeShareVC = TimeShareVC()
         self.addChildViewController(timeShareVC)
-        timeShareVC.view.frame = ccr(0, y: 300-k_NAV_BAR_H, width: k_SCREEN_W, height: self.view.height-300-80+k_NAV_BAR_H)
+        timeShareVC.view.frame = ccr(0,
+                                     y: 300-k_NAV_BAR_H,
+                                     width: k_SCREEN_W,
+                                     height: self.view.height-300-80+k_NAV_BAR_H)
         self.view.addSubview(timeShareVC.view)
         timeShareVC.didMoveToParentViewController(self)
         
@@ -61,11 +119,17 @@ class HomeVC: BaseVC {
     }
 }
 
+// MARK: - actionProtocol
+
 extension HomeVC: actionProtocol {
+    
     func itemTapped(index: Int) {
         print(index)
+        self.fetchData()
     }
 }
+
+// MARK: - SlideMenuControllerDelegate
 
 extension HomeVC: SlideMenuControllerDelegate {
     

@@ -36,7 +36,7 @@ class ActionBar: UIView {
         
         let unlockTitle = UILabel()
         unlockTitle.font = HS_FONT(13)
-        unlockTitle.textColor = UIColorFromRGB(0x3f3d3d)
+        unlockTitle.textColor = UIColorFromRGB(0x727272)
         unlockTitle.text = "开门"
         unlockTitle.textAlignment = NSTextAlignment.Center
         unlockTitle.size = title_size

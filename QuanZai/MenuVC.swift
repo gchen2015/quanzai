@@ -24,7 +24,7 @@ protocol MenuProtocol : class {
 
 class MenuVC : UIViewController {
     
-    var menus = ["我的行程", "我的包裹", "活动中心", "账户余额", "开发票", "设置", "关于"]
+    let menus = ["我的行程", "我的包裹", "活动中心", "账户余额", "开发票", "设置", "关于"]
     
     var homeVC : UIViewController!
     var homeVC2 : UIViewController!
@@ -36,10 +36,6 @@ class MenuVC : UIViewController {
     
     var avatarIMG : UIImageView!
     var screenNameLabel : UILabel!
-    
-}
-
-extension MenuVC {
     
     override func viewDidLoad() {
         
@@ -65,6 +61,11 @@ extension MenuVC {
         self.setupUI()
         self.view.layoutIfNeeded()
     }
+}
+
+// MARK: - setupUI
+
+extension MenuVC {
     
     func setupUI() {
         self.view.backgroundColor = UIColorFromRGB(0x0aa29c)
@@ -144,6 +145,8 @@ extension MenuVC {
         }
     }
 }
+
+// MARK: - MenuProtocol
 
 extension MenuVC : MenuProtocol {
     

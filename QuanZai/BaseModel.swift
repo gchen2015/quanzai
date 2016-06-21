@@ -6,10 +6,13 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
-import Foundation
 import ObjectMapper
 
 class BaseModel: Mappable {
+    
+    var id            : String?
+    var ctime         : String?
+    var utime         : String?
     
     required init?(_ map: Map){
         
@@ -17,5 +20,8 @@ class BaseModel: Mappable {
     
     func mapping(map: Map) {
         
+        id <- map["id"]
+        ctime <- map["ctime"]
+        utime <- map["utime"]
     }
 }
