@@ -20,6 +20,8 @@ class HomeVC: BaseVC {
     var categoryList : NSArray?
     
     lazy var timeShareVC : TimeShareVC = self.setupTimeShareVC()
+    var actionBar : ActionBar!
+    
     
     
     override func viewDidLoad() {
@@ -47,6 +49,21 @@ extension HomeVC {
             
             switch response.result {
             case .Success:
+                
+                let poi = MAPointAnnotation()
+                poi.coordinate = CLLocationCoordinate2DMake(39.963618, 116.418929)
+                
+                let poi2 = MAPointAnnotation()
+                poi2.coordinate = CLLocationCoordinate2DMake(39.947246, 116.402831)
+                
+                let poi3 = MAPointAnnotation()
+                poi3.coordinate = CLLocationCoordinate2DMake(39.975562, 116.429853)
+                
+                let poi4 = MAPointAnnotation()
+                poi4.coordinate = CLLocationCoordinate2DMake(39.966272, 116.372361)
+
+                let pois = [poi, poi2, poi3, poi4]
+                self.mapVC.setPoi(pois)
                 
                 self.categoryList = response.result.value
                 
@@ -132,14 +149,14 @@ extension HomeVC {
     
     func setupActionBar() {
         
-        let actionBar = ActionBar(frame: ccr(0, y: k_SCREEN_H-k_NAV_BAR_H-80, width: k_SCREEN_W, height: 80))
-        actionBar.delegate = self
-        self.view.addSubview(actionBar)
+        self.actionBar = ActionBar(frame: ccr(0, y: k_SCREEN_H-k_NAV_BAR_H-80, width: k_SCREEN_W, height: 80))
+        self.actionBar.delegate = self
+        self.view.addSubview(self.actionBar)
     }
     
     func showTimeShareVC() {
         self.addChildViewController(self.timeShareVC)
-        self.view.addSubview(self.timeShareVC.view)
+        self.view.insertSubview(self.timeShareVC.view, belowSubview: self.actionBar)
         self.timeShareVC.didMoveToParentViewController(self)
     }
     
@@ -155,17 +172,13 @@ extension HomeVC {
             self.timeShareVC.view.removeFromSuperview()
             self.timeShareVC.removeFromParentViewController()
         case 2:
-            self.addChildViewController(self.timeShareVC)
-            self.view.addSubview(self.timeShareVC.view)
-            self.timeShareVC.didMoveToParentViewController(self)
+            self.showTimeShareVC()
         case 3:
             Drop.down("功能待开发")
             self.timeShareVC.view.removeFromSuperview()
             self.timeShareVC.removeFromParentViewController()
         default:
-            self.addChildViewController(self.timeShareVC)
-            self.view.addSubview(self.timeShareVC.view)
-            self.timeShareVC.didMoveToParentViewController(self)
+            self.showTimeShareVC()
         }
     }
     

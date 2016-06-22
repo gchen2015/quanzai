@@ -9,11 +9,14 @@
 import SlideMenuControllerSwift
 
 enum LeftMenu: Int {
-    case 我的行程 = 0
+    case 首页  = 0
+    case 我的行程
     case 我的包裹
     case 活动中心
     case 账户余额
     case 开发票
+    case 个人信息修改
+    case 租车资格验证
     case 设置
     case 关于
 }
@@ -24,15 +27,15 @@ protocol MenuProtocol : class {
 
 class MenuVC : UIViewController {
     
-    let menus = ["我的行程", "我的包裹", "活动中心", "账户余额", "开发票", "设置", "关于"]
+    let menus = ["首页", "我的行程", "我的包裹", "活动中心", "账户余额", "开发票", "个人信息修改", "租车资格验证" , "关于"]
     
     var homeVC : UIViewController!
-    var homeVC2 : UIViewController!
-    var homeVC3 : UIViewController!
-    var homeVC4 : UIViewController!
-    var homeVC5 : UIViewController!
-    var homeVC6 : UIViewController!
-    var homeVC7 : UIViewController!
+//    var homeVC2 : UIViewController!
+//    var homeVC3 : UIViewController!
+//    var homeVC4 : UIViewController!
+//    var homeVC5 : UIViewController!
+//    var homeVC6 : UIViewController!
+//    var homeVC7 : UIViewController!
     
     var avatarIMG : UIImageView!
     var screenNameLabel : UILabel!
@@ -43,12 +46,12 @@ class MenuVC : UIViewController {
         
         let homeVC = HomeVC()
         self.homeVC = UINavigationController(rootViewController: homeVC)
-        self.homeVC2 = UINavigationController(rootViewController: homeVC)
-        self.homeVC3 = UINavigationController(rootViewController: homeVC)
-        self.homeVC4 = UINavigationController(rootViewController: homeVC)
-        self.homeVC5 = UINavigationController(rootViewController: homeVC)
-        self.homeVC6 = UINavigationController(rootViewController: homeVC)
-        self.homeVC7 = UINavigationController(rootViewController: homeVC)
+//        self.homeVC2 = UINavigationController(rootViewController: homeVC)
+//        self.homeVC3 = UINavigationController(rootViewController: homeVC)
+//        self.homeVC4 = UINavigationController(rootViewController: homeVC)
+//        self.homeVC5 = UINavigationController(rootViewController: homeVC)
+//        self.homeVC6 = UINavigationController(rootViewController: homeVC)
+//        self.homeVC7 = UINavigationController(rootViewController: homeVC)
         
     }
     
@@ -152,20 +155,26 @@ extension MenuVC : MenuProtocol {
     
     func changeViewController(menu: LeftMenu) {
         switch menu {
+        case .首页:
+            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .我的行程:
             self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .我的包裹:
-            self.slideMenuController()?.changeMainViewController(self.homeVC2, close: true)
+            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .活动中心:
-            self.slideMenuController()?.changeMainViewController(self.homeVC3, close: true)
+            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .账户余额:
-            self.slideMenuController()?.changeMainViewController(self.homeVC4, close: true)
+            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .开发票:
-            self.slideMenuController()?.changeMainViewController(self.homeVC5, close: true)
+            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+        case .个人信息修改:
+            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+        case .租车资格验证:
+            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .设置:
-            self.slideMenuController()?.changeMainViewController(self.homeVC6, close: true)
+            break
         case .关于:
-            self.slideMenuController()?.changeMainViewController(self.homeVC7, close: true)
+            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         }
     }
 }
