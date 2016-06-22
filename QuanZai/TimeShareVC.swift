@@ -61,7 +61,7 @@ extension TimeShareVC {
                                       hlImageName: "btn-left",
                                       title: "附近车辆",
                                       titleColor: UIColorFromRGB(0x727272),
-                                      font: HS_FONT(12),
+                                      font: HS_FONT(11),
                                       titleEdgeInsets: UIEdgeInsetsMake(0, 10, 0, 0),
                                       contentHorizontalAlignment: UIControlContentHorizontalAlignment.Center,
                                       onTapBlock: { (aroundCarsBtn) in
@@ -87,7 +87,7 @@ extension TimeShareVC {
                                    hlImageName: "btn-center",
                                    title: "全部车辆",
                                    titleColor: UIColorFromRGB(0x727272),
-                                   font: HS_FONT(12),
+                                   font: HS_FONT(11),
                                    titleEdgeInsets: UIEdgeInsetsMake(0, 10, 0, 0),
                                    contentHorizontalAlignment: UIControlContentHorizontalAlignment.Center,
                                    onTapBlock: { (aroundCarsBtn) in
@@ -113,7 +113,7 @@ extension TimeShareVC {
                                         hlImageName: "btn-center",
                                         title: "附近车场",
                                         titleColor: UIColorFromRGB(0x727272),
-                                        font: HS_FONT(12),
+                                        font: HS_FONT(11),
                                         titleEdgeInsets: UIEdgeInsetsMake(0, 10, 0, 0),
                                         contentHorizontalAlignment: UIControlContentHorizontalAlignment.Center,
                                         onTapBlock: { (aroundCarsBtn) in
@@ -138,7 +138,7 @@ extension TimeShareVC {
                                      hlImageName: "btn-right",
                                      title: "全部车场",
                                      titleColor: UIColorFromRGB(0x727272),
-                                     font: HS_FONT(12),
+                                     font: HS_FONT(11),
                                      titleEdgeInsets: UIEdgeInsetsMake(0, 10, 0, 0),
                                      contentHorizontalAlignment: UIControlContentHorizontalAlignment.Center,
                                      onTapBlock: { (aroundCarsBtn) in
@@ -204,7 +204,7 @@ extension TimeShareVC {
                                   hlImageName: "btn-all",
                                   title: "历史订单",
                                   titleColor: UIColorFromRGB(0x727272),
-                                  font: HS_FONT(12),
+                                  font: HS_FONT(11),
                                   titleEdgeInsets: UIEdgeInsetsMake(0, 10, 0, 0),
                                   contentHorizontalAlignment: UIControlContentHorizontalAlignment.Center,
                                   onTapBlock: { (aroundCarsBtn) in

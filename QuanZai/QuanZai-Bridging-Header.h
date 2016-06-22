@@ -13,6 +13,7 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
+#import "HMSegmentedControl/HMSegmentedControl.h"
 
 
 #endif /* QuanZai_Bridging_Header_h */

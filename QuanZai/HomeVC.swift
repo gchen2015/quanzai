@@ -11,11 +11,15 @@ import SlideMenuControllerSwift
 import Alamofire
 import SwiftyJSON
 import AlamofireObjectMapper
+import SwiftyDrop
+import HMSegmentedControl
 
 class HomeVC: BaseVC {
     
-    var mapVC:MapVC?
+    var mapVC:MapVC!
     var categoryList : NSArray?
+    
+    lazy var timeShareVC : TimeShareVC = self.setupTimeShareVC()
     
     
     override func viewDidLoad() {
@@ -24,8 +28,11 @@ class HomeVC: BaseVC {
         self.setupNavBar()
         self.setupMapView()
         self.setupTimeShareVC()
+        self.setupSegmentedBar()
         self.setupActionBar()
+        self.showTimeShareVC()
         self.fetchData()
+        
     }
     
 }
@@ -93,23 +100,34 @@ extension HomeVC {
         
         self.mapVC = MapVC()
         self.addChildViewController(self.mapVC!)
-        self.mapVC?.view.frame = ccr(0, y: 0, width: k_SCREEN_W, height: 300)
-        self.view.addSubview(self.mapVC!.view)
-        self.mapVC?.didMoveToParentViewController(self)
+        self.mapVC.view.frame = ccr(0, y: 0, width: k_SCREEN_W, height: 300)
+        self.view.addSubview(self.mapVC.view)
+        self.mapVC.didMoveToParentViewController(self)
     }
     
-    func setupTimeShareVC() {
+    func setupSegmentedBar() {
+        
+        let titles = ["马上用车","预约用车","分时租赁","同城速递"]
+        let segmentedControl = HMSegmentedControl(sectionTitles: titles)
+        segmentedControl.frame = ccr(0, y: 300-k_NAV_BAR_H, width: k_SCREEN_W, height: 30)
+        segmentedControl.selectedSegmentIndex = 2
+        segmentedControl.backgroundColor = UIColorFromRGB(0xefefef)
+        segmentedControl.titleTextAttributes = [NSFontAttributeName:HS_FONT(11),NSForegroundColorAttributeName:UIColorFromRGB(0x727272)]
+        segmentedControl.selectedTitleTextAttributes = [NSFontAttributeName:HS_FONT(11),NSForegroundColorAttributeName:UIColorFromRGB(0x000000)]
+        segmentedControl.selectionIndicatorColor = UIColor.clearColor()
+        segmentedControl.addTarget(self, action: #selector(segmentedControlChangedValue(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.view.addSubview(segmentedControl)
+    }
+    
+    func setupTimeShareVC() -> TimeShareVC {
         
         let timeShareVC = TimeShareVC()
         timeShareVC.delegate = self
-        self.addChildViewController(timeShareVC)
         timeShareVC.view.frame = ccr(0,
-                                     y: 300-k_NAV_BAR_H,
+                                     y: 300-k_NAV_BAR_H+30,
                                      width: k_SCREEN_W,
-                                     height: self.view.height-300-80+k_NAV_BAR_H)
-        self.view.addSubview(timeShareVC.view)
-        timeShareVC.didMoveToParentViewController(self)
-        
+                                     height: self.view.height-300-80+k_NAV_BAR_H-30)
+        return timeShareVC
     }
     
     func setupActionBar() {
@@ -118,6 +136,39 @@ extension HomeVC {
         actionBar.delegate = self
         self.view.addSubview(actionBar)
     }
+    
+    func showTimeShareVC() {
+        self.addChildViewController(self.timeShareVC)
+        self.view.addSubview(self.timeShareVC.view)
+        self.timeShareVC.didMoveToParentViewController(self)
+    }
+    
+    func segmentedControlChangedValue(segmentedControl: HMSegmentedControl) {
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            Drop.down("功能待开发")
+            self.timeShareVC.view.removeFromSuperview()
+            self.timeShareVC.removeFromParentViewController()
+        case 1:
+            Drop.down("功能待开发")
+            self.timeShareVC.view.removeFromSuperview()
+            self.timeShareVC.removeFromParentViewController()
+        case 2:
+            self.addChildViewController(self.timeShareVC)
+            self.view.addSubview(self.timeShareVC.view)
+            self.timeShareVC.didMoveToParentViewController(self)
+        case 3:
+            Drop.down("功能待开发")
+            self.timeShareVC.view.removeFromSuperview()
+            self.timeShareVC.removeFromParentViewController()
+        default:
+            self.addChildViewController(self.timeShareVC)
+            self.view.addSubview(self.timeShareVC.view)
+            self.timeShareVC.didMoveToParentViewController(self)
+        }
+    }
+    
 }
 
 // MARK: - actionProtocol
