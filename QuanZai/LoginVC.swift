@@ -23,6 +23,9 @@ class LoginVC: BaseVC {
     var codeBtn : UIButton!
     var delegate : LoginVCProtocol?
     
+    var countDown = 90
+    var timer : NSTimer?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,11 @@ class LoginVC: BaseVC {
         self.showLeftBarItem(closeBtn)
         self.setupUI()
         
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.resetCountDown()
     }
     
     func setupUI() {
@@ -68,6 +76,7 @@ class LoginVC: BaseVC {
         self.phoneTxt.textAlignment = NSTextAlignment.Left
         self.phoneTxt.returnKeyType = UIReturnKeyType.Next
         self.phoneTxt.keyboardType = UIKeyboardType.NumbersAndPunctuation
+        self.phoneTxt.becomeFirstResponder()
         inputView.addSubview(self.phoneTxt)
         
         x = k_SCREEN_W-20-80
@@ -127,23 +136,60 @@ class LoginVC: BaseVC {
                              onTapBlock: { (codeBtn) in
                                 self.login()
         })
-        okBtn.frame = ccr(40, CGRectGetMaxY(line2.frame)+50, k_SCREEN_W-40*2, 40)
+        okBtn.frame = ccr(20, CGRectGetMaxY(line2.frame)+50, k_SCREEN_W-20*2, 40)
         self.view.addSubview(okBtn)
         
     }
 }
 
+// MARK: - API
+
 extension LoginVC {
     
     func getCode() {
+        //TODO: 请求API,并开始计时
         print("fetch code")
+        self.startCountDown()
     }
     
     func login() {
-        
+        //TODO: 请求API
+        self.resetCountDown()
         self.delegate?.loginSuccessed()
     }
+    
+    func startCountDown() {
+        self.countDown = 90
+        self.codeBtn.userInteractionEnabled = false
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSRunLoopCommonModes)
+        NSRunLoop.currentRunLoop().run()
+    }
+    
+    func timerAction() {
+        while self.countDown > 0 {
+            self.countDown -= 1
+            self.codeBtn.setTitle(String(self.countDown)+"秒", forState: UIControlState.Normal)
+            return
+        }
+        self.codeBtn.setTitle("获取验证码", forState: UIControlState.Normal)
+        self.codeBtn.userInteractionEnabled = true
+        self.timer?.invalidate()
+    }
+    
+    func resetCountDown() {
+        self.phoneTxt.text = ""
+        self.codeTxt.text = ""
+        if self.timer != nil {
+            self.timer?.invalidate()
+            self.timer = nil
+        }
+        self.codeBtn.setTitle("获取验证码", forState: UIControlState.Normal)
+        self.codeBtn.userInteractionEnabled = true
+    }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension LoginVC : UITextFieldDelegate {
     
