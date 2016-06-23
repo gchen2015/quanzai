@@ -21,7 +21,7 @@ class ActionBar: UIView {
         
         let img_size = CGSize(width: 20, height: 20)
         let title_size = CGSize(width: 50, height: 20)
-        var frame = ccr(0, y: 0, width: self.width/4, height: self.height)
+        var frame = ccr(0, 0, self.width/4, self.height)
         
         
         let unlockBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (unlockBtn) in
@@ -48,7 +48,7 @@ class ActionBar: UIView {
         self.addSubview(unlockBtn)
         
         
-        frame = ccr(CGRectGetMaxX(unlockBtn.frame), y: 0, width: self.width/4, height: self.height)
+        frame = ccr(CGRectGetMaxX(unlockBtn.frame), 0, self.width/4, self.height)
         
         let lockBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (lockBtn) in
             self.delegate.itemTapped(1)
@@ -74,7 +74,7 @@ class ActionBar: UIView {
         self.addSubview(lockBtn)
         
         
-        frame = ccr(CGRectGetMaxX(lockBtn.frame), y: 0, width: self.width/4, height: self.height)
+        frame = ccr(CGRectGetMaxX(lockBtn.frame), 0, self.width/4, self.height)
         
         let returnBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (returnBtn) in
             self.delegate.itemTapped(2)
@@ -100,7 +100,7 @@ class ActionBar: UIView {
         self.addSubview(returnBtn)
         
         
-        frame = ccr(CGRectGetMaxX(returnBtn.frame), y: 0, width: self.width/4, height: self.height)
+        frame = ccr(CGRectGetMaxX(returnBtn.frame), 0, self.width/4, self.height)
         
         let chargeBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (returnBtn) in
             self.delegate.itemTapped(3)

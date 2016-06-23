@@ -59,7 +59,7 @@ func B_FONT (size:CGFloat) -> UIFont {
 }
 
 
-func ccr(x:CGFloat,y:CGFloat,width:CGFloat,height:CGFloat) ->CGRect{
+func ccr(x:CGFloat, _ y:CGFloat,_ width:CGFloat,_ height:CGFloat) ->CGRect{
     return CGRectMake(x, y, width, height)
 }
 

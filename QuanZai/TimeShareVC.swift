@@ -74,7 +74,7 @@ extension TimeShareVC {
                                         
         })
         self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x000000), forState: UIControlState.Highlighted)
-        self.aroundCarsBtn.frame = ccr(x, y: y, width: w, height: h)
+        self.aroundCarsBtn.frame = ccr(x, y, w, h)
         self.view.addSubview(self.aroundCarsBtn)
         
         
@@ -100,7 +100,7 @@ extension TimeShareVC {
                                     
         })
         self.allCarsBtn.setTitleColor(UIColorFromRGB(0x000000), forState: UIControlState.Highlighted)
-        self.allCarsBtn.frame = ccr(x, y: y, width: w, height: h)
+        self.allCarsBtn.frame = ccr(x, y, w, h)
         self.view.addSubview(self.allCarsBtn)
         
         
@@ -125,7 +125,7 @@ extension TimeShareVC {
                                             
         })
         self.aroundStoresBtn.setTitleColor(UIColorFromRGB(0x000000), forState: UIControlState.Highlighted)
-        self.aroundStoresBtn.frame = ccr(x, y: y, width: w, height: h)
+        self.aroundStoresBtn.frame = ccr(x, y, w, h)
         self.view.addSubview(self.aroundStoresBtn)
         
         
@@ -150,7 +150,7 @@ extension TimeShareVC {
                                         
         })
         self.allStoresBtn.setTitleColor(UIColorFromRGB(0x000000), forState: UIControlState.Highlighted)
-        self.allStoresBtn.frame = ccr(x, y: y, width: w, height: h)
+        self.allStoresBtn.frame = ccr(x, y, w, h)
         self.view.addSubview(self.allStoresBtn)
         
         
@@ -160,7 +160,7 @@ extension TimeShareVC {
         h = 5
         
         let icon1 = UIImageView(image: IMG("blue-point"))
-        icon1.frame = ccr(x, y: y, width: w, height: h)
+        icon1.frame = ccr(x, y, w, h)
         self.aroundCarsBtn.addSubview(icon1)
         
         let icon2 = UIImageView(image: IMG("green-point"))
@@ -183,7 +183,7 @@ extension TimeShareVC {
         let w : CGFloat = k_SCREEN_W - self.aroundCarsBtn.x*2
         let h : CGFloat = 0.0
         
-        self.tablewView = UITableView(frame: ccr(x, y: y, width: w, height: h))
+        self.tablewView = UITableView(frame: ccr(x, y, w, h))
         self.tablewView.delegate = self
         self.tablewView.dataSource = self
         self.tablewView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
@@ -200,8 +200,8 @@ extension TimeShareVC {
         var w: CGFloat = k_SCREEN_W - self.aroundCarsBtn.x*2
         var h: CGFloat = 30 * k_SCREEN_SCALE
         
-        self.ordersBtn = UIButton(imageName: "btn-all",
-                                  hlImageName: "btn-all",
+        self.ordersBtn = UIButton(imageName: "btn-white",
+                                  hlImageName: "btn-white",
                                   title: "历史订单",
                                   titleColor: UIColorFromRGB(0x727272),
                                   font: HS_FONT(11),
@@ -212,7 +212,7 @@ extension TimeShareVC {
                                     
         })
         self.ordersBtn.setTitleColor(UIColorFromRGB(0x000000), forState: UIControlState.Highlighted)
-        self.ordersBtn.frame = ccr(x, y: y, width: w, height: h)
+        self.ordersBtn.frame = ccr(x, y, w, h)
         self.view.addSubview(self.ordersBtn)
         
         x = self.ordersBtn.width/2 - 40
@@ -220,7 +220,7 @@ extension TimeShareVC {
         w = 5
         h = 5
         let icon = UIImageView(image: IMG("orange-point"))
-        icon.frame = ccr(x, y: y, width: w, height: h)
+        icon.frame = ccr(x, y, w, h)
         self.ordersBtn.addSubview(icon)
     }
 }

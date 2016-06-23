@@ -43,4 +43,32 @@ class BaseVC: UIViewController {
         let barItem = UIBarButtonItem(customView: btn)
         self.navigationItem.rightBarButtonItem = barItem
     }
+    
+    func showLoginVC(show: Bool) {
+        
+        if show {
+            LoginVC.sharedInstance.delegate = self
+            let nav = UINavigationController(rootViewController: LoginVC.sharedInstance)
+            self.navigationController?.presentViewController(nav, animated: true, completion: nil)
+        } else {
+            LoginVC.sharedInstance.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    func checkHaveLogin() -> Bool {
+        if true {
+            self.showLoginVC(true)
+            return false
+        }
+        return true
+    }
+}
+
+// MARK: - LoginVCProtocol
+
+extension BaseVC : LoginVCProtocol {
+    
+    func loginSuccessed() {
+        print("loginSuccessed")
+        LoginVC.sharedInstance.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

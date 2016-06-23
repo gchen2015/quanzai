@@ -77,21 +77,21 @@ extension MenuVC {
         var y : CGFloat = 0
         var w : CGFloat = self.view.width
         var h : CGFloat = k_NAV_BAR_H
-        let headerView = UIView(frame:ccr(x, y: y, width: w, height: h))
+        let headerView = UIView(frame:ccr(x, y, w, h))
         headerView.backgroundColor = UIColorFromRGB(0x1b5b76)
         
         x = 20
         y = 10
         w = 40
         h = w
-        self.avatarIMG = UIImageView(frame:ccr(x, y: y, width: w, height: h))
+        self.avatarIMG = UIImageView(frame:ccr(x, y, w, h))
         self.avatarIMG.image = IMG("menu-icon")
         
         x = CGRectGetMaxX(self.avatarIMG.frame)+20
         y = self.avatarIMG.y
         w = 100
         h = self.avatarIMG.height
-        self.screenNameLabel = UILabel(frame: ccr(x, y: y, width: w, height: h),
+        self.screenNameLabel = UILabel(frame: ccr(x, y, w, h),
                                        color: UIColor.whiteColor(),
                                        font: HS_FONT(15),
                                        text: "任飞",
@@ -122,7 +122,7 @@ extension MenuVC {
                 y = 40 * CGFloat(index) + CGRectGetMaxY(headerView.frame)+30
                 w = self.view.width - 20*2
                 h = 0.5
-                let line = UIImageView(frame: ccr(x, y: y, width: w, height: h))
+                let line = UIImageView(frame: ccr(x, y, w, h))
                 line.backgroundColor = UIColorFromRGBA(0xcccccc, alpha: 0.5)
                 self.view.addSubview(line)
                 
@@ -137,7 +137,7 @@ extension MenuVC {
                 w = 100
                 h = 20
             }
-            menuBtn.frame = ccr(x, y: y, width: w, height: h)
+            menuBtn.frame = ccr(x, y, w, h)
             self.view.addSubview(menuBtn)
         }
     }
