@@ -33,7 +33,7 @@ protocol UserInfoViewProtocol: class {
     @IBOutlet var avatarView: View!
     @IBOutlet var avatarTitle: UILabel!
     @IBOutlet var avatarLine: UIImageView!
-    @IBOutlet var avatarIMG: UIImageView!
+    @IBOutlet internal var avatarIMG: UIImageView!
     @IBOutlet var avatarBtn: UIButton!
     
     @IBOutlet var phoneView: View!
@@ -207,9 +207,6 @@ extension UserInfoView {
             make.size.equalTo(self.nameTxt.snp_size)
         }
         */
- 
-        self.avatarIMG.layer.cornerRadius = self.avatarIMG.width/2
-        self.avatarIMG.layer.masksToBounds = true
         
     }
     

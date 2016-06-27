@@ -30,3 +30,17 @@ class ImageView: UIImageView {
     }
     
 }
+
+// MARK: - 图片压缩
+
+extension UIImage {
+    
+    func scaleToSize(size : CGSize) -> UIImage{
+        UIGraphicsBeginImageContext(size)
+        self.drawInRect(CGRectMake(0, 0, size.width, size.height))
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return scaledImage
+    }
+    
+}

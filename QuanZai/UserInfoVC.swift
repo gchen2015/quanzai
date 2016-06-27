@@ -54,14 +54,14 @@ extension UserInfoVC : UserInfoViewProtocol {
         
         let alertControler = UIAlertController(title: "上传头像", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (cancelAction) in
-            print("取消")
+            //do nothing
         }
         
         let cameraAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default) { (cameraAction) in
-            print("拍照")
+            self.openCamera()
         }
         let photoAction = UIAlertAction(title: "相册", style: UIAlertActionStyle.Default) { (photoAction) in
-            print("相册")
+            self.openAlbum()
         }
         alertControler.addAction(cancelAction)
         alertControler.addAction(cameraAction)
@@ -75,10 +75,12 @@ extension UserInfoVC : UserInfoViewProtocol {
         let alertControler = UIAlertController(title: "选择性别", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         let maleAction = UIAlertAction(title: "男", style: UIAlertActionStyle.Default) { (maleAction) in
-            print("男")
+            self.infoView.genderBtn.setTitle("男", forState: .Normal)
+            self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
         }
         let femaleAction = UIAlertAction(title: "女", style: UIAlertActionStyle.Default) { (femaleAction) in
-            print("女")
+            self.infoView.genderBtn.setTitle("女", forState: .Normal)
+            self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
         }
         alertControler.addAction(maleAction)
         alertControler.addAction(femaleAction)
@@ -86,5 +88,55 @@ extension UserInfoVC : UserInfoViewProtocol {
         
     }
     
+}
+
+// MARK: - actions
+
+extension UserInfoVC {
+    
+    func openCamera() {
+        let photoPicker = UIImagePickerController()
+        photoPicker.delegate = self
+        photoPicker.allowsEditing = true
+        photoPicker.sourceType = .Camera
+        self.presentViewController(photoPicker, animated: true, completion: nil)
+    }
+    
+    func openAlbum() {
+        let photoPicker = UIImagePickerController()
+        photoPicker.delegate = self
+        photoPicker.allowsEditing = true
+        photoPicker.sourceType = .PhotoLibrary
+        self.presentViewController(photoPicker, animated: true, completion: nil)
+    }
+    
+}
+
+extension UserInfoVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+           
+            var image = pickedImage
+            if pickedImage.size.width > 1000 || pickedImage.size.height > 1000 {
+                let scale = (CGFloat)(1000/pickedImage.size.width)
+                image = pickedImage.scaleToSize(ccs(pickedImage.size.width*scale, pickedImage.size.height*scale))
+            }
+            self.infoView.avatarIMG.image = image
+            self.infoView.avatarIMG.layer.cornerRadius = self.infoView.avatarIMG.width/2
+            self.infoView.avatarIMG.layer.masksToBounds = true
+        }
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 

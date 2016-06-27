@@ -52,7 +52,70 @@ class QualificationInfoVC : BaseVC {
 extension QualificationInfoVC : QualificationViewProtocol {
     
     func plusTapped() {
-        print("plusTapped")
+        
+        let alertControler = UIAlertController(title: "上传证件照", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (cancelAction) in
+            //do nothing
+        }
+        
+        let cameraAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default) { (cameraAction) in
+            self.openCamera()
+        }
+        let photoAction = UIAlertAction(title: "相册", style: UIAlertActionStyle.Default) { (photoAction) in
+            self.openAlbum()
+        }
+        alertControler.addAction(cancelAction)
+        alertControler.addAction(cameraAction)
+        alertControler.addAction(photoAction)
+        self.presentViewController(alertControler, animated: true, completion: nil)
     }
     
 }
+
+// MARK: - actions
+
+extension QualificationInfoVC {
+    
+    func openCamera() {
+        let photoPicker = UIImagePickerController()
+        photoPicker.delegate = self
+        photoPicker.sourceType = .Camera
+        self.presentViewController(photoPicker, animated: true, completion: nil)
+    }
+    
+    func openAlbum() {
+        let photoPicker = UIImagePickerController()
+        photoPicker.delegate = self
+        photoPicker.sourceType = .PhotoLibrary
+        self.presentViewController(photoPicker, animated: true, completion: nil)
+    }
+    
+}
+
+extension QualificationInfoVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            var image = pickedImage
+            if pickedImage.size.width > 1000 || pickedImage.size.height > 1000 {
+                let scale = (CGFloat)(1000/pickedImage.size.width)
+                image = pickedImage.scaleToSize(ccs(pickedImage.size.width*scale, pickedImage.size.height*scale))
+            }
+            self.infoView.plusIcon.frame = self.infoView.photoView.bounds
+            self.infoView.plusIcon.image = image
+        }
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+

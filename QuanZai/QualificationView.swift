@@ -20,8 +20,8 @@ class QualificationView: UIView {
     
     @IBOutlet internal var remarksLabel: UILabel!
     @IBOutlet var plusBtn: UIButton!
-    @IBOutlet var plusIcon: UIImageView!
-    @IBOutlet var photoView: View!
+    @IBOutlet internal var plusIcon: UIImageView!
+    @IBOutlet internal var photoView: View!
     @IBOutlet var IDTxt: UITextField!
     @IBOutlet var IDLine: UIImageView!
     @IBOutlet var IDTItle: UILabel!
