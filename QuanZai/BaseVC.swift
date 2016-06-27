@@ -17,7 +17,7 @@ class BaseVC: UIViewController {
         
         if show {
             let logo = UIImageView(image: IMG("title"))
-            logo.size = ccs(140, height: 20)
+            logo.size = ccs(140, 20)
             self.navigationItem.titleView = logo
         } else {
             self.navigationItem.titleView = nil

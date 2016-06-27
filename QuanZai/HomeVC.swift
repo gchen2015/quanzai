@@ -109,7 +109,7 @@ extension HomeVC {
         let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
             self.openLeft()
         }
-        menuBtn.size = ccs(35, height: 35)
+        menuBtn.size = ccs(35, 35)
         self.showLeftBarItem(menuBtn)
     }
     

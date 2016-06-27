@@ -19,6 +19,7 @@ pod 'SlideMenuControllerSwift'      # https://github.com/dekatotoro/SlideMenuCon
 pod 'SwiftyDrop', '~>2.0'           # https://github.com/morizotter/SwiftyDrop
 pod 'AMap3DMap'
 pod 'AMapSearch', '~>4.0.0'
+pod 'SnapKit', '~> 0.21.1'
 
 
 

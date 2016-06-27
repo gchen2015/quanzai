@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftyDrop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,17 +72,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>004BEBEEF531D1E695B19FDA2203B971</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>05094CC4A047119F7ADC14EE74C4881C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2883BB7192E0C32E3884B28119B002AB</key>
+		<key>17350266FBDDBED53C1DF6730A9E1CD9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>624E6724A057207B936C4C0E3DA2CAC3</key>
+		<key>2AAC740C40690582F29EE3C7AD048CF4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6956FE87F3BE9D0D1181106C95A6C0DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,7 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>939BD910A4728A72F7A559388710AE2E</key>
+		<key>819AB0250E4BE05B536F5B495C59B06F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,17 +122,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>DED01B7A0D1B9720AA8EE54F94A9F272</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E61CE3B6DFA1FE6B3E296965C76C0E10</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EED47AFEAF02628A7B14316EBB4C50E4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F6A057008D1846E3E2BB361026300DBD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

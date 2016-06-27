@@ -63,11 +63,11 @@ func ccr(x:CGFloat, _ y:CGFloat,_ width:CGFloat,_ height:CGFloat) ->CGRect{
     return CGRectMake(x, y, width, height)
 }
 
-func ccs(width:CGFloat,height:CGFloat) ->CGSize{
+func ccs(width:CGFloat,_ height:CGFloat) ->CGSize{
     return CGSizeMake(width, height)
 }
 
 
-func ccp(x:CGFloat,y:CGFloat) ->CGPoint{
+func ccp(x:CGFloat,_ y:CGFloat) ->CGPoint{
     return CGPointMake(x, y)
 }

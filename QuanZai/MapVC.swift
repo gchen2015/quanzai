@@ -56,7 +56,7 @@ extension MapVC: MAMapViewDelegate {
             }
             
             poiAnnotionView.image = IMG("point")
-            poiAnnotionView.centerOffset = ccp(0, y: -18)
+            poiAnnotionView.centerOffset = ccp(0, -18)
             poiAnnotionView.canShowCallout = false
             
             return poiAnnotionView

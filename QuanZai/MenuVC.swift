@@ -30,8 +30,8 @@ class MenuVC : UIViewController {
     let menus = ["首页", "我的行程", "我的包裹", "活动中心", "账户余额", "开发票", "个人信息修改", "租车资格验证" , "关于"]
     
     var homeVC : UIViewController!
-//    var homeVC2 : UIViewController!
-//    var homeVC3 : UIViewController!
+    var qualificationInfoVC : UIViewController!
+    var userInfoVC : UIViewController!
 //    var homeVC4 : UIViewController!
 //    var homeVC5 : UIViewController!
 //    var homeVC6 : UIViewController!
@@ -46,8 +46,14 @@ class MenuVC : UIViewController {
         
         let homeVC = HomeVC()
         self.homeVC = UINavigationController(rootViewController: homeVC)
-//        self.homeVC2 = UINavigationController(rootViewController: homeVC)
-//        self.homeVC3 = UINavigationController(rootViewController: homeVC)
+        
+        let qualificationInfoVC = QualificationInfoVC()
+        self.qualificationInfoVC = UINavigationController(rootViewController: qualificationInfoVC)
+        
+        let userInfoVC = UserInfoVC()
+        self.userInfoVC = UINavigationController(rootViewController: userInfoVC)
+        
+        
 //        self.homeVC4 = UINavigationController(rootViewController: homeVC)
 //        self.homeVC5 = UINavigationController(rootViewController: homeVC)
 //        self.homeVC6 = UINavigationController(rootViewController: homeVC)
@@ -168,9 +174,9 @@ extension MenuVC : MenuProtocol {
         case .开发票:
             self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .个人信息修改:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.self.userInfoVC, close: true)
         case .租车资格验证:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.qualificationInfoVC, close: true)
         case .设置:
             break
         case .关于:

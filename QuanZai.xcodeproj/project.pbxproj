@@ -64,6 +64,16 @@
 		489DC3281D191A860061033F /* LinkDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC3271D191A860061033F /* LinkDataModel.swift */; };
 		48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */; };
 		48B22AC31D1BA9D000421936 /* btn-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22AC21D1BA9D000421936 /* btn-white@2x.png */; };
+		48B22AC91D1BCC2E00421936 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */; };
+		48B22ACB1D1BCD0600421936 /* QualificationInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22ACA1D1BCD0600421936 /* QualificationInfoVC.swift */; };
+		48B22ACD1D1BCD8800421936 /* QualificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ACC1D1BCD8800421936 /* QualificationView.xib */; };
+		48B22ACF1D1BDB1200421936 /* QualificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22ACE1D1BDB1200421936 /* QualificationView.swift */; };
+		48B22AD11D1C0E1600421936 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AD01D1C0E1500421936 /* UserInfoView.swift */; };
+		48B22AD31D1C0E2700421936 /* UserInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48B22AD21D1C0E2700421936 /* UserInfoView.xib */; };
+		48B22AD51D1CCB7F00421936 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AD41D1CCB7F00421936 /* View.swift */; };
+		48B22AD71D1CEC1B00421936 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AD61D1CEC1B00421936 /* TextField.swift */; };
+		48B22ADC1D20E4DF00421936 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ADB1D20E4DF00421936 /* avatar@2x.png */; };
+		48B22ADE1D20E68500421936 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22ADD1D20E68500421936 /* ImageView.swift */; };
 		B570B4DB3BAC7816CD5990CE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73A4B3FC7616F384B933638 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +165,16 @@
 		489DC3271D191A860061033F /* LinkDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkDataModel.swift; sourceTree = "<group>"; };
 		48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-close-btn@2x.png"; sourceTree = "<group>"; };
 		48B22AC21D1BA9D000421936 /* btn-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white@2x.png"; sourceTree = "<group>"; };
+		48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
+		48B22ACA1D1BCD0600421936 /* QualificationInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationInfoVC.swift; sourceTree = "<group>"; };
+		48B22ACC1D1BCD8800421936 /* QualificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QualificationView.xib; sourceTree = "<group>"; };
+		48B22ACE1D1BDB1200421936 /* QualificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationView.swift; sourceTree = "<group>"; };
+		48B22AD01D1C0E1500421936 /* UserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		48B22AD21D1C0E2700421936 /* UserInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoView.xib; sourceTree = "<group>"; };
+		48B22AD41D1CCB7F00421936 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		48B22AD61D1CEC1B00421936 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		48B22ADB1D20E4DF00421936 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
+		48B22ADD1D20E68500421936 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		622593F7D1388AA10A6EF420 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E73A4B3FC7616F384B933638 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -250,6 +270,9 @@
 		483248521D17822000C4EB9E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				48B22ADA1D1D2C1C00421936 /* 用户身份VIew */,
+				48B22AD91D1CEE8F00421936 /* 租车身份认证View */,
+				48B22AD81D1CEE1C00421936 /* View+Xib */,
 				489DC31F1D180BB40061033F /* ActionBar.swift */,
 				48422AFF1D1979FF005A48D6 /* CarCell.swift */,
 			);
@@ -277,12 +300,10 @@
 		483248551D17825E00C4EB9E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				487B96B51D17AA1700786DA9 /* MenuVC.swift */,
-				487B96B71D17AB4800786DA9 /* HomeVC.swift */,
-				487B96FB1D17E25900786DA9 /* MapVC.swift */,
+				48B22AC71D1BCBD000421936 /* 个人中心 */,
 				487B96FD1D17E26C00786DA9 /* BaseVC.swift */,
-				489DC31D1D1809120061033F /* TimeShareVC.swift */,
-				48422B051D1A8FC7005A48D6 /* LoginVC.swift */,
+				48B22AC41D1BCB6B00421936 /* 首页 */,
+				48B22AC61D1BCB9000421936 /* 登录页 */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -306,6 +327,7 @@
 		487B96991D17A80F00786DA9 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				48B22ADB1D20E4DF00421936 /* avatar@2x.png */,
 				48B22AC21D1BA9D000421936 /* btn-white@2x.png */,
 				48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */,
 				48422B091D1AA1FE005A48D6 /* btn-blue@2x.png */,
@@ -380,6 +402,62 @@
 				487B96ED1D17C0F200786DA9 /* Swizzle.h */,
 			);
 			path = CoreAddition;
+			sourceTree = "<group>";
+		};
+		48B22AC41D1BCB6B00421936 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				487B96B71D17AB4800786DA9 /* HomeVC.swift */,
+				487B96FB1D17E25900786DA9 /* MapVC.swift */,
+				489DC31D1D1809120061033F /* TimeShareVC.swift */,
+			);
+			name = "首页";
+			sourceTree = "<group>";
+		};
+		48B22AC61D1BCB9000421936 /* 登录页 */ = {
+			isa = PBXGroup;
+			children = (
+				48422B051D1A8FC7005A48D6 /* LoginVC.swift */,
+			);
+			name = "登录页";
+			sourceTree = "<group>";
+		};
+		48B22AC71D1BCBD000421936 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+				487B96B51D17AA1700786DA9 /* MenuVC.swift */,
+				48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */,
+				48B22ACA1D1BCD0600421936 /* QualificationInfoVC.swift */,
+			);
+			name = "个人中心";
+			sourceTree = "<group>";
+		};
+		48B22AD81D1CEE1C00421936 /* View+Xib */ = {
+			isa = PBXGroup;
+			children = (
+				48B22AD41D1CCB7F00421936 /* View.swift */,
+				48B22AD61D1CEC1B00421936 /* TextField.swift */,
+				48B22ADD1D20E68500421936 /* ImageView.swift */,
+			);
+			name = "View+Xib";
+			sourceTree = "<group>";
+		};
+		48B22AD91D1CEE8F00421936 /* 租车身份认证View */ = {
+			isa = PBXGroup;
+			children = (
+				48B22ACE1D1BDB1200421936 /* QualificationView.swift */,
+				48B22ACC1D1BCD8800421936 /* QualificationView.xib */,
+			);
+			name = "租车身份认证View";
+			sourceTree = "<group>";
+		};
+		48B22ADA1D1D2C1C00421936 /* 用户身份VIew */ = {
+			isa = PBXGroup;
+			children = (
+				48B22AD01D1C0E1500421936 /* UserInfoView.swift */,
+				48B22AD21D1C0E2700421936 /* UserInfoView.xib */,
+			);
+			name = "用户身份VIew";
 			sourceTree = "<group>";
 		};
 		60F066BC6A03D14F68BA8761 /* Frameworks */ = {
@@ -490,6 +568,7 @@
 				487B96AF1D17A80F00786DA9 /* tab-charge@2x.png in Resources */,
 				48422B081D1A975C005A48D6 /* point@2x.png in Resources */,
 				487B96A71D17A80F00786DA9 /* bussiness-car@2x.png in Resources */,
+				48B22ACD1D1BCD8800421936 /* QualificationView.xib in Resources */,
 				487B96B21D17A80F00786DA9 /* tab-unlock@2x.png in Resources */,
 				487B96A81D17A80F00786DA9 /* car@2x.png in Resources */,
 				487B96F31D17C0F200786DA9 /* README.txt in Resources */,
@@ -498,6 +577,7 @@
 				48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */,
 				48422AF31D1958FA005A48D6 /* btn-left@2x.png in Resources */,
 				487B96A91D17A80F00786DA9 /* close-btn@2x.png in Resources */,
+				48B22AD31D1C0E2700421936 /* UserInfoView.xib in Resources */,
 				48422AF51D1958FA005A48D6 /* btn-right@2x.png in Resources */,
 				487B96AD1D17A80F00786DA9 /* plus@2x.png in Resources */,
 				48422AFA1D195DBF005A48D6 /* btn-center@2x.png in Resources */,
@@ -507,6 +587,7 @@
 				48422AF41D1958FA005A48D6 /* btn-left2@2x.png in Resources */,
 				487B96AB1D17A80F00786DA9 /* luxury-car@2x.png in Resources */,
 				48B22AC31D1BA9D000421936 /* btn-white@2x.png in Resources */,
+				48B22ADC1D20E4DF00421936 /* avatar@2x.png in Resources */,
 				48422AF81D1958FA005A48D6 /* orange-point@2x.png in Resources */,
 				487B96B31D17A80F00786DA9 /* title@2x.png in Resources */,
 			);
@@ -574,8 +655,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48B22ACF1D1BDB1200421936 /* QualificationView.swift in Sources */,
 				487B96DC1D17C0EA00786DA9 /* UIDevice+Hardware.m in Sources */,
 				489DC3201D180BB40061033F /* ActionBar.swift in Sources */,
+				48B22ACB1D1BCD0600421936 /* QualificationInfoVC.swift in Sources */,
 				487B96F41D17C0F200786DA9 /* Swizzle.c in Sources */,
 				487B96EF1D17C0F200786DA9 /* NSData+Additions.m in Sources */,
 				487B96D71D17C0EA00786DA9 /* KUIButton.m in Sources */,
@@ -584,9 +667,12 @@
 				483248261D13EF4600C4EB9E /* AppDelegate.swift in Sources */,
 				489DC3221D18D45A0061033F /* UserModel.swift in Sources */,
 				4832484A1D141FFB00C4EB9E /* BaseModel.swift in Sources */,
+				48B22AD51D1CCB7F00421936 /* View.swift in Sources */,
 				487B96BA1D17B49E00786DA9 /* swiftFastCode.swift in Sources */,
 				487B96FC1D17E25900786DA9 /* MapVC.swift in Sources */,
+				48B22AD71D1CEC1B00421936 /* TextField.swift in Sources */,
 				487B96F01D17C0F200786DA9 /* NSDate+Utilities.m in Sources */,
+				48B22AD11D1C0E1600421936 /* UserInfoView.swift in Sources */,
 				489DC3241D1919730061033F /* CategoryModel.swift in Sources */,
 				48422B061D1A8FC8005A48D6 /* LoginVC.swift in Sources */,
 				483248471D13F29A00C4EB9E /* APIClient.swift in Sources */,
@@ -594,8 +680,10 @@
 				48422AE41D192478005A48D6 /* ServiceAPI.swift in Sources */,
 				489DC31E1D1809120061033F /* TimeShareVC.swift in Sources */,
 				489DC3281D191A860061033F /* LinkDataModel.swift in Sources */,
+				48B22AC91D1BCC2E00421936 /* UserInfoVC.swift in Sources */,
 				487B96DE1D17C0EA00786DA9 /* UILabel+KAddition.m in Sources */,
 				487B96DB1D17C0EA00786DA9 /* UIButton+KAddition.m in Sources */,
+				48B22ADE1D20E68500421936 /* ImageView.swift in Sources */,
 				487B96FE1D17E26C00786DA9 /* BaseVC.swift in Sources */,
 				489DC3261D191A030061033F /* LinkModel.swift in Sources */,
 				487B96DF1D17C0EA00786DA9 /* UIView+KAddition.m in Sources */,
