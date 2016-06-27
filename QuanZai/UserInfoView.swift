@@ -41,10 +41,10 @@ protocol UserInfoViewProtocol: class {
     @IBOutlet var phoneLine: UIImageView!
     @IBOutlet var phoneTxt: UITextField!
     
-    @IBOutlet var passwordView: View!
-    @IBOutlet var passwordTitle: UILabel!
-    @IBOutlet var passwordLine: UIImageView!
-    @IBOutlet var passwordTxt: UITextField!
+//    @IBOutlet var passwordView: View!
+//    @IBOutlet var passwordTitle: UILabel!
+//    @IBOutlet var passwordLine: UIImageView!
+//    @IBOutlet var passwordTxt: UITextField!
     
     
     override func awakeFromNib() {
@@ -56,7 +56,7 @@ protocol UserInfoViewProtocol: class {
     func setDelegates() {
         self.nameTxt.delegate = self
         self.phoneTxt.delegate = self
-        self.passwordTxt.delegate = self
+//        self.passwordTxt.delegate = self
     }
     
     @IBAction func avatarTapped(sender: AnyObject) {
@@ -185,7 +185,7 @@ extension UserInfoView {
             make.size.equalTo(self.nameTxt.snp_size)
         }
 
-        
+        /*
         self.passwordView.snp_makeConstraints { (make) in
             make.top.equalTo(self.phoneView.snp_bottom).offset(10)
             make.left.equalTo(self.nameView.snp_left)
@@ -206,7 +206,8 @@ extension UserInfoView {
             make.left.equalTo(self.nameTxt.snp_left)
             make.size.equalTo(self.nameTxt.snp_size)
         }
-        
+        */
+ 
         self.avatarIMG.layer.cornerRadius = self.avatarIMG.width/2
         self.avatarIMG.layer.masksToBounds = true
         
@@ -218,6 +219,17 @@ extension UserInfoView {
 // MARK: - UITextFieldDelegate
 
 extension UserInfoView : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+//        if textField == self.nameTxt {
+//            
+//        } else if textField == self.phoneTxt {
+//            
+//        }
+        textField.endEditing(true)
+        return true
+    }
     
 }
 

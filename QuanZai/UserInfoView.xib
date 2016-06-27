@@ -46,7 +46,7 @@
                             <rect key="frame" x="160" y="0.0" width="224" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -154,37 +154,7 @@
                             <rect key="frame" x="160" y="0.0" width="224" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                        </textField>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="3"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
-                <view contentMode="scaleToFill" id="IZw-5v-Fzv" customClass="View" customModule="QuanZai" customModuleProvider="target">
-                    <rect key="frame" x="34" y="388" width="384" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mff-an-mKI">
-                            <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wdm-Ja-97O">
-                            <rect key="frame" x="139" y="0.0" width="1" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="租车时身份认证使用" minimumFontSize="17" id="OeJ-DL-WUf">
-                            <rect key="frame" x="160" y="0.0" width="224" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -214,10 +184,6 @@
                 <outlet property="nameTitle" destination="Nkc-ex-UUL" id="2q1-fX-bHK"/>
                 <outlet property="nameTxt" destination="XcL-5b-XLE" id="s6Q-4F-zlL"/>
                 <outlet property="nameView" destination="GvZ-qv-d5a" id="GDr-vC-qgj"/>
-                <outlet property="passwordLine" destination="wdm-Ja-97O" id="DRG-ZB-MEQ"/>
-                <outlet property="passwordTitle" destination="mff-an-mKI" id="UfI-BP-WmX"/>
-                <outlet property="passwordTxt" destination="OeJ-DL-WUf" id="qdJ-44-0NA"/>
-                <outlet property="passwordView" destination="IZw-5v-Fzv" id="nUB-n6-uai"/>
                 <outlet property="phoneLine" destination="U1p-S7-fPm" id="vaN-F5-s5e"/>
                 <outlet property="phoneTitle" destination="7EG-6J-fWn" id="7wO-XO-eK7"/>
                 <outlet property="phoneTxt" destination="kZg-eX-eFb" id="mQj-eK-XeQ"/>

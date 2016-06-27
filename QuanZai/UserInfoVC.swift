@@ -28,12 +28,12 @@ class UserInfoVC: BaseVC {
     func setupUI() {
         
         let scrollView = UIScrollView(frame: ccr(0, 0, k_SCREEN_W, k_SCREEN_H-k_NAV_BAR_H))
-        scrollView.contentSize = ccs(k_SCREEN_W, scrollView.height+150)
+        scrollView.contentSize = ccs(k_SCREEN_W, scrollView.height+100)
         self.view.addSubview(scrollView)
         
         self.infoView = NSBundle.mainBundle().loadNibNamed("UserInfoView", owner: nil, options: nil).first as! UserInfoView
         self.infoView.delegate = self
-        self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 280)
+        self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 235)
         scrollView.addSubview(infoView)
         
         let okBtn = UIButton(imageName: "btn-blue",
