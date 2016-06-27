@@ -36,15 +36,15 @@ class QualificationInfoVC : BaseVC {
         self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 320)
         scrollView.addSubview(infoView)
         
-        let nextBtn = UIButton(imageName: "btn-blue",
+        let okBtn = UIButton(imageName: "btn-blue",
                                hlImageName: "",
                                title: "提交",
                                titleColor: UIColorFromRGB(0x0aa29c),
                                font: HS_FONT(15)) { (nextBtn) in
-            print("下一步")
+            print("提交")
         }
-        nextBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
-        scrollView.addSubview(nextBtn)
+        okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
+        scrollView.addSubview(okBtn)
     }
     
 }

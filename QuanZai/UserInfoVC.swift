@@ -36,26 +36,55 @@ class UserInfoVC: BaseVC {
         self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 280)
         scrollView.addSubview(infoView)
         
-        let nextBtn = UIButton(imageName: "btn-blue",
+        let okBtn = UIButton(imageName: "btn-blue",
                                hlImageName: "",
                                title: "提交",
                                titleColor: UIColorFromRGB(0x0aa29c),
                                font: HS_FONT(15)) { (nextBtn) in
-                                print("下一步")
+                                print("提交")
         }
-        nextBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
-        scrollView.addSubview(nextBtn)
+        okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
+        scrollView.addSubview(okBtn)
     }
 }
 
 extension UserInfoVC : UserInfoViewProtocol {
     
     func avatarTapped() {
-        print("avatarTapped")
+        
+        let alertControler = UIAlertController(title: "上传头像", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (cancelAction) in
+            print("取消")
+        }
+        
+        let cameraAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default) { (cameraAction) in
+            print("拍照")
+        }
+        let photoAction = UIAlertAction(title: "相册", style: UIAlertActionStyle.Default) { (photoAction) in
+            print("相册")
+        }
+        alertControler.addAction(cancelAction)
+        alertControler.addAction(cameraAction)
+        alertControler.addAction(photoAction)
+        self.presentViewController(alertControler, animated: true, completion: nil)
+        
     }
     
     func genderTapped() {
-        print("genderTapped")
+        
+        let alertControler = UIAlertController(title: "选择性别", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let maleAction = UIAlertAction(title: "男", style: UIAlertActionStyle.Default) { (maleAction) in
+            print("男")
+        }
+        let femaleAction = UIAlertAction(title: "女", style: UIAlertActionStyle.Default) { (femaleAction) in
+            print("女")
+        }
+        alertControler.addAction(maleAction)
+        alertControler.addAction(femaleAction)
+        self.presentViewController(alertControler, animated: true, completion: nil)
+        
     }
     
 }
+

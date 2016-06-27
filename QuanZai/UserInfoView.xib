@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UserInfoView" customModule="QuanZai" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="452" height="458"/>
+            <rect key="frame" x="0.0" y="0.0" width="452" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="5jc-lL-GpR">
@@ -223,7 +223,7 @@
                 <outlet property="phoneTxt" destination="kZg-eX-eFb" id="mQj-eK-XeQ"/>
                 <outlet property="phoneView" destination="vrf-nl-TFa" id="Lka-WA-cnr"/>
             </connections>
-            <point key="canvasLocation" x="490" y="441"/>
+            <point key="canvasLocation" x="490" y="462"/>
         </view>
     </objects>
     <resources>
