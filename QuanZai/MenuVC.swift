@@ -32,7 +32,7 @@ class MenuVC : UIViewController {
     var homeVC : UIViewController!
     var qualificationInfoVC : UIViewController!
     var userInfoVC : UIViewController!
-//    var homeVC4 : UIViewController!
+    var orderListVC : UIViewController!
 //    var homeVC5 : UIViewController!
 //    var homeVC6 : UIViewController!
 //    var homeVC7 : UIViewController!
@@ -52,6 +52,9 @@ class MenuVC : UIViewController {
         
         let userInfoVC = UserInfoVC()
         self.userInfoVC = UINavigationController(rootViewController: userInfoVC)
+        
+        let orderListVC = OrderListVC()
+        self.orderListVC = UINavigationController(rootViewController: orderListVC)
         
         
 //        self.homeVC4 = UINavigationController(rootViewController: homeVC)
@@ -164,7 +167,7 @@ extension MenuVC : MenuProtocol {
         case .首页:
             self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .我的行程:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.orderListVC, close: true)
         case .我的包裹:
             self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .活动中心:
