@@ -29,4 +29,15 @@ class Label: UILabel {
         }
     }
     
+    @IBInspectable var leftPadding: CGFloat = 10.0 {
+        didSet {
+            self.drawTextInRect(self.frame)
+        }
+    }
+    
+    override func drawTextInRect(rect: CGRect) {
+        
+        let insets = UIEdgeInsets.init(top: 0, left: self.leftPadding, bottom: 0, right: 0)
+        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+    }
 }

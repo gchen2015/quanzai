@@ -66,6 +66,10 @@
 		48ABF2B31D212F6F00C16525 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABF2B21D212F6F00C16525 /* OrderCell.xib */; };
 		48ABF2B71D213D1600C16525 /* OrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2B61D213D1600C16525 /* OrderListVC.swift */; };
 		48ABF2B91D22172900C16525 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2B81D22172900C16525 /* Label.swift */; };
+		48ABF2BC1D222B5A00C16525 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2BB1D222B5A00C16525 /* OrderDetailView.swift */; };
+		48ABF2BE1D222B7100C16525 /* OrderDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABF2BD1D222B7100C16525 /* OrderDetailView.xib */; };
+		48ABF2C11D222F7F00C16525 /* CarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2C01D222F7F00C16525 /* CarDetailView.swift */; };
+		48ABF2C31D222F8C00C16525 /* CarDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABF2C21D222F8C00C16525 /* CarDetailView.xib */; };
 		48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */; };
 		48B22AC31D1BA9D000421936 /* btn-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22AC21D1BA9D000421936 /* btn-white@2x.png */; };
 		48B22AC91D1BCC2E00421936 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */; };
@@ -171,6 +175,10 @@
 		48ABF2B21D212F6F00C16525 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		48ABF2B61D213D1600C16525 /* OrderListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListVC.swift; sourceTree = "<group>"; };
 		48ABF2B81D22172900C16525 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		48ABF2BB1D222B5A00C16525 /* OrderDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
+		48ABF2BD1D222B7100C16525 /* OrderDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailView.xib; sourceTree = "<group>"; };
+		48ABF2C01D222F7F00C16525 /* CarDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailView.swift; sourceTree = "<group>"; };
+		48ABF2C21D222F8C00C16525 /* CarDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarDetailView.xib; sourceTree = "<group>"; };
 		48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-close-btn@2x.png"; sourceTree = "<group>"; };
 		48B22AC21D1BA9D000421936 /* btn-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white@2x.png"; sourceTree = "<group>"; };
 		48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -278,6 +286,8 @@
 		483248521D17822000C4EB9E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				48ABF2BF1D222F5A00C16525 /* 车辆详情 */,
+				48ABF2BA1D222AED00C16525 /* 订单详情View */,
 				48ABF2B11D212F3800C16525 /* 车辆列表Cell */,
 				48ABF2B01D212F2A00C16525 /* 订单列表Cell */,
 				48B22ADA1D1D2C1C00421936 /* 用户身份VIew */,
@@ -428,6 +438,24 @@
 				48422AFF1D1979FF005A48D6 /* CarCell.swift */,
 			);
 			name = "车辆列表Cell";
+			sourceTree = "<group>";
+		};
+		48ABF2BA1D222AED00C16525 /* 订单详情View */ = {
+			isa = PBXGroup;
+			children = (
+				48ABF2BB1D222B5A00C16525 /* OrderDetailView.swift */,
+				48ABF2BD1D222B7100C16525 /* OrderDetailView.xib */,
+			);
+			name = "订单详情View";
+			sourceTree = "<group>";
+		};
+		48ABF2BF1D222F5A00C16525 /* 车辆详情 */ = {
+			isa = PBXGroup;
+			children = (
+				48ABF2C01D222F7F00C16525 /* CarDetailView.swift */,
+				48ABF2C21D222F8C00C16525 /* CarDetailView.xib */,
+			);
+			name = "车辆详情";
 			sourceTree = "<group>";
 		};
 		48B22AC41D1BCB6B00421936 /* 首页 */ = {
@@ -596,6 +624,7 @@
 				487B96AF1D17A80F00786DA9 /* tab-charge@2x.png in Resources */,
 				48422B081D1A975C005A48D6 /* point@2x.png in Resources */,
 				487B96A71D17A80F00786DA9 /* bussiness-car@2x.png in Resources */,
+				48ABF2BE1D222B7100C16525 /* OrderDetailView.xib in Resources */,
 				48B22ACD1D1BCD8800421936 /* QualificationView.xib in Resources */,
 				487B96B21D17A80F00786DA9 /* tab-unlock@2x.png in Resources */,
 				487B96A81D17A80F00786DA9 /* car@2x.png in Resources */,
@@ -604,6 +633,7 @@
 				487B96B11D17A80F00786DA9 /* tab-star@2x.png in Resources */,
 				48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */,
 				48422AF31D1958FA005A48D6 /* btn-left@2x.png in Resources */,
+				48ABF2C31D222F8C00C16525 /* CarDetailView.xib in Resources */,
 				487B96A91D17A80F00786DA9 /* close-btn@2x.png in Resources */,
 				48ABF2B31D212F6F00C16525 /* OrderCell.xib in Resources */,
 				48B22AD31D1C0E2700421936 /* UserInfoView.xib in Resources */,
@@ -693,12 +723,14 @@
 				487B96EF1D17C0F200786DA9 /* NSData+Additions.m in Sources */,
 				487B96D71D17C0EA00786DA9 /* KUIButton.m in Sources */,
 				487B96F11D17C0F200786DA9 /* NSObject+Additions.m in Sources */,
+				48ABF2BC1D222B5A00C16525 /* OrderDetailView.swift in Sources */,
 				48ABF2AF1D212F2500C16525 /* OrderCell.swift in Sources */,
 				487B96B81D17AB4800786DA9 /* HomeVC.swift in Sources */,
 				483248261D13EF4600C4EB9E /* AppDelegate.swift in Sources */,
 				489DC3221D18D45A0061033F /* UserModel.swift in Sources */,
 				4832484A1D141FFB00C4EB9E /* BaseModel.swift in Sources */,
 				48B22AD51D1CCB7F00421936 /* View.swift in Sources */,
+				48ABF2C11D222F7F00C16525 /* CarDetailView.swift in Sources */,
 				487B96BA1D17B49E00786DA9 /* swiftFastCode.swift in Sources */,
 				487B96FC1D17E25900786DA9 /* MapVC.swift in Sources */,
 				48B22AD71D1CEC1B00421936 /* TextField.swift in Sources */,
