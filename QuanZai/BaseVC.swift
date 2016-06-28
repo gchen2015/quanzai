@@ -11,6 +11,9 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     func showLogo(show: Bool) {
@@ -55,7 +58,7 @@ class BaseVC: UIViewController {
         }
     }
     func checkHaveLogin() -> Bool {
-        if true {
+        if false {
             self.showLoginVC(true)
             return false
         }

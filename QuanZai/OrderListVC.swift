@@ -15,13 +15,13 @@ class OrderListVC : BaseVC {
         
         super.viewDidLoad()
         
-        self.showTitle("我的行程")
+        self.showTitle("历史订单")
         
-        let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
-            self.openLeft()
-        }
-        menuBtn.size = ccs(35, 35)
-        self.showLeftBarItem(menuBtn)
+//        let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
+//            self.openLeft()
+//        }
+//        menuBtn.size = ccs(35, 35)
+//        self.showLeftBarItem(menuBtn)
         
         self.tableView = UITableView(frame: ccr(0, 0, k_SCREEN_W, k_SCREEN_H-k_NAV_BAR_H), style: .Plain)
         self.tableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: orderCellIdentifier)
@@ -56,6 +56,7 @@ extension OrderListVC : UITableViewDelegate, UITableViewDataSource {
         cell?.statusLabel.text = "订单完成"
         cell?.nameLabel.text = "宝马X5"
         cell?.timeLabel.text = "2016-06-27 18:08"
+        
         if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 4 {
             cell?.setOrderStatus(OrderStatus.returned)
             cell?.setPaymentStatus(PaymentStatus.paid)

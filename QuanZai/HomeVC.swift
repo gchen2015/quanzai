@@ -203,8 +203,11 @@ extension HomeVC: TimeShareVCProtocol {
     }
     
     func orderBtnTapped() {
-        print("orderBtnTapped")
-        self.checkHaveLogin()
+        
+        if checkHaveLogin() {
+            let orderListVC = OrderListVC()
+            self.navigationController?.pushViewController(orderListVC, animated: true)
+        }
     }
 }
 
