@@ -34,7 +34,7 @@ class QualificationView: UIView {
     @IBOutlet var headerView: UIView!
     
     override func awakeFromNib() {
-        
+        super.awakeFromNib()
         self.setDelegates()
         self.layout()
     }

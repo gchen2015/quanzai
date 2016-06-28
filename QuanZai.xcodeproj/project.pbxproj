@@ -64,8 +64,8 @@
 		489DC3281D191A860061033F /* LinkDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC3271D191A860061033F /* LinkDataModel.swift */; };
 		48ABF2AF1D212F2500C16525 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2AE1D212F2500C16525 /* OrderCell.swift */; };
 		48ABF2B31D212F6F00C16525 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABF2B21D212F6F00C16525 /* OrderCell.xib */; };
-		48ABF2B51D213B3800C16525 /* gn_list_icon_>@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48ABF2B41D213B3800C16525 /* gn_list_icon_>@2x.png */; };
 		48ABF2B71D213D1600C16525 /* OrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2B61D213D1600C16525 /* OrderListVC.swift */; };
+		48ABF2B91D22172900C16525 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2B81D22172900C16525 /* Label.swift */; };
 		48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */; };
 		48B22AC31D1BA9D000421936 /* btn-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22AC21D1BA9D000421936 /* btn-white@2x.png */; };
 		48B22AC91D1BCC2E00421936 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */; };
@@ -169,8 +169,8 @@
 		489DC3271D191A860061033F /* LinkDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkDataModel.swift; sourceTree = "<group>"; };
 		48ABF2AE1D212F2500C16525 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		48ABF2B21D212F6F00C16525 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
-		48ABF2B41D213B3800C16525 /* gn_list_icon_>@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gn_list_icon_>@2x.png"; sourceTree = "<group>"; };
 		48ABF2B61D213D1600C16525 /* OrderListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListVC.swift; sourceTree = "<group>"; };
+		48ABF2B81D22172900C16525 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-close-btn@2x.png"; sourceTree = "<group>"; };
 		48B22AC21D1BA9D000421936 /* btn-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white@2x.png"; sourceTree = "<group>"; };
 		48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -336,7 +336,6 @@
 		487B96991D17A80F00786DA9 /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				48ABF2B41D213B3800C16525 /* gn_list_icon_>@2x.png */,
 				48B22ADB1D20E4DF00421936 /* avatar@2x.png */,
 				48B22AC21D1BA9D000421936 /* btn-white@2x.png */,
 				48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */,
@@ -466,6 +465,7 @@
 				48B22AD41D1CCB7F00421936 /* View.swift */,
 				48B22AD61D1CEC1B00421936 /* TextField.swift */,
 				48B22ADD1D20E68500421936 /* ImageView.swift */,
+				48ABF2B81D22172900C16525 /* Label.swift */,
 			);
 			name = "View+Extensions";
 			sourceTree = "<group>";
@@ -603,7 +603,6 @@
 				48422AF71D1958FA005A48D6 /* green-point@2x.png in Resources */,
 				487B96B11D17A80F00786DA9 /* tab-star@2x.png in Resources */,
 				48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */,
-				48ABF2B51D213B3800C16525 /* gn_list_icon_>@2x.png in Resources */,
 				48422AF31D1958FA005A48D6 /* btn-left@2x.png in Resources */,
 				487B96A91D17A80F00786DA9 /* close-btn@2x.png in Resources */,
 				48ABF2B31D212F6F00C16525 /* OrderCell.xib in Resources */,
@@ -723,6 +722,7 @@
 				487B96F21D17C0F200786DA9 /* NSString+Additions.m in Sources */,
 				48422B001D1979FF005A48D6 /* CarCell.swift in Sources */,
 				487B96DD1D17C0EA00786DA9 /* UIImage+PL.m in Sources */,
+				48ABF2B91D22172900C16525 /* Label.swift in Sources */,
 				487B96EE1D17C0F200786DA9 /* NSArray+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

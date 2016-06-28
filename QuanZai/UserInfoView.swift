@@ -48,7 +48,7 @@ protocol UserInfoViewProtocol: class {
     
     
     override func awakeFromNib() {
-        
+        super.awakeFromNib()
         self.setDelegates()
         self.layout()
     }

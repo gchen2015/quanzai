@@ -14,7 +14,7 @@ class UserInfoVC: BaseVC {
         
         super.viewDidLoad()
         
-        self.showLogo(true)
+        self.showTitle("个人信息修改")
         
         let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
             self.openLeft()

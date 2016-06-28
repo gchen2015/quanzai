@@ -14,7 +14,7 @@ class QualificationInfoVC : BaseVC {
         
         super.viewDidLoad()
         
-        self.showLogo(true)
+        self.showTitle("租车资格验证")
         
         let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
             self.openLeft()
