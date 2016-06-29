@@ -57,6 +57,9 @@
 		487B96F41D17C0F200786DA9 /* Swizzle.c in Sources */ = {isa = PBXBuildFile; fileRef = 487B96EC1D17C0F200786DA9 /* Swizzle.c */; };
 		487B96FC1D17E25900786DA9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B96FB1D17E25900786DA9 /* MapVC.swift */; };
 		487B96FE1D17E26C00786DA9 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487B96FD1D17E26C00786DA9 /* BaseVC.swift */; };
+		488C64521D23E6DB00A5D55C /* VerifyCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C64511D23E6DB00A5D55C /* VerifyCodeView.swift */; };
+		488C64541D23E6F000A5D55C /* VerifyCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488C64531D23E6F000A5D55C /* VerifyCodeView.xib */; };
+		488C64561D23E91300A5D55C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C64551D23E91300A5D55C /* Button.swift */; };
 		489DC31E1D1809120061033F /* TimeShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC31D1D1809120061033F /* TimeShareVC.swift */; };
 		489DC3201D180BB40061033F /* ActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC31F1D180BB40061033F /* ActionBar.swift */; };
 		489DC3221D18D45A0061033F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC3211D18D45A0061033F /* UserModel.swift */; };
@@ -167,6 +170,9 @@
 		487B96F71D17C2E600786DA9 /* FastCodeDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastCodeDefines.h; sourceTree = "<group>"; };
 		487B96FB1D17E25900786DA9 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		487B96FD1D17E26C00786DA9 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		488C64511D23E6DB00A5D55C /* VerifyCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeView.swift; sourceTree = "<group>"; };
+		488C64531D23E6F000A5D55C /* VerifyCodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerifyCodeView.xib; sourceTree = "<group>"; };
+		488C64551D23E91300A5D55C /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		489DC31D1D1809120061033F /* TimeShareVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeShareVC.swift; sourceTree = "<group>"; };
 		489DC31F1D180BB40061033F /* ActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionBar.swift; sourceTree = "<group>"; };
 		489DC3211D18D45A0061033F /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -296,7 +302,8 @@
 		483248521D17822000C4EB9E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				48ABF2BF1D222F5A00C16525 /* 车辆详情 */,
+				488C64501D23E68100A5D55C /* 短信验证弹窗View */,
+				48ABF2BF1D222F5A00C16525 /* 车辆详情View */,
 				48ABF2BA1D222AED00C16525 /* 订单详情View */,
 				48ABF2B11D212F3800C16525 /* 车辆列表Cell */,
 				48ABF2B01D212F2A00C16525 /* 订单列表Cell */,
@@ -434,6 +441,15 @@
 			path = CoreAddition;
 			sourceTree = "<group>";
 		};
+		488C64501D23E68100A5D55C /* 短信验证弹窗View */ = {
+			isa = PBXGroup;
+			children = (
+				488C64511D23E6DB00A5D55C /* VerifyCodeView.swift */,
+				488C64531D23E6F000A5D55C /* VerifyCodeView.xib */,
+			);
+			name = "短信验证弹窗View";
+			sourceTree = "<group>";
+		};
 		48ABF2B01D212F2A00C16525 /* 订单列表Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,13 +476,13 @@
 			name = "订单详情View";
 			sourceTree = "<group>";
 		};
-		48ABF2BF1D222F5A00C16525 /* 车辆详情 */ = {
+		48ABF2BF1D222F5A00C16525 /* 车辆详情View */ = {
 			isa = PBXGroup;
 			children = (
 				48ABF2C01D222F7F00C16525 /* CarDetailView.swift */,
 				48ABF2C21D222F8C00C16525 /* CarDetailView.xib */,
 			);
-			name = "车辆详情";
+			name = "车辆详情View";
 			sourceTree = "<group>";
 		};
 		48B22AC41D1BCB6B00421936 /* 首页 */ = {
@@ -505,6 +521,7 @@
 				48B22AD61D1CEC1B00421936 /* TextField.swift */,
 				48B22ADD1D20E68500421936 /* ImageView.swift */,
 				48ABF2B81D22172900C16525 /* Label.swift */,
+				488C64551D23E91300A5D55C /* Button.swift */,
 			);
 			name = "View+Extensions";
 			sourceTree = "<group>";
@@ -643,6 +660,7 @@
 				48422AF71D1958FA005A48D6 /* green-point@2x.png in Resources */,
 				487B96B11D17A80F00786DA9 /* tab-star@2x.png in Resources */,
 				48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */,
+				488C64541D23E6F000A5D55C /* VerifyCodeView.xib in Resources */,
 				48422AF31D1958FA005A48D6 /* btn-left@2x.png in Resources */,
 				48ABF2C31D222F8C00C16525 /* CarDetailView.xib in Resources */,
 				487B96A91D17A80F00786DA9 /* close-btn@2x.png in Resources */,
@@ -750,7 +768,9 @@
 				48B22AD11D1C0E1600421936 /* UserInfoView.swift in Sources */,
 				489DC3241D1919730061033F /* CategoryModel.swift in Sources */,
 				48422B061D1A8FC8005A48D6 /* LoginVC.swift in Sources */,
+				488C64561D23E91300A5D55C /* Button.swift in Sources */,
 				483248471D13F29A00C4EB9E /* APIClient.swift in Sources */,
+				488C64521D23E6DB00A5D55C /* VerifyCodeView.swift in Sources */,
 				487B96B61D17AA1700786DA9 /* MenuVC.swift in Sources */,
 				48422AE41D192478005A48D6 /* ServiceAPI.swift in Sources */,
 				489DC31E1D1809120061033F /* TimeShareVC.swift in Sources */,
