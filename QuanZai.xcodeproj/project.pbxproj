@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48245FF81D22BBFA00D930A4 /* CarDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48245FF71D22BBFA00D930A4 /* CarDetailVC.swift */; };
 		483248261D13EF4600C4EB9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483248251D13EF4600C4EB9E /* AppDelegate.swift */; };
 		4832482D1D13EF4600C4EB9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4832482C1D13EF4600C4EB9E /* Assets.xcassets */; };
 		4832483B1D13EF4600C4EB9E /* QuanZaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4832483A1D13EF4600C4EB9E /* QuanZaiTests.swift */; };
@@ -97,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		2E6BF24CF5E3A97E55781C3F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		48245FF71D22BBFA00D930A4 /* CarDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailVC.swift; sourceTree = "<group>"; };
 		483248221D13EF4500C4EB9E /* QuanZai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuanZai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		483248251D13EF4600C4EB9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4832482C1D13EF4600C4EB9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48245FF61D22BBDD00D930A4 /* 车辆详情 */ = {
+			isa = PBXGroup;
+			children = (
+				48245FF71D22BBFA00D930A4 /* CarDetailVC.swift */,
+			);
+			name = "车辆详情";
+			sourceTree = "<group>";
+		};
 		483248191D13EF4500C4EB9E = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +329,7 @@
 		483248551D17825E00C4EB9E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				48245FF61D22BBDD00D930A4 /* 车辆详情 */,
 				48B22AC71D1BCBD000421936 /* 个人中心 */,
 				487B96FD1D17E26C00786DA9 /* BaseVC.swift */,
 				48B22AC41D1BCB6B00421936 /* 首页 */,
@@ -721,6 +732,7 @@
 				48B22ACB1D1BCD0600421936 /* QualificationInfoVC.swift in Sources */,
 				487B96F41D17C0F200786DA9 /* Swizzle.c in Sources */,
 				487B96EF1D17C0F200786DA9 /* NSData+Additions.m in Sources */,
+				48245FF81D22BBFA00D930A4 /* CarDetailVC.swift in Sources */,
 				487B96D71D17C0EA00786DA9 /* KUIButton.m in Sources */,
 				487B96F11D17C0F200786DA9 /* NSObject+Additions.m in Sources */,
 				48ABF2BC1D222B5A00C16525 /* OrderDetailView.swift in Sources */,

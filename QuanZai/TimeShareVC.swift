@@ -230,7 +230,8 @@ extension TimeShareVC {
 extension TimeShareVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+        let carDetailVC = CarDetailVC()
+        self.navigationController?.pushViewController(carDetailVC, animated: true)
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
