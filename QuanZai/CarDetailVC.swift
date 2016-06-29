@@ -33,7 +33,7 @@ class CarDetailVC: BaseVC {
                              title: "租用",
                              titleColor: UIColorFromRGB(0x0aa29c),
                              font: HS_FONT(15)) { (nextBtn) in
-                                print("租用")
+                                self.okTapped()
         }
         okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
         scrollView.addSubview(okBtn)
@@ -43,9 +43,47 @@ class CarDetailVC: BaseVC {
     }
 }
 
+extension CarDetailVC {
+    
+    func okTapped() {
+        let alertView = NSBundle.mainBundle().loadNibNamed("VerifyCodeView", owner: nil, options: nil).first as! VerifyCodeView
+        alertView.size = ccs(k_SCREEN_W-40, 160)
+        self.showAlert(alertView)
+    }
+}
+
+// MARK: - CarDetailViewProtocol
+
 extension CarDetailVC : CarDetailViewProtocol {
     
     func paymentBtnTapped() {
+        let arr = [["name":"分时"],["name":"半日租"],["name":"日租"]]
+        self.alertDateTypes(arr)
+    }
+    
+    func alertDateTypes(array : NSArray) {
+        let alertControler = UIAlertController(title: "选择租用方式", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
         
+        for item in array {
+            let action = UIAlertAction(title: item["name"] as? String, style: UIAlertActionStyle.Default) { (maleAction) in
+                self.infoView.paymentBtn.setTitle(item["name"] as? String, forState: .Normal)
+                self.infoView.paymentBtn.setTitleColor(UIColor.lightGrayColor() , forState: .Normal)
+            }
+            alertControler.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (cancelAction) in
+            //do nothing
+        }
+        alertControler.addAction(cancelAction)
+        self.presentViewController(alertControler, animated: true, completion: nil)
+    }
+}
+
+// MARK: - VerifyCodeViewProtocol
+
+extension CarDetailVC : VerifyCodeViewProtocol {
+        
+    func rentTheCar() {
+        //TODO: 确认租车
     }
 }

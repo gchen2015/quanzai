@@ -8,12 +8,24 @@
 
 class BaseVC: UIViewController {
     
+    var blurEffectView : UIVisualEffectView!
+    var closeBtn : UIButton!
+    var alertView : UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+        blurEffectView!.frame = self.view.bounds
+        
+        self.closeBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (closeBtn) in
+            self.dismissAlert()
+        })
+        self.closeBtn!.frame = self.view.bounds
     }
     
     func showLogo(show: Bool) {
@@ -63,6 +75,48 @@ class BaseVC: UIViewController {
             return false
         }
         return true
+    }
+    
+    func showAlert(alertView: UIView, showBlur: Bool = true) {
+        
+        self.alertView = alertView
+        
+        if showBlur {
+            blurEffectView.addSubview(closeBtn)
+            self.view.addSubview(blurEffectView!)
+            self.alertView = alertView
+            self.alertView?.centerX = self.view.centerX
+            self.alertView?.centerY = self.view.centerY-100
+            self.blurEffectView.addSubview(self.alertView!)
+            self.alertView!.alpha = 0
+            self.blurEffectView.alpha = 0
+            UIView.animateWithDuration(0.3, animations: {
+                self.alertView!.alpha = 1
+                self.blurEffectView.alpha = 1
+            })
+        } else {
+            self.view.addSubview(self.closeBtn)
+            self.alertView?.centerX = self.view.centerX
+            self.alertView?.centerY = self.view.centerY-140
+            self.view.addSubview(self.alertView!)
+            self.alertView!.alpha = 0
+            UIView.animateWithDuration(0.3, animations: {
+                self.alertView!.alpha = 1
+            })
+        }
+    }
+    
+    func dismissAlert() {
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.blurEffectView.alpha = 0
+            self.alertView!.alpha = 0
+            }) { (finished) in
+                self.closeBtn.removeFromSuperview()
+                self.blurEffectView.removeFromSuperview()
+                self.alertView!.removeFromSuperview()
+        }
+        
     }
 }
 
