@@ -10,12 +10,21 @@ class OrderListVC : BaseVC {
     
     let orderCellIdentifier: String!  = "OrderCell";
     var tableView : UITableView!
+    var showMenuBtn : Bool = false
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.showTitle("历史订单")
+        
+        if showMenuBtn {
+            let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
+                self.openLeft()
+            }
+            menuBtn.size = ccs(35, 35)
+            self.showLeftBarItem(menuBtn)
+        }
         
         self.tableView = UITableView(frame: ccr(0, 0, k_SCREEN_W, k_SCREEN_H-k_NAV_BAR_H), style: .Plain)
         self.tableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: orderCellIdentifier)

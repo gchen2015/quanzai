@@ -54,6 +54,7 @@ class MenuVC : UIViewController {
         self.userInfoVC = UINavigationController(rootViewController: userInfoVC)
         
         let orderListVC = OrderListVC()
+        orderListVC.showMenuBtn = true
         self.orderListVC = UINavigationController(rootViewController: orderListVC)
         
         let walletVC = WalletVC()

@@ -206,6 +206,7 @@ extension HomeVC: TimeShareVCProtocol {
         
         if checkHaveLogin() {
             let orderListVC = OrderListVC()
+            orderListVC.showMenuBtn = false
             self.navigationController?.pushViewController(orderListVC, animated: true)
         }
     }
