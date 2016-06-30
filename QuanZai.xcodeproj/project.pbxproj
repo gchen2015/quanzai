@@ -60,6 +60,7 @@
 		488C64521D23E6DB00A5D55C /* VerifyCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C64511D23E6DB00A5D55C /* VerifyCodeView.swift */; };
 		488C64541D23E6F000A5D55C /* VerifyCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488C64531D23E6F000A5D55C /* VerifyCodeView.xib */; };
 		488C64561D23E91300A5D55C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C64551D23E91300A5D55C /* Button.swift */; };
+		488C645A1D24CA5F00A5D55C /* OrderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488C64591D24CA5F00A5D55C /* OrderDetailVC.swift */; };
 		489DC31E1D1809120061033F /* TimeShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC31D1D1809120061033F /* TimeShareVC.swift */; };
 		489DC3201D180BB40061033F /* ActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC31F1D180BB40061033F /* ActionBar.swift */; };
 		489DC3221D18D45A0061033F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC3211D18D45A0061033F /* UserModel.swift */; };
@@ -173,6 +174,7 @@
 		488C64511D23E6DB00A5D55C /* VerifyCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeView.swift; sourceTree = "<group>"; };
 		488C64531D23E6F000A5D55C /* VerifyCodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerifyCodeView.xib; sourceTree = "<group>"; };
 		488C64551D23E91300A5D55C /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		488C64591D24CA5F00A5D55C /* OrderDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailVC.swift; sourceTree = "<group>"; };
 		489DC31D1D1809120061033F /* TimeShareVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeShareVC.swift; sourceTree = "<group>"; };
 		489DC31F1D180BB40061033F /* ActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionBar.swift; sourceTree = "<group>"; };
 		489DC3211D18D45A0061033F /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -253,15 +255,16 @@
 		483248241D13EF4600C4EB9E /* QuanZai */ = {
 			isa = PBXGroup;
 			children = (
-				487B96B41D17A9EE00786DA9 /* Extensions */,
-				483248571D17828200C4EB9E /* images */,
-				483248561D17827300C4EB9E /* Bridging */,
+				488C64571D24A88D00A5D55C /* Base */,
+				483248451D13F25100C4EB9E /* API */,
+				483248511D17821800C4EB9E /* Models */,
+				483248521D17822000C4EB9E /* View */,
 				483248551D17825E00C4EB9E /* Controllers */,
 				483248541D17824B00C4EB9E /* Application */,
+				483248561D17827300C4EB9E /* Bridging */,
+				487B96B41D17A9EE00786DA9 /* Extensions */,
 				483248531D17822B00C4EB9E /* Utility */,
-				483248521D17822000C4EB9E /* View */,
-				483248511D17821800C4EB9E /* Models */,
-				483248451D13F25100C4EB9E /* API */,
+				483248571D17828200C4EB9E /* images */,
 				4832482C1D13EF4600C4EB9E /* Assets.xcassets */,
 				483248311D13EF4600C4EB9E /* Info.plist */,
 			);
@@ -290,7 +293,6 @@
 		483248511D17821800C4EB9E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				483248491D141FFA00C4EB9E /* BaseModel.swift */,
 				489DC3211D18D45A0061033F /* UserModel.swift */,
 				489DC3231D1919730061033F /* CategoryModel.swift */,
 				489DC3251D191A030061033F /* LinkModel.swift */,
@@ -309,7 +311,6 @@
 				48ABF2B01D212F2A00C16525 /* 订单列表Cell */,
 				48B22ADA1D1D2C1C00421936 /* 用户身份VIew */,
 				48B22AD91D1CEE8F00421936 /* 租车身份认证View */,
-				48B22AD81D1CEE1C00421936 /* View+Extensions */,
 				489DC31F1D180BB40061033F /* ActionBar.swift */,
 			);
 			name = View;
@@ -336,9 +337,9 @@
 		483248551D17825E00C4EB9E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				488C64581D24CA4600A5D55C /* 订单详情 */,
 				48245FF61D22BBDD00D930A4 /* 车辆详情 */,
 				48B22AC71D1BCBD000421936 /* 个人中心 */,
-				487B96FD1D17E26C00786DA9 /* BaseVC.swift */,
 				48B22AC41D1BCB6B00421936 /* 首页 */,
 				48B22AC61D1BCB9000421936 /* 登录页 */,
 			);
@@ -395,6 +396,7 @@
 		487B96B41D17A9EE00786DA9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				48B22AD81D1CEE1C00421936 /* View+Extensions */,
 				487B96F51D17C11500786DA9 /* UIAddition.h */,
 				487B96E01D17C0F200786DA9 /* CoreAddition */,
 				487B96BE1D17C0EA00786DA9 /* UIAddition */,
@@ -448,6 +450,23 @@
 				488C64531D23E6F000A5D55C /* VerifyCodeView.xib */,
 			);
 			name = "短信验证弹窗View";
+			sourceTree = "<group>";
+		};
+		488C64571D24A88D00A5D55C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				483248491D141FFA00C4EB9E /* BaseModel.swift */,
+				487B96FD1D17E26C00786DA9 /* BaseVC.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		488C64581D24CA4600A5D55C /* 订单详情 */ = {
+			isa = PBXGroup;
+			children = (
+				488C64591D24CA5F00A5D55C /* OrderDetailVC.swift */,
+			);
+			name = "订单详情";
 			sourceTree = "<group>";
 		};
 		48ABF2B01D212F2A00C16525 /* 订单列表Cell */ = {
@@ -749,6 +768,7 @@
 				489DC3201D180BB40061033F /* ActionBar.swift in Sources */,
 				48B22ACB1D1BCD0600421936 /* QualificationInfoVC.swift in Sources */,
 				487B96F41D17C0F200786DA9 /* Swizzle.c in Sources */,
+				488C645A1D24CA5F00A5D55C /* OrderDetailVC.swift in Sources */,
 				487B96EF1D17C0F200786DA9 /* NSData+Additions.m in Sources */,
 				48245FF81D22BBFA00D930A4 /* CarDetailVC.swift in Sources */,
 				487B96D71D17C0EA00786DA9 /* KUIButton.m in Sources */,
