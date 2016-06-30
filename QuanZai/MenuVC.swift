@@ -33,7 +33,7 @@ class MenuVC : UIViewController {
     var qualificationInfoVC : UIViewController!
     var userInfoVC : UIViewController!
     var orderListVC : UIViewController!
-//    var homeVC5 : UIViewController!
+    var walletVC : UIViewController!
 //    var homeVC6 : UIViewController!
 //    var homeVC7 : UIViewController!
     
@@ -56,11 +56,8 @@ class MenuVC : UIViewController {
         let orderListVC = OrderListVC()
         self.orderListVC = UINavigationController(rootViewController: orderListVC)
         
-        
-//        self.homeVC4 = UINavigationController(rootViewController: homeVC)
-//        self.homeVC5 = UINavigationController(rootViewController: homeVC)
-//        self.homeVC6 = UINavigationController(rootViewController: homeVC)
-//        self.homeVC7 = UINavigationController(rootViewController: homeVC)
+        let walletVC = WalletVC()
+        self.walletVC = UINavigationController(rootViewController: walletVC)
         
     }
     
@@ -173,7 +170,7 @@ extension MenuVC : MenuProtocol {
         case .活动中心:
             self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .账户余额:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.walletVC, close: true)
         case .开发票:
             self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .个人信息修改:
