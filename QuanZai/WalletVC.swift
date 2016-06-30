@@ -15,7 +15,6 @@ class WalletVC: BaseVC {
         super.viewDidLoad()
         
         self.showTitle("我的账户")
-        
         let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
             self.openLeft()
         }
@@ -39,7 +38,8 @@ class WalletVC: BaseVC {
 extension WalletVC : WalletViewProtocol {
    
     func topup() {
-        print("topup")
+        let topupVC = TopupVC()
+        self.navigationController?.pushViewController(topupVC, animated: true)
     }
     
     func openPaymentList() {
