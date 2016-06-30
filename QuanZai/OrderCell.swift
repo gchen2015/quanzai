@@ -74,7 +74,7 @@ enum OrderStatus : Int {
             make.height.equalTo(self.nameLabel.snp_height)
         }
         self.chargeStatusLabel.snp_makeConstraints { (make) in
-            make.left.equalTo(self.chargeLabel.snp_right).offset(10)
+            make.left.equalTo(self.statusLabel.snp_left)
             make.top.equalTo(self.chargeTitle.snp_top)
             make.width.equalTo(60)
             make.height.equalTo(self.nameLabel.snp_height)

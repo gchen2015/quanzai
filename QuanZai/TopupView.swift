@@ -43,8 +43,9 @@ protocol TopupViewProtocol {
         firstRadioButton.selected = true
         firstRadioButton.iconSquare = true
         
-        var buttons : [DLRadioButton] = []
+        var otherbuttons : [DLRadioButton] = []
         let titles = ["200元", "500元", "1000元"]
+        
         var i = 0
         var bottom : CGFloat = 0
         
@@ -52,11 +53,11 @@ protocol TopupViewProtocol {
             let frame = CGRectMake(20, CGRectGetMaxY(firstRadioButton.frame) + 40 * CGFloat(i), 100, 40)
             let radioButton = createRadioButton(frame, title: title)
             radioButton.iconSquare = true
-            buttons.append(radioButton)
+            otherbuttons.append(radioButton)
             i += 1
             bottom = CGRectGetMaxY(radioButton.frame)
         }
-        firstRadioButton.otherButtons = buttons
+        firstRadioButton.otherButtons = otherbuttons
         
         otherMoneyTitle.snp_makeConstraints { (make) in
             make.top.equalTo(bottom+20)
