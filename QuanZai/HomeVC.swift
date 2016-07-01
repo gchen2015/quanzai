@@ -117,7 +117,7 @@ extension HomeVC {
         
         self.mapVC = MapVC()
         self.addChildViewController(self.mapVC!)
-        self.mapVC.view.frame = ccr(0, 0, k_SCREEN_W, 300)
+        self.mapVC.view.frame = ccr(0, 0, k_SCREEN_W, 250*k_SCREEN_SCALE)
         self.view.addSubview(self.mapVC.view)
         self.mapVC.didMoveToParentViewController(self)
     }
@@ -126,7 +126,7 @@ extension HomeVC {
         
         let titles = ["马上用车","预约用车","分时租赁","同城速递"]
         let segmentedControl = HMSegmentedControl(sectionTitles: titles)
-        segmentedControl.frame = ccr(0, 300-k_NAV_BAR_H, k_SCREEN_W, 30)
+        segmentedControl.frame = ccr(0, 250*k_SCREEN_SCALE-k_NAV_BAR_H, k_SCREEN_W, 30)
         segmentedControl.selectedSegmentIndex = 2
         segmentedControl.backgroundColor = UIColorFromRGB(0xefefef)
         segmentedControl.titleTextAttributes = [NSFontAttributeName:HS_FONT(11),NSForegroundColorAttributeName:UIColorFromRGB(0x727272)]
@@ -141,9 +141,9 @@ extension HomeVC {
         let timeShareVC = TimeShareVC()
         timeShareVC.delegate = self
         timeShareVC.view.frame = ccr(0,
-                                     300-k_NAV_BAR_H+30,
+                                     250*k_SCREEN_SCALE-k_NAV_BAR_H+30,
                                      k_SCREEN_W,
-                                     self.view.height-300-80+k_NAV_BAR_H-30)
+                                     self.view.height-250*k_SCREEN_SCALE-80+k_NAV_BAR_H-30)
         return timeShareVC
     }
     

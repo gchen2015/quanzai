@@ -42,7 +42,7 @@ protocol WalletViewProtocol : class {
         topupBtn.snp_makeConstraints { (make) in
             make.top.equalTo(moneyLabel.snp_bottom)
             make.left.equalTo(20)
-            make.width.equalTo((self.width-45)/2)
+            make.width.equalTo((k_SCREEN_W-70)/2)
             make.height.equalTo(30)
         }
         paymentListBtn.snp_makeConstraints { (make) in

@@ -80,7 +80,7 @@ protocol TopupViewProtocol {
         alipayBtn.snp_makeConstraints { (make) in
             make.top.equalTo(otherMoneyTxt.snp_bottom).offset(20)
             make.left.equalTo(20)
-            make.width.equalTo((self.width-45)/2)
+            make.width.equalTo((k_SCREEN_W-70)/2)
             make.height.equalTo(30)
             
         }

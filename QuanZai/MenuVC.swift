@@ -11,13 +11,13 @@ import SlideMenuControllerSwift
 enum LeftMenu: Int {
     case 首页  = 0
     case 我的行程
-    case 我的包裹
-    case 活动中心
+//    case 我的包裹
+//    case 活动中心
     case 账户余额
-    case 开发票
+//    case 开发票
     case 个人信息修改
     case 租车资格验证
-    case 设置
+//    case 设置
     case 关于
 }
 
@@ -27,7 +27,7 @@ protocol MenuProtocol : class {
 
 class MenuVC : UIViewController {
     
-    let menus = ["首页", "我的行程", "我的包裹", "活动中心", "账户余额", "开发票", "个人信息修改", "租车资格验证" , "关于"]
+    let menus = ["首页", "我的行程", "账户余额", "个人信息修改", "租车资格验证" , "关于"]
     
     var homeVC : UIViewController!
     var qualificationInfoVC : UIViewController!
@@ -166,20 +166,20 @@ extension MenuVC : MenuProtocol {
             self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .我的行程:
             self.slideMenuController()?.changeMainViewController(self.orderListVC, close: true)
-        case .我的包裹:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
-        case .活动中心:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+//        case .我的包裹:
+//            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+//        case .活动中心:
+//            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .账户余额:
             self.slideMenuController()?.changeMainViewController(self.walletVC, close: true)
-        case .开发票:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+//        case .开发票:
+//            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         case .个人信息修改:
             self.slideMenuController()?.changeMainViewController(self.self.userInfoVC, close: true)
         case .租车资格验证:
             self.slideMenuController()?.changeMainViewController(self.qualificationInfoVC, close: true)
-        case .设置:
-            break
+//        case .设置:
+//            break
         case .关于:
             self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
         }
