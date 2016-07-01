@@ -43,6 +43,22 @@ class OrderDetailView: UIView {
     @IBOutlet weak var sumTimeLine: UIImageView!
     @IBOutlet weak var sumTimeLabel: Label!
     
+    @IBOutlet weak var startMileageView: View!
+    @IBOutlet weak var startMileageTitle: UILabel!
+    @IBOutlet weak var startMileageLine: UIImageView!
+    @IBOutlet weak var startMileageLabel: Label!
+
+    @IBOutlet weak var endMileageView: View!
+    @IBOutlet weak var endMileageTitle: UILabel!
+    @IBOutlet weak var endMileageLine: UIImageView!
+    @IBOutlet weak var endMileageLabel: Label!
+
+    @IBOutlet weak var sumMileageView: View!
+    @IBOutlet weak var sumMileageTitle: UILabel!
+    @IBOutlet weak var sumMileageLine: UIImageView!
+    @IBOutlet weak var sumMileageLabel: Label!
+    
+    
     @IBOutlet weak var priceView: View!
     @IBOutlet weak var priceTitle: UILabel!
     @IBOutlet weak var priceLine: UIImageView!
@@ -223,8 +239,85 @@ class OrderDetailView: UIView {
         }
         
         
-        priceView.snp_makeConstraints { (make) in
+        startMileageView.snp_makeConstraints { (make) in
             make.top.equalTo(sumTimeView.snp_bottom).offset(10)
+            make.left.equalTo(numberView.snp_left)
+            make.right.equalTo(numberView.snp_right)
+            make.height.equalTo(numberView.snp_height)
+        }
+        startMileageTitle.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberTitle.snp_left)
+            make.width.equalTo(numberTitle.snp_width)
+            make.height.equalTo(numberTitle.snp_height)
+        }
+        startMileageLine.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberLine.snp_left)
+            make.width.equalTo(numberLine.snp_width)
+            make.height.equalTo(numberLine.snp_height)
+        }
+        startMileageLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberLabel.snp_left)
+            make.right.equalTo(numberLabel.snp_right)
+            make.height.equalTo(numberLabel.snp_height)
+        }
+        
+        endMileageView.snp_makeConstraints { (make) in
+            make.top.equalTo(startMileageView.snp_bottom).offset(10)
+            make.left.equalTo(numberView.snp_left)
+            make.right.equalTo(numberView.snp_right)
+            make.height.equalTo(numberView.snp_height)
+        }
+        endMileageTitle.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberTitle.snp_left)
+            make.width.equalTo(numberTitle.snp_width)
+            make.height.equalTo(numberTitle.snp_height)
+        }
+        endMileageLine.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberLine.snp_left)
+            make.width.equalTo(numberLine.snp_width)
+            make.height.equalTo(numberLine.snp_height)
+        }
+        endMileageLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberLabel.snp_left)
+            make.right.equalTo(numberLabel.snp_right)
+            make.height.equalTo(numberLabel.snp_height)
+        }
+        
+        
+        sumMileageView.snp_makeConstraints { (make) in
+            make.top.equalTo(endMileageView.snp_bottom).offset(10)
+            make.left.equalTo(numberView.snp_left)
+            make.right.equalTo(numberView.snp_right)
+            make.height.equalTo(numberView.snp_height)
+        }
+        sumMileageTitle.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberTitle.snp_left)
+            make.width.equalTo(numberTitle.snp_width)
+            make.height.equalTo(numberTitle.snp_height)
+        }
+        sumMileageLine.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberLine.snp_left)
+            make.width.equalTo(numberLine.snp_width)
+            make.height.equalTo(numberLine.snp_height)
+        }
+        sumMileageLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(numberLabel.snp_left)
+            make.right.equalTo(numberLabel.snp_right)
+            make.height.equalTo(numberLabel.snp_height)
+        }
+        
+        
+        priceView.snp_makeConstraints { (make) in
+            make.top.equalTo(sumMileageView.snp_bottom).offset(10)
             make.left.equalTo(numberView.snp_left)
             make.right.equalTo(numberView.snp_right)
             make.height.equalTo(numberView.snp_height)

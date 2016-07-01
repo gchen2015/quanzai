@@ -57,7 +57,7 @@ extension OrderListVC : UITableViewDelegate, UITableViewDataSource {
         cell?.chargeLabel.text = "1,000"
         cell?.chargeStatusLabel.text = "已支付"
         cell?.statusLabel.text = "订单完成"
-        cell?.nameLabel.text = "宝马X5"
+        cell?.nameLabel.text = "宝马X5 (辽B123456)"
         cell?.timeLabel.text = "2016-06-27 18:08"
         
         if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 4 {

@@ -25,7 +25,7 @@ class OrderDetailVC : BaseVC {
         self.view.addSubview(scrollView)
         
         self.infoView = NSBundle.mainBundle().loadNibNamed("OrderDetailView", owner: nil, options: nil).first as! OrderDetailView
-        self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 390)
+        self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 510)
         scrollView.addSubview(infoView)
         
         let okBtn = UIButton(imageName: "btn-blue",
