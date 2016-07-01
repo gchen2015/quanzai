@@ -61,18 +61,18 @@ extension OrderListVC : UITableViewDelegate, UITableViewDataSource {
         cell?.timeLabel.text = "2016-06-27 18:08"
         
         if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 4 {
-            cell?.setOrderStatus(OrderStatus.returned)
-            cell?.setPaymentStatus(PaymentStatus.paid)
+            cell?.setOrderStatus(.Returned)
+            cell?.setPaymentStatus(.Paid)
         } else if indexPath.row == 2 {
-            cell?.setOrderStatus(OrderStatus.close)
-            cell?.setPaymentStatus(PaymentStatus.noPay)
+            cell?.setOrderStatus(.Close)
+            cell?.setPaymentStatus(.UnPaid)
 
         } else if indexPath.row == 5 || indexPath.row == 6 {
-            cell?.setOrderStatus(OrderStatus.overtime)
-            cell?.setPaymentStatus(PaymentStatus.noPay)
+            cell?.setOrderStatus(.Overtime)
+            cell?.setPaymentStatus(.UnPaid)
         } else {
-            cell?.setOrderStatus(OrderStatus.overtime)
-            cell?.setPaymentStatus(PaymentStatus.noPay)
+            cell?.setOrderStatus(.Overtime)
+            cell?.setPaymentStatus(.UnPaid)
         }
         
         return cell!
@@ -81,7 +81,7 @@ extension OrderListVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let orderDetailVC = OrderDetailVC()
-        orderDetailVC.paymentStatus = PaymentStatus.paid
+        orderDetailVC.paymentStatus = .Paid
         self.navigationController?.pushViewController(orderDetailVC, animated: true)
         
     }

@@ -43,6 +43,7 @@ extension WalletVC : WalletViewProtocol {
     }
     
     func openPaymentList() {
-        print("openPaymentList")
+        let paymentListVC = PaymentListVC()
+        self.navigationController?.pushViewController(paymentListVC, animated: true)
     }
 }

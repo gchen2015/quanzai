@@ -6,21 +6,23 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+//支付类型
 enum PaymentStatus : Int {
-    case paid = 0,  //0.已支付
-         noPay      //1.未支付
+    case Paid = 0,   //0.已支付
+         UnPaid      //1.未支付
 }
 
+//订单状态
 enum OrderStatus : Int {
-    case reserve = 1,  //1.预订
-         created,      //2.生成
-         returned,     //3.完成（已还车）
-         close,        //4.关闭订单（预付保证金返还）
-         overtime,     //5.预约超时
-         cancel        //6.取消
+    case Reserve = 1,  //1.预订
+         Created,      //2.生成
+         Returned,     //3.完成（已还车）
+         Close,        //4.关闭订单（预付保证金返还）
+         Overtime,     //5.预约超时
+         Cancel        //6.取消
 }
 
-@IBDesignable class OrderCell : UITableViewCell {
+@IBDesignable class OrderCell : BaseCell {
     
     @IBOutlet var nameTitle: UILabel!
     @IBOutlet var nameLabel: UILabel!
@@ -89,10 +91,10 @@ enum OrderStatus : Int {
     
     func setPaymentStatus(status : PaymentStatus) {
         switch status {
-        case .paid:
+        case .Paid:
             self.chargeStatusLabel.textColor = UIColorFromRGB(0x0aa29c)
             self.chargeStatusLabel.text = "已支付"
-        case .noPay:
+        case .UnPaid:
             self.chargeStatusLabel.textColor = UIColor.redColor()
             self.chargeStatusLabel.text = "未支付"
         }
@@ -100,22 +102,22 @@ enum OrderStatus : Int {
     
     func setOrderStatus(status : OrderStatus) {
         switch status {
-        case .reserve:
+        case .Reserve:
             self.statusLabel.text = "预约"
             self.statusLabel.backgroundColor = UIColorFromRGB(0x0aa29c)
-        case .created:
+        case .Created:
             self.statusLabel.text = "订单生成"
             self.statusLabel.backgroundColor = UIColorFromRGB(0x0aa29c)
-        case .returned:
+        case .Returned:
             self.statusLabel.text = "交易完成"
             self.statusLabel.backgroundColor = UIColorFromRGB(0x0aa29c)
-        case .close:
+        case .Close:
             self.statusLabel.text = "订单关闭"
             self.statusLabel.backgroundColor = UIColor.lightGrayColor()
-        case .overtime:
+        case .Overtime:
             self.statusLabel.text = "预约超时"
             self.statusLabel.backgroundColor = UIColor.redColor()
-        case .cancel:
+        case .Cancel:
             self.statusLabel.text = "订单取消"
             self.statusLabel.backgroundColor = UIColor.lightGrayColor()
         }

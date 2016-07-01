@@ -36,7 +36,7 @@ class OrderDetailVC : BaseVC {
                                 
         }
         
-        if paymentStatus == PaymentStatus.noPay {
+        if paymentStatus == .UnPaid {
           okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
             scrollView.addSubview(okBtn)
         } else {

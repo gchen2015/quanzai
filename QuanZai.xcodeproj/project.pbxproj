@@ -14,6 +14,10 @@
 		48216F2E1D2540B800720A6B /* TopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48216F2D1D2540B800720A6B /* TopupView.swift */; };
 		48216F301D2540C300720A6B /* TopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48216F2F1D2540C300720A6B /* TopupView.xib */; };
 		48216F341D254CC600720A6B /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 48216F331D254CC600720A6B /* DLRadioButton.m */; };
+		48216F381D2607DC00720A6B /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48216F371D2607DC00720A6B /* PaymentCell.xib */; };
+		48216F3A1D2607F000720A6B /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48216F391D2607F000720A6B /* PaymentCell.swift */; };
+		48216F3C1D26080300720A6B /* PaymentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48216F3B1D26080300720A6B /* PaymentListVC.swift */; };
+		48216F3E1D260BE000720A6B /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48216F3D1D260BE000720A6B /* BaseCell.swift */; };
 		48245FF81D22BBFA00D930A4 /* CarDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48245FF71D22BBFA00D930A4 /* CarDetailVC.swift */; };
 		483248261D13EF4600C4EB9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483248251D13EF4600C4EB9E /* AppDelegate.swift */; };
 		4832482D1D13EF4600C4EB9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4832482C1D13EF4600C4EB9E /* Assets.xcassets */; };
@@ -117,6 +121,10 @@
 		48216F2F1D2540C300720A6B /* TopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopupView.xib; sourceTree = "<group>"; };
 		48216F321D254CC600720A6B /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		48216F331D254CC600720A6B /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
+		48216F371D2607DC00720A6B /* PaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
+		48216F391D2607F000720A6B /* PaymentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		48216F3B1D26080300720A6B /* PaymentListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentListVC.swift; sourceTree = "<group>"; };
+		48216F3D1D260BE000720A6B /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		48245FF71D22BBFA00D930A4 /* CarDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailVC.swift; sourceTree = "<group>"; };
 		483248221D13EF4500C4EB9E /* QuanZai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuanZai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		483248251D13EF4600C4EB9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -282,6 +290,23 @@
 			path = DLRadioButton;
 			sourceTree = "<group>";
 		};
+		48216F351D26079D00720A6B /* 账户明细 */ = {
+			isa = PBXGroup;
+			children = (
+				48216F3B1D26080300720A6B /* PaymentListVC.swift */,
+			);
+			name = "账户明细";
+			sourceTree = "<group>";
+		};
+		48216F361D2607AA00720A6B /* 账户明细Cell */ = {
+			isa = PBXGroup;
+			children = (
+				48216F371D2607DC00720A6B /* PaymentCell.xib */,
+				48216F391D2607F000720A6B /* PaymentCell.swift */,
+			);
+			name = "账户明细Cell";
+			sourceTree = "<group>";
+		};
 		48245FF61D22BBDD00D930A4 /* 车辆详情 */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +387,7 @@
 		483248521D17822000C4EB9E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				48216F361D2607AA00720A6B /* 账户明细Cell */,
 				48216F291D25405D00720A6B /* 充值View */,
 				48216F261D25393A00720A6B /* 账户余额View */,
 				488C64501D23E68100A5D55C /* 短信验证弹窗View */,
@@ -397,6 +423,7 @@
 		483248551D17825E00C4EB9E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				48216F351D26079D00720A6B /* 账户明细 */,
 				48216F2A1D25407A00720A6B /* 充值 */,
 				48216F211D25388900720A6B /* 我的账户 */,
 				48B22AC61D1BCB9000421936 /* 登录页 */,
@@ -523,6 +550,7 @@
 			children = (
 				483248491D141FFA00C4EB9E /* BaseModel.swift */,
 				487B96FD1D17E26C00786DA9 /* BaseVC.swift */,
+				48216F3D1D260BE000720A6B /* BaseCell.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -768,6 +796,7 @@
 				487B96A71D17A80F00786DA9 /* bussiness-car@2x.png in Resources */,
 				48ABF2BE1D222B7100C16525 /* OrderDetailView.xib in Resources */,
 				48B22ACD1D1BCD8800421936 /* QualificationView.xib in Resources */,
+				48216F381D2607DC00720A6B /* PaymentCell.xib in Resources */,
 				487B96B21D17A80F00786DA9 /* tab-unlock@2x.png in Resources */,
 				487B96A81D17A80F00786DA9 /* car@2x.png in Resources */,
 				487B96F31D17C0F200786DA9 /* README.txt in Resources */,
@@ -865,6 +894,7 @@
 				489DC3201D180BB40061033F /* ActionBar.swift in Sources */,
 				48B22ACB1D1BCD0600421936 /* QualificationInfoVC.swift in Sources */,
 				487B96F41D17C0F200786DA9 /* Swizzle.c in Sources */,
+				48216F3A1D2607F000720A6B /* PaymentCell.swift in Sources */,
 				488C645A1D24CA5F00A5D55C /* OrderDetailVC.swift in Sources */,
 				487B96EF1D17C0F200786DA9 /* NSData+Additions.m in Sources */,
 				48245FF81D22BBFA00D930A4 /* CarDetailVC.swift in Sources */,
@@ -898,12 +928,14 @@
 				487B96DE1D17C0EA00786DA9 /* UILabel+KAddition.m in Sources */,
 				487B96DB1D17C0EA00786DA9 /* UIButton+KAddition.m in Sources */,
 				48B22ADE1D20E68500421936 /* ImageView.swift in Sources */,
+				48216F3E1D260BE000720A6B /* BaseCell.swift in Sources */,
 				487B96FE1D17E26C00786DA9 /* BaseVC.swift in Sources */,
 				489DC3261D191A030061033F /* LinkModel.swift in Sources */,
 				487B96DF1D17C0EA00786DA9 /* UIView+KAddition.m in Sources */,
 				48216F2C1D2540A600720A6B /* TopupVC.swift in Sources */,
 				48422AE61D1924F4005A48D6 /* Router.swift in Sources */,
 				487B96F21D17C0F200786DA9 /* NSString+Additions.m in Sources */,
+				48216F3C1D26080300720A6B /* PaymentListVC.swift in Sources */,
 				48422B001D1979FF005A48D6 /* CarCell.swift in Sources */,
 				487B96DD1D17C0EA00786DA9 /* UIImage+PL.m in Sources */,
 				48ABF2B91D22172900C16525 /* Label.swift in Sources */,
