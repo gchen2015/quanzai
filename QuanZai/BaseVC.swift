@@ -6,6 +6,14 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+let service = "com.quanzai.com"
+let k_UserID = "user_id"
+let k_Token = "token"
+let k_phone = "phone"
+
+
+import ObjectMapper
+
 class BaseVC: UIViewController {
     
     var blurEffectView : UIVisualEffectView!

@@ -6,6 +6,10 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+import Alamofire
+import SwiftyJSON
+import AlamofireObjectMapper
+
 class CarDetailVC: BaseVC {
     
     var infoView : CarDetailView!
@@ -50,6 +54,30 @@ extension CarDetailVC {
         alertView.size = ccs(k_SCREEN_W-40, 160)
         self.showAlert(alertView)
     }
+}
+
+// MARK: - API
+
+extension CarDetailVC {
+    
+    func getRentTypes(car_id : Int) {
+        
+        let car_id = 123004
+        Alamofire.request(Router.GetDateType(car_id: car_id)).responseJSON { response in
+            
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    print(json)
+                }
+            case .Failure(let error):
+                print(error.description)
+            }
+            
+        }
+    }
+    
 }
 
 // MARK: - CarDetailViewProtocol

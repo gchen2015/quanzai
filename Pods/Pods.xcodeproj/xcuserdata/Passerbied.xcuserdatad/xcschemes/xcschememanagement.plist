@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CRToast.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>HMSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KeychainAccess.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -50,6 +50,11 @@
 			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Presentr.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -74,11 +79,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>UICKeyChainStore.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -87,17 +87,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>32A044E100A117AB45AEA49F70D9B17E</key>
+		<key>058971436FC9DAD99887FA7722565739</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>51E69C94A2C4CFA55F2372146EAD2F94</key>
+		<key>4F810F65EA91644B0A2C5609E11A60DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B5B8FAB037FBC5C665755BD239D27C6</key>
+		<key>5ECFED58FE9D94F71EB921FD7FA9C368</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>783E3532FBCDDF0E52B1D1AF51E226F2</key>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<key>838A2C6DA366DE138E5FDF1AF19D94C0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,22 +127,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5D6D7FBF0E829E2002C3C4161440C44</key>
+		<key>B5D823E00BB66D961B08C5FFE2C1BE38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB7360021CAA2913AC77DDE689D5A2AE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BD27994332CE927A28022F3724C43699</key>
+		<key>BCEA86FA3D50CBB30B9CC3C6E4FB5CCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C5CBCAA97E951CC882334464FBDF983D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E02B98211564AEB68221977CCBB29034</key>
 		<dict>
 			<key>primary</key>
 			<true/>

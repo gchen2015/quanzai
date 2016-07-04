@@ -7,8 +7,8 @@ pod 'HMSegmentedControl'
 
 use_frameworks!
 
-pod 'UICKeyChainStore'
-pod 'CRToast'
+pod 'KeychainAccess'
+#pod 'CRToast'
 pod 'UMengAnalytics', '~> 3.5.16'
 pod 'MBProgressHUD'                 # https://github.com/jdg/MBProgressHUD
 pod 'Alamofire', '~> 3.4'
@@ -21,6 +21,8 @@ pod 'AMap3DMap'
 pod 'AMapSearch', '~>4.0.0'
 pod 'SnapKit', '~> 0.21.1'
 pod 'ImagePicker'
+pod 'ObjectMapper'
+pod 'Presentr'
 
 
 

@@ -45,55 +45,7 @@ extension HomeVC {
     
     func fetchData() {
         
-        Alamofire.request(Router.CategoryList()).responseArray(keyPath: "data") { (response: Response<[CategoryModel], NSError>) in
-            
-            switch response.result {
-            case .Success:
-                
-                let poi = MAPointAnnotation()
-                poi.coordinate = CLLocationCoordinate2DMake(39.963618, 116.418929)
-                
-                let poi2 = MAPointAnnotation()
-                poi2.coordinate = CLLocationCoordinate2DMake(39.947246, 116.402831)
-                
-                let poi3 = MAPointAnnotation()
-                poi3.coordinate = CLLocationCoordinate2DMake(39.975562, 116.429853)
-                
-                let poi4 = MAPointAnnotation()
-                poi4.coordinate = CLLocationCoordinate2DMake(39.966272, 116.372361)
-
-                let pois = [poi, poi2, poi3, poi4]
-                self.mapVC.setPoi(pois)
-                
-                self.categoryList = response.result.value
-                
-                
-                //
-                //                if let value = response.result.value {
-                //                    let json = JSON(value)
-                //                    if let name = json["data"][0]["name"].string {
-                //                        print("第一个分类名称是：",name)
-                //                    }
-            //                }
-            case .Failure(let error):
-                print(error)
-            }
-            
-        }
         
-        //        Alamofire.request(Router.CategoryList()).responseJSON { response in
-        //            switch response.result {
-        //            case .Success:
-        //                if let value = response.result.value {
-        //                    let json = JSON(value)
-        //                    if let name = json["data"][0]["name"].string {
-        //                        print("第一个分类名称是：",name)
-        //                    }
-        //                }
-        //            case .Failure(let error):
-        //                print(error)
-        //            }
-        //        }
     }
     
 }
@@ -164,6 +116,7 @@ extension HomeVC {
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
+            self.showLoginVC(true)
             Drop.down("功能待开发")
             self.timeShareVC.view.removeFromSuperview()
             self.timeShareVC.removeFromParentViewController()

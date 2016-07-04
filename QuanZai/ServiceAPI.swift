@@ -8,26 +8,30 @@
 
 class ServiceApi: NSObject {
     
-    static var host : String = "http://zbcool.com"
+    static var host : String = "http://123.185.175.210:8081/RentCarManage"
     
-    internal class func getCategoryUrl() -> String {
+    //获取用户信息
+    internal class func getUserInfoUrl(user_id:Int) -> String {
         
-        return "\(host)/article/categorys"
+        return "\(host)/User/Api/GetUserInfo.action?user_id=\(user_id)"
     }
     
-    internal class func getTopicDetail(topicId:Int) -> String {
+    //登录
+    internal class func loginUrl(phone:String, validateCode:String) -> String {
         
-        return "\(host)/api/topic/\(topicId)"
+        return "\(host)/User/Api/Login.action?phone=\(phone)&validateCode=\(validateCode)"
     }
     
-    internal class func getTopicShareDetail(topicId:Int) -> String {
+    //获取租车类型
+    internal class func GetDateTypeUrl(car_id:Int) -> String {
         
-        return "\(host)/topic/\(topicId).html"
+        return "\(host)/Car/Api/GetDateType.action?car_id=\(car_id)"
     }
     
-    internal class func getCodeShareDetail(codeId:Int) -> String {
+    
+    internal class func SerachCarUrl() -> String {
         
-        return "\(host)/code4swift/\(codeId).html"
+        return "\(host)/Car/Api/SerachCar.action"
     }
     
     internal class func getCodeUrl(maxId:Int,count:Int) -> String {
