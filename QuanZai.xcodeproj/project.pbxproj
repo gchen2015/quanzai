@@ -98,6 +98,7 @@
 		48B22AD71D1CEC1B00421936 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AD61D1CEC1B00421936 /* TextField.swift */; };
 		48B22ADC1D20E4DF00421936 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ADB1D20E4DF00421936 /* avatar@2x.png */; };
 		48B22ADE1D20E68500421936 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22ADD1D20E68500421936 /* ImageView.swift */; };
+		48D95B201D2A8B1700197238 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D95B1F1D2A8B1700197238 /* CarModel.swift */; };
 		B570B4DB3BAC7816CD5990CE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73A4B3FC7616F384B933638 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -224,6 +225,7 @@
 		48B22AD61D1CEC1B00421936 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		48B22ADB1D20E4DF00421936 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		48B22ADD1D20E68500421936 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		48D95B1F1D2A8B1700197238 /* CarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		622593F7D1388AA10A6EF420 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E73A4B3FC7616F384B933638 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -380,6 +382,7 @@
 				489DC3231D1919730061033F /* CategoryModel.swift */,
 				489DC3251D191A030061033F /* LinkModel.swift */,
 				489DC3271D191A860061033F /* LinkDataModel.swift */,
+				48D95B1F1D2A8B1700197238 /* CarModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				48ABF2AF1D212F2500C16525 /* OrderCell.swift in Sources */,
 				487B96B81D17AB4800786DA9 /* HomeVC.swift in Sources */,
 				483248261D13EF4600C4EB9E /* AppDelegate.swift in Sources */,
+				48D95B201D2A8B1700197238 /* CarModel.swift in Sources */,
 				489DC3221D18D45A0061033F /* UserModel.swift in Sources */,
 				4832484A1D141FFB00C4EB9E /* BaseModel.swift in Sources */,
 				48B22AD51D1CCB7F00421936 /* View.swift in Sources */,

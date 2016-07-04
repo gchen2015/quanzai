@@ -11,7 +11,7 @@ class ServiceApi: NSObject {
     static var host : String = "http://123.185.175.210:8081/RentCarManage"
     
     //获取用户信息
-    internal class func getUserInfoUrl(user_id:Int) -> String {
+    internal class func getUserInfoUrl(user_id:String) -> String {
         
         return "\(host)/User/Api/GetUserInfo.action?user_id=\(user_id)"
     }
@@ -29,9 +29,9 @@ class ServiceApi: NSObject {
     }
     
     
-    internal class func SerachCarUrl() -> String {
+    internal class func SearchCarUrl(lng:String, lat:String, type:String) -> String {
         
-        return "\(host)/Car/Api/SerachCar.action"
+        return "\(host)/Car/Api/SerachCar.action?lng=\(lng)&lat=\(lat)&type=\(type)"
     }
     
     internal class func getCodeUrl(maxId:Int,count:Int) -> String {

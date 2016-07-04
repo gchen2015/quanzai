@@ -6,10 +6,13 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
-
+protocol MapVCProtocol : class {
+    func getUserLocation(locaion: MAUserLocation)
+}
 
 class MapVC: BaseVC {
     
+    var delegate : MapVCProtocol?
     var mapView: MAMapView!
     
     override func viewDidLoad() {
@@ -66,5 +69,10 @@ extension MapVC: MAMapViewDelegate {
     
     func mapView(mapView: MAMapView!, didSelectAnnotationView view: MAAnnotationView!) {
         print("didSelectAnnotationView")
+    }
+    
+    func mapInitComplete(mapView: MAMapView!) {
+        
+        self.delegate?.getUserLocation(mapView.userLocation)
     }
 }

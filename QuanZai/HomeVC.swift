@@ -45,6 +45,42 @@ extension HomeVC {
     
     func fetchData() {
         
+//        Alamofire.request(Router.CategoryList()).responseArray(keyPath: "data") { (response: Response<[CategoryModel], NSError>) in
+//            
+//            switch response.result {
+//            case .Success:
+//                
+//                let poi = MAPointAnnotation()
+//                poi.coordinate = CLLocationCoordinate2DMake(39.963618, 116.418929)
+//                
+//                let poi2 = MAPointAnnotation()
+//                poi2.coordinate = CLLocationCoordinate2DMake(39.947246, 116.402831)
+//                
+//                let poi3 = MAPointAnnotation()
+//                poi3.coordinate = CLLocationCoordinate2DMake(39.975562, 116.429853)
+//                
+//                let poi4 = MAPointAnnotation()
+//                poi4.coordinate = CLLocationCoordinate2DMake(39.966272, 116.372361)
+//                
+//                let pois = [poi, poi2, poi3, poi4]
+//                self.mapVC.setPoi(pois)
+//                
+//                self.categoryList = response.result.value
+//                
+//                
+//                //
+//                //                if let value = response.result.value {
+//                //                    let json = JSON(value)
+//                //                    if let name = json["data"][0]["name"].string {
+//                //                        print("第一个分类名称是：",name)
+//                //                    }
+//            //                }
+//            case .Failure(let error):
+//                print(error)
+//            }
+//            
+//        }
+
         
     }
     
@@ -68,6 +104,7 @@ extension HomeVC {
     func setupMapView() {
         
         self.mapVC = MapVC()
+        self.mapVC.delegate = self
         self.addChildViewController(self.mapVC!)
         self.mapVC.view.frame = ccr(0, 0, k_SCREEN_W, 250*k_SCREEN_SCALE)
         self.view.addSubview(self.mapVC.view)
@@ -162,6 +199,14 @@ extension HomeVC: TimeShareVCProtocol {
             orderListVC.showMenuBtn = false
             self.navigationController?.pushViewController(orderListVC, animated: true)
         }
+    }
+}
+
+extension HomeVC : MapVCProtocol {
+    
+    func getUserLocation(locaion: MAUserLocation) {
+        print("latitude:\(locaion.coordinate.latitude)")
+        print("longitude:\(locaion.coordinate.longitude)")
     }
 }
 

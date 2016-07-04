@@ -14,18 +14,10 @@ enum Router: URLRequestConvertible {
     
     //Restfull api
     case Login(phone:String, validateCode:String)
-    case UserInfo(user_id:Int)
+    case GetUserInfo(user_id:String)
     case GetDateType(car_id:Int)
-    case TopicList(maxId:Int,count:Int)
-    case TopicDetail(topicId:Int)
-    case CodeList(maxId:Int,count:Int)
-    case CodeDetail(codeId:Int)
-    case BookList(type:Int,maxId:Int,count:Int)
-    case UserRegister(parameters:[String: AnyObject])
-    case UserLogin(parameters:[String: AnyObject])
-    case ArticleList(maxId:Int,count:Int)
-    case ArticleDetail(articleId:Int)
-    case Detault()
+    case SearchCar(lng:String, lat:String, type:String)
+
     
     var method: Alamofire.Method {
         switch self {
@@ -40,12 +32,14 @@ enum Router: URLRequestConvertible {
     
     var path: String {
         switch self {
-        case .UserInfo(let user_id):
+        case .GetUserInfo(let user_id):
             return ServiceApi.getUserInfoUrl(user_id)
         case .Login(let phone, let validateCode):
             return ServiceApi.loginUrl(phone, validateCode: validateCode)
         case .GetDateType(let car_id):
             return ServiceApi.GetDateTypeUrl(car_id)
+        case .SearchCar(let lng, let lat, let type):
+            return ServiceApi.SearchCarUrl(lng, lat: lat, type: type)
         default :
             return ServiceApi.host
         }

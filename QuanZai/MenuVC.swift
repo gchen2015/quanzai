@@ -7,6 +7,9 @@
 //
 
 import SlideMenuControllerSwift
+import KeychainAccess
+import ObjectMapper
+import AlamofireImage
 
 enum LeftMenu: Int {
     case 首页  = 0
@@ -43,6 +46,8 @@ class MenuVC : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.getUserInfo()
         
         let homeVC = HomeVC()
         self.homeVC = UINavigationController(rootViewController: homeVC)
@@ -152,6 +157,20 @@ extension MenuVC {
     func menuTapped(index: Int) {
         if let menu = LeftMenu(rawValue: index) {
             self.changeViewController(menu)
+        }
+    }
+}
+
+extension MenuVC {
+    
+    func getUserInfo() {
+        let keychain = Keychain(service: service)
+        
+        APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: keychain[k_UserID]!)) { (objc, error, badNetWork) in
+            if let userInfo = Mapper<UserModel>().map(objc) {
+                self.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))
+                self.screenNameLabel.text = userInfo.phone!
+            }
         }
     }
 }
