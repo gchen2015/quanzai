@@ -10,7 +10,7 @@
 import SlideMenuControllerSwift
 import Alamofire
 import SwiftyJSON
-import AlamofireObjectMapper
+import ObjectMapper
 import SwiftyDrop
 import HMSegmentedControl
 
@@ -205,8 +205,15 @@ extension HomeVC: TimeShareVCProtocol {
 extension HomeVC : MapVCProtocol {
     
     func getUserLocation(locaion: MAUserLocation) {
-        print("latitude:\(locaion.coordinate.latitude)")
-        print("longitude:\(locaion.coordinate.longitude)")
+        
+        APIClient.sharedAPIClient().sendRequest(Router.SearchCar(lng: String(locaion.coordinate.latitude), lat: String(locaion.coordinate.longitude), type: "1")) { (objc, error, badNetWork) in
+            if let cars = Mapper<CarModel>().mapArray(objc) {
+                print(cars.count)
+            }
+        }
+        
+//        print("latitude:\(locaion.coordinate.latitude)")
+//        print("longitude:\(locaion.coordinate.longitude)")
     }
 }
 

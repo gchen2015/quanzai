@@ -24,10 +24,10 @@ class MapVC: BaseVC {
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
-        mapView.showsUserLocation = true
+        
         mapView.userTrackingMode = MAUserTrackingMode.Follow
-        mapView.delegate = self
-        mapView.setZoomLevel(15.1, animated: true)
+        mapView.setZoomLevel(14.1, animated: true)
+        mapView.showsUserLocation = true
     }
     
     func initMapView() {
@@ -41,7 +41,6 @@ class MapVC: BaseVC {
     func setPoi(pois: NSArray) {
         
         mapView.addAnnotations(pois as [AnyObject])
-        
     }
 }
 
@@ -71,8 +70,13 @@ extension MapVC: MAMapViewDelegate {
         print("didSelectAnnotationView")
     }
     
-    func mapInitComplete(mapView: MAMapView!) {
-        
+    func mapViewDidFinishLoadingMap(mapView: MAMapView!) {
         self.delegate?.getUserLocation(mapView.userLocation)
+    }
+    
+    func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
+//        if updatingLocation {
+//          self.delegate?.getUserLocation(mapView.userLocation)
+//        }
     }
 }
