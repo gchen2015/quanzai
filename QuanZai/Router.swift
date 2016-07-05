@@ -18,11 +18,14 @@ enum Router: URLRequestConvertible {
     case GetDateType(car_id:Int)
     case SearchCar(lng:String, lat:String, type:String)
     case SerachNearStore(lng:String, lat:String, type:String)
-
+    case EditUserInfo(user_id:String, phone:String, gender:String, head_portrait:String)
+    case UploadPicture()
     
     var method: Alamofire.Method {
         switch self {
-        case .Login:
+        case .Login,
+             .EditUserInfo,
+             .UploadPicture:
             return .POST
         default:
             return .GET
@@ -42,7 +45,12 @@ enum Router: URLRequestConvertible {
         case .SearchCar(let lng, let lat, let type):
             return ServiceApi.SearchCarUrl(lng, lat: lat, type: type)
         case .SerachNearStore(let lng, let lat, let type):
-            return ServiceApi.SerachNearStore(lng, lat: lat, type: type)
+            return ServiceApi.SerachNearStoreUrl(lng, lat: lat, type: type)
+        case .EditUserInfo(let user_id, let phone, let gender, let head_portrait):
+            let path = ServiceApi.EditUserInfoUrl(user_id, phone: phone, gender: gender, head_portrait: head_portrait)
+            return path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        case .UploadPicture():
+            return ServiceApi.UploadPicture()
         default :
             return ServiceApi.host
         }
@@ -53,14 +61,14 @@ enum Router: URLRequestConvertible {
         let URL = NSURL(string: path)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL)
         mutableURLRequest.HTTPMethod = method.rawValue
-        
+
 //        if let token = Router.token {
 //            mutableURLRequest.setValue("\(token)", forHTTPHeaderField: "token")
 //        }
 //        mutableURLRequest.setValue("application/vnd.zbcool.4+json", forHTTPHeaderField: "Accept")
         
         switch self {
-//        case .Login(let parameters):
+//        case .UploadPicture(let parameters):
 //            print(mutableURLRequest)
 //            return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
         default:

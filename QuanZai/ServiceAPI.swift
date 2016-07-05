@@ -35,19 +35,21 @@ class ServiceApi: NSObject {
     }
     
     //搜索车场
-    internal class func SerachNearStore(lng:String, lat:String, type:String) -> String {
+    internal class func SerachNearStoreUrl(lng:String, lat:String, type:String) -> String {
         
         return "\(host)/Car/Api/SerachNearStore.action?lng=\(lng)&lat=\(lat)&type=\(type)"
     }
     
-    internal class func getCodeDetailUrl(codeId:Int) -> String {
-        
-        return "\(host)/api/sharecode/\(codeId)"
+    //修改个人信息
+    internal class func EditUserInfoUrl(user_id:String,phone:String,gender:String,head_portrait:String) -> String {
+        print("\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone='\(phone)'&gender='\(gender)'&head_portrait='\(head_portrait)'")
+        return "\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone='\(phone)'&gender='\(gender)'&head_portrait='\(head_portrait)'"
     }
     
-    internal class func getBookUrl(type:Int,maxId:Int,count:Int) -> String{
+    //上传图片
+    internal class func UploadPicture() -> String{
         
-        let url="\(host)/api/books/\(type)/\(maxId)/\(count)"
+        let url="\(host)/User/Api/UploadPicture.action"
         return url
     }
     

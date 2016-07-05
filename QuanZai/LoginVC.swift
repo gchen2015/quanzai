@@ -180,6 +180,7 @@ extension LoginVC {
                 keychain[k_UserID] = userInfo.id!
                 keychain[k_phone] = userInfo.phone!
             }
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     

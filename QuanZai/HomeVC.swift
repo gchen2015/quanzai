@@ -60,7 +60,9 @@ extension HomeVC {
         self.showLogo(true)
         
         let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
-            self.openLeft()
+            if self.checkHaveLogin() {
+                self.openLeft()
+            }
         }
         menuBtn.size = ccs(35, 35)
         self.showLeftBarItem(menuBtn)
@@ -120,7 +122,6 @@ extension HomeVC {
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            self.showLoginVC(true)
             Drop.down("功能待开发")
             self.timeShareVC.view.removeFromSuperview()
             self.timeShareVC.removeFromParentViewController()
@@ -169,12 +170,6 @@ extension HomeVC: TimeShareVCProtocol {
                 if let cars = Mapper<CarModel>().mapArray(objc) {
                     let pois = NSMutableArray()
                     for car in cars {
-                        print("name:" + car.name!)
-                        print("car_licence_plates:" + car.car_licence_plates!)
-                        print("id:" + car.id!)
-                        print("lng:" + car.lng!)
-                        print("lat:" + car.lat!)
-                        
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
                         pois.addObject(poi)
@@ -192,12 +187,6 @@ extension HomeVC: TimeShareVCProtocol {
                 if let cars = Mapper<CarModel>().mapArray(objc) {
                     let pois = NSMutableArray()
                     for car in cars {
-                        print("name:" + car.name!)
-                        print("car_licence_plates:" + car.car_licence_plates!)
-                        print("id:" + car.id!)
-                        print("lng:" + car.lng!)
-                        print("lat:" + car.lat!)
-                        
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
                         pois.addObject(poi)
@@ -216,11 +205,6 @@ extension HomeVC: TimeShareVCProtocol {
                 if let stores = Mapper<CarStoreModel>().mapArray(objc) {
                     let pois = NSMutableArray()
                     for store in stores {
-                        print("name:" + store.name!)
-                        print("id:" + store.id!)
-                        print("lng:" + store.lng!)
-                        print("lat:" + store.lat!)
-                        
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(store.lat!)!, Double(store.lng!)!)
                         pois.addObject(poi)
@@ -238,11 +222,6 @@ extension HomeVC: TimeShareVCProtocol {
                 if let stores = Mapper<CarStoreModel>().mapArray(objc) {
                     let pois = NSMutableArray()
                     for store in stores {
-                        print("name:" + store.name!)
-                        print("id:" + store.id!)
-                        print("lng:" + store.lng!)
-                        print("lat:" + store.lat!)
-                        
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(store.lat!)!, Double(store.lng!)!)
                         pois.addObject(poi)
@@ -260,12 +239,6 @@ extension HomeVC: TimeShareVCProtocol {
                 if let cars = Mapper<CarModel>().mapArray(objc) {
                     let pois = NSMutableArray()
                     for car in cars {
-                        print("name:" + car.name!)
-                        print("car_licence_plates:" + car.car_licence_plates!)
-                        print("id:" + car.id!)
-                        print("lng:" + car.lng!)
-                        print("lat:" + car.lat!)
-                        
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
                         pois.addObject(poi)
@@ -314,12 +287,6 @@ extension HomeVC : MapVCProtocol {
             if let cars = Mapper<CarModel>().mapArray(objc) {
                 let pois = NSMutableArray()
                 for car in cars {
-                    print("name:" + car.name!)
-                    print("car_licence_plates:" + car.car_licence_plates!)
-                    print("id:" + car.id!)
-                    print("lng:" + car.lng!)
-                    print("lat:" + car.lat!)
-                    
                     let poi = MAPointAnnotation()
                     poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
                     pois.addObject(poi)

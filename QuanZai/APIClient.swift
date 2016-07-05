@@ -11,6 +11,7 @@ import SwiftyJSON
 import SwiftyDrop
 
 typealias Finished = ((objc: AnyObject?, error: NSError?, badNetWork: Bool?) -> ())?
+typealias ProgressHandler = ((bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) -> Void)?
 
 enum JSONDataType {
     case List, Detail
@@ -26,6 +27,37 @@ class APIClient : Alamofire.Manager {
     
     class func sharedAPIClient() -> APIClient {
         return tool
+    }
+    
+    func uploadRequest(URLString: URLRequestConvertible, data: NSData, progressHandler: ProgressHandler, finished: Finished) {
+        
+        print("URLRequest:\(URLString.URLRequest)")
+        
+        upload(URLString, data: data)
+            .progress ( progressHandler )
+            .responseJSON { response in
+                
+                switch response.result {
+                case .Success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        if let status = json["state"]["code"].string {
+                            if status == "200" {
+                                finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
+                            } else {
+                                let msg = json["state"]["msg"].string
+                                finished!(objc: nil, error:response.result.error, badNetWork: false)
+                                Drop.down(msg!, state: DropState.Error)
+                            }
+                        }
+                    }
+                    
+                case .Failure(let error):
+                    finished!(objc: nil, error: error, badNetWork: true)
+                    Drop.down("网络出错，请重试", state: DropState.Error)
+                }
+            }
+            .validate()
     }
     
     func sendRequest(URLString: URLRequestConvertible, finished: Finished) {

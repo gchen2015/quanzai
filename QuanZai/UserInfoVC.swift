@@ -6,9 +6,14 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+import KeychainAccess
+import SwiftyDrop
+
 class UserInfoVC: BaseVC {
     
     var infoView : UserInfoView!
+    var avatar_url : String = ""
+    var gender : String = "1"
     
     override func viewDidLoad() {
         
@@ -33,7 +38,7 @@ class UserInfoVC: BaseVC {
         
         self.infoView = NSBundle.mainBundle().loadNibNamed("UserInfoView", owner: nil, options: nil).first as! UserInfoView
         self.infoView.delegate = self
-        self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 235)
+        self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 195)
         scrollView.addSubview(infoView)
         
         let okBtn = UIButton(imageName: "btn-blue",
@@ -41,15 +46,18 @@ class UserInfoVC: BaseVC {
                                title: "提交",
                                titleColor: UIColorFromRGB(0x0aa29c),
                                font: HS_FONT(15)) { (nextBtn) in
-                                print("提交")
+                                self.setUserInfo()
         }
         okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
         scrollView.addSubview(okBtn)
     }
 }
 
+// MARK: - UserInfoViewProtocol
+
 extension UserInfoVC : UserInfoViewProtocol {
     
+     // MARK: 点击修改头像
     func avatarTapped() {
         
         let alertControler = UIAlertController(title: "上传头像", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -70,6 +78,7 @@ extension UserInfoVC : UserInfoViewProtocol {
         
     }
     
+    // MARK: 点击修改性别
     func genderTapped() {
         
         let alertControler = UIAlertController(title: "选择性别", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -77,23 +86,24 @@ extension UserInfoVC : UserInfoViewProtocol {
         let maleAction = UIAlertAction(title: "男", style: UIAlertActionStyle.Default) { (maleAction) in
             self.infoView.genderBtn.setTitle("男", forState: .Normal)
             self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
+            self.gender = "1"
         }
         let femaleAction = UIAlertAction(title: "女", style: UIAlertActionStyle.Default) { (femaleAction) in
             self.infoView.genderBtn.setTitle("女", forState: .Normal)
             self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
+            self.gender = "2"
         }
         alertControler.addAction(maleAction)
         alertControler.addAction(femaleAction)
         self.presentViewController(alertControler, animated: true, completion: nil)
-        
     }
-    
 }
 
 // MARK: - actions
 
 extension UserInfoVC {
     
+    //打开拍照
     func openCamera() {
         let photoPicker = UIImagePickerController()
         photoPicker.delegate = self
@@ -102,6 +112,7 @@ extension UserInfoVC {
         self.presentViewController(photoPicker, animated: true, completion: nil)
     }
     
+    //打开相册
     func openAlbum() {
         let photoPicker = UIImagePickerController()
         photoPicker.delegate = self
@@ -110,7 +121,45 @@ extension UserInfoVC {
         self.presentViewController(photoPicker, animated: true, completion: nil)
     }
     
+    //提交个人信息
+    func setUserInfo() {
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil { return }
+        let user_id = keychain[k_UserID]!
+        let phone = self.infoView.phoneTxt.text!
+        let gender = self.infoView.genderBtn.titleLabel!.text!
+        let head_portrait = self.avatar_url
+        
+        let request = Router.EditUserInfo(user_id: user_id, phone: phone, gender: gender, head_portrait: head_portrait)
+        
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            Drop.down("修改成功", state: .Success)
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+    }
+    
+    //上传头像
+    func uploadPic(image: UIImage) {
+        
+        let imgData : NSData = UIImageJPEGRepresentation(image, 1)!
+        let request = Router.UploadPicture()
+        
+        APIClient.sharedAPIClient().uploadRequest(request, data: imgData, progressHandler: { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+            
+            let persent = Float(totalBytesWritten)/Float(totalBytesExpectedToWrite)*100
+            print("上传进度：\(persent)%")
+            }) { (objc, error, badNetWork) in
+                self.infoView.avatarIMG.image = image
+                self.infoView.avatarIMG.layer.cornerRadius = self.infoView.avatarIMG.width/2
+                self.infoView.avatarIMG.layer.masksToBounds = true
+                self.avatar_url = "ururururur" //TODO: 要接口提供返回url
+        }
+    }
+    
 }
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension UserInfoVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -126,9 +175,7 @@ extension UserInfoVC : UIImagePickerControllerDelegate, UINavigationControllerDe
                 let scale = (CGFloat)(1000/pickedImage.size.width)
                 image = pickedImage.scaleToSize(ccs(pickedImage.size.width*scale, pickedImage.size.height*scale))
             }
-            self.infoView.avatarIMG.image = image
-            self.infoView.avatarIMG.layer.cornerRadius = self.infoView.avatarIMG.width/2
-            self.infoView.avatarIMG.layer.masksToBounds = true
+            self.uploadPic(image)
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
         

@@ -9,7 +9,14 @@
 import SnapKit
 
 protocol UserInfoViewProtocol: class {
+    /**
+     点击修改头像代理
+     */
     func avatarTapped()
+    
+    /**
+     点击修改性别代理
+     */
     func genderTapped()
 }
 
@@ -19,11 +26,6 @@ protocol UserInfoViewProtocol: class {
     
     @IBOutlet var headerView: UIView!
     @IBOutlet var headerTitle: UILabel!
-    
-    @IBOutlet var nameView: View!
-    @IBOutlet var nameTitle: UILabel!
-    @IBOutlet var nameLine: UIImageView!
-    @IBOutlet var nameTxt: UITextField!
     
     @IBOutlet var genderView: View!
     @IBOutlet var genderTitle: UILabel!
@@ -54,9 +56,7 @@ protocol UserInfoViewProtocol: class {
     }
     
     func setDelegates() {
-        self.nameTxt.delegate = self
         self.phoneTxt.delegate = self
-//        self.passwordTxt.delegate = self
     }
     
     @IBAction func avatarTapped(sender: AnyObject) {
@@ -86,51 +86,29 @@ extension UserInfoView {
         }
         
         
-        self.nameView.snp_makeConstraints { (make) in
+        self.genderView.snp_makeConstraints { (make) in
             make.top.equalTo(self.headerView.snp_bottom).offset(10)
             make.left.equalTo(self.snp_left).offset(20)
             make.right.equalTo(self.snp_right).offset(-20)
             make.height.equalTo(30)
         }
-        self.nameTitle.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.equalTo(self.nameView.snp_left)
-            make.width.equalTo(80)
-            make.height.equalTo(self.nameView.snp_height)
-        }
-        self.nameLine.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.equalTo(self.nameTitle.snp_right)
-            make.width.equalTo(0.5)
-            make.bottom.equalTo(self.nameLine.superview!.snp_bottom)
-        }
-        self.nameTxt.snp_makeConstraints { (make) in
-            make.top.equalTo(self.nameView.snp_top)
-            make.left.equalTo(self.nameLine.snp_right).offset(10)
-            make.right.equalTo(self.nameTxt.superview!.snp_right)
-            make.height.equalTo(self.nameTxt.superview!.snp_height)
-        }
-        
-        
-        self.genderView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.nameView.snp_bottom).offset(10)
-            make.left.equalTo(self.nameView.snp_left)
-            make.size.equalTo(self.nameView.snp_size)
-        }
         self.genderTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(0)
-            make.size.equalTo(self.nameTitle.snp_size)
+            make.left.equalTo(self.genderView.snp_left)
+            make.width.equalTo(80)
+            make.height.equalTo(self.genderView.snp_height)
         }
         self.genderLine.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(self.nameLine.snp_left)
-            make.size.equalTo(self.nameLine.snp_size)
+            make.left.equalTo(self.genderTitle.snp_right)
+            make.width.equalTo(0.5)
+            make.bottom.equalTo(self.genderTitle.superview!.snp_bottom)
         }
         self.genderBtn.snp_makeConstraints { (make) in
             make.top.equalTo(self.genderView.snp_top)
-            make.left.equalTo(self.nameTxt.snp_left)
-            make.size.equalTo(self.nameTxt.snp_size)
+            make.left.equalTo(self.genderLine.snp_right).offset(10)
+            make.right.equalTo(self.genderView.snp_right)
+            make.height.equalTo(self.genderView.snp_height)
         }
         
         
@@ -143,18 +121,18 @@ extension UserInfoView {
         self.avatarTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(0)
-            make.width.equalTo(self.nameTitle.snp_width)
+            make.width.equalTo(self.genderTitle.snp_width)
             make.height.equalTo(self.avatarView.snp_height)
         }
         self.avatarLine.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(self.nameLine.snp_left)
-            make.width.equalTo(self.nameLine.snp_width)
+            make.left.equalTo(self.genderLine.snp_left)
+            make.width.equalTo(self.genderLine.snp_width)
             make.height.equalTo(self.avatarView.snp_height)
         }
         self.avatarIMG.snp_makeConstraints { (make) in
             make.top.equalTo(5)
-            make.left.equalTo(self.nameTxt.snp_left)
+            make.left.equalTo(self.genderBtn.snp_left)
             make.bottom.equalTo(self.avatarView.snp_bottom).offset(-5)
             make.width.equalTo(self.avatarIMG.snp_height)
         }
@@ -166,23 +144,23 @@ extension UserInfoView {
         
         self.phoneView.snp_makeConstraints { (make) in
             make.top.equalTo(self.avatarView.snp_bottom).offset(10)
-            make.left.equalTo(self.nameView.snp_left)
-            make.size.equalTo(self.nameView.snp_size)
+            make.left.equalTo(self.genderView.snp_left)
+            make.size.equalTo(self.genderView.snp_size)
         }
         self.phoneTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(0)
-            make.size.equalTo(self.nameTitle.snp_size)
+            make.size.equalTo(self.genderTitle.snp_size)
         }
         self.phoneLine.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(self.nameLine.snp_left)
-            make.size.equalTo(self.nameLine.snp_size)
+            make.left.equalTo(self.genderLine.snp_left)
+            make.size.equalTo(self.genderLine.snp_size)
         }
         self.phoneTxt.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(self.nameTxt.snp_left)
-            make.size.equalTo(self.nameTxt.snp_size)
+            make.left.equalTo(self.genderBtn.snp_left)
+            make.size.equalTo(self.genderBtn.snp_size)
         }
 
         /*

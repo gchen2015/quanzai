@@ -82,18 +82,14 @@ class BaseVC: UIViewController {
         }
     }
     func checkHaveLogin() -> Bool {
-        if false {
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
             self.showLoginVC(true)
             return false
         }
         return true
     }
-    
-    func alertWarning() {
-        
-        
-    }
-    
+
     func alertPresenter(title: String = "", body: String = "", cancelTitle: String?, okTitle: String?, cancelActionHandler:  ((UIAlertAction) -> Void)?, okActionHandler:  ((UIAlertAction) -> Void)?)  {
         
         let alertControler = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.Alert)

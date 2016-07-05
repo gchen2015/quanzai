@@ -29,7 +29,7 @@ protocol MenuProtocol : class {
     func changeViewController(menu: LeftMenu)
 }
 
-class MenuVC : UIViewController {
+class MenuVC : BaseVC {
     
     let menus = ["首页", "我的行程", "账户余额", "个人信息修改", "租车资格验证" , "关于"]
     
@@ -47,8 +47,6 @@ class MenuVC : UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        self.getUserInfo()
         
         let homeVC = HomeVC()
         self.homeVC = UINavigationController(rootViewController: homeVC)
@@ -70,6 +68,7 @@ class MenuVC : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.getUserInfo()
     }
     
     override func viewDidLayoutSubviews() {
