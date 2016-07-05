@@ -33,13 +33,13 @@ class MenuVC : BaseVC {
     
     let menus = ["首页", "我的行程", "账户余额", "个人信息修改", "租车资格验证" , "关于"]
     
-    var homeVC : UIViewController!
-    var qualificationInfoVC : UIViewController!
-    var userInfoVC : UIViewController!
-    var orderListVC : UIViewController!
-    var walletVC : UIViewController!
-//    var homeVC6 : UIViewController!
-//    var homeVC7 : UIViewController!
+    var homeViewController : UIViewController!
+    var qualificationInfoViewController : UIViewController!
+    var userInfoViewController : UIViewController!
+    var orderListViewController : UIViewController!
+    var walletViewController : UIViewController!
+    
+    var userInfoVC : UserInfoVC!
     
     var avatarIMG : UIImageView!
     var screenNameLabel : UILabel!
@@ -49,20 +49,20 @@ class MenuVC : BaseVC {
         super.viewDidLoad()
         
         let homeVC = HomeVC()
-        self.homeVC = UINavigationController(rootViewController: homeVC)
+        self.homeViewController = UINavigationController(rootViewController: homeVC)
         
         let qualificationInfoVC = QualificationInfoVC()
-        self.qualificationInfoVC = UINavigationController(rootViewController: qualificationInfoVC)
+        self.qualificationInfoViewController = UINavigationController(rootViewController: qualificationInfoVC)
         
-        let userInfoVC = UserInfoVC()
-        self.userInfoVC = UINavigationController(rootViewController: userInfoVC)
+        self.userInfoVC = UserInfoVC()
+        self.userInfoViewController = UINavigationController(rootViewController: userInfoVC)
         
         let orderListVC = OrderListVC()
         orderListVC.showMenuBtn = true
-        self.orderListVC = UINavigationController(rootViewController: orderListVC)
+        self.orderListViewController = UINavigationController(rootViewController: orderListVC)
         
         let walletVC = WalletVC()
-        self.walletVC = UINavigationController(rootViewController: walletVC)
+        self.walletViewController = UINavigationController(rootViewController: walletVC)
         
     }
     
@@ -170,6 +170,9 @@ extension MenuVC {
             if let userInfo = Mapper<UserModel>().map(objc) {
                 self.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))
                 self.screenNameLabel.text = userInfo.phone!
+                self.userInfoVC.phone = userInfo.phone
+                self.userInfoVC.gender = userInfo.gender
+                self.userInfoVC.avatar_url = userInfo.head_portrait
             }
         }
     }
@@ -182,25 +185,25 @@ extension MenuVC : MenuProtocol {
     func changeViewController(menu: LeftMenu) {
         switch menu {
         case .首页:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
         case .我的行程:
-            self.slideMenuController()?.changeMainViewController(self.orderListVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.orderListViewController, close: true)
 //        case .我的包裹:
-//            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+//            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
 //        case .活动中心:
-//            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+//            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
         case .账户余额:
-            self.slideMenuController()?.changeMainViewController(self.walletVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.walletViewController, close: true)
 //        case .开发票:
-//            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+//            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
         case .个人信息修改:
-            self.slideMenuController()?.changeMainViewController(self.self.userInfoVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.userInfoViewController, close: true)
         case .租车资格验证:
-            self.slideMenuController()?.changeMainViewController(self.qualificationInfoVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.qualificationInfoViewController, close: true)
 //        case .设置:
 //            break
         case .关于:
-            self.slideMenuController()?.changeMainViewController(self.homeVC, close: true)
+            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
         }
     }
 }

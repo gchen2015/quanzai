@@ -12,8 +12,9 @@ import SwiftyDrop
 class UserInfoVC: BaseVC {
     
     var infoView : UserInfoView!
-    var avatar_url : String = ""
-    var gender : String = "1"
+    var avatar_url : String?
+    var gender : String?
+    var phone : String?
     
     override func viewDidLoad() {
         
@@ -50,6 +51,10 @@ class UserInfoVC: BaseVC {
         }
         okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
         scrollView.addSubview(okBtn)
+        
+        self.infoView.genderBtn.setTitle(self.gender, forState: .Normal)
+        self.infoView.avatarIMG.af_setImageWithURL(URL(self.avatar_url!))
+        self.infoView.phoneTxt.text = self.phone!
     }
 }
 
@@ -129,7 +134,7 @@ extension UserInfoVC {
         let user_id = keychain[k_UserID]!
         let phone = self.infoView.phoneTxt.text!
         let gender = self.infoView.genderBtn.titleLabel!.text!
-        let head_portrait = self.avatar_url
+        let head_portrait = self.avatar_url!
         
         let request = Router.EditUserInfo(user_id: user_id, phone: phone, gender: gender, head_portrait: head_portrait)
         
