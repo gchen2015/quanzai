@@ -6,6 +6,9 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+import SwiftyDrop
+import Presentr
+
 protocol MapVCProtocol : class {
     func getUserLocation(locaion: MAUserLocation)
 }
@@ -14,6 +17,7 @@ class MapVC: BaseVC {
     
     var delegate : MapVCProtocol?
     var mapView: MAMapView!
+    var isLastLocation: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +30,9 @@ class MapVC: BaseVC {
         super.viewDidAppear(animated)
         
         mapView.userTrackingMode = MAUserTrackingMode.Follow
-        mapView.setZoomLevel(14.1, animated: true)
-        mapView.showsUserLocation = true
+//        mapView.setZoomLevel(14.1, animated: true)
+//        mapView.showsUserLocation = true
+        self.startLocation()
     }
     
     func initMapView() {
@@ -36,11 +41,24 @@ class MapVC: BaseVC {
         mapView.delegate = self
         self.view.addSubview(mapView)
         self.view.sendSubviewToBack(mapView)
+        
+        let locationBtn = UIButton(imageName: "icon_my_location_48px", hlImageName: "icon_my_location_48px") { (locaionBtn) in
+            self.startLocation()
+        }
+        locationBtn.frame = ccr(10, 10, 30, 30)
+        mapView.addSubview(locationBtn)
     }
     
     func setPoi(pois: NSArray) {
-        
+        mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(pois as [AnyObject])
+    }
+    
+    func startLocation() {
+
+        mapView.setUserTrackingMode(MAUserTrackingMode.Follow, animated: true)
+        mapView.setZoomLevel(14.1, animated: false)
+        mapView.showsUserLocation = true
     }
 }
 
@@ -70,13 +88,34 @@ extension MapVC: MAMapViewDelegate {
         print("didSelectAnnotationView")
     }
     
+    func mapViewWillStartLocatingUser(mapView: MAMapView!) {
+        isLastLocation = false
+    }
+    
+    func mapView(mapView: MAMapView!, mapDidMoveByUser wasUserAction: Bool) {
+        isLastLocation = false
+    }
+    
+    func mapView(mapView: MAMapView!, mapDidZoomByUser wasUserAction: Bool) {
+        isLastLocation = false
+    }
+    
+    func mapViewDidStopLocatingUser(mapView: MAMapView!) {
+//        self.delegate?.getUserLocation(mapView.userLocation)
+    }
+    
     func mapViewDidFinishLoadingMap(mapView: MAMapView!) {
-        self.delegate?.getUserLocation(mapView.userLocation)
+        self.startLocation()
+    }
+    
+    func mapView(mapView: MAMapView!, didFailToLocateUserWithError error: NSError!) {
+        self.alertPresenter("提示", body: "定位失败，请确认定位功能已经开启", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
     }
     
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
-//        if updatingLocation {
-//          self.delegate?.getUserLocation(mapView.userLocation)
-//        }
+        if updatingLocation && !isLastLocation {
+          self.delegate?.getUserLocation(mapView.userLocation)
+            isLastLocation = true
+        }
     }
 }

@@ -13,15 +13,17 @@ import SwiftyJSON
 import ObjectMapper
 import SwiftyDrop
 import HMSegmentedControl
+import Presentr
 
 class HomeVC: BaseVC {
     
     var mapVC:MapVC!
     var categoryList : NSArray?
+    var userLocation : MAUserLocation!
     
     lazy var timeShareVC : TimeShareVC = self.setupTimeShareVC()
     var actionBar : ActionBar!
-    
+    var isFirstLoad : Bool = true
     
     
     override func viewDidLoad() {
@@ -44,43 +46,6 @@ class HomeVC: BaseVC {
 extension HomeVC {
     
     func fetchData() {
-        
-//        Alamofire.request(Router.CategoryList()).responseArray(keyPath: "data") { (response: Response<[CategoryModel], NSError>) in
-//            
-//            switch response.result {
-//            case .Success:
-//                
-//                let poi = MAPointAnnotation()
-//                poi.coordinate = CLLocationCoordinate2DMake(39.963618, 116.418929)
-//                
-//                let poi2 = MAPointAnnotation()
-//                poi2.coordinate = CLLocationCoordinate2DMake(39.947246, 116.402831)
-//                
-//                let poi3 = MAPointAnnotation()
-//                poi3.coordinate = CLLocationCoordinate2DMake(39.975562, 116.429853)
-//                
-//                let poi4 = MAPointAnnotation()
-//                poi4.coordinate = CLLocationCoordinate2DMake(39.966272, 116.372361)
-//                
-//                let pois = [poi, poi2, poi3, poi4]
-//                self.mapVC.setPoi(pois)
-//                
-//                self.categoryList = response.result.value
-//                
-//                
-//                //
-//                //                if let value = response.result.value {
-//                //                    let json = JSON(value)
-//                //                    if let name = json["data"][0]["name"].string {
-//                //                        print("第一个分类名称是：",name)
-//                //                    }
-//            //                }
-//            case .Failure(let error):
-//                print(error)
-//            }
-//            
-//        }
-
         
     }
     
@@ -109,6 +74,8 @@ extension HomeVC {
         self.mapVC.view.frame = ccr(0, 0, k_SCREEN_W, 250*k_SCREEN_SCALE)
         self.view.addSubview(self.mapVC.view)
         self.mapVC.didMoveToParentViewController(self)
+        
+        self.userLocation = MAUserLocation()
     }
     
     func setupSegmentedBar() {
@@ -188,8 +155,128 @@ extension HomeVC: actionProtocol {
 
 extension HomeVC: TimeShareVCProtocol {
     
-    func searchFor(url: String) {
-        print(url)
+    func searchFor(type: String) {
+        
+        let request :URLRequestConvertible!
+        
+        switch type {
+        case "附近车辆":
+            request = Router.SearchCar(lng: String(self.userLocation.coordinate.longitude),
+                                       lat: String(self.userLocation.coordinate.latitude),
+                                       type: "0")
+            APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+                
+                if let cars = Mapper<CarModel>().mapArray(objc) {
+                    let pois = NSMutableArray()
+                    for car in cars {
+                        print("name:" + car.name!)
+                        print("car_licence_plates:" + car.car_licence_plates!)
+                        print("id:" + car.id!)
+                        print("lng:" + car.lng!)
+                        print("lat:" + car.lat!)
+                        
+                        let poi = MAPointAnnotation()
+                        poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
+                        pois.addObject(poi)
+                    }
+                    self.mapVC.setPoi(pois)
+                    self.mapVC.mapView.setZoomLevel(14.1, animated: true)
+                }
+            }
+        case "全部车辆":
+            request = Router.SearchCar(lng: String(self.userLocation.coordinate.longitude),
+                                       lat: String(self.userLocation.coordinate.latitude),
+                                       type: "1")
+            APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+                
+                if let cars = Mapper<CarModel>().mapArray(objc) {
+                    let pois = NSMutableArray()
+                    for car in cars {
+                        print("name:" + car.name!)
+                        print("car_licence_plates:" + car.car_licence_plates!)
+                        print("id:" + car.id!)
+                        print("lng:" + car.lng!)
+                        print("lat:" + car.lat!)
+                        
+                        let poi = MAPointAnnotation()
+                        poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
+                        pois.addObject(poi)
+                    }
+                    self.mapVC.setPoi(pois)
+                    self.mapVC.mapView.setZoomLevel(10.1, animated: true)
+                    
+                }
+            }
+        case "附近车场":
+            request = Router.SerachNearStore(lng: String(self.userLocation.coordinate.longitude),
+                                       lat: String(self.userLocation.coordinate.latitude),
+                                       type: "0")
+            APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+                
+                if let stores = Mapper<CarStoreModel>().mapArray(objc) {
+                    let pois = NSMutableArray()
+                    for store in stores {
+                        print("name:" + store.name!)
+                        print("id:" + store.id!)
+                        print("lng:" + store.lng!)
+                        print("lat:" + store.lat!)
+                        
+                        let poi = MAPointAnnotation()
+                        poi.coordinate = CLLocationCoordinate2DMake(Double(store.lat!)!, Double(store.lng!)!)
+                        pois.addObject(poi)
+                    }
+                    self.mapVC.setPoi(pois)
+                    self.mapVC.mapView.setZoomLevel(10.1, animated: true)
+                }
+            }
+        case "全部车场":
+            request = Router.SerachNearStore(lng: String(self.userLocation.coordinate.longitude),
+                                             lat: String(self.userLocation.coordinate.latitude),
+                                             type: "1")
+            APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+                
+                if let stores = Mapper<CarStoreModel>().mapArray(objc) {
+                    let pois = NSMutableArray()
+                    for store in stores {
+                        print("name:" + store.name!)
+                        print("id:" + store.id!)
+                        print("lng:" + store.lng!)
+                        print("lat:" + store.lat!)
+                        
+                        let poi = MAPointAnnotation()
+                        poi.coordinate = CLLocationCoordinate2DMake(Double(store.lat!)!, Double(store.lng!)!)
+                        pois.addObject(poi)
+                    }
+                    self.mapVC.setPoi(pois)
+                    self.mapVC.mapView.setZoomLevel(10.1, animated: true)
+                }
+            }
+        default:
+            request = Router.SearchCar(lng: String(self.userLocation.coordinate.longitude),
+                                       lat: String(self.userLocation.coordinate.latitude),
+                                       type: "1")
+            APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+                
+                if let cars = Mapper<CarModel>().mapArray(objc) {
+                    let pois = NSMutableArray()
+                    for car in cars {
+                        print("name:" + car.name!)
+                        print("car_licence_plates:" + car.car_licence_plates!)
+                        print("id:" + car.id!)
+                        print("lng:" + car.lng!)
+                        print("lat:" + car.lat!)
+                        
+                        let poi = MAPointAnnotation()
+                        poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
+                        pois.addObject(poi)
+                    }
+                    self.mapVC.setPoi(pois)
+                    
+                }
+            }
+            
+        }
+        
     }
     
     func orderBtnTapped() {
@@ -206,15 +293,43 @@ extension HomeVC : MapVCProtocol {
     
     func getUserLocation(locaion: MAUserLocation) {
         
-        APIClient.sharedAPIClient().sendRequest(Router.SearchCar(lng: String(locaion.coordinate.latitude), lat: String(locaion.coordinate.longitude), type: "1")) { (objc, error, badNetWork) in
+        self.userLocation = locaion
+        print("当前位置:\n latitude: \(self.userLocation.coordinate.latitude)\n longitude: \(self.userLocation.coordinate.longitude)")
+        
+        //第一次取得定位加载默认附近车辆
+        if isFirstLoad {
+            self.showNearbyCars()
+        }
+    }
+    
+    func showNearbyCars() {
+        
+        isFirstLoad = false
+        
+        let request = Router.SearchCar(lng: String(self.userLocation.coordinate.longitude),
+                                       lat: String(self.userLocation.coordinate.latitude),
+                                       type: "0")
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            
             if let cars = Mapper<CarModel>().mapArray(objc) {
-                print(cars.count)
+                let pois = NSMutableArray()
+                for car in cars {
+                    print("name:" + car.name!)
+                    print("car_licence_plates:" + car.car_licence_plates!)
+                    print("id:" + car.id!)
+                    print("lng:" + car.lng!)
+                    print("lat:" + car.lat!)
+                    
+                    let poi = MAPointAnnotation()
+                    poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
+                    pois.addObject(poi)
+                }
+                self.mapVC.setPoi(pois)
+                
             }
         }
-        
-//        print("latitude:\(locaion.coordinate.latitude)")
-//        print("longitude:\(locaion.coordinate.longitude)")
     }
+    
 }
 
 // MARK: - SlideMenuControllerDelegate

@@ -10,6 +10,7 @@ import SlideMenuControllerSwift
 import KeychainAccess
 import ObjectMapper
 import AlamofireImage
+import SwiftyDrop
 
 enum LeftMenu: Int {
     case 首页  = 0
@@ -165,7 +166,7 @@ extension MenuVC {
     
     func getUserInfo() {
         let keychain = Keychain(service: service)
-        
+        if keychain[k_UserID] == nil { return }
         APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: keychain[k_UserID]!)) { (objc, error, badNetWork) in
             if let userInfo = Mapper<UserModel>().map(objc) {
                 self.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))

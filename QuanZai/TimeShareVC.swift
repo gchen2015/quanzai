@@ -7,7 +7,7 @@
 //
 
 protocol TimeShareVCProtocol : class{
-    func searchFor(url: String)
+    func searchFor(type: String)
     func orderBtnTapped()
 }
 

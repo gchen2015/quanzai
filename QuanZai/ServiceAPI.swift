@@ -28,15 +28,16 @@ class ServiceApi: NSObject {
         return "\(host)/Car/Api/GetDateType.action?car_id=\(car_id)"
     }
     
-    
+    //搜索车辆
     internal class func SearchCarUrl(lng:String, lat:String, type:String) -> String {
         
         return "\(host)/Car/Api/SerachCar.action?lng=\(lng)&lat=\(lat)&type=\(type)"
     }
     
-    internal class func getCodeUrl(maxId:Int,count:Int) -> String {
+    //搜索车场
+    internal class func SerachNearStore(lng:String, lat:String, type:String) -> String {
         
-        return "\(host)/api/sharecode/list/\(maxId)/\(count)"
+        return "\(host)/Car/Api/SerachNearStore.action?lng=\(lng)&lat=\(lat)&type=\(type)"
     }
     
     internal class func getCodeDetailUrl(codeId:Int) -> String {

@@ -29,7 +29,7 @@ class APIClient : Alamofire.Manager {
     }
     
     func sendRequest(URLString: URLRequestConvertible, finished: Finished) {
-        
+        print("URLRequest:\(URLString.URLRequest)")
         request(URLString).responseJSON { response in
             switch response.result {
             case .Success:

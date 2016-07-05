@@ -17,6 +17,7 @@ enum Router: URLRequestConvertible {
     case GetUserInfo(user_id:String)
     case GetDateType(car_id:Int)
     case SearchCar(lng:String, lat:String, type:String)
+    case SerachNearStore(lng:String, lat:String, type:String)
 
     
     var method: Alamofire.Method {
@@ -40,6 +41,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.GetDateTypeUrl(car_id)
         case .SearchCar(let lng, let lat, let type):
             return ServiceApi.SearchCarUrl(lng, lat: lat, type: type)
+        case .SerachNearStore(let lng, let lat, let type):
+            return ServiceApi.SerachNearStore(lng, lat: lat, type: type)
         default :
             return ServiceApi.host
         }

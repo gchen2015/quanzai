@@ -14,12 +14,15 @@ let k_phone = "phone"
 
 import ObjectMapper
 import KeychainAccess
+import Presentr
 
 class BaseVC: UIViewController {
     
     var blurEffectView : UIVisualEffectView!
     var closeBtn : UIButton!
     var alertView : UIView?
+    var cancelBlock:((alert: UIAlertController) -> ())?
+    var okBlock:((alert: UIAlertController) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +87,46 @@ class BaseVC: UIViewController {
             return false
         }
         return true
+    }
+    
+    func alertWarning() {
+        
+        
+    }
+    
+    func alertPresenter(title: String = "", body: String = "", cancelTitle: String?, okTitle: String?, cancelActionHandler:  ((UIAlertAction) -> Void)?, okActionHandler:  ((UIAlertAction) -> Void)?)  {
+        
+        let alertControler = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.Alert)
+        if cancelTitle != nil {
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler:cancelActionHandler)
+             alertControler.addAction(cancelAction)
+        }
+        if okTitle != nil {
+            let okAction = UIAlertAction(title: "确定", style: .Destructive, handler: okActionHandler)
+            alertControler.addAction(okAction)
+        }
+        
+        self.presentViewController(alertControler, animated: true, completion: nil)
+        
+//        let presenter = Presentr(presentationType: .Alert)
+//        presenter.transitionType = TransitionType.CoverVertical
+//        
+//        let alertController = Presentr.alertViewController(title: title, body: body)
+//        
+//        if cancelTitle != nil {
+//            let cancelAction = AlertAction(title: "取消", style: .Cancel) { alert in
+//                print("CANCEL!!")
+//            }
+//            alertController.addAction(cancelAction)
+//        }
+//        if okTitle != nil {
+//            let okAction = AlertAction(title: "确定", style: .Destructive) { alert in
+//                print("OK!!")
+//            }
+//             alertController.addAction(okAction)
+//        }
+//        
+//        customPresentViewController(presenter, viewController: alertController, animated: true, completion: nil)
     }
     
     func showAlert(alertView: UIView, showBlur: Bool = true) {
