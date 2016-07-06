@@ -34,31 +34,68 @@ class APIClient : Alamofire.Manager {
         
         print("URLRequest:\(URLString.URLRequest)")
         
-        upload(URLString, data: data)
-            .progress ( progressHandler )
-            .responseJSON { response in
-                
-                switch response.result {
-                case .Success:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        if let status = json["state"]["code"].string {
-                            if status == "200" {
-                                finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
-                            } else {
-                                let msg = json["state"]["msg"].string
-                                finished!(objc: nil, error:response.result.error, badNetWork: false)
-                                Drop.down(msg!, state: DropState.Error)
+        upload(URLString, multipartFormData: {
+            multipartFormData in
+            multipartFormData.appendBodyPart(data: data, name: "picture", fileName: "picture.jpg", mimeType: "MultipartFile")
+            }, encodingCompletion: {
+                encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON {
+                        response in
+                        print(response)
+                        switch response.result {
+                        case .Success:
+                            if let value = response.result.value {
+                                let json = JSON(value)
+                                if let status = json["state"]["code"].string {
+                                    if status == "200" {
+                                        finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
+                                    } else {
+                                        let msg = json["state"]["msg"].string
+                                        finished!(objc: nil, error:response.result.error, badNetWork: false)
+                                        Drop.down(msg!, state: DropState.Error)
+                                    }
+                                }
                             }
+                            
+                        case .Failure(let error):
+                            finished!(objc: nil, error: error, badNetWork: true)
+                            Drop.down("网络出错，请重试", state: DropState.Error)
                         }
                     }
-                    
-                case .Failure(let error):
-                    finished!(objc: nil, error: error, badNetWork: true)
-                    Drop.down("网络出错，请重试", state: DropState.Error)
+                    upload.progress(progressHandler)
+                case .Failure(let encodingError):
+                    print(encodingError)
+                    finished!(objc: nil, error: nil, badNetWork: true)
                 }
-            }
-            .validate()
+        })
+        
+//        upload(URLString, data: data)
+//            .progress ( progressHandler )
+//            .responseJSON { response in
+//                
+//                switch response.result {
+//                case .Success:
+//                    if let value = response.result.value {
+//                        let json = JSON(value)
+//                        if let status = json["state"]["code"].string {
+//                            if status == "200" {
+//                                finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
+//                            } else {
+//                                let msg = json["state"]["msg"].string
+//                                finished!(objc: nil, error:response.result.error, badNetWork: false)
+//                                Drop.down(msg!, state: DropState.Error)
+//                            }
+//                        }
+//                    }
+//                    
+//                case .Failure(let error):
+//                    finished!(objc: nil, error: error, badNetWork: true)
+//                    Drop.down("网络出错，请重试", state: DropState.Error)
+//                }
+//            }
+//            .validate()
     }
     
     //普通API封装

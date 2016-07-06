@@ -19,7 +19,7 @@ enum Router: URLRequestConvertible {
     case SearchCar(lng:String, lat:String, type:String)
     case SerachNearStore(lng:String, lat:String, type:String)
     case EditUserInfo(user_id:String, phone:String, gender:String, head_portrait:String)
-    case UploadPicture()
+    case UploadPicture(type:String)
     
     var method: Alamofire.Method {
         switch self {
@@ -49,8 +49,8 @@ enum Router: URLRequestConvertible {
         case .EditUserInfo(let user_id, let phone, let gender, let head_portrait):
             let path = ServiceApi.EditUserInfoUrl(user_id, phone: phone, gender: gender, head_portrait: head_portrait)
             return path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        case .UploadPicture():
-            return ServiceApi.UploadPicture()
+        case .UploadPicture(let type):
+            return ServiceApi.UploadPicture(type)
         default :
             return ServiceApi.host
         }
@@ -65,12 +65,11 @@ enum Router: URLRequestConvertible {
 //        if let token = Router.token {
 //            mutableURLRequest.setValue("\(token)", forHTTPHeaderField: "token")
 //        }
-//        mutableURLRequest.setValue("application/vnd.zbcool.4+json", forHTTPHeaderField: "Accept")
         
         switch self {
-//        case .UploadPicture(let parameters):
-//            print(mutableURLRequest)
-//            return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
+//        case .UploadPicture(_):
+//            mutableURLRequest.setValue("MultipartFile", forHTTPHeaderField: "Content-Type")
+//            return mutableURLRequest
         default:
             return mutableURLRequest
         }

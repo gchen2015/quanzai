@@ -8,6 +8,7 @@
 
 import KeychainAccess
 import SwiftyDrop
+import SwiftyJSON
 
 class UserInfoVC: BaseVC {
     
@@ -147,10 +148,10 @@ extension UserInfoVC {
     //上传头像
     func uploadPic(image: UIImage) {
         
-        let imgData : NSData = UIImageJPEGRepresentation(image, 1)!
-        let request = Router.UploadPicture()
+        let request = Router.UploadPicture(type: "0")
+        let imageData: NSData = UIImageJPEGRepresentation(image, 1)!
         
-        APIClient.sharedAPIClient().uploadRequest(request, data: imgData, progressHandler: { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+        APIClient.sharedAPIClient().uploadRequest(request, data: imageData, progressHandler: { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
             
             let persent = Float(totalBytesWritten)/Float(totalBytesExpectedToWrite)*100
             print("上传进度：\(persent)%")
@@ -158,7 +159,9 @@ extension UserInfoVC {
                 self.infoView.avatarIMG.image = image
                 self.infoView.avatarIMG.layer.cornerRadius = self.infoView.avatarIMG.width/2
                 self.infoView.avatarIMG.layer.masksToBounds = true
-                self.avatar_url = "ururururur" //TODO: 要接口提供返回url
+                if objc != nil {
+                    self.avatar_url = String(objc!)
+                }
         }
     }
     

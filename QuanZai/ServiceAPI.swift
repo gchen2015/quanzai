@@ -47,9 +47,9 @@ class ServiceApi: NSObject {
     }
     
     //上传图片
-    internal class func UploadPicture() -> String{
+    internal class func UploadPicture(type:String) -> String{
         
-        let url="\(host)/User/Api/UploadPicture.action"
+        let url="\(host)/User/Api/UploadPicture.action?type=\(type)"
         return url
     }
     
