@@ -15,6 +15,7 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "HMSegmentedControl/HMSegmentedControl.h"
 #import "DLRadioButton/DLRadioButton.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 
 #endif /* QuanZai_Bridging_Header_h */

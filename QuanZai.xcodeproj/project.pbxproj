@@ -101,6 +101,16 @@
 		48D95B201D2A8B1700197238 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D95B1F1D2A8B1700197238 /* CarModel.swift */; };
 		48D95B231D2B68AB00197238 /* icon_my_location_48px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48D95B221D2B68AB00197238 /* icon_my_location_48px@2x.png */; };
 		48D95B251D2BB3D400197238 /* CarStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D95B241D2BB3D300197238 /* CarStoreModel.swift */; };
+		48D95B2D1D2D36B700197238 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48D95B2B1D2D36B500197238 /* AlipaySDK.bundle */; };
+		48D95B2E1D2D36B700197238 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B2C1D2D36B600197238 /* AlipaySDK.framework */; };
+		48D95B301D2D36EA00197238 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B2F1D2D36EA00197238 /* SystemConfiguration.framework */; };
+		48D95B321D2D36F900197238 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B311D2D36F900197238 /* CoreTelephony.framework */; };
+		48D95B341D2D370600197238 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B331D2D370600197238 /* QuartzCore.framework */; };
+		48D95B361D2D371200197238 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B351D2D371200197238 /* CoreText.framework */; };
+		48D95B381D2D371E00197238 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B371D2D371E00197238 /* CoreGraphics.framework */; };
+		48D95B3A1D2D372C00197238 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B391D2D372C00197238 /* CoreMotion.framework */; };
+		48D95B3C1D2D375000197238 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B3B1D2D375000197238 /* libc++.tbd */; };
+		48D95B3E1D2D375E00197238 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B3D1D2D375E00197238 /* libz.tbd */; };
 		B570B4DB3BAC7816CD5990CE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73A4B3FC7616F384B933638 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -230,6 +240,16 @@
 		48D95B1F1D2A8B1700197238 /* CarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		48D95B221D2B68AB00197238 /* icon_my_location_48px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_my_location_48px@2x.png"; sourceTree = "<group>"; };
 		48D95B241D2BB3D300197238 /* CarStoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarStoreModel.swift; sourceTree = "<group>"; };
+		48D95B2B1D2D36B500197238 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		48D95B2C1D2D36B600197238 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		48D95B2F1D2D36EA00197238 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		48D95B311D2D36F900197238 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		48D95B331D2D370600197238 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		48D95B351D2D371200197238 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		48D95B371D2D371E00197238 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		48D95B391D2D372C00197238 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		48D95B3B1D2D375000197238 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		48D95B3D1D2D375E00197238 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		622593F7D1388AA10A6EF420 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E73A4B3FC7616F384B933638 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -239,7 +259,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48D95B3E1D2D375E00197238 /* libz.tbd in Frameworks */,
+				48D95B3C1D2D375000197238 /* libc++.tbd in Frameworks */,
+				48D95B3A1D2D372C00197238 /* CoreMotion.framework in Frameworks */,
+				48D95B381D2D371E00197238 /* CoreGraphics.framework in Frameworks */,
+				48D95B361D2D371200197238 /* CoreText.framework in Frameworks */,
+				48D95B341D2D370600197238 /* QuartzCore.framework in Frameworks */,
+				48D95B321D2D36F900197238 /* CoreTelephony.framework in Frameworks */,
+				48D95B301D2D36EA00197238 /* SystemConfiguration.framework in Frameworks */,
 				B570B4DB3BAC7816CD5990CE /* Pods.framework in Frameworks */,
+				48D95B2E1D2D36B700197238 /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +373,7 @@
 		483248241D13EF4600C4EB9E /* QuanZai */ = {
 			isa = PBXGroup;
 			children = (
+				48D95B2A1D2D367E00197238 /* SDK */,
 				488C64571D24A88D00A5D55C /* Base */,
 				483248451D13F25100C4EB9E /* API */,
 				483248511D17821800C4EB9E /* Models */,
@@ -395,6 +425,7 @@
 		483248521D17822000C4EB9E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				48D95B291D2D1F7800197238 /* 底部操作栏Bar */,
 				48216F361D2607AA00720A6B /* 账户明细Cell */,
 				48216F291D25405D00720A6B /* 充值View */,
 				48216F261D25393A00720A6B /* 账户余额View */,
@@ -405,7 +436,6 @@
 				48ABF2B01D212F2A00C16525 /* 订单列表Cell */,
 				48B22ADA1D1D2C1C00421936 /* 用户身份VIew */,
 				48B22AD91D1CEE8F00421936 /* 租车身份认证View */,
-				489DC31F1D180BB40061033F /* ActionBar.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -695,9 +725,34 @@
 			name = "用户身份VIew";
 			sourceTree = "<group>";
 		};
+		48D95B291D2D1F7800197238 /* 底部操作栏Bar */ = {
+			isa = PBXGroup;
+			children = (
+				489DC31F1D180BB40061033F /* ActionBar.swift */,
+			);
+			name = "底部操作栏Bar";
+			sourceTree = "<group>";
+		};
+		48D95B2A1D2D367E00197238 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				48D95B2B1D2D36B500197238 /* AlipaySDK.bundle */,
+				48D95B2C1D2D36B600197238 /* AlipaySDK.framework */,
+			);
+			name = SDK;
+			sourceTree = "<group>";
+		};
 		60F066BC6A03D14F68BA8761 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48D95B3D1D2D375E00197238 /* libz.tbd */,
+				48D95B3B1D2D375000197238 /* libc++.tbd */,
+				48D95B391D2D372C00197238 /* CoreMotion.framework */,
+				48D95B371D2D371E00197238 /* CoreGraphics.framework */,
+				48D95B351D2D371200197238 /* CoreText.framework */,
+				48D95B331D2D370600197238 /* QuartzCore.framework */,
+				48D95B311D2D36F900197238 /* CoreTelephony.framework */,
+				48D95B2F1D2D36EA00197238 /* SystemConfiguration.framework */,
 				E73A4B3FC7616F384B933638 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -823,6 +878,7 @@
 				48422AF51D1958FA005A48D6 /* btn-right@2x.png in Resources */,
 				487B96AD1D17A80F00786DA9 /* plus@2x.png in Resources */,
 				48422AFA1D195DBF005A48D6 /* btn-center@2x.png in Resources */,
+				48D95B2D1D2D36B700197238 /* AlipaySDK.bundle in Resources */,
 				487B96AA1D17A80F00786DA9 /* elec-car@2x.png in Resources */,
 				4832482D1D13EF4600C4EB9E /* Assets.xcassets in Resources */,
 				48422AF11D1958FA005A48D6 /* blue-point@2x.png in Resources */,
@@ -1067,6 +1123,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/QuanZai",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuanZai/QuanZai-Prefix.pch";
 				INFOPLIST_FILE = QuanZai/Info.plist;
@@ -1086,6 +1146,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/QuanZai",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuanZai/QuanZai-Prefix.pch";
 				INFOPLIST_FILE = QuanZai/Info.plist;

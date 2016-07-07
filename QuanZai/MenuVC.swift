@@ -169,6 +169,8 @@ extension MenuVC {
         APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: keychain[k_UserID]!)) { (objc, error, badNetWork) in
             if let userInfo = Mapper<UserModel>().map(objc) {
                 self.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))
+                self.avatarIMG.layer.cornerRadius = self.avatarIMG.width/2
+                self.avatarIMG.layer.masksToBounds = true
                 self.screenNameLabel.text = userInfo.phone!
                 self.userInfoVC.phone = userInfo.phone
                 self.userInfoVC.gender = userInfo.gender

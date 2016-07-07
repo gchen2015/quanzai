@@ -53,9 +53,17 @@ class UserInfoVC: BaseVC {
         okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
         scrollView.addSubview(okBtn)
         
-        self.infoView.genderBtn.setTitle(self.gender, forState: .Normal)
-        self.infoView.avatarIMG.af_setImageWithURL(URL(self.avatar_url!))
-        self.infoView.phoneTxt.text = self.phone!
+        if self.gender != nil && self.gender!.characters.count > 0 {
+            self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
+        }
+        if self.avatar_url != nil && self.avatar_url?.characters.count > 0 {
+            self.infoView.avatarIMG.layer.cornerRadius = 20
+            self.infoView.avatarIMG.layer.masksToBounds = true
+            self.infoView.avatarIMG.af_setImageWithURL(URL(self.avatar_url!))
+        }
+        if self.phone != nil && self.phone?.characters.count > 0{
+            self.infoView.phoneTxt.text = self.phone!
+        }
     }
 }
 
@@ -92,12 +100,10 @@ extension UserInfoVC : UserInfoViewProtocol {
         let maleAction = UIAlertAction(title: "男", style: UIAlertActionStyle.Default) { (maleAction) in
             self.infoView.genderBtn.setTitle("男", forState: .Normal)
             self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
-            self.gender = "1"
         }
         let femaleAction = UIAlertAction(title: "女", style: UIAlertActionStyle.Default) { (femaleAction) in
             self.infoView.genderBtn.setTitle("女", forState: .Normal)
             self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
-            self.gender = "2"
         }
         alertControler.addAction(maleAction)
         alertControler.addAction(femaleAction)
@@ -141,7 +147,7 @@ extension UserInfoVC {
         
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             Drop.down("修改成功", state: .Success)
-            self.navigationController?.popViewControllerAnimated(true)
+            self.infoView.endEditing(true)
         }
     }
     

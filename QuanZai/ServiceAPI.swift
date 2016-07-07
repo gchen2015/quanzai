@@ -42,8 +42,8 @@ class ServiceApi: NSObject {
     
     //修改个人信息
     internal class func EditUserInfoUrl(user_id:String,phone:String,gender:String,head_portrait:String) -> String {
-        print("\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone='\(phone)'&gender='\(gender)'&head_portrait='\(head_portrait)'")
-        return "\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone='\(phone)'&gender='\(gender)'&head_portrait='\(head_portrait)'"
+//        print("\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone=\(phone)&gender=\(gender)&head_portrait=\(head_portrait)")
+        return "\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone=\(phone)&gender=\(gender)&head_portrait=\(head_portrait)"
     }
     
     //上传图片
