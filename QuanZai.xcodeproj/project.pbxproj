@@ -86,6 +86,9 @@
 		48ABF2BE1D222B7100C16525 /* OrderDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABF2BD1D222B7100C16525 /* OrderDetailView.xib */; };
 		48ABF2C11D222F7F00C16525 /* CarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2C01D222F7F00C16525 /* CarDetailView.swift */; };
 		48ABF2C31D222F8C00C16525 /* CarDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABF2C21D222F8C00C16525 /* CarDetailView.xib */; };
+		48ACFD9B1D2E22DC00341061 /* DateTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9A1D2E22DC00341061 /* DateTypeModel.swift */; };
+		48ACFD9D1D2E234D00341061 /* PriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9C1D2E234D00341061 /* PriceModel.swift */; };
+		48ACFD9F1D2E42CE00341061 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9E1D2E42CE00341061 /* StoreCell.swift */; };
 		48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */; };
 		48B22AC31D1BA9D000421936 /* btn-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22AC21D1BA9D000421936 /* btn-white@2x.png */; };
 		48B22AC91D1BCC2E00421936 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */; };
@@ -225,6 +228,9 @@
 		48ABF2BD1D222B7100C16525 /* OrderDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailView.xib; sourceTree = "<group>"; };
 		48ABF2C01D222F7F00C16525 /* CarDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailView.swift; sourceTree = "<group>"; };
 		48ABF2C21D222F8C00C16525 /* CarDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarDetailView.xib; sourceTree = "<group>"; };
+		48ACFD9A1D2E22DC00341061 /* DateTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTypeModel.swift; sourceTree = "<group>"; };
+		48ACFD9C1D2E234D00341061 /* PriceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceModel.swift; sourceTree = "<group>"; };
+		48ACFD9E1D2E42CE00341061 /* StoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-close-btn@2x.png"; sourceTree = "<group>"; };
 		48B22AC21D1BA9D000421936 /* btn-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white@2x.png"; sourceTree = "<group>"; };
 		48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -418,6 +424,8 @@
 				489DC3271D191A860061033F /* LinkDataModel.swift */,
 				48D95B1F1D2A8B1700197238 /* CarModel.swift */,
 				48D95B241D2BB3D300197238 /* CarStoreModel.swift */,
+				48ACFD9A1D2E22DC00341061 /* DateTypeModel.swift */,
+				48ACFD9C1D2E234D00341061 /* PriceModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -433,6 +441,7 @@
 				48ABF2BF1D222F5A00C16525 /* 车辆详情View */,
 				48ABF2BA1D222AED00C16525 /* 订单详情View */,
 				48ABF2B11D212F3800C16525 /* 车辆列表Cell */,
+				48ACFDA01D2E531F00341061 /* 车场列表Cell */,
 				48ABF2B01D212F2A00C16525 /* 订单列表Cell */,
 				48B22ADA1D1D2C1C00421936 /* 用户身份VIew */,
 				48B22AD91D1CEE8F00421936 /* 租车身份认证View */,
@@ -667,6 +676,14 @@
 				48ABF2C21D222F8C00C16525 /* CarDetailView.xib */,
 			);
 			name = "车辆详情View";
+			sourceTree = "<group>";
+		};
+		48ACFDA01D2E531F00341061 /* 车场列表Cell */ = {
+			isa = PBXGroup;
+			children = (
+				48ACFD9E1D2E42CE00341061 /* StoreCell.swift */,
+			);
+			name = "车场列表Cell";
 			sourceTree = "<group>";
 		};
 		48B22AC41D1BCB6B00421936 /* 首页 */ = {
@@ -963,6 +980,7 @@
 				48216F3A1D2607F000720A6B /* PaymentCell.swift in Sources */,
 				488C645A1D24CA5F00A5D55C /* OrderDetailVC.swift in Sources */,
 				487B96EF1D17C0F200786DA9 /* NSData+Additions.m in Sources */,
+				48ACFD9D1D2E234D00341061 /* PriceModel.swift in Sources */,
 				48245FF81D22BBFA00D930A4 /* CarDetailVC.swift in Sources */,
 				487B96D71D17C0EA00786DA9 /* KUIButton.m in Sources */,
 				487B96F11D17C0F200786DA9 /* NSObject+Additions.m in Sources */,
@@ -999,8 +1017,10 @@
 				48216F3E1D260BE000720A6B /* BaseCell.swift in Sources */,
 				487B96FE1D17E26C00786DA9 /* BaseVC.swift in Sources */,
 				489DC3261D191A030061033F /* LinkModel.swift in Sources */,
+				48ACFD9B1D2E22DC00341061 /* DateTypeModel.swift in Sources */,
 				487B96DF1D17C0EA00786DA9 /* UIView+KAddition.m in Sources */,
 				48216F2C1D2540A600720A6B /* TopupVC.swift in Sources */,
+				48ACFD9F1D2E42CE00341061 /* StoreCell.swift in Sources */,
 				48422AE61D1924F4005A48D6 /* Router.swift in Sources */,
 				487B96F21D17C0F200786DA9 /* NSString+Additions.m in Sources */,
 				48216F3C1D26080300720A6B /* PaymentListVC.swift in Sources */,

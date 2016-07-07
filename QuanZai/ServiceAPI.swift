@@ -36,11 +36,20 @@ class ServiceApi: NSObject {
 
     
     //获取租车类型
-    internal class func GetDateTypeUrl(car_id:Int) -> String {
+    internal class func GetDateTypeUrl(car_id:String) -> String {
         
         let url = "\(host)/Car/Api/GetDateType.action?car_id=\(car_id)"
         return self.encodeUrl(url)
     }
+    
+    
+    //获取车辆详情
+    internal class func GetCarInfoUrl(car_id:String) -> String {
+        
+        let url = "\(host)/Car/Api/GetCarInfo.action?car_id=\(car_id)"
+        return self.encodeUrl(url)
+    }
+    
     
     //搜索车辆
     internal class func SearchCarUrl(lng:String, lat:String, type:String) -> String {

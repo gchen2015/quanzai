@@ -175,6 +175,10 @@ extension HomeVC: TimeShareVCProtocol {
                     }
                     self.mapVC.setPoi(pois)
                     self.mapVC.mapView.setZoomLevel(14.1, animated: true)
+                    self.timeShareVC.cars(cars)
+                } else {
+                    self.timeShareVC.cars([])
+                    self.timeShareVC.tablewView.reloadData()
                 }
             }
         case "全部车辆":
@@ -192,7 +196,10 @@ extension HomeVC: TimeShareVCProtocol {
                     }
                     self.mapVC.setPoi(pois)
                     self.mapVC.mapView.setZoomLevel(10.1, animated: true)
-                    
+                    self.timeShareVC.cars(cars)
+                } else {
+                    self.timeShareVC.cars([])
+                    self.timeShareVC.tablewView.reloadData()
                 }
             }
         case "附近车场":
@@ -210,6 +217,10 @@ extension HomeVC: TimeShareVCProtocol {
                     }
                     self.mapVC.setPoi(pois)
                     self.mapVC.mapView.setZoomLevel(10.1, animated: true)
+                    self.timeShareVC.stores(stores)
+                } else {
+                    self.timeShareVC.stores([])
+                    self.timeShareVC.tablewView.reloadData()
                 }
             }
         case "全部车场":
@@ -227,6 +238,10 @@ extension HomeVC: TimeShareVCProtocol {
                     }
                     self.mapVC.setPoi(pois)
                     self.mapVC.mapView.setZoomLevel(10.1, animated: true)
+                    self.timeShareVC.stores(stores)
+                } else {
+                    self.timeShareVC.stores([])
+                    self.timeShareVC.tablewView.reloadData()
                 }
             }
         default:
@@ -243,7 +258,7 @@ extension HomeVC: TimeShareVCProtocol {
                         pois.addObject(poi)
                     }
                     self.mapVC.setPoi(pois)
-                    
+                    self.timeShareVC.cars(cars)
                 }
             }
             

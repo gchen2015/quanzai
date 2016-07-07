@@ -81,7 +81,7 @@ extension APIClient {
 
 extension APIClient {
     
-    func requestResult(response: Response<AnyObject, NSError>, finished: Finished) {
+    private func requestResult(response: Response<AnyObject, NSError>, finished: Finished) {
         
         print(response)
         switch response.result {
@@ -93,7 +93,7 @@ extension APIClient {
                         finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
                     } else {
                         let msg = json["state"]["msg"].string
-                        //finished!(objc: nil, error:response.result.error, badNetWork: false)
+                        finished!(objc: nil, error:response.result.error, badNetWork: false)
                         Drop.down(msg!, state: DropState.Error)
                     }
                 }

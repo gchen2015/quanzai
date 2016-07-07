@@ -8,37 +8,37 @@
 
 import ObjectMapper
 
-class CarModel: BaseModel {
+class CarModel : BaseModel {
     
-    var name                : String?
-    var car_licence_plates  : String?
-    var vin_no              : String?
+    var name : String?
+    var car_licence_plates : String?
+    var vin_no : String?
     
-    var picture                : String?
-    var battery_life                : String?
-    var has_satnav_display                : String?
-    var has_sunroof_display                : String?
-    var has_sound_sys_display                : String?
-    var has_reversing_adar_display                : String?
-    var has_reversing_image_display                : String?
-    var gearbox_type_display                : String?
-    var engine_displacement                : String?
+    var picture : String?
+    var battery_life : String?
+    var has_satnav_display : String?
+    var has_sunroof_display : String?
+    var has_sound_sys_display : String?
+    var has_reversing_adar_display : String?
+    var has_reversing_image_display : String?
+    var gearbox_type_display : String?
+    var engine_displacement : String?
     
-    var seats                : String?
-    var car_boxs                : String?
-    var car_category_name: String?
-    var car_status_name                : String?
-    var car_user_id                : String?
-    var device_no                : String?
+    var seats : String?
+    var car_boxs : String?
+    var car_category_name : String?
+    var car_status_name : String?
+    var car_user_id : String?
+    var device_no : String?
     
-    var distance                : String?
-    var is_online                : String?
-    var is_online_display                : String?
-    var last_charging_time                : String?
-    var lat                : String?
-    var lng                : String?
-    var store_id                : String?
-    var store_name                : String?
+    var distance : String?
+    var is_online : String?
+    var is_online_display : String?
+    var last_charging_time : String?
+    var lat : String?
+    var lng : String?
+    var store_id : String?
+    var store_name : String?
     
     required init?(_ map: Map) {
         super.init(map)

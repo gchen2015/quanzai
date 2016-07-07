@@ -13,14 +13,15 @@ enum Router: URLRequestConvertible {
     static var token: String?
     
     //Restfull api
-    case Login(phone:String, validateCode:String)
-    case GetValidateCode(phone:String)
-    case GetUserInfo(user_id:String)
-    case GetDateType(car_id:Int)
-    case SearchCar(lng:String, lat:String, type:String)
-    case SerachNearStore(lng:String, lat:String, type:String)
-    case EditUserInfo(user_id:String, phone:String, gender:String, head_portrait:String)
-    case UploadPicture(type:String)
+    case Login(phone : String, validateCode : String)
+    case GetValidateCode(phone : String)
+    case GetUserInfo(user_id : String)
+    case GetCarInfo(car_id : String)
+    case GetDateType(car_id : String)
+    case SearchCar(lng : String, lat : String, type : String)
+    case SerachNearStore(lng : String, lat : String, type : String)
+    case EditUserInfo(user_id : String, phone : String, gender : String, head_portrait : String)
+    case UploadPicture(type : String)
     
     var method: Alamofire.Method {
         switch self {
@@ -43,6 +44,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.loginUrl(phone, validateCode: validateCode)
         case .GetValidateCode(let phone):
             return ServiceApi.GetValidateCodeUrl(phone)
+        case .GetCarInfo(let car_id):
+            return ServiceApi.GetCarInfoUrl(car_id)
         case .GetDateType(let car_id):
             return ServiceApi.GetDateTypeUrl(car_id)
         case .SearchCar(let lng, let lat, let type):

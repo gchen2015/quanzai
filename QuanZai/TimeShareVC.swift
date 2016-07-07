@@ -12,8 +12,12 @@ protocol TimeShareVCProtocol : class{
 }
 
 class TimeShareVC: BaseVC {
-    
     var delegate : TimeShareVCProtocol!
+    
+    var isSearchStores : Bool  = false
+    
+    var cars : NSArray = []
+    var stores : NSArray = []
     
     var aroundCarsBtn : UIButton!
     var allCarsBtn : UIButton!
@@ -28,7 +32,8 @@ class TimeShareVC: BaseVC {
     var aroundStoreIsShow : Bool = false
     var allStoreIsShow : Bool = false
     
-    let CellIdentifier: String!  = "CellIdentifier";
+    let carCellIdentifier: String!  = "carCellIdentifier";
+    let storeCellIdentifier: String!  = "storeCellIdentifier";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -230,12 +235,23 @@ extension TimeShareVC {
 extension TimeShareVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let carDetailVC = CarDetailVC()
-        self.navigationController?.pushViewController(carDetailVC, animated: true)
+        
+        if !self.isSearchStores {
+            if let carInfo : CarModel = self.cars[indexPath.row] as? CarModel {
+                let carDetailVC = CarDetailVC()
+                carDetailVC.car_id = carInfo.id
+                self.navigationController?.pushViewController(carDetailVC, animated: true)
+            }
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        
+        if self.isSearchStores {
+            return self.stores.count
+        } else {
+            return self.cars.count
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -243,13 +259,37 @@ extension TimeShareVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? CarCell
-        if cell == nil {
-            cell = CarCell(style: .Subtitle, reuseIdentifier: CellIdentifier)
+        
+        if self.isSearchStores {
+            var cell = tableView.dequeueReusableCellWithIdentifier(storeCellIdentifier) as? StoreCell
+            if cell == nil {
+                cell = StoreCell(style: .Subtitle, reuseIdentifier: storeCellIdentifier)
+            }
+            if let storeInfo : CarStoreModel = self.stores[indexPath.row] as? CarStoreModel {
+                cell?.storeNameLabel.text = storeInfo.name
+                if storeInfo.distance != nil {
+                    cell?.distanceLabel.text = "距离" + storeInfo.distance! + "米"
+                } else {
+                    cell?.distanceLabel.text = "未知距离"
+                }
+            }
+            return cell!
+        } else {
+            
+            var cell = tableView.dequeueReusableCellWithIdentifier(carCellIdentifier) as? CarCell
+            if cell == nil {
+                cell = CarCell(style: .Subtitle, reuseIdentifier: carCellIdentifier)
+            }
+            if let carInfo : CarModel = self.cars[indexPath.row] as? CarModel {
+                cell?.carNumLabel.text = carInfo.car_licence_plates
+                if carInfo.distance != nil {
+                    cell?.distanceLabel.text = "距离" + carInfo.distance! + "米"
+                } else {
+                    cell?.distanceLabel.text = "未知距离"
+                }
+            }
+            return cell!
         }
-        cell?.carNumLabel.text = "辽B23456"
-        cell?.distanceLabel.text = "距离3456米"
-        return cell!
     }
 }
 
@@ -260,6 +300,7 @@ extension TimeShareVC {
     func showAroundCars(show: Bool) {
         
         if show {
+            self.isSearchStores = false
             self.delegate.searchFor("附近车辆")
             self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x000000), forState: .Normal)
             self.allCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
@@ -274,6 +315,7 @@ extension TimeShareVC {
     func showAllCars(show: Bool) {
         
         if show {
+            self.isSearchStores = false
             self.delegate.searchFor("全部车辆")
             self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.allCarsBtn.setTitleColor(UIColorFromRGB(0x000000), forState: .Normal)
@@ -289,6 +331,7 @@ extension TimeShareVC {
         
         self.showTableView(show)
         if show {
+            self.isSearchStores = true
             self.delegate.searchFor("附近车场")
             self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.allCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
@@ -303,6 +346,7 @@ extension TimeShareVC {
         
         self.showTableView(show)
         if show {
+            self.isSearchStores = true
             self.delegate.searchFor("全部车场")
             self.aroundCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
             self.allCarsBtn.setTitleColor(UIColorFromRGB(0x727272), forState: .Normal)
@@ -326,6 +370,16 @@ extension TimeShareVC {
             }
             
         }
+    }
+    
+    func cars(cars : NSArray) {
+        self.cars = cars
+        self.tablewView.reloadData()
+    }
+    
+    func stores(stores : NSArray) {
+        self.stores = stores
+        self.tablewView.reloadData()
     }
 
 }
