@@ -23,6 +23,7 @@ enum Router: URLRequestConvertible {
     case EditUserInfo(user_id : String, phone : String, gender : String, head_portrait : String)
     case UploadPicture(type : String)
     case EditValidateInfo(user_id: String, real_name: String, driving_license: String, dirving_picture: String)
+    case GetUserValidateInfo(user_id : String)
     
     var method: Alamofire.Method {
         switch self {
@@ -60,6 +61,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.UploadPictureUrl(type)
         case .EditValidateInfo(let user_id, let real_name, let driving_license, let dirving_picture):
             return ServiceApi.EditValidateInfoUrl(user_id, real_name: real_name, driving_license: driving_license, dirving_picture: dirving_picture)
+        case .GetUserValidateInfo(let user_id):
+            return ServiceApi.getUserValidateInfoUrl(user_id)
 //        default :
 //            return ServiceApi.host
         }

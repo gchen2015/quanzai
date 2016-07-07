@@ -80,6 +80,11 @@ extension QualificationInfoVC : QualificationViewProtocol {
 
 extension QualificationInfoVC {
     
+    //TODO: 获取租车验证信息
+    func getUserValidateInfo() {
+        
+    }
+    
     func openCamera() {
         let photoPicker = UIImagePickerController()
         photoPicker.delegate = self

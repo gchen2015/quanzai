@@ -86,6 +86,10 @@ class ServiceApi: NSObject {
         return self.encodeUrl(url)
     }
     
-    
+    //获取个人租车验证信息
+    internal class func getUserValidateInfoUrl(user_id: String) -> String {
+        let url = "\(host)/User/Api/GetUserValidateInfo.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
+    }
 }
 
