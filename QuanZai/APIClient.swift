@@ -28,6 +28,55 @@ class APIClient : Alamofire.Manager {
     class func sharedAPIClient() -> APIClient {
         return tool
     }
+}
+
+// MARK: - 上传API封装
+
+extension APIClient {
+
+    func uploadRequest(URLString: URLRequestConvertible, data: NSData, progressHandler: ProgressHandler, finished: Finished) {
+        
+        print("URLRequest:\(URLString.URLRequest)")
+        
+        upload(URLString, multipartFormData: {
+            multipartFormData in
+            multipartFormData.appendBodyPart(data: data, name: "picture", fileName: "picture.jpg", mimeType: "MultipartFile")
+            }, encodingCompletion: {
+                encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.responseJSON {
+                        response in
+                        self.requestResult(response, finished: finished)
+                    }
+                    upload.progress(progressHandler)
+                case .Failure(let encodingError):
+                    print(encodingError)
+                    finished!(objc: nil, error: nil, badNetWork: true)
+                }
+        })
+    }
+
+}
+
+// MARK: - 普通API封装
+
+extension APIClient {
+    
+    func sendRequest(URLString: URLRequestConvertible, finished: Finished) {
+        
+        print("URLRequest:\(URLString.URLRequest)")
+        
+        request(URLString).responseJSON { response in
+            self.requestResult(response, finished: finished)
+        }
+    }
+    
+}
+
+// MARK: - 返回结果处理
+
+extension APIClient {
     
     func requestResult(response: Response<AnyObject, NSError>, finished: Finished) {
         
@@ -54,54 +103,4 @@ class APIClient : Alamofire.Manager {
         }
     }
     
-    //上传API封装
-    func uploadRequest(URLString: URLRequestConvertible, data: NSData, progressHandler: ProgressHandler, finished: Finished) {
-        
-        print("URLRequest:\(URLString.URLRequest)")
-        
-        upload(URLString, multipartFormData: {
-            multipartFormData in
-            multipartFormData.appendBodyPart(data: data, name: "picture", fileName: "picture.jpg", mimeType: "MultipartFile")
-            }, encodingCompletion: {
-                encodingResult in
-                switch encodingResult {
-                case .Success(let upload, _, _):
-                    upload.responseJSON {
-                        response in
-                        self.requestResult(response, finished: finished)
-                    }
-                    upload.progress(progressHandler)
-                case .Failure(let encodingError):
-                    print(encodingError)
-                    finished!(objc: nil, error: nil, badNetWork: true)
-                }
-        })
-    }
-    
-    //普通API封装
-    func sendRequest(URLString: URLRequestConvertible, finished: Finished) {
-        
-        print("URLRequest:\(URLString.URLRequest)")
-        
-        request(URLString).responseJSON { response in
-            self.requestResult(response, finished: finished)
-        }
-    }
-    
-//    func fetchData(url: String?) {
-//        Alamofire.request(.GET, "zbcool.com/article/posts/").responseJSON { response in
-//            switch response.result {
-//            case .Success:
-//                if let value = response.result.value {
-//                    let json = JSON(value)
-//                    if let number = json[0]["phones"][0]["number"].string {
-//                        // 找到电话号码
-//                        print("第一个联系人的第一个电话号码：",number)
-//                    }
-//                }
-//            case .Failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
 }
