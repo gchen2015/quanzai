@@ -75,9 +75,6 @@
 		489DC31E1D1809120061033F /* TimeShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC31D1D1809120061033F /* TimeShareVC.swift */; };
 		489DC3201D180BB40061033F /* ActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC31F1D180BB40061033F /* ActionBar.swift */; };
 		489DC3221D18D45A0061033F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC3211D18D45A0061033F /* UserModel.swift */; };
-		489DC3241D1919730061033F /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC3231D1919730061033F /* CategoryModel.swift */; };
-		489DC3261D191A030061033F /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC3251D191A030061033F /* LinkModel.swift */; };
-		489DC3281D191A860061033F /* LinkDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489DC3271D191A860061033F /* LinkDataModel.swift */; };
 		48ABF2AF1D212F2500C16525 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2AE1D212F2500C16525 /* OrderCell.swift */; };
 		48ABF2B31D212F6F00C16525 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48ABF2B21D212F6F00C16525 /* OrderCell.xib */; };
 		48ABF2B71D213D1600C16525 /* OrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABF2B61D213D1600C16525 /* OrderListVC.swift */; };
@@ -217,9 +214,6 @@
 		489DC31D1D1809120061033F /* TimeShareVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeShareVC.swift; sourceTree = "<group>"; };
 		489DC31F1D180BB40061033F /* ActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionBar.swift; sourceTree = "<group>"; };
 		489DC3211D18D45A0061033F /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		489DC3231D1919730061033F /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
-		489DC3251D191A030061033F /* LinkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
-		489DC3271D191A860061033F /* LinkDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkDataModel.swift; sourceTree = "<group>"; };
 		48ABF2AE1D212F2500C16525 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		48ABF2B21D212F6F00C16525 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		48ABF2B61D213D1600C16525 /* OrderListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListVC.swift; sourceTree = "<group>"; };
@@ -419,9 +413,6 @@
 			isa = PBXGroup;
 			children = (
 				489DC3211D18D45A0061033F /* UserModel.swift */,
-				489DC3231D1919730061033F /* CategoryModel.swift */,
-				489DC3251D191A030061033F /* LinkModel.swift */,
-				489DC3271D191A860061033F /* LinkDataModel.swift */,
 				48D95B1F1D2A8B1700197238 /* CarModel.swift */,
 				48D95B241D2BB3D300197238 /* CarStoreModel.swift */,
 				48ACFD9A1D2E22DC00341061 /* DateTypeModel.swift */,
@@ -1000,7 +991,6 @@
 				48B22AD71D1CEC1B00421936 /* TextField.swift in Sources */,
 				487B96F01D17C0F200786DA9 /* NSDate+Utilities.m in Sources */,
 				48B22AD11D1C0E1600421936 /* UserInfoView.swift in Sources */,
-				489DC3241D1919730061033F /* CategoryModel.swift in Sources */,
 				48422B061D1A8FC8005A48D6 /* LoginVC.swift in Sources */,
 				488C64561D23E91300A5D55C /* Button.swift in Sources */,
 				483248471D13F29A00C4EB9E /* APIClient.swift in Sources */,
@@ -1009,14 +999,12 @@
 				48216F341D254CC600720A6B /* DLRadioButton.m in Sources */,
 				48422AE41D192478005A48D6 /* ServiceAPI.swift in Sources */,
 				489DC31E1D1809120061033F /* TimeShareVC.swift in Sources */,
-				489DC3281D191A860061033F /* LinkDataModel.swift in Sources */,
 				48B22AC91D1BCC2E00421936 /* UserInfoVC.swift in Sources */,
 				487B96DE1D17C0EA00786DA9 /* UILabel+KAddition.m in Sources */,
 				487B96DB1D17C0EA00786DA9 /* UIButton+KAddition.m in Sources */,
 				48B22ADE1D20E68500421936 /* ImageView.swift in Sources */,
 				48216F3E1D260BE000720A6B /* BaseCell.swift in Sources */,
 				487B96FE1D17E26C00786DA9 /* BaseVC.swift in Sources */,
-				489DC3261D191A030061033F /* LinkModel.swift in Sources */,
 				48ACFD9B1D2E22DC00341061 /* DateTypeModel.swift in Sources */,
 				487B96DF1D17C0EA00786DA9 /* UIView+KAddition.m in Sources */,
 				48216F2C1D2540A600720A6B /* TopupVC.swift in Sources */,

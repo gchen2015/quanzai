@@ -22,12 +22,14 @@ enum Router: URLRequestConvertible {
     case SerachNearStore(lng : String, lat : String, type : String)
     case EditUserInfo(user_id : String, phone : String, gender : String, head_portrait : String)
     case UploadPicture(type : String)
+    case EditValidateInfo(user_id: String, real_name: String, driving_license: String, dirving_picture: String)
     
     var method: Alamofire.Method {
         switch self {
         case .Login,
              .EditUserInfo,
-             .UploadPicture:
+             .UploadPicture,
+             .EditValidateInfo:
             return .POST
         default:
             return .GET
@@ -55,7 +57,9 @@ enum Router: URLRequestConvertible {
         case .EditUserInfo(let user_id, let phone, let gender, let head_portrait):
             return ServiceApi.EditUserInfoUrl(user_id, phone: phone, gender: gender, head_portrait: head_portrait)
         case .UploadPicture(let type):
-            return ServiceApi.UploadPicture(type)
+            return ServiceApi.UploadPictureUrl(type)
+        case .EditValidateInfo(let user_id, let real_name, let driving_license, let dirving_picture):
+            return ServiceApi.EditValidateInfoUrl(user_id, real_name: real_name, driving_license: driving_license, dirving_picture: dirving_picture)
 //        default :
 //            return ServiceApi.host
         }

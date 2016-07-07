@@ -6,6 +6,8 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+import KeychainAccess
+
 protocol  VerifyCodeViewProtocol : class {
 //    func getCode()
     func rentTheCar()
@@ -38,7 +40,14 @@ protocol  VerifyCodeViewProtocol : class {
     }
     
     func codeBtnTapped() {
-        self.startCountDown()
+        let keychain = Keychain(service: service)
+        if keychain[k_phone] == nil {
+            return
+        }
+        let request = Router.GetValidateCode(phone: keychain[k_phone]!)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            self.startCountDown()
+        }
     }
     
     func okBtnTapped () {

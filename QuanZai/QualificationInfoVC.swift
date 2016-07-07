@@ -6,9 +6,13 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+import KeychainAccess
+import SwiftyDrop
+
 class QualificationInfoVC : BaseVC {
     
     var infoView : QualificationView!
+    var pic_url : String?
     
     override func viewDidLoad() {
         
@@ -41,7 +45,7 @@ class QualificationInfoVC : BaseVC {
                                title: "提交",
                                titleColor: UIColorFromRGB(0x0aa29c),
                                font: HS_FONT(15)) { (nextBtn) in
-            print("提交")
+            self.submit()
         }
         okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
         scrollView.addSubview(okBtn)
@@ -90,6 +94,46 @@ extension QualificationInfoVC {
         self.presentViewController(photoPicker, animated: true, completion: nil)
     }
     
+    //上传头像
+    func uploadPic(image: UIImage) {
+        
+        let request = Router.UploadPicture(type: "1")
+        let imageData: NSData = UIImageJPEGRepresentation(image, 1)!
+        
+        APIClient.sharedAPIClient().uploadRequest(request, data: imageData, progressHandler: { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
+            
+            let persent = Float(totalBytesWritten)/Float(totalBytesExpectedToWrite)*100
+            print("上传进度：\(persent)%")
+            
+        }) { (objc, error, badNetWork) in
+            self.infoView.plusIcon.frame = self.infoView.photoView.bounds
+            self.infoView.plusIcon.image = image
+            if objc != nil {
+                self.pic_url = String(objc!)
+            } else {
+                self.pic_url = ""
+            }
+        }
+    }
+    
+    //提交
+    func submit() {
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil { return }
+        let user_id = keychain[k_UserID]!
+        let real_name = self.infoView.nameTxt.text!
+        let driving_license = self.infoView.IDTxt.text!
+        
+        let request = Router.EditValidateInfo(user_id: user_id, real_name: real_name, driving_license: driving_license, dirving_picture: self.pic_url!)
+        
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            if objc != nil {
+                Drop.down("提交成功", state: .Success)
+                self.infoView.endEditing(true)
+            }
+        }
+    }
 }
 
 extension QualificationInfoVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -106,8 +150,7 @@ extension QualificationInfoVC : UIImagePickerControllerDelegate, UINavigationCon
                 let scale = (CGFloat)(1000/pickedImage.size.width)
                 image = pickedImage.scaleToSize(ccs(pickedImage.size.width*scale, pickedImage.size.height*scale))
             }
-            self.infoView.plusIcon.frame = self.infoView.photoView.bounds
-            self.infoView.plusIcon.image = image
+            self.uploadPic(image)
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
         

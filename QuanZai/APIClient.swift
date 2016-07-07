@@ -101,7 +101,7 @@ extension APIClient {
             
         case .Failure(let error):
             print(error)
-            //finished!(objc: nil, error: error, badNetWork: true)
+            finished!(objc: nil, error: error, badNetWork: true)
             Drop.down("网络出错，请重试", state: DropState.Error)
         }
     }

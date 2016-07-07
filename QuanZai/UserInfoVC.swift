@@ -147,8 +147,10 @@ extension UserInfoVC {
         let request = Router.EditUserInfo(user_id: user_id, phone: phone, gender: gender, head_portrait: head_portrait)
         
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            Drop.down("修改成功", state: .Success)
-            self.infoView.endEditing(true)
+            if objc != nil {
+                Drop.down("修改成功", state: .Success)
+                self.infoView.endEditing(true)
+            }
         }
     }
     
@@ -168,6 +170,8 @@ extension UserInfoVC {
                 self.infoView.avatarIMG.layer.masksToBounds = true
                 if objc != nil {
                     self.avatar_url = String(objc!)
+                } else {
+                    self.avatar_url = ""
                 }
         }
     }

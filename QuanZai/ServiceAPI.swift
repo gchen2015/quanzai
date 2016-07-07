@@ -73,47 +73,19 @@ class ServiceApi: NSObject {
     }
     
     //上传图片
-    internal class func UploadPicture(type:String) -> String{
+    internal class func UploadPictureUrl(type:String) -> String{
         
         let url="\(host)/User/Api/UploadPicture.action?type=\(type)"
         return url
     }
     
-    class func getArticlesUrl(maxId:Int, count:Int) -> String {
-        let url="\(host)/api/articles?maxId=\(maxId)&count=\(count)&withContent=1"
-        return url
-    }
-    
-    class func getArticlesDetail(articleId:Int) -> String {
-        let url="\(host)/api/articles/\(articleId)"
-        return url
-    }
-    
-    class func getArticlesShareDetail(articleId:Int) -> String {
-        let url="\(host)/articles/\(articleId).html"
-        return url
-    }
-    
-    class func getLoginUrl()->String {
-        let url = "\(host)/api/user/login"
-        return url;
-    }
-    
-    class func getRegistUrl() -> String {
+    //租车资格验证信息
+    internal class func EditValidateInfoUrl(user_id: String, real_name: String, driving_license: String, dirving_picture: String) -> String{
         
-        let url = "\(host)/api/user/reg"
-        return url;
-    }
-    class func getTopicCommentUrl() -> String {
-        
-        let url = "\(host)/api/topic/comment"
-        return url;
+        let url="\(host)/User/Api/EditValidateInfo.action?user_id=\(user_id)&real_name=\(real_name)&driving_license=\(driving_license)&dirving_picture=\(dirving_picture)"
+        return self.encodeUrl(url)
     }
     
-    class func getCreateTopicUrl() -> String {
-        
-        let url = "\(host)/api/topic/create"
-        return url;
-    }
+    
 }
 
