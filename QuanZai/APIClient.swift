@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 import SwiftyDrop
 
-typealias Finished = ((objc: AnyObject?, error: NSError?, badNetWork: Bool?) -> ())?
+typealias Finished = ((objc: AnyObject?, error: NSError?, badNetWork: Bool) -> ())?
 typealias ProgressHandler = ((bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) -> Void)?
 
 enum JSONDataType {
@@ -53,14 +53,15 @@ class APIClient : Alamofire.Manager {
                                         finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
                                     } else {
                                         let msg = json["state"]["msg"].string
-                                        finished!(objc: nil, error:response.result.error, badNetWork: false)
+//                                        finished!(objc: nil, error:response.result.error, badNetWork: false)
                                         Drop.down(msg!, state: DropState.Error)
                                     }
                                 }
                             }
                             
                         case .Failure(let error):
-                            finished!(objc: nil, error: error, badNetWork: true)
+                            print(error)
+//                            finished!(objc: nil, error: error, badNetWork: true)
                             Drop.down("网络出错，请重试", state: DropState.Error)
                         }
                     }
@@ -111,14 +112,15 @@ class APIClient : Alamofire.Manager {
                             finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
                         } else {
                             let msg = json["state"]["msg"].string
-                            finished!(objc: nil, error:response.result.error, badNetWork: false)
+//                            finished!(objc: nil, error:response.result.error, badNetWork: false)
                             Drop.down(msg!, state: DropState.Error)
                         }
                     }
                 }
                 
             case .Failure(let error):
-                finished!(objc: nil, error: error, badNetWork: true)
+                print(error)
+//                finished!(objc: nil, error: error, badNetWork: true)
                 Drop.down("网络出错，请重试", state: DropState.Error)
             }
         }

@@ -36,7 +36,6 @@ class HomeVC: BaseVC {
         self.setupActionBar()
         self.showTimeShareVC()
         self.fetchData()
-        
     }
     
 }

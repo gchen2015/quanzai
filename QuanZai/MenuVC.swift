@@ -21,8 +21,8 @@ enum LeftMenu: Int {
 //    case 开发票
     case 个人信息修改
     case 租车资格验证
-//    case 设置
     case 关于
+//    case 退出登录
 }
 
 protocol MenuProtocol : class {
@@ -31,7 +31,7 @@ protocol MenuProtocol : class {
 
 class MenuVC : BaseVC {
     
-    let menus = ["首页", "我的行程", "账户余额", "个人信息修改", "租车资格验证" , "关于"]
+    var menus = ["首页", "我的行程", "账户余额", "个人信息修改", "租车资格验证" , "关于"]
     
     var homeViewController : UIViewController!
     var qualificationInfoViewController : UIViewController!
@@ -43,10 +43,18 @@ class MenuVC : BaseVC {
     
     var avatarIMG : UIImageView!
     var screenNameLabel : UILabel!
+    var logoutBtn: UIButton!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            self.slideMenuController()?.removeLeftGestures()
+        } else {
+            self.slideMenuController()?.addLeftGestures()
+        }
         
         let homeVC = HomeVC()
         self.homeViewController = UINavigationController(rootViewController: homeVC)
@@ -115,6 +123,8 @@ extension MenuVC {
         headerView.addSubview(self.screenNameLabel)
         self.view.addSubview(headerView)
         
+        var lastY : CGFloat = 0
+        
         for index in 0 ..< self.menus.count {
             let title : String = self.menus[index]
 
@@ -149,8 +159,32 @@ extension MenuVC {
                 w = 100
                 h = 20
             }
+            
             menuBtn.frame = ccr(x, y, w, h)
             self.view.addSubview(menuBtn)
+            print(menuBtn.frame)
+            lastY = menuBtn.y
+        }
+        
+        //退出登录按钮
+        logoutBtn = UIButton(imageName: "",
+                             hlImageName: "",
+                             title: "退出登录",
+                             titleColor: UIColor.whiteColor(),
+                             font: HS_FONT(15),
+                             titleEdgeInsets: UIEdgeInsetsZero,
+                             contentHorizontalAlignment: UIControlContentHorizontalAlignment.Left,
+                             onTapBlock: { (menuBtn) in
+                                self.logout()
+        })
+        logoutBtn.frame = ccr(self.screenNameLabel.x, lastY + 40, 100, 20)
+        self.view.addSubview(logoutBtn)
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            logoutBtn.alpha = 0
+        } else {
+            logoutBtn.alpha = 1
         }
     }
     
@@ -163,9 +197,16 @@ extension MenuVC {
 
 extension MenuVC {
     
+    //加载用户信息
     func getUserInfo() {
         let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil { return }
+        if keychain[k_UserID] == nil {
+            logoutBtn.alpha = 0
+            self.slideMenuController()?.removeLeftGestures()
+            return
+        }
+        logoutBtn.alpha = 1
+        self.slideMenuController()?.addLeftGestures()
         APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: keychain[k_UserID]!)) { (objc, error, badNetWork) in
             if let userInfo = Mapper<UserModel>().map(objc) {
                 self.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))
@@ -177,6 +218,38 @@ extension MenuVC {
                 self.userInfoVC.avatar_url = userInfo.head_portrait
             }
         }
+    }
+    
+    //退出登录
+    func logout() {
+        
+        let alertControler = UIAlertController(title: "确定要退出登录吗？", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { (cancelAction) in
+            //do nothing
+        }
+        
+        let logoutAction = UIAlertAction(title: "退出", style: UIAlertActionStyle.Destructive) { (cameraAction) in
+            let keychain = Keychain(service: service)
+            do {
+                try keychain.removeAll()
+                self.resetUserInfo()
+            } catch {
+                Drop.down("退出登录失败", state: DropState.Error)
+            }
+            
+        }
+        
+        alertControler.addAction(cancelAction)
+        alertControler.addAction(logoutAction)
+        self.presentViewController(alertControler, animated: true, completion: nil)
+    }
+    
+    func resetUserInfo() {
+        self.avatarIMG.image = IMG("menu-icon")
+        self.screenNameLabel.text = ""
+        self.logoutBtn.alpha = 0
+        self.slideMenuController()?.removeLeftGestures()
+        self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
     }
 }
 
@@ -190,22 +263,17 @@ extension MenuVC : MenuProtocol {
             self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
         case .我的行程:
             self.slideMenuController()?.changeMainViewController(self.orderListViewController, close: true)
-//        case .我的包裹:
-//            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
-//        case .活动中心:
-//            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
         case .账户余额:
             self.slideMenuController()?.changeMainViewController(self.walletViewController, close: true)
-//        case .开发票:
-//            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
         case .个人信息修改:
             self.slideMenuController()?.changeMainViewController(self.userInfoViewController, close: true)
         case .租车资格验证:
             self.slideMenuController()?.changeMainViewController(self.qualificationInfoViewController, close: true)
-//        case .设置:
-//            break
         case .关于:
             self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
+//        case .退出登录:
+//            self.logout()
         }
+        
     }
 }

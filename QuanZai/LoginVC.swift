@@ -17,6 +17,7 @@ protocol LoginVCProtocol : class {
 import Alamofire
 import ObjectMapper
 import KeychainAccess
+import SwiftyDrop
 
 class LoginVC: BaseVC {
     
@@ -47,6 +48,7 @@ class LoginVC: BaseVC {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.resetCountDown()
+        self.view.endEditing(true)
     }
     
     func setupUI() {
@@ -150,35 +152,35 @@ class LoginVC: BaseVC {
 
 extension LoginVC {
     
+    //获取验证码
     func getCode() {
-        //TODO: 请求API,并开始计时
-        print("fetch code")
-        self.startCountDown()
+        if self.phoneTxt.text?.characters.count == 0 {
+            Drop.down("请输入手机号", state: .Info)
+            return
+        }
+        let request = Router.GetValidateCode(phone: self.phoneTxt.text!)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            self.startCountDown()
+        }
     }
     
+    //登录
     func login() {
         
-        let phone = "18698600911"
-        let validateCode = "1111"
-//        Alamofire.request(Router.Login(phone: phone, validateCode: validateCode)).responseObject(keyPath: "data") { (response: Response<UserModel, NSError>) in
-//            
-//            switch response.result {
-//            case .Success:
-//                let userInfo = response.result.value!
-//                print(userInfo)
-//                self.resetCountDown()
-//                self.delegate?.loginSuccessed()
-//            case .Failure(let error):
-//                print(error)
-//            }
-//        }
+        if self.phoneTxt.text?.characters.count == 0 || self.codeTxt.text?.characters.count == 0 {
+            Drop.down("手机号或验证码不能为空！", state: .Info)
+            return
+        }
         
-        APIClient.sharedAPIClient().sendRequest(Router.Login(phone: phone, validateCode: validateCode)) { (objc, error, badNetWork) in
+        let request = Router.Login(phone: self.phoneTxt.text!, validateCode: self.codeTxt.text!)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             
             if let userInfo = Mapper<UserModel>().map(objc) {
                 let keychain = Keychain(service: service)
                 keychain[k_UserID] = userInfo.id!
                 keychain[k_phone] = userInfo.phone!
+                self.delegate?.loginSuccessed()
+                self.resetCountDown()
             }
             self.dismissViewControllerAnimated(true, completion: nil)
         }
