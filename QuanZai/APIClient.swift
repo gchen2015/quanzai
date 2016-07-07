@@ -40,7 +40,10 @@ extension APIClient {
         
         upload(URLString, multipartFormData: {
             multipartFormData in
-            multipartFormData.appendBodyPart(data: data, name: "picture", fileName: "picture.jpg", mimeType: "MultipartFile")
+            let name = "picture"
+            let fileName = "picture.jpg"
+            let mimeType = "MultipartFile"
+            multipartFormData.appendBodyPart(data: data, name: name, fileName: fileName, mimeType: mimeType)
             }, encodingCompletion: {
                 encodingResult in
                 switch encodingResult {
