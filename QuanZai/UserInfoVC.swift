@@ -55,6 +55,7 @@ class UserInfoVC: BaseVC {
         
         if self.gender != nil && self.gender!.characters.count > 0 {
             self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
+            self.infoView.genderBtn.setTitle(self.gender!, forState: .Normal)
         }
         if self.avatar_url != nil && self.avatar_url?.characters.count > 0 {
             self.infoView.avatarIMG.layer.cornerRadius = 20

@@ -14,6 +14,7 @@ enum Router: URLRequestConvertible {
     
     //Restfull api
     case Login(phone:String, validateCode:String)
+    case GetValidateCode(phone:String)
     case GetUserInfo(user_id:String)
     case GetDateType(car_id:Int)
     case SearchCar(lng:String, lat:String, type:String)
@@ -40,6 +41,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.getUserInfoUrl(user_id)
         case .Login(let phone, let validateCode):
             return ServiceApi.loginUrl(phone, validateCode: validateCode)
+        case .GetValidateCode(let phone):
+            return ServiceApi.GetValidateCodeUrl(phone)
         case .GetDateType(let car_id):
             return ServiceApi.GetDateTypeUrl(car_id)
         case .SearchCar(let lng, let lat, let type):
@@ -47,12 +50,11 @@ enum Router: URLRequestConvertible {
         case .SerachNearStore(let lng, let lat, let type):
             return ServiceApi.SerachNearStoreUrl(lng, lat: lat, type: type)
         case .EditUserInfo(let user_id, let phone, let gender, let head_portrait):
-            let path = ServiceApi.EditUserInfoUrl(user_id, phone: phone, gender: gender, head_portrait: head_portrait)
-            return path.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            return ServiceApi.EditUserInfoUrl(user_id, phone: phone, gender: gender, head_portrait: head_portrait)
         case .UploadPicture(let type):
             return ServiceApi.UploadPicture(type)
-        default :
-            return ServiceApi.host
+//        default :
+//            return ServiceApi.host
         }
     }
     

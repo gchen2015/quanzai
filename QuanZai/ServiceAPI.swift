@@ -10,40 +10,57 @@ class ServiceApi: NSObject {
     
     static var host : String = "http://123.185.175.210:8081/RentCarManage"
     
+    class func encodeUrl(url: String) -> String {
+        return url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    }
+    
     //获取用户信息
     internal class func getUserInfoUrl(user_id:String) -> String {
-        
-        return "\(host)/User/Api/GetUserInfo.action?user_id=\(user_id)"
+        let url = "\(host)/User/Api/GetUserInfo.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
     }
     
     //登录
     internal class func loginUrl(phone:String, validateCode:String) -> String {
         
-        return "\(host)/User/Api/Login.action?phone=\(phone)&validateCode=\(validateCode)"
+        let url = "\(host)/User/Api/Login.action?phone=\(phone)&validateCode=\(validateCode)"
+        return self.encodeUrl(url)
     }
+    
+    //获取短信验证码
+    internal class func GetValidateCodeUrl(phone:String) -> String {
+        
+        let url = "\(host)/User/Api/GetValidateCode.action?phone=\(phone)"
+        return self.encodeUrl(url)
+    }
+
     
     //获取租车类型
     internal class func GetDateTypeUrl(car_id:Int) -> String {
         
-        return "\(host)/Car/Api/GetDateType.action?car_id=\(car_id)"
+        let url = "\(host)/Car/Api/GetDateType.action?car_id=\(car_id)"
+        return self.encodeUrl(url)
     }
     
     //搜索车辆
     internal class func SearchCarUrl(lng:String, lat:String, type:String) -> String {
         
-        return "\(host)/Car/Api/SerachCar.action?lng=\(lng)&lat=\(lat)&type=\(type)"
+        let url = "\(host)/Car/Api/SerachCar.action?lng=\(lng)&lat=\(lat)&type=\(type)"
+        return self.encodeUrl(url)
     }
     
     //搜索车场
     internal class func SerachNearStoreUrl(lng:String, lat:String, type:String) -> String {
         
-        return "\(host)/Car/Api/SerachNearStore.action?lng=\(lng)&lat=\(lat)&type=\(type)"
+        let url = "\(host)/Car/Api/SerachNearStore.action?lng=\(lng)&lat=\(lat)&type=\(type)"
+        return self.encodeUrl(url)
     }
     
     //修改个人信息
     internal class func EditUserInfoUrl(user_id:String,phone:String,gender:String,head_portrait:String) -> String {
-//        print("\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone=\(phone)&gender=\(gender)&head_portrait=\(head_portrait)")
-        return "\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone=\(phone)&gender=\(gender)&head_portrait=\(head_portrait)"
+
+        let url = "\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone=\(phone)&gender=\(gender)&head_portrait=\(head_portrait)"
+        return self.encodeUrl(url)
     }
     
     //上传图片
