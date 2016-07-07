@@ -29,7 +29,7 @@ class APIClient : Alamofire.Manager {
         return tool
     }
     
-    func requestSuccess(response: Response<AnyObject, NSError>, finished: Finished) {
+    func requestResult(response: Response<AnyObject, NSError>, finished: Finished) {
         
         print(response)
         switch response.result {
@@ -68,7 +68,7 @@ class APIClient : Alamofire.Manager {
                 case .Success(let upload, _, _):
                     upload.responseJSON {
                         response in
-                        self.requestSuccess(response, finished: finished)
+                        self.requestResult(response, finished: finished)
                     }
                     upload.progress(progressHandler)
                 case .Failure(let encodingError):
@@ -84,7 +84,7 @@ class APIClient : Alamofire.Manager {
         print("URLRequest:\(URLString.URLRequest)")
         
         request(URLString).responseJSON { response in
-            self.requestSuccess(response, finished: finished)
+            self.requestResult(response, finished: finished)
         }
     }
     
