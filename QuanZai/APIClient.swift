@@ -29,6 +29,31 @@ class APIClient : Alamofire.Manager {
         return tool
     }
     
+    func requestSuccess(response: Response<AnyObject, NSError>, finished: Finished) {
+        
+        print(response)
+        switch response.result {
+        case .Success:
+            if let value = response.result.value {
+                let json = JSON(value)
+                if let status = json["state"]["code"].string {
+                    if status == "200" {
+                        finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
+                    } else {
+                        let msg = json["state"]["msg"].string
+                        //finished!(objc: nil, error:response.result.error, badNetWork: false)
+                        Drop.down(msg!, state: DropState.Error)
+                    }
+                }
+            }
+            
+        case .Failure(let error):
+            print(error)
+            //finished!(objc: nil, error: error, badNetWork: true)
+            Drop.down("网络出错，请重试", state: DropState.Error)
+        }
+    }
+    
     //上传API封装
     func uploadRequest(URLString: URLRequestConvertible, data: NSData, progressHandler: ProgressHandler, finished: Finished) {
         
@@ -43,27 +68,7 @@ class APIClient : Alamofire.Manager {
                 case .Success(let upload, _, _):
                     upload.responseJSON {
                         response in
-                        print(response)
-                        switch response.result {
-                        case .Success:
-                            if let value = response.result.value {
-                                let json = JSON(value)
-                                if let status = json["state"]["code"].string {
-                                    if status == "200" {
-                                        finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
-                                    } else {
-                                        let msg = json["state"]["msg"].string
-//                                        finished!(objc: nil, error:response.result.error, badNetWork: false)
-                                        Drop.down(msg!, state: DropState.Error)
-                                    }
-                                }
-                            }
-                            
-                        case .Failure(let error):
-                            print(error)
-//                            finished!(objc: nil, error: error, badNetWork: true)
-                            Drop.down("网络出错，请重试", state: DropState.Error)
-                        }
+                        self.requestSuccess(response, finished: finished)
                     }
                     upload.progress(progressHandler)
                 case .Failure(let encodingError):
@@ -71,58 +76,15 @@ class APIClient : Alamofire.Manager {
                     finished!(objc: nil, error: nil, badNetWork: true)
                 }
         })
-        
-//        upload(URLString, data: data)
-//            .progress ( progressHandler )
-//            .responseJSON { response in
-//                
-//                switch response.result {
-//                case .Success:
-//                    if let value = response.result.value {
-//                        let json = JSON(value)
-//                        if let status = json["state"]["code"].string {
-//                            if status == "200" {
-//                                finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
-//                            } else {
-//                                let msg = json["state"]["msg"].string
-//                                finished!(objc: nil, error:response.result.error, badNetWork: false)
-//                                Drop.down(msg!, state: DropState.Error)
-//                            }
-//                        }
-//                    }
-//                    
-//                case .Failure(let error):
-//                    finished!(objc: nil, error: error, badNetWork: true)
-//                    Drop.down("网络出错，请重试", state: DropState.Error)
-//                }
-//            }
-//            .validate()
     }
     
     //普通API封装
     func sendRequest(URLString: URLRequestConvertible, finished: Finished) {
+        
         print("URLRequest:\(URLString.URLRequest)")
+        
         request(URLString).responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    if let status = json["state"]["code"].string {
-                        if status == "200" {
-                            finished!(objc: json["data"].rawValue, error: nil, badNetWork: false)
-                        } else {
-                            let msg = json["state"]["msg"].string
-//                            finished!(objc: nil, error:response.result.error, badNetWork: false)
-                            Drop.down(msg!, state: DropState.Error)
-                        }
-                    }
-                }
-                
-            case .Failure(let error):
-                print(error)
-//                finished!(objc: nil, error: error, badNetWork: true)
-                Drop.down("网络出错，请重试", state: DropState.Error)
-            }
+            self.requestSuccess(response, finished: finished)
         }
     }
     
