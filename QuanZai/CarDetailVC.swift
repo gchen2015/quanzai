@@ -136,11 +136,13 @@ extension CarDetailVC {
         
         let request = Router.UserVilidate(phone: phone, validateCode: validatecode)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            prgressHUD.dismiss()
-            if objc == nil {
-                self.dismissAlert()
-                self.validateUserRentRight()
-            }
+            prgressHUD.dismiss({
+                if objc != nil {
+                    self.dismissAlert()
+                    self.validateUserRentRight()
+                }
+            })
+            
         }
     }
     
@@ -159,11 +161,12 @@ extension CarDetailVC {
         
         let request = Router.UserRentRightValidate(user_id: user_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            prgressHUD.dismiss()
-            if objc != nil {
-                self.isRentRightValidated = true
-                self.validateUserBalance(user_id, car_id: self.car_id)
-            }
+            prgressHUD.dismiss({
+                if objc != nil {
+                    self.isRentRightValidated = true
+                    self.validateUserBalance(user_id, car_id: self.car_id)
+                }
+            })
         }
     }
     
@@ -175,11 +178,12 @@ extension CarDetailVC {
         
         let request = Router.UserBalanceValidate(user_id: user_id, car_id: car_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            prgressHUD.dismiss()
-            if objc != nil {
-                self.isBalanceValidated = true
-                self.makeOrder(user_id, car_id: car_id, date_type_id: self.selected_date_type_id!)
-            }
+            prgressHUD.dismiss({
+                if objc != nil {
+                    self.isBalanceValidated = true
+                    self.makeOrder(user_id, car_id: car_id, date_type_id: self.selected_date_type_id!)
+                }
+            })
         }
     }
     
@@ -191,13 +195,14 @@ extension CarDetailVC {
         
         let request = Router.MakeOrder(user_id: user_id, car_id: car_id, date_type_id: date_type_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            prgressHUD.dismiss()
-            if objc != nil {
-                //TODO: 处理返回的事件
-                Drop.down("下单成功！", state: .Success)
-                self.navigationController?.popToRootViewControllerAnimated(true)
-                
-            }
+            prgressHUD.dismiss({
+                if objc != nil {
+                    //TODO: 处理返回的事件
+                    Drop.down("下单成功！", state: .Success)
+                    self.navigationController?.popToRootViewControllerAnimated(true)
+                    
+                }
+            })
         }
     }
 
