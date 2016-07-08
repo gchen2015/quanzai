@@ -128,6 +128,10 @@ class ServiceApi: NSObject {
         return self.encodeUrl(url)
     }
     
-    
+    //结算
+    internal class func OrderPaymentUrl(user_id: String) -> String {
+        let url = "\(host)/Payment/Api/OrderPayment.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
+    }
 }
 
