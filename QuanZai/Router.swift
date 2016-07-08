@@ -28,6 +28,7 @@ enum Router: URLRequestConvertible {
     case UserBalanceValidate(user_id : String, car_id : String)
     case UserVilidate(phone : String, validateCode : String)
     case MakeOrder(user_id : String, car_id : String, date_type_id : String)
+    case GetOrderList(user_id: String)
     
     var method: Alamofire.Method {
         switch self {
@@ -75,8 +76,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.UserValidateUrl(phone, validateCode: validateCode)
         case .MakeOrder(let user_id, let car_id, let date_type_id):
             return ServiceApi.MakeOrderUrl(user_id, car_id: car_id, date_type_id: date_type_id)
-//        default :
-//            return ServiceApi.host
+        case .GetOrderList(let user_id):
+            return ServiceApi.GetOrderListUrl(user_id)
         }
     }
     

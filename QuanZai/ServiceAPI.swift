@@ -15,20 +15,20 @@ class ServiceApi: NSObject {
     }
     
     //获取用户信息
-    internal class func GetUserInfoUrl(user_id:String) -> String {
+    internal class func GetUserInfoUrl(user_id: String) -> String {
         let url = "\(host)/User/Api/GetUserInfo.action?user_id=\(user_id)"
         return self.encodeUrl(url)
     }
     
     //登录
-    internal class func loginUrl(phone:String, validateCode:String) -> String {
+    internal class func loginUrl(phone: String, validateCode: String) -> String {
         
         let url = "\(host)/User/Api/Login.action?phone=\(phone)&validateCode=\(validateCode)"
         return self.encodeUrl(url)
     }
     
     //获取短信验证码
-    internal class func GetValidateCodeUrl(phone:String) -> String {
+    internal class func GetValidateCodeUrl(phone: String) -> String {
         
         let url = "\(host)/User/Api/GetValidateCode.action?phone=\(phone)"
         return self.encodeUrl(url)
@@ -36,7 +36,7 @@ class ServiceApi: NSObject {
 
     
     //获取租车类型
-    internal class func GetDateTypeUrl(car_id:String) -> String {
+    internal class func GetDateTypeUrl(car_id: String) -> String {
         
         let url = "\(host)/Car/Api/GetDateType.action?car_id=\(car_id)"
         return self.encodeUrl(url)
@@ -44,7 +44,7 @@ class ServiceApi: NSObject {
     
     
     //获取车辆详情
-    internal class func GetCarInfoUrl(car_id:String) -> String {
+    internal class func GetCarInfoUrl(car_id: String) -> String {
         
         let url = "\(host)/Car/Api/GetCarInfo.action?car_id=\(car_id)"
         return self.encodeUrl(url)
@@ -52,28 +52,28 @@ class ServiceApi: NSObject {
     
     
     //搜索车辆
-    internal class func SearchCarUrl(lng:String, lat:String, type:String) -> String {
+    internal class func SearchCarUrl(lng: String, lat: String, type: String) -> String {
         
         let url = "\(host)/Car/Api/SerachCar.action?lng=\(lng)&lat=\(lat)&type=\(type)"
         return self.encodeUrl(url)
     }
     
     //搜索车场
-    internal class func SerachNearStoreUrl(lng:String, lat:String, type:String) -> String {
+    internal class func SerachNearStoreUrl(lng: String, lat: String, type: String) -> String {
         
         let url = "\(host)/Car/Api/SerachNearStore.action?lng=\(lng)&lat=\(lat)&type=\(type)"
         return self.encodeUrl(url)
     }
     
     //修改个人信息
-    internal class func EditUserInfoUrl(user_id:String,phone:String,gender:String,head_portrait:String) -> String {
+    internal class func EditUserInfoUrl(user_id: String,phone: String,gender: String,head_portrait: String) -> String {
 
         let url = "\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone=\(phone)&gender=\(gender)&head_portrait=\(head_portrait)"
         return self.encodeUrl(url)
     }
     
     //上传图片
-    internal class func UploadPictureUrl(type:String) -> String{
+    internal class func UploadPictureUrl(type: String) -> String{
         
         let url="\(host)/User/Api/UploadPicture.action?type=\(type)"
         return url
@@ -105,7 +105,7 @@ class ServiceApi: NSObject {
     }
     
     //下单前身份验证
-    internal class func UserValidateUrl(phone:String, validateCode:String) -> String {
+    internal class func UserValidateUrl(phone: String, validateCode: String) -> String {
         let url = "\(host)/User/Api/UserValidate.action?phone=\(phone)&validateCode=\(validateCode)"
         return self.encodeUrl(url)
     }
@@ -113,6 +113,12 @@ class ServiceApi: NSObject {
     //下单
     internal class func MakeOrderUrl(user_id: String, car_id: String, date_type_id: String) -> String {
         let url = "\(host)/Order/Api/MakeOrder.action?user_id=\(user_id)&car_id=\(car_id)&date_type_id=\(date_type_id)"
+        return self.encodeUrl(url)
+    }
+    
+    //获取订单列表
+    internal class func GetOrderListUrl(user_id: String) -> String {
+        let url = "\(host)/Order/Api/GetOrderList.action?user_id=\(user_id)"
         return self.encodeUrl(url)
     }
 }
