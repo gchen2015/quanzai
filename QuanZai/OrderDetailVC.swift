@@ -57,7 +57,18 @@ class OrderDetailVC : BaseVC {
         scrollView.contentSize = ccs(k_SCREEN_W, CGRectGetMaxY(okBtn.frame)+20)
     }
 
-    
+    //画面数据初始化
+    func setData(orderInfo : OrderModel) {
+        self.infoView.numberLabel.text = orderInfo.car_licence_plates
+        self.infoView.brandLabel.text = orderInfo.car_name! + orderInfo.car_type_name!
+        self.infoView.rentTypeLabel.text = orderInfo.date_time_name
+        self.infoView.startTimeLabel.text = orderInfo.real_start_time
+        self.infoView.endTimeLabel.text = orderInfo.real_end_time
+        self.infoView.sumTimeLabel.text = orderInfo.total_time
+        self.infoView.sumMileageLabel.text = orderInfo.mileage_total
+        self.infoView.priceLabel.text = orderInfo.order_amount
+        self.infoView.addrLabel.text = orderInfo.address
+    }
 }
 
 extension OrderDetailVC {
@@ -74,17 +85,8 @@ extension OrderDetailVC {
     
     }
     
-    //画面数据初始化
-    func setData(orderInfo : OrderModel) {
-        self.infoView.numberLabel.text = orderInfo.car_licence_plates
-        self.infoView.brandLabel.text = orderInfo.car_name! + orderInfo.car_type_name!
-        self.infoView.rentTypeLabel.text = orderInfo.date_time_name
-        self.infoView.startTimeLabel.text = orderInfo.real_start_time
-        self.infoView.endTimeLabel.text = orderInfo.real_end_time
-        self.infoView.sumTimeLabel.text = orderInfo.total_time
-        self.infoView.sumMileageLabel.text = orderInfo.mileage_total
-        self.infoView.priceLabel.text = orderInfo.order_amount
-        self.infoView.addrLabel.text = orderInfo.address
+    func submitOrder() {
+        
     }
     
     

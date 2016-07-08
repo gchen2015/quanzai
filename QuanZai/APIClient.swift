@@ -38,18 +38,20 @@ extension APIClient {
         
         print("URLRequest:\(URLString.URLRequest)")
         
-        upload(URLString, multipartFormData: {
-            multipartFormData in
+        upload(URLString, multipartFormData: { multipartFormData in
+            
             let name = "picture"
             let fileName = "picture.jpg"
             let mimeType = "MultipartFile"
-            multipartFormData.appendBodyPart(data: data, name: name, fileName: fileName, mimeType: mimeType)
-            }, encodingCompletion: {
-                encodingResult in
+            multipartFormData.appendBodyPart(data: data,
+                                             name: name,
+                                         fileName: fileName,
+                                         mimeType: mimeType)
+            }, encodingCompletion: { encodingResult in
+                
                 switch encodingResult {
                 case .Success(let upload, _, _):
-                    upload.responseJSON {
-                        response in
+                    upload.responseJSON { response in
                         self.requestResult(response, finished: finished)
                     }
                     upload.progress(progressHandler)
