@@ -45,6 +45,7 @@ class OrderDetailVC : BaseVC {
                          font: HS_FONT(15)) { (nextBtn) in
                             self.submitOrder()
         }
+        okBtn.alpha = 0
         scrollView.addSubview(okBtn)
     }
 
@@ -65,9 +66,10 @@ class OrderDetailVC : BaseVC {
         //完成已还车 && 未支付 情况显示支付按钮
         if paymentStatus == .UnPaid && orderStatus == .Returned {
             okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
-            
+            okBtn.alpha = 1
         } else {
             okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 0)
+            okBtn.alpha = 0
         }
         
         scrollView.contentSize = ccs(k_SCREEN_W, CGRectGetMaxY(okBtn.frame)+20)
