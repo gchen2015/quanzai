@@ -114,30 +114,15 @@ extension CarDetailVC {
                 self.dateTypes.removeAllObjects()
                 for dateType in dateTypes {
                     self.dateTypes.addObject(dateType)
-                    if dateType.date_type_name == "分钟" {
-                        
-                        self.infoView.unitPayRow1_TimeLabel.text = "<=" + dateType.time_point! + "小时"
-                        self.infoView.unitPayRow2_TimeLabel.text = ">" + dateType.time_point! + "小时"
-                        
-                        if let inTimePrice = dateType.base_price_list?.filter({ (priceModel) -> Bool in
-                            (priceModel as PriceModel).is_out_time! == "0"
-                        }).first {
-                            self.infoView.unitPayRow1_TimePriceLabel.text = inTimePrice.time_unit_price! + "/分钟"
-                            self.infoView.unitPayRow1_MileagePriceLabel.text = inTimePrice.mileage_unit_price! + "/公里"
-                        }
-                        
-                        if  let outTimePrice = dateType.base_price_list?.filter({ (priceModel) -> Bool in
-                            (priceModel as PriceModel).is_out_time! == "1"
-                        }).first {
-                            self.infoView.unitPayRow2_TimePriceLabel.text = outTimePrice.time_unit_price! + "/分钟"
-                            self.infoView.unitPayRow2_MileagePriceLabel.text = outTimePrice.mileage_unit_price! + "/公里"
-                        }
-                        
-                    } else {
-                        if let priceInfo = dateType.base_price_list?.first {
-                            self.infoView.priceLabel.text = priceInfo.time_unit_price! + "元"
-                        }
-                    }
+//                    if dateType.date_type_name == "分钟" {
+//                        
+//                        
+//                        
+//                    } else {
+//                        if let priceInfo = dateType.base_price_list?.first {
+//                            self.infoView.priceLabel.text = priceInfo.time_unit_price! + "元"
+//                        }
+//                    }
                 }
             }
         }
@@ -168,9 +153,33 @@ extension CarDetailVC : CarDetailViewProtocol {
                 self.infoView.paymentBtn.setTitle(item.date_type_name, forState: .Normal)
                 self.infoView.paymentBtn.setTitleColor(UIColor.lightGrayColor() , forState: .Normal)
                 if item.date_type_name == "分钟" {
+                    
                     self.showUnitPayView(true)
+                    
+                    self.infoView.unitPayRow1_TimeLabel.text = "<=" + item.time_point! + "小时"
+                    self.infoView.unitPayRow2_TimeLabel.text = ">" + item.time_point! + "小时"
+                    
+                    if let inTimePrice = item.base_price_list?.filter({ (priceModel) -> Bool in
+                        (priceModel as PriceModel).is_out_time! == "0"
+                    }).first {
+                        self.infoView.unitPayRow1_TimePriceLabel.text = inTimePrice.time_unit_price! + "/分钟"
+                        self.infoView.unitPayRow1_MileagePriceLabel.text = inTimePrice.mileage_unit_price! + "/公里"
+                    }
+                    
+                    if  let outTimePrice = item.base_price_list?.filter({ (priceModel) -> Bool in
+                        (priceModel as PriceModel).is_out_time! == "1"
+                    }).first {
+                        self.infoView.unitPayRow2_TimePriceLabel.text = outTimePrice.time_unit_price! + "/分钟"
+                        self.infoView.unitPayRow2_MileagePriceLabel.text = outTimePrice.mileage_unit_price! + "/公里"
+                    }
+                    
                 } else {
                     self.showUnitPayView(false)
+                    if let priceInfo = item.base_price_list?.first {
+                        self.infoView.priceLabel.text = priceInfo.time_unit_price! + "元"
+                    } else {
+                        self.infoView.priceLabel.text = "未设定"
+                    }
                 }
             }
             alertControler.addAction(action)
