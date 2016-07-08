@@ -15,7 +15,7 @@ class ServiceApi: NSObject {
     }
     
     //获取用户信息
-    internal class func getUserInfoUrl(user_id:String) -> String {
+    internal class func GetUserInfoUrl(user_id:String) -> String {
         let url = "\(host)/User/Api/GetUserInfo.action?user_id=\(user_id)"
         return self.encodeUrl(url)
     }
@@ -87,8 +87,26 @@ class ServiceApi: NSObject {
     }
     
     //获取个人租车验证信息
-    internal class func getUserValidateInfoUrl(user_id: String) -> String {
+    internal class func GetUserValidateInfoUrl(user_id: String) -> String {
         let url = "\(host)/User/Api/GetUserValidateInfo.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
+    }
+    
+    //下单前租车资格验证
+    internal class func UserRentRightValidateUrl(user_id: String) -> String {
+        let url = "\(host)/Order/Api/UserRentRightValidate.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
+    }
+    
+    //下单前余额验证
+    internal class func UserBalanceValidateUrl(user_id: String, car_id: String) -> String {
+        let url = "\(host)/Order/Api/UserBalanceValidate.action?user_id=\(user_id)&car_id=\(car_id)"
+        return self.encodeUrl(url)
+    }
+    
+    //下单
+    internal class func MakeOrderUrl(user_id: String, car_id: String, date_type_id: String) -> String {
+        let url = "\(host)/Order/Api/MakeOrder.action?user_id=\(user_id)&car_id=\(car_id)&date_type_id=\(date_type_id)"
         return self.encodeUrl(url)
     }
 }

@@ -24,6 +24,9 @@ enum Router: URLRequestConvertible {
     case UploadPicture(type : String)
     case EditValidateInfo(user_id: String, real_name: String, driving_license: String, dirving_picture: String)
     case GetUserValidateInfo(user_id : String)
+    case UserRentRightValidate(user_id : String)
+    case UserBalanceValidate(user_id : String, car_id : String)
+    case MakeOrder(user_id : String, car_id : String, date_type_id : String)
     
     var method: Alamofire.Method {
         switch self {
@@ -42,7 +45,7 @@ enum Router: URLRequestConvertible {
     var path: String {
         switch self {
         case .GetUserInfo(let user_id):
-            return ServiceApi.getUserInfoUrl(user_id)
+            return ServiceApi.GetUserInfoUrl(user_id)
         case .Login(let phone, let validateCode):
             return ServiceApi.loginUrl(phone, validateCode: validateCode)
         case .GetValidateCode(let phone):
@@ -62,7 +65,13 @@ enum Router: URLRequestConvertible {
         case .EditValidateInfo(let user_id, let real_name, let driving_license, let dirving_picture):
             return ServiceApi.EditValidateInfoUrl(user_id, real_name: real_name, driving_license: driving_license, dirving_picture: dirving_picture)
         case .GetUserValidateInfo(let user_id):
-            return ServiceApi.getUserValidateInfoUrl(user_id)
+            return ServiceApi.GetUserValidateInfoUrl(user_id)
+        case .UserRentRightValidate(let user_id):
+            return ServiceApi.UserRentRightValidateUrl(user_id)
+        case .UserBalanceValidate(let user_id, let car_id):
+            return ServiceApi.UserBalanceValidateUrl(user_id, car_id: car_id)
+        case .MakeOrder(let user_id, let car_id, let date_type_id):
+            return ServiceApi.MakeOrderUrl(user_id, car_id: car_id, date_type_id: date_type_id)
 //        default :
 //            return ServiceApi.host
         }

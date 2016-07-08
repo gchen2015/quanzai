@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 import SwiftyDrop
+import KeychainAccess
 
 class CarDetailVC: BaseVC {
     
@@ -18,6 +19,9 @@ class CarDetailVC: BaseVC {
     var dateTypes : NSMutableArray = []
     var okBtn : UIButton!
     var scrollView: UIScrollView!
+    var isRentRightValidated : Bool = false
+    var isBalanceValidated : Bool = false
+    var selected_date_type_id : String?
     
     override func viewDidLoad() {
         
@@ -114,19 +118,56 @@ extension CarDetailVC {
                 self.dateTypes.removeAllObjects()
                 for dateType in dateTypes {
                     self.dateTypes.addObject(dateType)
-//                    if dateType.date_type_name == "分钟" {
-//                        
-//                        
-//                        
-//                    } else {
-//                        if let priceInfo = dateType.base_price_list?.first {
-//                            self.infoView.priceLabel.text = priceInfo.time_unit_price! + "元"
-//                        }
-//                    }
                 }
             }
         }
     }
+    
+    //下单前租车资格验证
+    func validateUserRentRight() {
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            Drop.down("未取得登录信息，请重新登录再试")
+            return
+        }
+        if self.selected_date_type_id == nil {
+            Drop.down("请先选择租车类型")
+            return
+        }
+        let user_id = keychain[k_UserID]!
+        let request = Router.UserRentRightValidate(user_id: user_id)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            if objc != nil {
+                self.isRentRightValidated = true
+                self.validateUserBalance(user_id, car_id: self.car_id)
+            }
+        }
+    }
+    
+    //下单前余额验证
+    func validateUserBalance(user_id: String, car_id: String) {
+        
+        let request = Router.UserBalanceValidate(user_id: user_id, car_id: car_id)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            if objc != nil {
+                self.isBalanceValidated = true
+                self.makeOrder(user_id, car_id: car_id, date_type_id: self.selected_date_type_id!)
+            }
+        }
+    }
+    
+    //下单
+    func makeOrder(user_id: String, car_id: String, date_type_id: String) {
+
+        let request = Router.MakeOrder(user_id: user_id, car_id: car_id, date_type_id: date_type_id)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            if objc != nil {
+                //TODO: 处理返回的事件
+            }
+        }
+    }
+
     
 }
 
@@ -150,6 +191,7 @@ extension CarDetailVC : CarDetailViewProtocol {
         
         for item in types {
             let action = UIAlertAction(title: item.date_type_name, style: UIAlertActionStyle.Default) { (maleAction) in
+                self.selected_date_type_id = item.id
                 self.infoView.paymentBtn.setTitle(item.date_type_name, forState: .Normal)
                 self.infoView.paymentBtn.setTitleColor(UIColor.lightGrayColor() , forState: .Normal)
                 if item.date_type_name == "分钟" {
@@ -198,5 +240,6 @@ extension CarDetailVC : VerifyCodeViewProtocol {
         
     func rentTheCar() {
         //TODO: 确认租车
+        
     }
 }
