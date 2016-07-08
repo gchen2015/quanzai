@@ -6,11 +6,18 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+import Alamofire
+import SwiftyJSON
+import ObjectMapper
+import SwiftyDrop
+import KeychainAccess
+
 class OrderListVC : BaseVC {
     
     let orderCellIdentifier: String!  = "OrderCell";
     var tableView : UITableView!
     var showMenuBtn : Bool = false
+    var orders = [OrderModel]()
     
     override func viewDidLoad() {
         
@@ -31,18 +38,35 @@ class OrderListVC : BaseVC {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.view.addSubview(self.tableView)
-        self.tableView.reloadData()
+        
+        self.getOrderList()
     }
     
     func setupUI() {
         
     }
+    
+    func getOrderList() {
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            Drop.down("未取得登录信息，请重新登录再试")
+            return
+        }
+        let request = Router.GetOrderList(user_id: keychain[k_UserID]!)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            if let orders = Mapper<OrderModel>().mapArray(objc) {
+                self.orders = orders
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
 }
 
 extension OrderListVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.orders.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -54,34 +78,25 @@ extension OrderListVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(orderCellIdentifier, forIndexPath: indexPath) as? OrderCell
         cell?.accessoryType = .DisclosureIndicator
         
-        cell?.chargeLabel.text = "1,000"
-        cell?.chargeStatusLabel.text = "已支付"
-        cell?.statusLabel.text = "订单完成"
-        cell?.nameLabel.text = "宝马X5 (辽B123456)"
-        cell?.timeLabel.text = "2016-06-27 18:08"
+        let order = self.orders[indexPath.row]
         
-        if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 4 {
-            cell?.setOrderStatus(.Returned)
-            cell?.setPaymentStatus(.Paid)
-        } else if indexPath.row == 2 {
-            cell?.setOrderStatus(.Close)
-            cell?.setPaymentStatus(.UnPaid)
-
-        } else if indexPath.row == 5 || indexPath.row == 6 {
-            cell?.setOrderStatus(.Overtime)
-            cell?.setPaymentStatus(.UnPaid)
-        } else {
-            cell?.setOrderStatus(.Overtime)
-            cell?.setPaymentStatus(.UnPaid)
-        }
+        cell?.chargeLabel.text = order.order_amount
+        cell?.chargeStatusLabel.text = order.payment_status_display
+        cell?.statusLabel.text = order.order_status_display
+        cell?.nameLabel.text = order.car_name! + "(" + order.car_licence_plates! + ")"
+        cell?.timeLabel.text = order.ctime
+        cell?.setOrderStatus(OrderStatus(rawValue: Int(order.order_status!)!)!)
+        cell?.setPaymentStatus(PaymentStatus(rawValue: Int(order.payment_status!)!)!)
         
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        let order = self.orders[indexPath.row]
+        
         let orderDetailVC = OrderDetailVC()
-        orderDetailVC.paymentStatus = .Paid
+        orderDetailVC.orderInfo = order
         self.navigationController?.pushViewController(orderDetailVC, animated: true)
         
     }

@@ -121,5 +121,13 @@ class ServiceApi: NSObject {
         let url = "\(host)/Order/Api/GetOrderList.action?user_id=\(user_id)"
         return self.encodeUrl(url)
     }
+    
+    //获取订单详情
+    internal class func GetOrderDetailUrl(user_id: String) -> String {
+        let url = "\(host)/Order/Api/GetOrderDetail.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
+    }
+    
+    
 }
 

@@ -8,8 +8,8 @@
 
 //支付类型
 enum PaymentStatus : Int {
-    case Paid = 0,   //0.已支付
-         UnPaid      //1.未支付
+    case UnPaid = 0,   //0.已支付
+         Paid          //1.未支付
 }
 
 //订单状态

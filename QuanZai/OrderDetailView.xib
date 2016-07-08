@@ -258,86 +258,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" id="dVp-6l-pMQ" customClass="View" customModule="QuanZai" customModuleProvider="target">
-                    <rect key="frame" x="16" y="396" width="288" height="45"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始里程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oLP-sQ-8u1">
-                            <rect key="frame" x="0.0" y="-2" width="65" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="8I5-q9-fjb">
-                            <rect key="frame" x="68" y="-5" width="1" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000.00km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="anB-nd-beG" customClass="Label" customModule="QuanZai" customModuleProvider="target">
-                            <rect key="frame" x="68" y="-2" width="220" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                    <real key="value" value="20"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="3"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
-                <view contentMode="scaleToFill" id="kC9-tV-rvm" customClass="View" customModule="QuanZai" customModuleProvider="target">
-                    <rect key="frame" x="16" y="449" width="288" height="45"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结束里程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8j3-p9-axs">
-                            <rect key="frame" x="0.0" y="-2" width="65" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Oj6-3t-XRd">
-                            <rect key="frame" x="68" y="-5" width="1" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000.00km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yhV-I1-8Qc" customClass="Label" customModule="QuanZai" customModuleProvider="target">
-                            <rect key="frame" x="68" y="-2" width="220" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                    <real key="value" value="20"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="3"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
                 <view contentMode="scaleToFill" id="ICe-vn-qIA" customClass="View" customModule="QuanZai" customModuleProvider="target">
-                    <rect key="frame" x="16" y="502" width="288" height="45"/>
+                    <rect key="frame" x="16" y="396" width="288" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总里程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1hj-nH-Xb3">
@@ -376,7 +298,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" id="9m8-8r-3fh" customClass="View" customModule="QuanZai" customModuleProvider="target">
-                    <rect key="frame" x="16" y="555" width="288" height="45"/>
+                    <rect key="frame" x="16" y="449" width="288" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="租车费用" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EDc-9B-Tey">
@@ -415,7 +337,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" id="85T-Lc-vq5" customClass="View" customModule="QuanZai" customModuleProvider="target">
-                    <rect key="frame" x="16" y="608" width="288" height="45"/>
+                    <rect key="frame" x="16" y="502" width="288" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="取车地址" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3tA-n2-Ttq">
@@ -466,10 +388,6 @@
                 <outlet property="brandLine" destination="8dZ-aZ-sEy" id="C0n-Gx-pWm"/>
                 <outlet property="brandTitle" destination="FMU-4F-HLC" id="18w-Vj-iE3"/>
                 <outlet property="brandView" destination="p9e-23-Pk7" id="DRh-k0-9ng"/>
-                <outlet property="endMileageLabel" destination="yhV-I1-8Qc" id="PHb-pb-BtV"/>
-                <outlet property="endMileageLine" destination="Oj6-3t-XRd" id="B03-Ee-HKa"/>
-                <outlet property="endMileageTitle" destination="8j3-p9-axs" id="HqN-AN-S4P"/>
-                <outlet property="endMileageView" destination="kC9-tV-rvm" id="pVd-AR-PQm"/>
                 <outlet property="endTimeLabel" destination="Mhn-gA-QXO" id="oWP-JT-Blw"/>
                 <outlet property="endTimeLine" destination="qpN-dX-uX3" id="BF9-di-FSf"/>
                 <outlet property="endTimeTitle" destination="qgg-2H-GpN" id="cwd-TZ-avk"/>
@@ -487,10 +405,6 @@
                 <outlet property="rentTypeLine" destination="5fW-4T-Ni1" id="H2u-D6-gv1"/>
                 <outlet property="rentTypeTitle" destination="kkE-hk-09N" id="GMi-OU-13q"/>
                 <outlet property="rentTypeView" destination="RoL-hY-ZUB" id="QWd-43-BfG"/>
-                <outlet property="startMileageLabel" destination="anB-nd-beG" id="kd7-Qc-MOD"/>
-                <outlet property="startMileageLine" destination="8I5-q9-fjb" id="aKY-h6-Ybn"/>
-                <outlet property="startMileageTitle" destination="oLP-sQ-8u1" id="Tzv-Oe-d4O"/>
-                <outlet property="startMileageView" destination="dVp-6l-pMQ" id="ukV-S4-dvc"/>
                 <outlet property="startTimeLabel" destination="ggT-QQ-c4h" id="KF4-Re-jdI"/>
                 <outlet property="startTimeLine" destination="1hr-yc-QFe" id="Svp-5D-v4S"/>
                 <outlet property="startTimeTitle" destination="xX6-Gh-noU" id="oLP-4R-rhi"/>

@@ -45,6 +45,7 @@ class OrderModel : BaseModel {
     var phone : String?
     var real_end_time : String?
     var real_start_time : String?
+    var total_time : String?
     var reservation_end_time : String?
     var reservation_start_time : String?
     
@@ -96,6 +97,7 @@ class OrderModel : BaseModel {
         phone <- map["phone"]
         real_end_time <- map["real_end_time"]
         real_start_time <- map["real_start_time"]
+        total_time <- map["total_time"]
         reservation_end_time <- map["reservation_end_time"]
         reservation_start_time <- map["reservation_start_time"]
         
