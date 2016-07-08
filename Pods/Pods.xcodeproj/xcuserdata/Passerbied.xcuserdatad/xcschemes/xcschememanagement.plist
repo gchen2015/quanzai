@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GradientCircularProgress.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HMSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,22 +92,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>058971436FC9DAD99887FA7722565739</key>
+		<key>15C60A2D01EC79B05F5FDDDFB00D8904</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4F810F65EA91644B0A2C5609E11A60DB</key>
+		<key>28414D74930156DFC6F60F8CD49B30D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5ECFED58FE9D94F71EB921FD7FA9C368</key>
+		<key>64E2E8A663EF43AFA2FA09BE4D5DE704</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>71C1DF39EE1271EA1147F993CA1439A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7504012D0F31137EFF797FA44F40F5FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,12 +137,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5D823E00BB66D961B08C5FFE2C1BE38</key>
+		<key>B77042E48DB297A57174453FDA825F53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BCEA86FA3D50CBB30B9CC3C6E4FB5CCA</key>
+		<key>BDE283AA9BDD17F12CAD4741D8E97EBA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,7 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E02B98211564AEB68221977CCBB29034</key>
+		<key>C6B4843A6ADF9E6897EA9F9A2D444DE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

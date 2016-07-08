@@ -7,10 +7,11 @@
 //
 
 import KeychainAccess
+import SwiftyDrop
 
 protocol  VerifyCodeViewProtocol : class {
 //    func getCode()
-    func rentTheCar()
+    func rentTheCar(verifyCodeView : VerifyCodeView)
 }
 
 @IBDesignable class VerifyCodeView : UIView {
@@ -32,6 +33,7 @@ protocol  VerifyCodeViewProtocol : class {
         self.layout()
         self.codeBtn.addTarget(self, action: #selector(codeBtnTapped), forControlEvents: .TouchUpInside)
         self.okBtn.addTarget(self, action: #selector(okBtnTapped), forControlEvents: .TouchUpInside)
+        self.codeTxt.delegate = self
     }
     
     override func removeFromSuperview() {
@@ -51,7 +53,12 @@ protocol  VerifyCodeViewProtocol : class {
     }
     
     func okBtnTapped () {
-        self.delegate?.rentTheCar()
+        if self.codeTxt.text?.characters.count == 0 {
+            Drop.down("请输入验证码")
+            return
+        }
+        self.codeTxt.endEditing(true)
+        self.delegate?.rentTheCar(self)
     }
     
     func startCountDown() {
@@ -117,4 +124,15 @@ protocol  VerifyCodeViewProtocol : class {
             make.height.equalTo(40)
         }
     }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension VerifyCodeView : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.codeTxt.endEditing(true)
+        return true
+    }
+    
 }

@@ -23,6 +23,7 @@ pod 'SnapKit', '~> 0.21.1'
 pod 'ImagePicker'
 pod 'ObjectMapper'
 pod 'Presentr'
+pod 'GradientCircularProgress', :git => 'https://github.com/keygx/GradientCircularProgress'
 
 
 

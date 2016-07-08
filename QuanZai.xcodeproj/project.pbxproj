@@ -88,6 +88,7 @@
 		48ACFD9F1D2E42CE00341061 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9E1D2E42CE00341061 /* StoreCell.swift */; };
 		48ACFDA21D2F410200341061 /* UserValidateInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFDA11D2F410200341061 /* UserValidateInfoModel.swift */; };
 		48ACFDA41D2F573F00341061 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFDA31D2F573F00341061 /* Validate.swift */; };
+		48ACFDA61D2F742800341061 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFDA51D2F742800341061 /* ProgressHUD.swift */; };
 		48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */; };
 		48B22AC31D1BA9D000421936 /* btn-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22AC21D1BA9D000421936 /* btn-white@2x.png */; };
 		48B22AC91D1BCC2E00421936 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */; };
@@ -229,6 +230,7 @@
 		48ACFD9E1D2E42CE00341061 /* StoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		48ACFDA11D2F410200341061 /* UserValidateInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserValidateInfoModel.swift; sourceTree = "<group>"; };
 		48ACFDA31D2F573F00341061 /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
+		48ACFDA51D2F742800341061 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-close-btn@2x.png"; sourceTree = "<group>"; };
 		48B22AC21D1BA9D000421936 /* btn-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white@2x.png"; sourceTree = "<group>"; };
 		48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 				487B96F51D17C11500786DA9 /* UIAddition.h */,
 				487B96E01D17C0F200786DA9 /* CoreAddition */,
 				487B96BE1D17C0EA00786DA9 /* UIAddition */,
+				48ACFDA51D2F742800341061 /* ProgressHUD.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 			files = (
 				48B22ACF1D1BDB1200421936 /* QualificationView.swift in Sources */,
 				487B96DC1D17C0EA00786DA9 /* UIDevice+Hardware.m in Sources */,
+				48ACFDA61D2F742800341061 /* ProgressHUD.swift in Sources */,
 				48ABF2B71D213D1600C16525 /* OrderListVC.swift in Sources */,
 				489DC3201D180BB40061033F /* ActionBar.swift in Sources */,
 				48B22ACB1D1BCD0600421936 /* QualificationInfoVC.swift in Sources */,

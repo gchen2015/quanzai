@@ -79,7 +79,12 @@ class CarDetailVC: BaseVC {
 extension CarDetailVC {
     
     func okTapped() {
+        if self.selected_date_type_id == nil {
+            Drop.down("请先选择租车类型")
+            return
+        }
         let alertView = NSBundle.mainBundle().loadNibNamed("VerifyCodeView", owner: nil, options: nil).first as! VerifyCodeView
+        alertView.delegate = self
         alertView.size = ccs(k_SCREEN_W-40, 160)
         self.showAlert(alertView)
     }
@@ -123,6 +128,22 @@ extension CarDetailVC {
         }
     }
     
+    //短信验证
+    func validateUser(phone: String, validatecode: String) {
+        
+        let prgressHUD = ProgressHUD()
+        prgressHUD.showInWindow("身份验证中...")
+        
+        let request = Router.UserVilidate(phone: phone, validateCode: validatecode)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            prgressHUD.dismiss()
+            if objc == nil {
+                self.dismissAlert()
+                self.validateUserRentRight()
+            }
+        }
+    }
+    
     //下单前租车资格验证
     func validateUserRentRight() {
         
@@ -131,13 +152,14 @@ extension CarDetailVC {
             Drop.down("未取得登录信息，请重新登录再试")
             return
         }
-        if self.selected_date_type_id == nil {
-            Drop.down("请先选择租车类型")
-            return
-        }
         let user_id = keychain[k_UserID]!
+        
+        let prgressHUD = ProgressHUD()
+        prgressHUD.showInWindow("身份验证成功，\n租车资格验证中...")
+        
         let request = Router.UserRentRightValidate(user_id: user_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            prgressHUD.dismiss()
             if objc != nil {
                 self.isRentRightValidated = true
                 self.validateUserBalance(user_id, car_id: self.car_id)
@@ -148,8 +170,12 @@ extension CarDetailVC {
     //下单前余额验证
     func validateUserBalance(user_id: String, car_id: String) {
         
+        let prgressHUD = ProgressHUD()
+        prgressHUD.showInWindow("租车资格验证成功，\n余额验证中...")
+        
         let request = Router.UserBalanceValidate(user_id: user_id, car_id: car_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            prgressHUD.dismiss()
             if objc != nil {
                 self.isBalanceValidated = true
                 self.makeOrder(user_id, car_id: car_id, date_type_id: self.selected_date_type_id!)
@@ -160,10 +186,17 @@ extension CarDetailVC {
     //下单
     func makeOrder(user_id: String, car_id: String, date_type_id: String) {
 
+        let prgressHUD = ProgressHUD()
+        prgressHUD.showInWindow("验证成功，\n正在下单...")
+        
         let request = Router.MakeOrder(user_id: user_id, car_id: car_id, date_type_id: date_type_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            prgressHUD.dismiss()
             if objc != nil {
                 //TODO: 处理返回的事件
+                Drop.down("下单成功！", state: .Success)
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                
             }
         }
     }
@@ -237,9 +270,19 @@ extension CarDetailVC : CarDetailViewProtocol {
 // MARK: - VerifyCodeViewProtocol
 
 extension CarDetailVC : VerifyCodeViewProtocol {
+    
+    /**
+     确认按钮点击
+     流程：短信验证码验证 -> 租车资格验证 -> 余额验证 -> 下单
+     */
+    func rentTheCar(verifyCodeView: VerifyCodeView) {
         
-    func rentTheCar() {
-        //TODO: 确认租车
-        
+        let keychain = Keychain(service: service)
+        if keychain[k_phone] == nil {
+            Drop.down("未取得登录信息，请重新登录再试")
+            return
+        }
+        self.validateUser(keychain[k_phone]!, validatecode: verifyCodeView.codeTxt.text!)
     }
+    
 }

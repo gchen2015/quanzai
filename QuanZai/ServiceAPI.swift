@@ -104,6 +104,12 @@ class ServiceApi: NSObject {
         return self.encodeUrl(url)
     }
     
+    //下单前身份验证
+    internal class func UserValidateUrl(phone:String, validateCode:String) -> String {
+        let url = "\(host)/User/Api/UserValidate.action?phone=\(phone)&validateCode=\(validateCode)"
+        return self.encodeUrl(url)
+    }
+    
     //下单
     internal class func MakeOrderUrl(user_id: String, car_id: String, date_type_id: String) -> String {
         let url = "\(host)/Order/Api/MakeOrder.action?user_id=\(user_id)&car_id=\(car_id)&date_type_id=\(date_type_id)"
