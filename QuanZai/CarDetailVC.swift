@@ -133,6 +133,10 @@ extension CarDetailVC {
                             self.infoView.unitPayRow2_MileagePriceLabel.text = outTimePrice.mileage_unit_price! + "/公里"
                         }
                         
+                    } else {
+                        if let priceInfo = dateType.base_price_list?.first {
+                            self.infoView.priceLabel.text = priceInfo.time_unit_price! + "元"
+                        }
                     }
                 }
             }
