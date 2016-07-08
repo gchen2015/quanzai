@@ -24,24 +24,24 @@ protocol UserInfoViewProtocol: class {
     
     var delegate : UserInfoViewProtocol?
     
-    @IBOutlet var headerView: UIView!
-    @IBOutlet var headerTitle: UILabel!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerTitle: UILabel!
     
-    @IBOutlet var genderView: View!
-    @IBOutlet var genderTitle: UILabel!
-    @IBOutlet var genderLine: UIImageView!
-    @IBOutlet var genderBtn: UIButton!
+    @IBOutlet weak var genderView: View!
+    @IBOutlet weak var genderTitle: UILabel!
+    @IBOutlet weak var genderLine: UIImageView!
+    @IBOutlet weak var genderBtn: UIButton!
     
-    @IBOutlet var avatarView: View!
-    @IBOutlet var avatarTitle: UILabel!
-    @IBOutlet var avatarLine: UIImageView!
-    @IBOutlet internal var avatarIMG: UIImageView!
-    @IBOutlet var avatarBtn: UIButton!
+    @IBOutlet weak var avatarView: View!
+    @IBOutlet weak var avatarTitle: UILabel!
+    @IBOutlet weak var avatarLine: UIImageView!
+    @IBOutlet weak internal var avatarIMG: UIImageView!
+    @IBOutlet weak var avatarBtn: UIButton!
     
-    @IBOutlet var phoneView: View!
-    @IBOutlet var phoneTitle: UILabel!
-    @IBOutlet var phoneLine: UIImageView!
-    @IBOutlet var phoneTxt: UITextField!
+    @IBOutlet weak var phoneView: View!
+    @IBOutlet weak var phoneTitle: UILabel!
+    @IBOutlet weak var phoneLine: UIImageView!
+    @IBOutlet weak var phoneTxt: UITextField!
     
 //    @IBOutlet var passwordView: View!
 //    @IBOutlet var passwordTitle: UILabel!

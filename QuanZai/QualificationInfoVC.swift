@@ -8,6 +8,7 @@
 
 import KeychainAccess
 import SwiftyDrop
+import ObjectMapper
 
 class QualificationInfoVC : BaseVC {
     
@@ -27,6 +28,7 @@ class QualificationInfoVC : BaseVC {
         self.showLeftBarItem(menuBtn)
         
         self.setupUI()
+        self.getUserValidateInfo()
     }
     
     func setupUI() {
@@ -80,11 +82,6 @@ extension QualificationInfoVC : QualificationViewProtocol {
 
 extension QualificationInfoVC {
     
-    //TODO: 获取租车验证信息
-    func getUserValidateInfo() {
-        
-    }
-    
     func openCamera() {
         let photoPicker = UIImagePickerController()
         photoPicker.delegate = self
@@ -97,6 +94,34 @@ extension QualificationInfoVC {
         photoPicker.delegate = self
         photoPicker.sourceType = .PhotoLibrary
         self.presentViewController(photoPicker, animated: true, completion: nil)
+    }
+    
+    //TODO: 获取租车验证信息
+    func getUserValidateInfo() {
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            Drop.down("未取得登录信息，请尝试重新登录")
+            return
+        }
+        let request = Router.GetUserValidateInfo(user_id: keychain[k_UserID]!)
+        
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            if let validateInfo = Mapper<UserValidateInfoModel>().map(objc) {
+                self.infoView.nameTxt.text = validateInfo.real_name
+                self.infoView.IDTxt.text = validateInfo.driving_license
+                self.infoView.plusIcon.af_setImageWithURL(URL(validateInfo.dirving_picture!),
+                                                          placeholderImage: IMG("plus"),
+                                                          filter: nil, progress: nil,
+                                                          progressQueue: dispatch_get_main_queue(),
+                                                          imageTransition: .CrossDissolve(0.2),
+                                                          runImageTransitionIfCached: true,
+                                                          completion: { response in
+                    self.infoView.plusIcon.frame = self.infoView.photoView.bounds
+                })
+                
+            }
+        }
     }
     
     //上传头像
@@ -121,7 +146,7 @@ extension QualificationInfoVC {
         }
     }
     
-    //提交
+    //提交信息
     func submit() {
         
         let keychain = Keychain(service: service)

@@ -24,17 +24,17 @@ enum OrderStatus : Int {
 
 @IBDesignable class OrderCell : BaseCell {
     
-    @IBOutlet var nameTitle: UILabel!
-    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet weak var nameTitle: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet var chargeTitle: UILabel!
-    @IBOutlet var chargeLabel: UILabel!
+    @IBOutlet weak var chargeTitle: UILabel!
+    @IBOutlet weak var chargeLabel: UILabel!
     
-    @IBOutlet var statusLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
-    @IBOutlet var chargeStatusLabel: UILabel!
+    @IBOutlet weak var chargeStatusLabel: UILabel!
     
-    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
 
     //TODO: auto layout
     

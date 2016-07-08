@@ -86,6 +86,7 @@
 		48ACFD9B1D2E22DC00341061 /* DateTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9A1D2E22DC00341061 /* DateTypeModel.swift */; };
 		48ACFD9D1D2E234D00341061 /* PriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9C1D2E234D00341061 /* PriceModel.swift */; };
 		48ACFD9F1D2E42CE00341061 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9E1D2E42CE00341061 /* StoreCell.swift */; };
+		48ACFDA21D2F410200341061 /* UserValidateInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFDA11D2F410200341061 /* UserValidateInfoModel.swift */; };
 		48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */; };
 		48B22AC31D1BA9D000421936 /* btn-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22AC21D1BA9D000421936 /* btn-white@2x.png */; };
 		48B22AC91D1BCC2E00421936 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */; };
@@ -225,6 +226,7 @@
 		48ACFD9A1D2E22DC00341061 /* DateTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTypeModel.swift; sourceTree = "<group>"; };
 		48ACFD9C1D2E234D00341061 /* PriceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceModel.swift; sourceTree = "<group>"; };
 		48ACFD9E1D2E42CE00341061 /* StoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
+		48ACFDA11D2F410200341061 /* UserValidateInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserValidateInfoModel.swift; sourceTree = "<group>"; };
 		48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-close-btn@2x.png"; sourceTree = "<group>"; };
 		48B22AC21D1BA9D000421936 /* btn-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white@2x.png"; sourceTree = "<group>"; };
 		48B22AC81D1BCC2E00421936 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				48D95B241D2BB3D300197238 /* CarStoreModel.swift */,
 				48ACFD9A1D2E22DC00341061 /* DateTypeModel.swift */,
 				48ACFD9C1D2E234D00341061 /* PriceModel.swift */,
+				48ACFDA11D2F410200341061 /* UserValidateInfoModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				487B96F21D17C0F200786DA9 /* NSString+Additions.m in Sources */,
 				48216F3C1D26080300720A6B /* PaymentListVC.swift in Sources */,
 				48422B001D1979FF005A48D6 /* CarCell.swift in Sources */,
+				48ACFDA21D2F410200341061 /* UserValidateInfoModel.swift in Sources */,
 				487B96DD1D17C0EA00786DA9 /* UIImage+PL.m in Sources */,
 				48ABF2B91D22172900C16525 /* Label.swift in Sources */,
 				487B96EE1D17C0F200786DA9 /* NSArray+Additions.m in Sources */,

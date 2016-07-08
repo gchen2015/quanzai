@@ -18,20 +18,20 @@ class QualificationView: UIView {
     
     var delegate : QualificationViewProtocol?
     
-    @IBOutlet internal var remarksLabel: UILabel!
-    @IBOutlet var plusBtn: UIButton!
-    @IBOutlet internal var plusIcon: UIImageView!
-    @IBOutlet internal var photoView: View!
-    @IBOutlet var IDTxt: UITextField!
-    @IBOutlet var IDLine: UIImageView!
-    @IBOutlet var IDTItle: UILabel!
-    @IBOutlet var IDView: View!
-    @IBOutlet var nameTxt: UITextField!
-    @IBOutlet var nameLine: UIImageView!
-    @IBOutlet var nameTitle: UILabel!
-    @IBOutlet var nameView: View!
-    @IBOutlet var headerTitle: UILabel!
-    @IBOutlet var headerView: UIView!
+    @IBOutlet weak internal var remarksLabel: UILabel!
+    @IBOutlet weak var plusBtn: UIButton!
+    @IBOutlet weak internal var plusIcon: UIImageView!
+    @IBOutlet weak internal var photoView: View!
+    @IBOutlet weak var IDTxt: UITextField!
+    @IBOutlet weak var IDLine: UIImageView!
+    @IBOutlet weak var IDTItle: UILabel!
+    @IBOutlet weak var IDView: View!
+    @IBOutlet weak var nameTxt: UITextField!
+    @IBOutlet weak var nameLine: UIImageView!
+    @IBOutlet weak var nameTitle: UILabel!
+    @IBOutlet weak var nameView: View!
+    @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var headerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
