@@ -34,6 +34,8 @@ enum Router: URLRequestConvertible {
     case ControlCarRight(user_id: String, lng: String, lat: String, type: String)
     case ReturnCar(user_id: String, car_id: String, store_id: String, order_id: String)
     case ReturnCarAddressConfirm(user_id: String)
+    case GetUserAccountBalance(user_id: String)
+    case GetUserAccountDetail(user_id: String)
     
     var method: Alamofire.Method {
         switch self {
@@ -93,6 +95,10 @@ enum Router: URLRequestConvertible {
             return ServiceApi.ReturnCarUrl(user_id, car_id: car_id, store_id: store_id, order_id: order_id)
         case .ReturnCarAddressConfirm(let user_id):
             return ServiceApi.ReturnCarAddressConfirmUrl(user_id)
+        case .GetUserAccountBalance(let user_id):
+            return ServiceApi.GetUserAccountBalanceUrl(user_id)
+        case .GetUserAccountDetail(let user_id):
+            return ServiceApi.GetUserAccountDetailUrl(user_id)
         }
     }
     

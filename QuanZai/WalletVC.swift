@@ -6,6 +6,11 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+import KeychainAccess
+import ObjectMapper
+import SwiftyDrop
+import SwiftyJSON
+
 class WalletVC: BaseVC {
     
     var infoView : WalletView!
@@ -22,6 +27,7 @@ class WalletVC: BaseVC {
         self.showLeftBarItem(menuBtn)
         
         self.setupUI()
+        self.getUserAccountBalance()
     }
     
     func setupUI() {
@@ -31,6 +37,26 @@ class WalletVC: BaseVC {
         self.infoView.frame = ccr(10, 20, k_SCREEN_W-20, 260)
         self.view.addSubview(infoView)
     }
+}
+
+extension WalletVC {
+    
+    func getUserAccountBalance() {
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            self.showLoginVC(true)
+            return
+        }
+        let request = Router.GetUserAccountBalance(user_id: keychain[k_UserID]!)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            let json = JSON(objc!)
+            if let account_balance = json["account_balance"].string {
+                self.infoView.moneyLabel.text = account_balance + "元"
+            }
+        }
+    }
+    
 }
 
 // MARK: - WalletViewProtocol

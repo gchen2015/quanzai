@@ -151,5 +151,17 @@ class ServiceApi: NSObject {
         let url = "\(host)/Order/Api/ReturnCar.action?user_id=\(user_id)&car_id=\(car_id)&store_id=\(store_id)&order_id=\(order_id)"
         return self.encodeUrl(url)
     }
+    
+    //账户余额
+    internal class func GetUserAccountBalanceUrl(user_id: String) -> String {
+        let url = "\(host)/User/Api/GetUserAccountBalance.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
+    }
+    
+    //获取用户账户明细信息
+    internal class func GetUserAccountDetailUrl(user_id: String) -> String {
+        let url = "\(host)/User/Api/GetUserAccountDetail.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
+    }
 }
 
