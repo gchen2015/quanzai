@@ -13,7 +13,7 @@ import SwiftyJSON
 import ObjectMapper
 import SwiftyDrop
 import HMSegmentedControl
-import Presentr
+import KeychainAccess
 
 class HomeVC: BaseVC {
     
@@ -24,6 +24,7 @@ class HomeVC: BaseVC {
     lazy var timeShareVC : TimeShareVC = self.setupTimeShareVC()
     var actionBar : ActionBar!
     var isFirstLoad : Bool = true
+    var current_order_id : String?
     
     
     override func viewDidLoad() {
@@ -35,7 +36,6 @@ class HomeVC: BaseVC {
         self.setupSegmentedBar()
         self.setupActionBar()
         self.showTimeShareVC()
-        self.fetchData()
     }
     
 }
@@ -44,11 +44,62 @@ class HomeVC: BaseVC {
 
 extension HomeVC {
     
-    func fetchData() {
+    //开门，关门
+    func ControlCarRight(type: ActionType) {
         
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            self.showLoginVC(true)
+            return
+        }
+        let request = Router.ControlCarRight(user_id: keychain[k_UserID]!,
+                                             lng: String(self.userLocation.coordinate.longitude),
+                                             lat: String(self.userLocation.coordinate.latitude),
+                                             type: String(type))
+        APIClient.sharedAPIClient().sendRequest(request, finished: { (objc, error, badNetWork) in
+            
+        })
     }
     
+    //还车围栏验证
+    func returnCarAddressConfirm() {
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            self.showLoginVC(true)
+            return
+        }
+        let progressHUD = ProgressHUD()
+        progressHUD.showInView(self.view, message: "正在进行车场验证...")
+        let request = Router.ReturnCarAddressConfirm(user_id: keychain[k_UserID]!)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            if let store = Mapper<CarStoreModel>().map(objc) {
+                if store.car_id == nil || store.id == nil || store.order_id == nil {
+                    progressHUD.dismiss({
+                        Drop.down("数据有误，请联系客服")
+                    })
+                    return
+                }
+                self.current_order_id = store.order_id
+                progressHUD.dismiss()
+                self.returnCar(keychain[k_UserID]!, car_id: store.car_id!, store_id: store.id!, order_id: store.order_id!)
+            }
+        }
+    }
+    
+    //还车
+    func returnCar(user_id: String, car_id: String, store_id: String, order_id: String) {
+        let progressHUD = ProgressHUD()
+        progressHUD.showInView(self.view, message: "车场验证成功，\n正在还车...")
+        let request = Router.ReturnCar(user_id: user_id, car_id: car_id, store_id: store_id, order_id: order_id)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            progressHUD.dismiss({ 
+                Drop.down("还车成功", state: .Success)
+            })
+        }
+    }
 }
+
 
 // MARK: - SetupUI
 
@@ -145,9 +196,30 @@ extension HomeVC {
 
 extension HomeVC: actionProtocol {
     
-    func itemTapped(index: Int) {
-        print(index)
-        self.fetchData()
+    func itemTapped(type: ActionType) {
+        
+        //未登录用户先登录
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            self.showLoginVC(true)
+            return
+        }
+        
+        switch type {
+        case .Open,
+             .Lock:
+            self.ControlCarRight(type)
+        case .ReturnCar:
+            self.returnCarAddressConfirm()
+        case .Pay:
+            if self.current_order_id == nil {
+                Drop.down("您还没有租车订单需要结算")
+                return
+            }
+            let orderVC = OrderDetailVC()
+            orderVC.order_id = self.current_order_id
+            self.navigationController?.pushViewController(orderVC, animated: true)
+        }
     }
 }
 

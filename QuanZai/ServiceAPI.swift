@@ -133,5 +133,23 @@ class ServiceApi: NSObject {
         let url = "\(host)/Payment/Api/OrderPayment.action?user_id=\(user_id)"
         return self.encodeUrl(url)
     }
+    
+    //车辆操控
+    internal class func ControlCarRightUrl(user_id: String, lng: String, lat: String, type: String) -> String {
+        let url = "\(host)/User/Api/ControlCarRight.action?user_id=\(user_id)&lng=\(lng)&lat=\(lat)&type=\(type)"
+        return self.encodeUrl(url)
+    }
+    
+    //判断车辆是否已到回车车场围栏内
+    internal class func ReturnCarAddressConfirmUrl(user_id: String) -> String {
+        let url = "\(host)/Order/Api/ReturnCarAddressConfirm.action?user_id=\(user_id)"
+        return self.encodeUrl(url)
+    }
+    
+    //还车
+    internal class func ReturnCarUrl(user_id: String, car_id: String, store_id: String, order_id: String) -> String {
+        let url = "\(host)/Order/Api/ReturnCar.action?user_id=\(user_id)&car_id=\(car_id)&store_id=\(store_id)&order_id=\(order_id)"
+        return self.encodeUrl(url)
+    }
 }
 

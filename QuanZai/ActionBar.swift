@@ -6,8 +6,15 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+enum ActionType: Int {
+    case Open = 0,    //开门
+         Lock,        //锁门
+         ReturnCar,   //还车
+         Pay          //结算
+}
+
 protocol actionProtocol : class{
-    func itemTapped(index: Int)
+    func itemTapped(type: ActionType)
 }
 
 class ActionBar: UIView {
@@ -25,7 +32,7 @@ class ActionBar: UIView {
         
         
         let unlockBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (unlockBtn) in
-            self.delegate.itemTapped(0)
+            self.delegate.itemTapped(ActionType.Open)
         })
         unlockBtn.frame = frame
         
@@ -51,7 +58,7 @@ class ActionBar: UIView {
         frame = ccr(CGRectGetMaxX(unlockBtn.frame), 0, self.width/4, self.height)
         
         let lockBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (lockBtn) in
-            self.delegate.itemTapped(1)
+            self.delegate.itemTapped(ActionType.Lock)
         })
         lockBtn.frame = frame
         
@@ -77,7 +84,7 @@ class ActionBar: UIView {
         frame = ccr(CGRectGetMaxX(lockBtn.frame), 0, self.width/4, self.height)
         
         let returnBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (returnBtn) in
-            self.delegate.itemTapped(2)
+            self.delegate.itemTapped(ActionType.ReturnCar)
         })
         returnBtn.frame = frame
         
@@ -89,7 +96,7 @@ class ActionBar: UIView {
         let returnTitle = UILabel()
         returnTitle.font = HS_FONT(13)
         returnTitle.textColor = unlockTitle.textColor
-        returnTitle.text = "换车"
+        returnTitle.text = "还车"
         returnTitle.textAlignment = NSTextAlignment.Center
         returnTitle.size = title_size
         returnTitle.centerX = returnBtn.centerX
@@ -103,7 +110,7 @@ class ActionBar: UIView {
         frame = ccr(CGRectGetMaxX(returnBtn.frame), 0, self.width/4, self.height)
         
         let chargeBtn = UIButton(imageName: "", hlImageName: "", onTapBlock: { (returnBtn) in
-            self.delegate.itemTapped(3)
+            self.delegate.itemTapped(ActionType.Pay)
         })
         chargeBtn.frame = frame
         

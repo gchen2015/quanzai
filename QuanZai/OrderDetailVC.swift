@@ -16,7 +16,8 @@ class OrderDetailVC : BaseVC {
     
     var infoView : OrderDetailView!
     var paymentStatus : PaymentStatus!
-    var orderInfo : OrderModel!
+    var orderInfo : OrderModel?
+    var order_id : String? = ""
     var okBtn : UIButton!
     var scrollView : UIScrollView!
     
@@ -26,7 +27,11 @@ class OrderDetailVC : BaseVC {
         
         self.showTitle("订单详情")
         self.setupUI()
-        self.setData(self.orderInfo)
+        if self.orderInfo == nil {
+            self.getOrderDetail(self.order_id!)
+        } else {
+          self.setData(self.orderInfo!)
+        }
     }
     
     func setupUI() {
@@ -61,8 +66,8 @@ class OrderDetailVC : BaseVC {
         self.infoView.priceLabel.text = orderInfo.order_amount
         self.infoView.addrLabel.text = orderInfo.address
         
-        let paymentStatus = PaymentStatus(rawValue: Int(self.orderInfo.payment_status!)!)!
-        let orderStatus = OrderStatus(rawValue: Int(self.orderInfo.order_status!)!)!
+        let paymentStatus = PaymentStatus(rawValue: Int(self.orderInfo!.payment_status!)!)!
+        let orderStatus = OrderStatus(rawValue: Int(self.orderInfo!.order_status!)!)!
         //完成已还车 && 未支付 情况显示支付按钮
         if paymentStatus == .UnPaid && orderStatus == .Returned {
             okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
@@ -79,9 +84,9 @@ class OrderDetailVC : BaseVC {
 extension OrderDetailVC {
     
     //取得订单详情信息
-    func getOrderDetail() {
+    func getOrderDetail(order_id: String) {
         
-        let request = Router.GetOrderDetail(order_id: self.orderInfo.id!)
+        let request = Router.GetOrderDetail(order_id: order_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if let orderInfo = Mapper<OrderModel>().map(objc) {
                 self.setData(orderInfo)
@@ -103,7 +108,7 @@ extension OrderDetailVC {
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if objc != nil {
                 Drop.down("支付成功", state: .Success)
-                self.getOrderDetail()
+                self.getOrderDetail(self.orderInfo!.id!)
             }
         }
     }
