@@ -163,5 +163,12 @@ class ServiceApi: NSObject {
         let url = "\(host)/User/Api/GetUserAccountDetail.action?user_id=\(user_id)"
         return self.encodeUrl(url)
     }
+    
+    //账户充值
+    internal class func RechargeUserAccountUrl(user_id: String, capital: String, type: String) -> String {
+        let url = "\(host)/User/Api/RechargeUserAccount.action?user_id=\(user_id)&capital=\(capital)&type=\(type)"
+        return self.encodeUrl(url)
+    }
+    
 }
 

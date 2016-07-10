@@ -36,6 +36,7 @@ enum Router: URLRequestConvertible {
     case ReturnCarAddressConfirm(user_id: String)
     case GetUserAccountBalance(user_id: String)
     case GetUserAccountDetail(user_id: String)
+    case RechargeUserAccount(user_id: String, capital: String, type: String)
     
     var method: Alamofire.Method {
         switch self {
@@ -99,6 +100,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.GetUserAccountBalanceUrl(user_id)
         case .GetUserAccountDetail(let user_id):
             return ServiceApi.GetUserAccountDetailUrl(user_id)
+        case .RechargeUserAccount(let user_id, let capital, let type):
+            return ServiceApi.RechargeUserAccountUrl(user_id, capital: capital, type: type)
         }
     }
     

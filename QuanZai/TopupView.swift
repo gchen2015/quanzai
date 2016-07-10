@@ -9,6 +9,7 @@
 protocol TopupViewProtocol {
     func openAlipay()
     func openWechatPay()
+    func selectedButton(radioButton : DLRadioButton)
 }
 
 //import DLRadioButton
@@ -21,6 +22,8 @@ protocol TopupViewProtocol {
     @IBOutlet weak var remarkLabel: UILabel!
     @IBOutlet weak var alipayBtn: Button!
     @IBOutlet weak var wechatPayBtn: Button!
+    
+    var selected_money : String?
 
     var delegate : TopupViewProtocol?
     
@@ -71,6 +74,8 @@ protocol TopupViewProtocol {
             make.width.equalTo(150)
             make.height.equalTo(30)
         }
+        otherMoneyTxt.delegate = self
+        
         remarkLabel.snp_makeConstraints { (make) in
             make.top.equalTo(otherMoneyTxt.snp_top)
             make.left.equalTo(otherMoneyTxt.snp_right).offset(10)
@@ -126,6 +131,13 @@ protocol TopupViewProtocol {
             }
         } else {
             print(String(format: "%@ is selected.\n", radioButton.selectedButton()!.titleLabel!.text!));
+            self.delegate?.selectedButton(radioButton)
         }
+    }
+}
+
+extension TopupView : UITextFieldDelegate {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        return true
     }
 }
