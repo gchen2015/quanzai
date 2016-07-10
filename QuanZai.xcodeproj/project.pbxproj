@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		480C1DB41D2FA563002DAFAA /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C1DB31D2FA563002DAFAA /* OrderModel.swift */; };
+		480C1DB61D315A15002DAFAA /* TradeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C1DB51D315A15002DAFAA /* TradeModel.swift */; };
 		48216F231D2538E800720A6B /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48216F221D2538E800720A6B /* WalletVC.swift */; };
 		48216F251D25390E00720A6B /* WalletView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48216F241D25390E00720A6B /* WalletView.xib */; };
 		48216F281D25396200720A6B /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48216F271D25396200720A6B /* WalletView.swift */; };
@@ -131,6 +132,7 @@
 /* Begin PBXFileReference section */
 		2E6BF24CF5E3A97E55781C3F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		480C1DB31D2FA563002DAFAA /* OrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		480C1DB51D315A15002DAFAA /* TradeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeModel.swift; sourceTree = "<group>"; };
 		48216F221D2538E800720A6B /* WalletVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
 		48216F241D25390E00720A6B /* WalletView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletView.xib; sourceTree = "<group>"; };
 		48216F271D25396200720A6B /* WalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				48ACFD9C1D2E234D00341061 /* PriceModel.swift */,
 				48ACFDA11D2F410200341061 /* UserValidateInfoModel.swift */,
 				480C1DB31D2FA563002DAFAA /* OrderModel.swift */,
+				480C1DB51D315A15002DAFAA /* TradeModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				487B96BA1D17B49E00786DA9 /* swiftFastCode.swift in Sources */,
 				487B96FC1D17E25900786DA9 /* MapVC.swift in Sources */,
 				48B22AD71D1CEC1B00421936 /* TextField.swift in Sources */,
+				480C1DB61D315A15002DAFAA /* TradeModel.swift in Sources */,
 				487B96F01D17C0F200786DA9 /* NSDate+Utilities.m in Sources */,
 				48B22AD11D1C0E1600421936 /* UserInfoView.swift in Sources */,
 				48422B061D1A8FC8005A48D6 /* LoginVC.swift in Sources */,

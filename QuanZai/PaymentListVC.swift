@@ -6,10 +6,17 @@
 //  Copyright © 2016 i-chou. All rights reserved.
 //
 
+import KeychainAccess
+import ObjectMapper
+import SwiftyDrop
+import SwiftyJSON
+
 class PaymentListVC :BaseVC {
     
     let paymentCellIdentifier: String!  = "PaymentCell";
     var tableView : UITableView!
+    lazy var tradeList = [TradeModel]()
+    
     
     override func viewDidLoad() {
         
@@ -17,6 +24,7 @@ class PaymentListVC :BaseVC {
         
         self.showTitle("账户明细")
         self.setupUI()
+        self.getUserAccountDetail()
     }
     
     func setupUI() {
@@ -28,6 +36,24 @@ class PaymentListVC :BaseVC {
         self.view.addSubview(self.tableView)
         self.tableView.reloadData()
     }
+    
+    func getUserAccountDetail () {
+        
+        let keychain = Keychain(service: service)
+        if keychain[k_UserID] == nil {
+            self.showLoginVC(true)
+            return
+        }
+        let request = Router.GetUserAccountDetail(user_id: keychain[k_UserID]!)
+        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
+            if let tradeList = Mapper<TradeModel>().mapArray(objc) {
+                self.tradeList = tradeList
+                self.tableView.reloadData()
+            }
+            
+        }
+        
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -35,7 +61,7 @@ class PaymentListVC :BaseVC {
 extension PaymentListVC : UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return self.tradeList.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -45,23 +71,15 @@ extension PaymentListVC : UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(paymentCellIdentifier, forIndexPath: indexPath) as? PaymentCell
         cell?.accessoryType = .None
-        cell?.tradeTypeLabel.text = "充值"
-        cell?.tradeCapitalLabel.text = "1,000元"
-        cell?.timeLabel.text = "2016-06-27 18:08"
         
-        if indexPath.row == 1 || indexPath.row == 3 {
-            cell?.setTradeType(.Topup)
-            cell?.setTradeStatus(.TradeSuccessed)
-        } else if indexPath.row == 2 {
-            cell?.setTradeType(.OrderPay)
-            cell?.setTradeStatus(.TradeFailed)
-        } else if indexPath.row == 5 || indexPath.row == 6 {
-            cell?.setTradeType(.PrePayDeposit)
-            cell?.setTradeStatus(.TradeFailed)
-        } else {
-            cell?.setTradeType(.ReturnDeposit)
-            cell?.setTradeStatus(.TradeSuccessed)
-        }
+        let trade = self.tradeList[indexPath.row]
+        
+        cell?.tradeTypeLabel.text = trade.trade_type_name
+        cell?.tradeCapitalLabel.text = trade.trade_capital
+        cell?.timeLabel.text = trade.ctime
+        cell?.setTradeType(TradeType(rawValue: Int(trade.trade_type!)!)!)
+        cell?.setTradeStatus(TradeStatus(rawValue: Int(trade.trade_status!)!)!)
+        
         return cell!
         
     }
