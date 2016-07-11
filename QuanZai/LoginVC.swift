@@ -158,9 +158,9 @@ extension LoginVC {
             Drop.down("请输入手机号", state: .Info)
             return
         }
+        self.startCountDown()
         let request = Router.GetValidateCode(phone: self.phoneTxt.text!)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            self.startCountDown()
         }
     }
     
@@ -180,8 +180,8 @@ extension LoginVC {
                 keychain[k_UserID] = userInfo.id!
                 keychain[k_phone] = userInfo.phone!
                 self.delegate?.loginSuccessed()
-                self.resetCountDown()
             }
+            self.resetCountDown()
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -208,10 +208,8 @@ extension LoginVC {
     func resetCountDown() {
         self.phoneTxt.text = ""
         self.codeTxt.text = ""
-        if self.timer != nil {
-            self.timer?.invalidate()
-            self.timer = nil
-        }
+        self.timer?.invalidate()
+        self.timer = nil
         self.codeBtn.setTitle("获取验证码", forState: UIControlState.Normal)
         self.codeBtn.userInteractionEnabled = true
     }

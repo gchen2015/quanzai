@@ -198,7 +198,7 @@ extension HomeVC: actionProtocol {
     func itemTapped(type: ActionType) {
         
         //未登录用户先登录
-        guard let user_id = Keychain(service: service)[k_UserID] else {
+        guard let _ = Keychain(service: service)[k_UserID] else {
             self.showLoginVC(true)
             return
         }
