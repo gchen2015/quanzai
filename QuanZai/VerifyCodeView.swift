@@ -46,9 +46,9 @@ protocol  VerifyCodeViewProtocol : class {
         if keychain[k_phone] == nil {
             return
         }
+        self.startCountDown()
         let request = Router.GetValidateCode(phone: keychain[k_phone]!)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            self.startCountDown()
         }
     }
     

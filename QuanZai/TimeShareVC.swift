@@ -268,7 +268,7 @@ extension TimeShareVC : UITableViewDelegate, UITableViewDataSource {
             if let storeInfo : CarStoreModel = self.stores[indexPath.row] as? CarStoreModel {
                 cell?.storeNameLabel.text = storeInfo.name
                 if storeInfo.distance != nil {
-                    cell?.distanceLabel.text = "距离" + storeInfo.distance! + "米"
+                    cell?.distanceLabel.text = "距离" + storeInfo.distance! + "公里"
                 } else {
                     cell?.distanceLabel.text = "未知距离"
                 }
@@ -283,7 +283,7 @@ extension TimeShareVC : UITableViewDelegate, UITableViewDataSource {
             if let carInfo : CarModel = self.cars[indexPath.row] as? CarModel {
                 cell?.carNumLabel.text = carInfo.car_licence_plates
                 if carInfo.distance != nil {
-                    cell?.distanceLabel.text = "距离" + carInfo.distance! + "米"
+                    cell?.distanceLabel.text = "距离" + carInfo.distance! + "公里"
                 } else {
                     cell?.distanceLabel.text = "未知距离"
                 }

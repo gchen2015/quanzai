@@ -137,8 +137,8 @@ extension CarDetailVC {
         let request = Router.UserVilidate(phone: phone, validateCode: validatecode)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             prgressHUD.dismiss({
-                //TODO:测试时，失败走成功分支
-                if objc == nil {
+                
+                if objc != nil {
                     self.dismissAlert()
                     self.validateUserRentRight()
                 }
