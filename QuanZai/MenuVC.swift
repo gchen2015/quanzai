@@ -199,15 +199,22 @@ extension MenuVC {
     
     //加载用户信息
     func getUserInfo() {
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil {
+//        let keychain = Keychain(service: service)
+//        if keychain[k_UserID] == nil {
+//            logoutBtn.alpha = 0
+//            self.slideMenuController()?.removeLeftGestures()
+//            return
+//        }
+        
+        guard let user_id = Keychain(service: service)[k_UserID] else {
             logoutBtn.alpha = 0
             self.slideMenuController()?.removeLeftGestures()
             return
         }
+        
         logoutBtn.alpha = 1
         self.slideMenuController()?.addLeftGestures()
-        APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: keychain[k_UserID]!)) { (objc, error, badNetWork) in
+        APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: user_id)) { (objc, error, badNetWork) in
             if let userInfo = Mapper<UserModel>().map(objc) {
                 self.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))
                 self.avatarIMG.layer.cornerRadius = self.avatarIMG.width/2

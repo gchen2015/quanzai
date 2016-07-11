@@ -47,12 +47,11 @@ extension HomeVC {
     //开门，关门
     func ControlCarRight(type: ActionType) {
         
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil {
+        guard let user_id = Keychain(service: service)[k_UserID] else {
             self.showLoginVC(true)
             return
         }
-        let request = Router.ControlCarRight(user_id: keychain[k_UserID]!,
+        let request = Router.ControlCarRight(user_id: user_id,
                                              lng: String(self.userLocation.coordinate.longitude),
                                              lat: String(self.userLocation.coordinate.latitude),
                                              type: String(type))
@@ -64,14 +63,14 @@ extension HomeVC {
     //还车围栏验证
     func returnCarAddressConfirm() {
         
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil {
+        guard let user_id = Keychain(service: service)[k_UserID] else {
             self.showLoginVC(true)
             return
         }
+        
         let progressHUD = ProgressHUD()
         progressHUD.showInView(self.view, message: "正在进行车场验证...")
-        let request = Router.ReturnCarAddressConfirm(user_id: keychain[k_UserID]!)
+        let request = Router.ReturnCarAddressConfirm(user_id: user_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if let store = Mapper<CarStoreModel>().map(objc) {
                 if store.car_id == nil || store.id == nil || store.order_id == nil {
@@ -82,7 +81,7 @@ extension HomeVC {
                 }
                 self.current_order_id = store.order_id
                 progressHUD.dismiss()
-                self.returnCar(keychain[k_UserID]!, car_id: store.car_id!, store_id: store.id!, order_id: store.order_id!)
+                self.returnCar(user_id, car_id: store.car_id!, store_id: store.id!, order_id: store.order_id!)
             }
         }
     }
@@ -199,8 +198,7 @@ extension HomeVC: actionProtocol {
     func itemTapped(type: ActionType) {
         
         //未登录用户先登录
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil {
+        guard let user_id = Keychain(service: service)[k_UserID] else {
             self.showLoginVC(true)
             return
         }
