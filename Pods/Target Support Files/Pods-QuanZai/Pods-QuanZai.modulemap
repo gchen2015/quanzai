@@ -1,0 +1,6 @@
+framework module Pods_QuanZai {
+  umbrella header "Pods-QuanZai-umbrella.h"
+
+  export *
+  module * { export * }
+}

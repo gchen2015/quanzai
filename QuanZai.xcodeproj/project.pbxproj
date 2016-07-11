@@ -116,7 +116,7 @@
 		48D95B3A1D2D372C00197238 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B391D2D372C00197238 /* CoreMotion.framework */; };
 		48D95B3C1D2D375000197238 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B3B1D2D375000197238 /* libc++.tbd */; };
 		48D95B3E1D2D375E00197238 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D95B3D1D2D375E00197238 /* libz.tbd */; };
-		B570B4DB3BAC7816CD5990CE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73A4B3FC7616F384B933638 /* Pods.framework */; };
+		A6D3E8551D3C47B899216375 /* Pods_QuanZai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEBC259123D225FBD4573FE0 /* Pods_QuanZai.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,7 +130,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2E6BF24CF5E3A97E55781C3F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		480C1DB31D2FA563002DAFAA /* OrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		480C1DB51D315A15002DAFAA /* TradeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeModel.swift; sourceTree = "<group>"; };
 		48216F221D2538E800720A6B /* WalletVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
@@ -260,7 +259,9 @@
 		48D95B391D2D372C00197238 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		48D95B3B1D2D375000197238 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		48D95B3D1D2D375E00197238 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		622593F7D1388AA10A6EF420 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B99BF48B3BF42AB603BF2F17 /* Pods-QuanZai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuanZai.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuanZai/Pods-QuanZai.release.xcconfig"; sourceTree = "<group>"; };
+		BEBC259123D225FBD4573FE0 /* Pods_QuanZai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuanZai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBEC4B05431EA3AD37823AC3 /* Pods-QuanZai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuanZai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuanZai/Pods-QuanZai.debug.xcconfig"; sourceTree = "<group>"; };
 		E73A4B3FC7616F384B933638 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -277,8 +278,8 @@
 				48D95B341D2D370600197238 /* QuartzCore.framework in Frameworks */,
 				48D95B321D2D36F900197238 /* CoreTelephony.framework in Frameworks */,
 				48D95B301D2D36EA00197238 /* SystemConfiguration.framework in Frameworks */,
-				B570B4DB3BAC7816CD5990CE /* Pods.framework in Frameworks */,
 				48D95B2E1D2D36B700197238 /* AlipaySDK.framework in Frameworks */,
+				A6D3E8551D3C47B899216375 /* Pods_QuanZai.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,8 +367,8 @@
 				483248241D13EF4600C4EB9E /* QuanZai */,
 				483248391D13EF4600C4EB9E /* QuanZaiTests */,
 				483248231D13EF4500C4EB9E /* Products */,
-				CFCFB1D801B4EA8F6181CE19 /* Pods */,
 				60F066BC6A03D14F68BA8761 /* Frameworks */,
+				DD5E49427B0A55E7979D9EA3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -777,15 +778,16 @@
 				48D95B311D2D36F900197238 /* CoreTelephony.framework */,
 				48D95B2F1D2D36EA00197238 /* SystemConfiguration.framework */,
 				E73A4B3FC7616F384B933638 /* Pods.framework */,
+				BEBC259123D225FBD4573FE0 /* Pods_QuanZai.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CFCFB1D801B4EA8F6181CE19 /* Pods */ = {
+		DD5E49427B0A55E7979D9EA3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2E6BF24CF5E3A97E55781C3F /* Pods.debug.xcconfig */,
-				622593F7D1388AA10A6EF420 /* Pods.release.xcconfig */,
+				CBEC4B05431EA3AD37823AC3 /* Pods-QuanZai.debug.xcconfig */,
+				B99BF48B3BF42AB603BF2F17 /* Pods-QuanZai.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -797,12 +799,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4832483F1D13EF4600C4EB9E /* Build configuration list for PBXNativeTarget "QuanZai" */;
 			buildPhases = (
-				438D8905E9E6E89AE31E5916 /* Check Pods Manifest.lock */,
+				7FDDCF908A7C555781ED598D /* [CP] Check Pods Manifest.lock */,
 				4832481E1D13EF4500C4EB9E /* Sources */,
 				4832481F1D13EF4500C4EB9E /* Frameworks */,
 				483248201D13EF4500C4EB9E /* Resources */,
-				AE19AA0C0268247A32FCA9EF /* Embed Pods Frameworks */,
-				5F5606765423898D387F2353 /* Copy Pods Resources */,
+				416B5A3633AF93F5B739474C /* [CP] Embed Pods Frameworks */,
+				53843CC61876A24F66FE55FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -925,49 +927,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		438D8905E9E6E89AE31E5916 /* Check Pods Manifest.lock */ = {
+		416B5A3633AF93F5B739474C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuanZai/Pods-QuanZai-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53843CC61876A24F66FE55FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuanZai/Pods-QuanZai-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FDDCF908A7C555781ED598D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		5F5606765423898D387F2353 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AE19AA0C0268247A32FCA9EF /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1146,7 +1148,7 @@
 		};
 		483248401D13EF4600C4EB9E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E6BF24CF5E3A97E55781C3F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = CBEC4B05431EA3AD37823AC3 /* Pods-QuanZai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1169,7 +1171,7 @@
 		};
 		483248411D13EF4600C4EB9E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 622593F7D1388AA10A6EF420 /* Pods.release.xcconfig */;
+			baseConfigurationReference = B99BF48B3BF42AB603BF2F17 /* Pods-QuanZai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

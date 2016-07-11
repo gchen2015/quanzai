@@ -2,13 +2,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '8.0'
 
-
-pod 'HMSegmentedControl'
+target :QuanZai
 
 use_frameworks!
 
+pod 'HMSegmentedControl'
 pod 'KeychainAccess'
-#pod 'CRToast'
 pod 'UMengAnalytics', '~> 3.5.16'
 pod 'MBProgressHUD'                 # https://github.com/jdg/MBProgressHUD
 pod 'Alamofire', '~> 3.4'

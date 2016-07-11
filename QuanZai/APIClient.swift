@@ -85,7 +85,7 @@ extension APIClient {
     
     private func requestResult(response: Response<AnyObject, NSError>, finished: Finished) {
         
-        print(response)
+        print(response.debugDescription)
         switch response.result {
         case .Success:
             if let value = response.result.value {
