@@ -281,6 +281,7 @@ extension TimeShareVC : UITableViewDelegate, UITableViewDataSource {
                 cell = CarCell(style: .Subtitle, reuseIdentifier: carCellIdentifier)
             }
             if let carInfo : CarModel = self.cars[indexPath.row] as? CarModel {
+                cell?.carNameLabel.text = carInfo.name
                 cell?.carNumLabel.text = carInfo.car_licence_plates
                 if carInfo.distance != nil {
                     cell?.distanceLabel.text = "距离" + carInfo.distance! + "公里"
