@@ -23,6 +23,7 @@ class BaseVC: UIViewController {
     var alertView : UIView?
     var cancelBlock:((alert: UIAlertController) -> ())?
     var okBlock:((alert: UIAlertController) -> ())?
+    var user_info : UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,8 +173,9 @@ class BaseVC: UIViewController {
 
 extension BaseVC : LoginVCProtocol {
     
-    func loginSuccessed() {
+    func loginSuccessed(userInfo : UserModel) {
         print("loginSuccessed")
+        self.user_info = userInfo
         LoginVC.sharedInstance.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }

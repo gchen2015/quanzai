@@ -343,6 +343,7 @@ extension HomeVC: TimeShareVCProtocol {
         if checkHaveLogin() {
             let orderListVC = OrderListVC()
             orderListVC.showMenuBtn = false
+            orderListVC.user_id = Keychain(service: service)[k_UserID]!
             self.navigationController?.pushViewController(orderListVC, animated: true)
         }
     }

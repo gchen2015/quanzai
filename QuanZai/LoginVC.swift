@@ -11,7 +11,7 @@
 
 protocol LoginVCProtocol : class {
     
-    func loginSuccessed()
+    func loginSuccessed(userInfo: UserModel)
 }
 
 import Alamofire
@@ -179,7 +179,7 @@ extension LoginVC {
                 let keychain = Keychain(service: service)
                 keychain[k_UserID] = userInfo.id!
                 keychain[k_phone] = userInfo.phone!
-                self.delegate?.loginSuccessed()
+                self.delegate?.loginSuccessed(userInfo)
             }
             self.resetCountDown()
             self.dismissViewControllerAnimated(true, completion: nil)
