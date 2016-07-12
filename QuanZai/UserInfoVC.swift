@@ -9,13 +9,13 @@
 import KeychainAccess
 import SwiftyDrop
 import SwiftyJSON
+import ObjectMapper
 
 class UserInfoVC: BaseVC {
     
     var infoView : UserInfoView!
     var avatar_url : String?
-    var gender : String?
-    var phone : String?
+    var user_id : String!
     
     override func viewDidLoad() {
         
@@ -23,13 +23,14 @@ class UserInfoVC: BaseVC {
         
         self.showTitle("个人信息修改")
         
-        let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
-            self.openLeft()
-        }
-        menuBtn.size = ccs(35, 35)
-        self.showLeftBarItem(menuBtn)
+//        let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
+//            self.openLeft()
+//        }
+//        menuBtn.size = ccs(35, 35)
+//        self.showLeftBarItem(menuBtn)
         
         self.setupUI()
+        self.getUserInfo()
     }
     
     func setupUI() {
@@ -53,18 +54,19 @@ class UserInfoVC: BaseVC {
         okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
         scrollView.addSubview(okBtn)
         
-        if self.gender != nil && self.gender!.characters.count > 0 {
-            self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
-            self.infoView.genderBtn.setTitle(self.gender!, forState: .Normal)
-        }
-        if self.avatar_url != nil && self.avatar_url?.characters.count > 0 {
-            self.infoView.avatarIMG.layer.cornerRadius = 20
-            self.infoView.avatarIMG.layer.masksToBounds = true
-            self.infoView.avatarIMG.af_setImageWithURL(URL(self.avatar_url!))
-        }
-        if self.phone != nil && self.phone?.characters.count > 0{
-            self.infoView.phoneTxt.text = self.phone!
-        }
+        
+//        if self.gender != nil && self.gender!.characters.count > 0 {
+//            self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
+//            self.infoView.genderBtn.setTitle(self.gender!, forState: .Normal)
+//        }
+//        if self.avatar_url != nil && self.avatar_url?.characters.count > 0 {
+//            self.infoView.avatarIMG.layer.cornerRadius = 20
+//            self.infoView.avatarIMG.layer.masksToBounds = true
+//            self.infoView.avatarIMG.af_setImageWithURL(URL(self.avatar_url!))
+//        }
+//        if self.phone != nil && self.phone?.characters.count > 0{
+//            self.infoView.phoneTxt.text = self.phone!
+//        }
     }
 }
 
@@ -134,12 +136,24 @@ extension UserInfoVC {
         self.presentViewController(photoPicker, animated: true, completion: nil)
     }
     
+    //加载用户信息
+    func getUserInfo() {
+        
+        APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: self.user_id)) { (objc, error, badNetWork) in
+            if let userInfo = Mapper<UserModel>().map(objc) {
+                self.infoView.phoneTxt.text = userInfo.phone
+                self.infoView.genderBtn.titleLabel!.text = userInfo.gender
+                self.infoView.avatarIMG.layer.cornerRadius = 20
+                self.infoView.avatarIMG.layer.masksToBounds = true
+                self.infoView.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))
+            }
+        }
+    }
+    
     //提交个人信息
     func setUserInfo() {
         
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil { return }
-        let user_id = keychain[k_UserID]!
+        let user_id = self.user_id
         let phone = self.infoView.phoneTxt.text!
         let gender = self.infoView.genderBtn.titleLabel!.text!
         let head_portrait = self.avatar_url!

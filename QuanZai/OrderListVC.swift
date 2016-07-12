@@ -18,6 +18,7 @@ class OrderListVC : BaseVC {
     var tableView : UITableView!
     var showMenuBtn : Bool = false
     var orders = [OrderModel]()
+    var user_id : String!
     
     override func viewDidLoad() {
         
@@ -25,13 +26,13 @@ class OrderListVC : BaseVC {
         
         self.showTitle("历史订单")
         
-        if showMenuBtn {
-            let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
-                self.openLeft()
-            }
-            menuBtn.size = ccs(35, 35)
-            self.showLeftBarItem(menuBtn)
-        }
+//        if showMenuBtn {
+//            let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
+//                self.openLeft()
+//            }
+//            menuBtn.size = ccs(35, 35)
+//            self.showLeftBarItem(menuBtn)
+//        }
         
         self.tableView = UITableView(frame: ccr(0, 0, k_SCREEN_W, k_SCREEN_H-k_NAV_BAR_H), style: .Plain)
         self.tableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: orderCellIdentifier)
@@ -47,12 +48,8 @@ class OrderListVC : BaseVC {
     }
     
     func getOrderList() {
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil {
-            Drop.down("未取得登录信息，请重新登录再试")
-            return
-        }
-        let request = Router.GetOrderList(user_id: keychain[k_UserID]!)
+        
+        let request = Router.GetOrderList(user_id: self.user_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if let orders = Mapper<OrderModel>().mapArray(objc) {
                 self.orders = orders

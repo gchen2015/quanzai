@@ -14,17 +14,18 @@ import SwiftyJSON
 class WalletVC: BaseVC {
     
     var infoView : WalletView!
+    var user_id : String!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.showTitle("我的账户")
-        let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
-            self.openLeft()
-        }
-        menuBtn.size = ccs(35, 35)
-        self.showLeftBarItem(menuBtn)
+//        let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
+//            self.openLeft()
+//        }
+//        menuBtn.size = ccs(35, 35)
+//        self.showLeftBarItem(menuBtn)
         
         self.setupUI()
         self.getUserAccountBalance()
@@ -43,12 +44,7 @@ extension WalletVC {
     
     func getUserAccountBalance() {
         
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil {
-            self.showLoginVC(true)
-            return
-        }
-        let request = Router.GetUserAccountBalance(user_id: keychain[k_UserID]!)
+        let request = Router.GetUserAccountBalance(user_id: self.user_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             let json = JSON(objc!)
             if let account_balance = json["account_balance"].string {

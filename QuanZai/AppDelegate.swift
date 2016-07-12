@@ -28,11 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().translucent = false
         
         let menuVC = MenuVC()
+        menuVC.delegate = homeVC
         
         let slideMenuController =
             SlideMenuController(mainViewController:nvc, leftMenuViewController: menuVC)
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
         slideMenuController.delegate = homeVC
+
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.backgroundColor = UIColorFromRGB(0x1e2d3f)

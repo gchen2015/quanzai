@@ -13,11 +13,11 @@ import AlamofireImage
 import SwiftyDrop
 
 enum LeftMenu: Int {
-    case 首页  = 0
-    case 我的行程
+//    case 首页  = 0
+//    case 我的行程
 //    case 我的包裹
 //    case 活动中心
-    case 账户余额
+    case 账户余额 = 0
 //    case 开发票
     case 个人信息修改
     case 租车资格验证
@@ -31,19 +31,20 @@ protocol MenuProtocol : class {
 
 class MenuVC : BaseVC {
     
-    var menus = ["首页", "我的行程", "账户余额", "个人信息修改", "租车资格验证" , "关于"]
+    var menus = ["账户余额", "个人信息修改", "租车资格验证" , "关于"]
     
-    var homeViewController : UIViewController!
-    var qualificationInfoViewController : UIViewController!
-    var userInfoViewController : UIViewController!
-    var orderListViewController : UIViewController!
-    var walletViewController : UIViewController!
+//    var homeViewController : UIViewController!
+//    var qualificationInfoViewController : UIViewController!
+//    var userInfoViewController : UIViewController!
+//    var orderListViewController : UIViewController!
+//    var walletViewController : UIViewController!
     
-    var userInfoVC : UserInfoVC!
+//    var userInfoVC : UserInfoVC!
     
     var avatarIMG : UIImageView!
     var screenNameLabel : UILabel!
     var logoutBtn: UIButton!
+    var delegate: MenuProtocol?
     
     override func viewDidLoad() {
         
@@ -55,23 +56,7 @@ class MenuVC : BaseVC {
         } else {
             self.slideMenuController()?.addLeftGestures()
         }
-        
-        let homeVC = HomeVC()
-        self.homeViewController = UINavigationController(rootViewController: homeVC)
-        
-        let qualificationInfoVC = QualificationInfoVC()
-        self.qualificationInfoViewController = UINavigationController(rootViewController: qualificationInfoVC)
-        
-        self.userInfoVC = UserInfoVC()
-        self.userInfoViewController = UINavigationController(rootViewController: userInfoVC)
-        
-        let orderListVC = OrderListVC()
-        orderListVC.showMenuBtn = true
-        self.orderListViewController = UINavigationController(rootViewController: orderListVC)
-        
-        let walletVC = WalletVC()
-        self.walletViewController = UINavigationController(rootViewController: walletVC)
-        
+                
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -190,7 +175,9 @@ extension MenuVC {
     
     func menuTapped(index: Int) {
         if let menu = LeftMenu(rawValue: index) {
-            self.changeViewController(menu)
+            self.slideMenuController()?.closeLeft()
+            self.delegate?.changeViewController(menu)
+//            self.changeViewController(menu)
         }
     }
 }
@@ -220,9 +207,9 @@ extension MenuVC {
                 self.avatarIMG.layer.cornerRadius = self.avatarIMG.width/2
                 self.avatarIMG.layer.masksToBounds = true
                 self.screenNameLabel.text = userInfo.phone!
-                self.userInfoVC.phone = userInfo.phone
-                self.userInfoVC.gender = userInfo.gender
-                self.userInfoVC.avatar_url = userInfo.head_portrait
+//                self.userInfoVC.phone = userInfo.phone
+//                self.userInfoVC.gender = userInfo.gender
+//                self.userInfoVC.avatar_url = userInfo.head_portrait
             }
         }
     }
@@ -256,31 +243,7 @@ extension MenuVC {
         self.screenNameLabel.text = ""
         self.logoutBtn.alpha = 0
         self.slideMenuController()?.removeLeftGestures()
-        self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
-    }
-}
-
-// MARK: - MenuProtocol
-
-extension MenuVC : MenuProtocol {
-    
-    func changeViewController(menu: LeftMenu) {
-        switch menu {
-        case .首页:
-            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
-        case .我的行程:
-            self.slideMenuController()?.changeMainViewController(self.orderListViewController, close: true)
-        case .账户余额:
-            self.slideMenuController()?.changeMainViewController(self.walletViewController, close: true)
-        case .个人信息修改:
-            self.slideMenuController()?.changeMainViewController(self.userInfoViewController, close: true)
-        case .租车资格验证:
-            self.slideMenuController()?.changeMainViewController(self.qualificationInfoViewController, close: true)
-        case .关于:
-            self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
-//        case .退出登录:
-//            self.logout()
-        }
-        
+        self.slideMenuController()?.closeLeft()
+//        self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
     }
 }

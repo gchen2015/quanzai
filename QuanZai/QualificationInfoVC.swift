@@ -14,6 +14,7 @@ class QualificationInfoVC : BaseVC {
     
     var infoView : QualificationView!
     var pic_url : String?
+    var user_id : String!
     
     override func viewDidLoad() {
         
@@ -21,11 +22,11 @@ class QualificationInfoVC : BaseVC {
         
         self.showTitle("租车资格验证")
         
-        let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
-            self.openLeft()
-        }
-        menuBtn.size = ccs(35, 35)
-        self.showLeftBarItem(menuBtn)
+//        let menuBtn = UIButton(imageName: "menu-icon", hlImageName: "menu-icon") { (menuBtn) in
+//            self.openLeft()
+//        }
+//        menuBtn.size = ccs(35, 35)
+//        self.showLeftBarItem(menuBtn)
         
         self.setupUI()
         self.getUserValidateInfo()
@@ -99,12 +100,12 @@ extension QualificationInfoVC {
     //TODO: 获取租车验证信息
     func getUserValidateInfo() {
         
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil {
-            Drop.down("未取得登录信息，请尝试重新登录")
-            return
-        }
-        let request = Router.GetUserValidateInfo(user_id: keychain[k_UserID]!)
+//        let keychain = Keychain(service: service)
+//        if keychain[k_UserID] == nil {
+//            Drop.down("未取得登录信息，请尝试重新登录")
+//            return
+//        }
+        let request = Router.GetUserValidateInfo(user_id: self.user_id)
         
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if let validateInfo = Mapper<UserValidateInfoModel>().map(objc) {

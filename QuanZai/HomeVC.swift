@@ -30,6 +30,8 @@ class HomeVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.slideMenuController()?.delegate = self
+        
         self.setupNavBar()
         self.setupMapView()
         self.setupTimeShareVC()
@@ -419,4 +421,51 @@ extension HomeVC: SlideMenuControllerDelegate {
         print("SlideMenuControllerDelegate: rightDidClose")
     }
     
+}
+
+// MARK: - MenuProtocol
+
+extension HomeVC : MenuProtocol {
+    
+    func changeViewController(menu: LeftMenu) {
+        switch menu {
+//        case .首页:
+//            break
+//        case .我的行程:
+//            guard let user_id = Keychain(service: service)[k_UserID] else {
+//                self.showLoginVC(true)
+//                return
+//            }
+//            let orderListVC = OrderListVC()
+//            orderListVC.user_id = user_id
+//            self.navigationController?.pushViewController(orderListVC, animated: true)
+        case .账户余额:
+            guard let user_id = Keychain(service: service)[k_UserID] else {
+                self.showLoginVC(true)
+                return
+            }
+            let walletVC = WalletVC()
+            walletVC.user_id = user_id
+            self.navigationController?.pushViewController(walletVC, animated: true)
+        case .个人信息修改:
+            guard let user_id = Keychain(service: service)[k_UserID] else {
+                self.showLoginVC(true)
+                return
+            }
+            let userInfoVC = UserInfoVC()
+            userInfoVC.user_id = user_id
+            self.navigationController?.pushViewController(userInfoVC, animated: true)
+        case .租车资格验证:
+            guard let user_id = Keychain(service: service)[k_UserID] else {
+                self.showLoginVC(true)
+                return
+            }
+            let qualificationInfoVC = QualificationInfoVC()
+            qualificationInfoVC.user_id = user_id
+            self.navigationController?.pushViewController(qualificationInfoVC, animated: true)
+        case .关于:
+            break
+        }
+        
+    }
 }
