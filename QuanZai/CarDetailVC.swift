@@ -105,7 +105,7 @@ extension CarDetailVC {
                 self.infoView.nameLabel.text = carInfo.name! + "（" + carInfo.car_licence_plates! + "）"
                 self.infoView.engineLabel.text = carInfo.gearbox_type_display
                 self.infoView.soundSysLabel.text = carInfo.has_sound_sys_display
-                self.infoView.displacementLabel.text = carInfo.engine_displacement
+//                self.infoView.displacementLabel.text = carInfo.engine_displacement
                 self.infoView.radarLabel.text = carInfo.has_reversing_adar_display
                 self.infoView.batteryLabel.text = carInfo.battery_life
                 self.infoView.imageLabel.text = carInfo.has_reversing_image_display

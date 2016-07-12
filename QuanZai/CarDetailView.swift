@@ -40,17 +40,17 @@ protocol CarDetailViewProtocol : class {
     @IBOutlet weak var infoView2_Line3: UIImageView!
     @IBOutlet weak var soundSysLabel: UILabel!
     
-    //排量
-    @IBOutlet weak var infoView3: View!
-    @IBOutlet weak var displacementTitle: UILabel!
-    @IBOutlet weak var infoView3_Line1: UIImageView!
-    @IBOutlet weak var displacementLabel: UILabel!
-    
     //雷达
-    @IBOutlet weak var infoView3_Line2: UIImageView!
+    @IBOutlet weak var infoView3: View!
     @IBOutlet weak var radarTitle: UILabel!
-    @IBOutlet weak var infoView3_Line3: UIImageView!
+    @IBOutlet weak var infoView3_Line1: UIImageView!
     @IBOutlet weak var radarLabel: UILabel!
+    
+    //倒车影像
+    @IBOutlet weak var infoView3_Line2: UIImageView!
+    @IBOutlet weak var imageTitle: UILabel!
+    @IBOutlet weak var infoView3_Line3: UIImageView!
+    @IBOutlet weak var imageLabel: UILabel!
     
     //续航
     @IBOutlet weak var infoView4: View!
@@ -58,22 +58,16 @@ protocol CarDetailViewProtocol : class {
     @IBOutlet weak var infoView4_Line1: UIImageView!
     @IBOutlet weak var batteryLabel: UILabel!
     
-    //倒车影像
-    @IBOutlet weak var infoView4_Line2: UIImageView!
-    @IBOutlet weak var imageTitle: UILabel!
-    @IBOutlet weak var infoView4_Line3: UIImageView!
-    @IBOutlet weak var imageLabel: UILabel!
-    
     //导航
-    @IBOutlet weak var infoView5: View!
+    @IBOutlet weak var infoView4_Line2: UIImageView!
     @IBOutlet weak var naviTitle: UILabel!
-    @IBOutlet weak var infoView5_Line1: UIImageView!
+    @IBOutlet weak var infoView4_Line3: UIImageView!
     @IBOutlet weak var naviLabel: UILabel!
     
     //天窗
-    @IBOutlet weak var infoView5_Line2: UIImageView!
+    @IBOutlet weak var infoView5: View!
     @IBOutlet weak var roofTitle: UILabel!
-    @IBOutlet weak var infoView5_Line3: UIImageView!
+    @IBOutlet weak var infoView5_Line1: UIImageView!
     @IBOutlet weak var roofLabel: UILabel!
     
     
@@ -224,7 +218,7 @@ protocol CarDetailViewProtocol : class {
             make.right.equalTo(infoView1.snp_right)
             make.height.equalTo(infoView1.snp_height)
         }
-        displacementTitle.snp_makeConstraints { (make) in
+        radarTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(0)
             make.width.equalTo(nameTitle.snp_width)
@@ -232,11 +226,11 @@ protocol CarDetailViewProtocol : class {
         }
         infoView3_Line1.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(displacementTitle.snp_right).offset(-0.5)
+            make.left.equalTo(radarTitle.snp_right).offset(-0.5)
             make.width.equalTo(0.5)
             make.height.equalTo(infoView1.snp_height)
         }
-        displacementLabel.snp_makeConstraints { (make) in
+        radarLabel.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(infoView3_Line1.snp_right)
             make.width.equalTo(nameTitle.snp_width)
@@ -244,11 +238,11 @@ protocol CarDetailViewProtocol : class {
         }
         infoView3_Line2.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(displacementLabel.snp_right).offset(-0.5)
+            make.left.equalTo(radarLabel.snp_right).offset(-0.5)
             make.width.equalTo(0.5)
             make.height.equalTo(infoView1.snp_height)
         }
-        radarTitle.snp_makeConstraints { (make) in
+        imageTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(infoView3_Line2.snp_right)
             make.width.equalTo(nameTitle.snp_width)
@@ -256,11 +250,11 @@ protocol CarDetailViewProtocol : class {
         }
         infoView3_Line3.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(radarTitle.snp_right).offset(-0.5)
+            make.left.equalTo(imageTitle.snp_right).offset(-0.5)
             make.width.equalTo(0.5)
             make.height.equalTo(infoView1.snp_height)
         }
-        radarLabel.snp_makeConstraints { (make) in
+        imageLabel.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(infoView3_Line3.snp_right)
             make.width.equalTo(nameTitle.snp_width)
@@ -300,7 +294,7 @@ protocol CarDetailViewProtocol : class {
             make.width.equalTo(0.5)
             make.height.equalTo(infoView1.snp_height)
         }
-        imageTitle.snp_makeConstraints { (make) in
+        naviTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(infoView4_Line2.snp_right)
             make.width.equalTo(nameTitle.snp_width)
@@ -308,11 +302,11 @@ protocol CarDetailViewProtocol : class {
         }
         infoView4_Line3.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(imageTitle.snp_right).offset(-0.5)
+            make.left.equalTo(naviTitle.snp_right).offset(-0.5)
             make.width.equalTo(0.5)
             make.height.equalTo(infoView1.snp_height)
         }
-        imageLabel.snp_makeConstraints { (make) in
+        naviLabel.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(infoView4_Line3.snp_right)
             make.width.equalTo(nameTitle.snp_width)
@@ -326,7 +320,7 @@ protocol CarDetailViewProtocol : class {
             make.right.equalTo(infoView1.snp_right)
             make.height.equalTo(infoView1.snp_height)
         }
-        naviTitle.snp_makeConstraints { (make) in
+        roofTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(0)
             make.width.equalTo(nameTitle.snp_width)
@@ -334,40 +328,40 @@ protocol CarDetailViewProtocol : class {
         }
         infoView5_Line1.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(naviTitle.snp_right).offset(-0.5)
-            make.width.equalTo(0.5)
-            make.height.equalTo(infoView1.snp_height)
-        }
-        naviLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.equalTo(infoView5_Line1.snp_right)
-            make.width.equalTo(nameTitle.snp_width)
-            make.height.equalTo(infoView1.snp_height)
-        }
-        infoView5_Line2.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.equalTo(naviLabel.snp_right).offset(-0.5)
-            make.width.equalTo(0.5)
-            make.height.equalTo(infoView1.snp_height)
-        }
-        roofTitle.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.equalTo(infoView5_Line2.snp_right)
-            make.width.equalTo(nameTitle.snp_width)
-            make.height.equalTo(infoView1.snp_height)
-        }
-        infoView5_Line3.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
             make.left.equalTo(roofTitle.snp_right).offset(-0.5)
             make.width.equalTo(0.5)
             make.height.equalTo(infoView1.snp_height)
         }
         roofLabel.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(infoView5_Line3.snp_right)
+            make.left.equalTo(infoView5_Line1.snp_right)
             make.width.equalTo(nameTitle.snp_width)
             make.height.equalTo(infoView1.snp_height)
         }
+//        infoView5_Line2.snp_makeConstraints { (make) in
+//            make.top.equalTo(0)
+//            make.left.equalTo(naviLabel.snp_right).offset(-0.5)
+//            make.width.equalTo(0.5)
+//            make.height.equalTo(infoView1.snp_height)
+//        }
+//        roofTitle.snp_makeConstraints { (make) in
+//            make.top.equalTo(0)
+//            make.left.equalTo(infoView5_Line2.snp_right)
+//            make.width.equalTo(nameTitle.snp_width)
+//            make.height.equalTo(infoView1.snp_height)
+//        }
+//        infoView5_Line3.snp_makeConstraints { (make) in
+//            make.top.equalTo(0)
+//            make.left.equalTo(roofTitle.snp_right).offset(-0.5)
+//            make.width.equalTo(0.5)
+//            make.height.equalTo(infoView1.snp_height)
+//        }
+//        roofLabel.snp_makeConstraints { (make) in
+//            make.top.equalTo(0)
+//            make.left.equalTo(infoView5_Line3.snp_right)
+//            make.width.equalTo(nameTitle.snp_width)
+//            make.height.equalTo(infoView1.snp_height)
+//        }
         
         
         //费用

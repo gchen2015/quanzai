@@ -78,7 +78,7 @@
                     <rect key="frame" x="16" y="312" width="288" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发动机类型" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8I8-63-WlJ">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="变速箱类型" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8I8-63-WlJ">
                             <rect key="frame" x="0.0" y="-2" width="69" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -133,7 +133,7 @@
                     <rect key="frame" x="16" y="370" width="288" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QmE-LG-MeU">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倒车雷达" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QmE-LG-MeU">
                             <rect key="frame" x="0.0" y="-2" width="69" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -157,7 +157,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倒车雷达" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zKj-bQ-nR7">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倒车影像" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zKj-bQ-nR7">
                             <rect key="frame" x="143" y="-2" width="83" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -212,7 +212,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倒车影像" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K3S-sI-QIr">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导航" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K3S-sI-QIr">
                             <rect key="frame" x="143" y="-2" width="83" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -243,7 +243,7 @@
                     <rect key="frame" x="16" y="476" width="288" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导航" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6On-JL-e4o">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天窗" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6On-JL-e4o">
                             <rect key="frame" x="0.0" y="-2" width="69" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -257,30 +257,6 @@
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未知" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vWL-RY-PeX">
                             <rect key="frame" x="68" y="0.0" width="76" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="XXR-fa-48U">
-                            <rect key="frame" x="143" y="-2" width="1" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天窗" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="A9L-Hd-kns">
-                            <rect key="frame" x="143" y="-2" width="83" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wwr-NS-61x">
-                            <rect key="frame" x="224" y="-5" width="1" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未知" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0gI-NT-qOs">
-                            <rect key="frame" x="224" y="0.0" width="64" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -505,12 +481,10 @@
                 <outlet property="batteryTitle" destination="iMq-Dy-oqa" id="bjG-tS-Hz4"/>
                 <outlet property="carIMG" destination="Ew5-hr-ODE" id="Y6R-qv-5qB"/>
                 <outlet property="carInfoHeader" destination="EpD-gp-P5q" id="s4Z-UP-Gjy"/>
-                <outlet property="displacementLabel" destination="081-MI-YLV" id="1lM-XJ-O8w"/>
-                <outlet property="displacementTitle" destination="QmE-LG-MeU" id="yYp-0Z-L2k"/>
                 <outlet property="engineLabel" destination="wW7-6h-f9F" id="td8-Ss-Vn3"/>
                 <outlet property="engineTitle" destination="8I8-63-WlJ" id="bC4-D1-YpH"/>
-                <outlet property="imageLabel" destination="GJV-4R-Nct" id="H8N-hc-b4E"/>
-                <outlet property="imageTitle" destination="K3S-sI-QIr" id="hOm-sp-TcP"/>
+                <outlet property="imageLabel" destination="DkA-fC-mvF" id="cxY-5D-4bD"/>
+                <outlet property="imageTitle" destination="zKj-bQ-nR7" id="ZbO-Tp-0oE"/>
                 <outlet property="infoView1" destination="fcj-4x-O9l" id="Krm-VF-LM1"/>
                 <outlet property="infoView2" destination="9w3-7s-Di6" id="Akd-hK-JVc"/>
                 <outlet property="infoView2_Line1" destination="7x8-ph-eLa" id="dVf-Nz-U8Q"/>
@@ -526,13 +500,11 @@
                 <outlet property="infoView4_Line3" destination="40i-vJ-QEe" id="3Xl-Bi-fgc"/>
                 <outlet property="infoView5" destination="cfX-yD-HLZ" id="QCt-Hr-Bml"/>
                 <outlet property="infoView5_Line1" destination="fdc-Q0-jLe" id="M2J-7l-Tqa"/>
-                <outlet property="infoView5_Line2" destination="XXR-fa-48U" id="mg8-ob-dXy"/>
-                <outlet property="infoView5_Line3" destination="wwr-NS-61x" id="yaA-Tj-S3w"/>
                 <outlet property="nameLabel" destination="t35-u0-bzG" id="Fby-dy-SiP"/>
                 <outlet property="nameLine" destination="MEM-mD-QbN" id="hL3-MA-1HL"/>
                 <outlet property="nameTitle" destination="Oh6-qo-LX5" id="0vb-e3-yUq"/>
-                <outlet property="naviLabel" destination="vWL-RY-PeX" id="eTU-2p-f4D"/>
-                <outlet property="naviTitle" destination="6On-JL-e4o" id="v1Q-Po-aYI"/>
+                <outlet property="naviLabel" destination="GJV-4R-Nct" id="dUs-hC-ggh"/>
+                <outlet property="naviTitle" destination="K3S-sI-QIr" id="IIQ-Ld-IwL"/>
                 <outlet property="paymentBtn" destination="n4l-PU-TSv" id="w9D-Dz-py7"/>
                 <outlet property="paymentHeader" destination="ZgQ-to-N7e" id="oJg-Eu-fIc"/>
                 <outlet property="paymentLine" destination="dg4-XA-8DJ" id="d8x-aO-P3f"/>
@@ -543,10 +515,10 @@
                 <outlet property="priceLine" destination="i3l-uh-1Na" id="4ff-rP-Otl"/>
                 <outlet property="priceTitle" destination="kFX-sh-4Jj" id="TW0-69-uPK"/>
                 <outlet property="priceView" destination="Aze-B5-EhJ" id="D5p-0S-aDC"/>
-                <outlet property="radarLabel" destination="DkA-fC-mvF" id="zY6-wb-I91"/>
-                <outlet property="radarTitle" destination="zKj-bQ-nR7" id="GSr-eq-h2c"/>
-                <outlet property="roofLabel" destination="0gI-NT-qOs" id="yar-2Q-rEM"/>
-                <outlet property="roofTitle" destination="A9L-Hd-kns" id="QC2-9J-iIc"/>
+                <outlet property="radarLabel" destination="081-MI-YLV" id="Yej-va-BOr"/>
+                <outlet property="radarTitle" destination="QmE-LG-MeU" id="dS7-PJ-93z"/>
+                <outlet property="roofLabel" destination="vWL-RY-PeX" id="SnY-UH-5UJ"/>
+                <outlet property="roofTitle" destination="6On-JL-e4o" id="lNP-cM-16d"/>
                 <outlet property="soundSysLabel" destination="SVp-Po-vZq" id="NYu-wx-hBp"/>
                 <outlet property="soundSysTitle" destination="Ao3-l1-Z3l" id="FUj-mk-HCh"/>
                 <outlet property="unitPayHeaderView" destination="1el-ef-TBV" id="ele-eJ-HUZ"/>
