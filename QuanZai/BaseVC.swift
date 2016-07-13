@@ -91,7 +91,7 @@ class BaseVC: UIViewController {
         return true
     }
 
-    func alertPresenter(title: String = "", body: String = "", cancelTitle: String?, okTitle: String?, cancelActionHandler:  ((UIAlertAction) -> Void)?, okActionHandler:  ((UIAlertAction) -> Void)?)  {
+    func alertPresenter(title: String, body: String = "", cancelTitle: String? = "", okTitle: String?, cancelActionHandler:  ((UIAlertAction) -> Void)? = nil, okActionHandler:  ((UIAlertAction) -> Void)? = nil)  {
         
         let alertControler = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.Alert)
         if cancelTitle != nil {

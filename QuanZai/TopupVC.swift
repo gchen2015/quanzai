@@ -57,10 +57,10 @@ extension TopupVC : TopupViewProtocol {
                 if error != nil {
                     guard error?.userInfo["retmsg"] == nil else {
                         let errorMsg = error?.userInfo["retmsg"] as! String
-                        self.alertPresenter(errorMsg, body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
+                        self.alertPresenter(errorMsg, okTitle: "确定")
                         return
                     }
-                    self.alertPresenter(error.debugDescription, body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
+                    self.alertPresenter(error.debugDescription, okTitle: "确定")
                 }
             })
         }
@@ -84,7 +84,7 @@ extension TopupVC : TopupViewProtocol {
                         print("resultDic = \(resultDic)")
                     })
                 } else {
-                    self.alertPresenter("打开支付宝失败", body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
+                    self.alertPresenter("打开支付宝失败", okTitle: "确定")
                 }
             })
         }

@@ -109,7 +109,7 @@ extension MapVC: MAMapViewDelegate {
     }
     
     func mapView(mapView: MAMapView!, didFailToLocateUserWithError error: NSError!) {
-        self.alertPresenter("提示", body: "定位失败，请确认定位功能已经开启", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
+        self.alertPresenter("提示", body: "定位失败，请确认定位功能已经开启", okTitle: "确定")
     }
     
     func mapView(mapView: MAMapView!, didUpdateUserLocation userLocation: MAUserLocation!, updatingLocation: Bool) {
