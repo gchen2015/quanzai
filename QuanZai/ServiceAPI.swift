@@ -9,6 +9,7 @@
 class ServiceApi: NSObject {
     
     static var host : String = "http://123.185.175.210:8081/RentCarManage"
+    static var host_online : String = "http://quanzai.com/wsbg"
     
     class func encodeUrl(url: String) -> String {
         return url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
@@ -167,6 +168,12 @@ class ServiceApi: NSObject {
     //账户充值
     internal class func RechargeUserAccountUrl(user_id: String, capital: String, type: String) -> String {
         let url = "\(host)/User/Api/RechargeUserAccount.action?user_id=\(user_id)&capital=\(capital)&type=\(type)"
+        return self.encodeUrl(url)
+    }
+    
+    //微信充值
+    internal class func WxGetPayInfoUrl(totalFee: String) -> String {
+        let url = "\(host_online)/User/Api/RechargeUserAccount.action?totalFee=\(totalFee)"
         return self.encodeUrl(url)
     }
     

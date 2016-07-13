@@ -15,6 +15,7 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "DLRadioButton/DLRadioButton.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "WXApi.h"
 
 
 #endif /* QuanZai_Bridging_Header_h */

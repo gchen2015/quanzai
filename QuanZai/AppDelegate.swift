@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AMapServices.sharedServices().apiKey = AmapKey
         
+        WXApi.registerApp("wx22a7b4318a2ec245", withDescription: "QuanZai-iOS")
+        
         let homeVC = HomeVC()
         let nvc: UINavigationController = UINavigationController(rootViewController: homeVC)
         
@@ -41,6 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()
         return true
+    }
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: PaymentHandler.sharedPaymentHandler())
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return WXApi.handleOpenURL(url, delegate: PaymentHandler.sharedPaymentHandler())
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -67,4 +77,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

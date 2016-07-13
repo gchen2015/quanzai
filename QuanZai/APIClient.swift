@@ -77,6 +77,38 @@ extension APIClient {
         }
     }
     
+    func wxPayRequest(URLString: URLRequestConvertible, finished: Finished) {
+        request(URLString).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if let retcode = json["retcode"].string {
+                        if Int(retcode) == 0 {
+                            let req = PayReq()
+                            req.partnerId = json["partnerid"].string
+                            req.prepayId  = json["prepayid"].string
+                            req.nonceStr  = json["noncestr"].string
+                            req.timeStamp = json["timestamp"].uInt32!
+                            req.package   = json["package"].string
+                            req.sign      = json["sign"].string
+                            WXApi.sendReq(req)
+                            finished!(objc:nil, error: nil, badNetWork: false)
+                        } else {
+                            finished!(objc:nil, error: NSError(domain: "WxPayError", code: 400, userInfo: ["retmsg": json["retmsg"].string!]), badNetWork: false)
+                        }
+                    }
+                } else {
+                    finished!(objc:nil, error: NSError(domain: "WxPayError", code: 500, userInfo: ["retmsg": "服务器返回错误，请重试！"]), badNetWork: false)
+                }
+                
+            case .Failure(let error):
+                print(error)
+                finished!(objc:nil, error: error, badNetWork: true)
+            }
+        }
+    }
+    
 }
 
 // MARK: - 返回结果处理

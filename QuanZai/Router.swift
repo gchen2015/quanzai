@@ -37,13 +37,15 @@ enum Router: URLRequestConvertible {
     case GetUserAccountBalance(user_id: String)
     case GetUserAccountDetail(user_id: String)
     case RechargeUserAccount(user_id: String, capital: String, type: String)
+    case WxGetPayInfo(totalFee: String)
     
     var method: Alamofire.Method {
         switch self {
         case .Login,
              .EditUserInfo,
              .UploadPicture,
-             .EditValidateInfo:
+             .EditValidateInfo,
+             .WxGetPayInfo:
             return .POST
         default:
             return .GET
@@ -102,6 +104,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.GetUserAccountDetailUrl(user_id)
         case .RechargeUserAccount(let user_id, let capital, let type):
             return ServiceApi.RechargeUserAccountUrl(user_id, capital: capital, type: type)
+        case .WxGetPayInfo(let totalFee):
+            return ServiceApi.WxGetPayInfoUrl(totalFee)
         }
     }
     

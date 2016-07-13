@@ -36,14 +36,40 @@ class TopupVC: BaseVC {
     }
 }
 
+enum PaymentType: String {
+    case WxPay = "微信"
+    case Alipay = "支付宝"
+}
+
 extension TopupVC : TopupViewProtocol {
     
     func openAlipay() {
-        self.rechargeUserAccount(self.money!, type: "0")
+        guard Keychain(service: service)[k_UserID] != nil else {
+            self.showLoginVC(true)
+            return
+        }
+        let progressHUD = ProgressHUD()
+        progressHUD.showInWindow("正在充值...")
+        self.money = "0.01"
+        let request = Router.WxGetPayInfo(totalFee: self.money!)
+        APIClient.sharedAPIClient().wxPayRequest(request) { (objc, error, badNetWork) in
+            progressHUD.dismiss({
+                if error != nil {
+                    guard error?.userInfo["retmsg"] == nil else {
+                        let errorMsg = error?.userInfo["retmsg"] as! String
+                        self.alertPresenter(errorMsg, body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
+                        return
+                    }
+                    self.alertPresenter(error.debugDescription, body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
+                } else {
+                    self.alertPresenter("充值成功", body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
+                }
+            })
+        }
     }
     
     func openWechatPay() {
-        self.rechargeUserAccount(self.money!, type: "1")
+//        self.rechargeUserAccount(self.money!, type: .WxPay)
     }
     
     func selectedButton(radioButton: DLRadioButton) {
@@ -55,16 +81,6 @@ extension TopupVC : TopupViewProtocol {
             self.money = radioButton.titleLabel!.text
         }
     }
-    
-    func rechargeUserAccount(capital: String, type: String) {
-        let keychain = Keychain(service: service)
-        if keychain[k_UserID] == nil {
-            self.showLoginVC(true)
-            return
-        }
-        let request = Router.RechargeUserAccount(user_id: keychain[k_UserID]!, capital: capital, type: type)
-        APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            Drop.down("充值成功", state: .Success)
-        }
-    }
+
 }
+

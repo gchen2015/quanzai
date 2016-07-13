@@ -103,6 +103,10 @@
 		48B22AD71D1CEC1B00421936 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AD61D1CEC1B00421936 /* TextField.swift */; };
 		48B22ADC1D20E4DF00421936 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ADB1D20E4DF00421936 /* avatar@2x.png */; };
 		48B22ADE1D20E68500421936 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22ADD1D20E68500421936 /* ImageView.swift */; };
+		48BB2CFF1D354157000BA7B5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BB2CFA1D354157000BA7B5 /* libWeChatSDK.a */; };
+		48BB2D001D354157000BA7B5 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 48BB2CFB1D354157000BA7B5 /* README.txt */; };
+		48BB2D021D354271000BA7B5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BB2D011D354271000BA7B5 /* libsqlite3.0.tbd */; };
+		48BB2D041D35BEAE000BA7B5 /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BB2D031D35BEAE000BA7B5 /* PaymentHandler.swift */; };
 		48D95B201D2A8B1700197238 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D95B1F1D2A8B1700197238 /* CarModel.swift */; };
 		48D95B231D2B68AB00197238 /* icon_my_location_48px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48D95B221D2B68AB00197238 /* icon_my_location_48px@2x.png */; };
 		48D95B251D2BB3D400197238 /* CarStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D95B241D2BB3D300197238 /* CarStoreModel.swift */; };
@@ -246,6 +250,13 @@
 		48B22AD61D1CEC1B00421936 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		48B22ADB1D20E4DF00421936 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		48B22ADD1D20E68500421936 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		48BB2CFA1D354157000BA7B5 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		48BB2CFB1D354157000BA7B5 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		48BB2CFC1D354157000BA7B5 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		48BB2CFD1D354157000BA7B5 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		48BB2CFE1D354157000BA7B5 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		48BB2D011D354271000BA7B5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		48BB2D031D35BEAE000BA7B5 /* PaymentHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
 		48D95B1F1D2A8B1700197238 /* CarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		48D95B221D2B68AB00197238 /* icon_my_location_48px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_my_location_48px@2x.png"; sourceTree = "<group>"; };
 		48D95B241D2BB3D300197238 /* CarStoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarStoreModel.swift; sourceTree = "<group>"; };
@@ -270,11 +281,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BB2D021D354271000BA7B5 /* libsqlite3.0.tbd in Frameworks */,
 				48D95B3E1D2D375E00197238 /* libz.tbd in Frameworks */,
 				48D95B3C1D2D375000197238 /* libc++.tbd in Frameworks */,
 				48D95B3A1D2D372C00197238 /* CoreMotion.framework in Frameworks */,
 				48D95B381D2D371E00197238 /* CoreGraphics.framework in Frameworks */,
 				48D95B361D2D371200197238 /* CoreText.framework in Frameworks */,
+				48BB2CFF1D354157000BA7B5 /* libWeChatSDK.a in Frameworks */,
 				48D95B341D2D370600197238 /* QuartzCore.framework in Frameworks */,
 				48D95B321D2D36F900197238 /* CoreTelephony.framework in Frameworks */,
 				48D95B301D2D36EA00197238 /* SystemConfiguration.framework in Frameworks */,
@@ -323,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				48216F2B1D2540A600720A6B /* TopupVC.swift */,
+				48BB2D031D35BEAE000BA7B5 /* PaymentHandler.swift */,
 			);
 			name = "充值";
 			sourceTree = "<group>";
@@ -749,6 +763,19 @@
 			name = "用户身份VIew";
 			sourceTree = "<group>";
 		};
+		48BB2CF91D354157000BA7B5 /* OpenSDK1.7.1 */ = {
+			isa = PBXGroup;
+			children = (
+				48BB2CFA1D354157000BA7B5 /* libWeChatSDK.a */,
+				48BB2CFB1D354157000BA7B5 /* README.txt */,
+				48BB2CFC1D354157000BA7B5 /* WechatAuthSDK.h */,
+				48BB2CFD1D354157000BA7B5 /* WXApi.h */,
+				48BB2CFE1D354157000BA7B5 /* WXApiObject.h */,
+			);
+			name = OpenSDK1.7.1;
+			path = "OpenSDK1.7.1 2";
+			sourceTree = "<group>";
+		};
 		48D95B291D2D1F7800197238 /* 底部操作栏Bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +787,7 @@
 		48D95B2A1D2D367E00197238 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				48BB2CF91D354157000BA7B5 /* OpenSDK1.7.1 */,
 				48D95B2B1D2D36B500197238 /* AlipaySDK.bundle */,
 				48D95B2C1D2D36B600197238 /* AlipaySDK.framework */,
 			);
@@ -769,6 +797,7 @@
 		60F066BC6A03D14F68BA8761 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48BB2D011D354271000BA7B5 /* libsqlite3.0.tbd */,
 				48D95B3D1D2D375E00197238 /* libz.tbd */,
 				48D95B3B1D2D375000197238 /* libc++.tbd */,
 				48D95B391D2D372C00197238 /* CoreMotion.framework */,
@@ -893,6 +922,7 @@
 				48216F251D25390E00720A6B /* WalletView.xib in Resources */,
 				487B96B11D17A80F00786DA9 /* tab-star@2x.png in Resources */,
 				48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */,
+				48BB2D001D354157000BA7B5 /* README.txt in Resources */,
 				488C64541D23E6F000A5D55C /* VerifyCodeView.xib in Resources */,
 				48422AF31D1958FA005A48D6 /* btn-left@2x.png in Resources */,
 				48ABF2C31D222F8C00C16525 /* CarDetailView.xib in Resources */,
@@ -982,6 +1012,7 @@
 				48B22ACF1D1BDB1200421936 /* QualificationView.swift in Sources */,
 				487B96DC1D17C0EA00786DA9 /* UIDevice+Hardware.m in Sources */,
 				48ACFDA61D2F742800341061 /* ProgressHUD.swift in Sources */,
+				48BB2D041D35BEAE000BA7B5 /* PaymentHandler.swift in Sources */,
 				48ABF2B71D213D1600C16525 /* OrderListVC.swift in Sources */,
 				489DC3201D180BB40061033F /* ActionBar.swift in Sources */,
 				48B22ACB1D1BCD0600421936 /* QualificationInfoVC.swift in Sources */,
@@ -1162,6 +1193,11 @@
 				INFOPLIST_FILE = QuanZai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/QuanZai/OpenSDK1.7.1",
+					2,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.i-chou.QuanZai";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QuanZai/QuanZai-Bridging-Header.h";
@@ -1185,6 +1221,11 @@
 				INFOPLIST_FILE = QuanZai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/QuanZai/OpenSDK1.7.1",
+					2,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.i-chou.QuanZai";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QuanZai/QuanZai-Bridging-Header.h";
