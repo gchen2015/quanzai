@@ -38,6 +38,7 @@ enum Router: URLRequestConvertible {
     case GetUserAccountDetail(user_id: String)
     case RechargeUserAccount(user_id: String, capital: String, type: String)
     case WxGetPayInfo(totalFee: String)
+    case AliPayGetPayInfo(account: String, password: String?, subject: String, body: String, price: String)
     
     var method: Alamofire.Method {
         switch self {
@@ -45,7 +46,7 @@ enum Router: URLRequestConvertible {
              .EditUserInfo,
              .UploadPicture,
              .EditValidateInfo,
-             .WxGetPayInfo:
+             .AliPayGetPayInfo:
             return .POST
         default:
             return .GET
@@ -106,6 +107,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.RechargeUserAccountUrl(user_id, capital: capital, type: type)
         case .WxGetPayInfo(let totalFee):
             return ServiceApi.WxGetPayInfoUrl(totalFee)
+        case .AliPayGetPayInfo(_,  _, _, _, _):
+            return ServiceApi.AliPayGetPayInfoUrl()
         }
     }
     
@@ -120,9 +123,11 @@ enum Router: URLRequestConvertible {
 //        }
         
         switch self {
-//        case .UploadPicture(_):
-//            mutableURLRequest.setValue("MultipartFile", forHTTPHeaderField: "Content-Type")
-//            return mutableURLRequest
+        case .AliPayGetPayInfo(let account, _, let subject, let body, let price):
+            let postStr = "account=\(account)&subject=\(subject)&body=\(body)&price=\(price)"
+            let postData = postStr.dataUsingEncoding(NSUTF8StringEncoding)
+            mutableURLRequest.HTTPBody = postData
+            return mutableURLRequest
         default:
             return mutableURLRequest
         }

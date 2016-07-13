@@ -78,6 +78,9 @@ extension APIClient {
     }
     
     func wxPayRequest(URLString: URLRequestConvertible, finished: Finished) {
+        
+        print("wxPayRequest : \(URLString.URLRequest)")
+        
         request(URLString).responseJSON { response in
             switch response.result {
             case .Success:
@@ -93,10 +96,12 @@ extension APIClient {
                             req.package   = json["package"].string
                             req.sign      = json["sign"].string
                             WXApi.sendReq(req)
-                            finished!(objc:nil, error: nil, badNetWork: false)
+                            finished!(objc: req, error: nil, badNetWork: false)
                         } else {
                             finished!(objc:nil, error: NSError(domain: "WxPayError", code: 400, userInfo: ["retmsg": json["retmsg"].string!]), badNetWork: false)
                         }
+                    } else {
+                        finished!(objc: nil, error: NSError(domain: "WxPayError", code: 400, userInfo: ["retmsg": "服务器返回错误，请重试！"]), badNetWork: false)
                     }
                 } else {
                     finished!(objc:nil, error: NSError(domain: "WxPayError", code: 500, userInfo: ["retmsg": "服务器返回错误，请重试！"]), badNetWork: false)
@@ -109,6 +114,26 @@ extension APIClient {
         }
     }
     
+    func aliPayRequest(URLString: URLRequestConvertible, finished: Finished) {
+        
+        print("URLRequest : \(URLString.URLRequest)")
+        print("URLRequest httpBody : \(URLString.URLRequest.HTTPBody)")
+        
+        request(URLString).responseJSON { response in
+            switch response.result {
+            case .Success:
+                let orderStr = String(data: response.data!, encoding: NSUTF8StringEncoding)
+                if "0" == orderStr || "500" == orderStr {
+                    finished!(objc:nil, error: NSError(domain: "AliPayError", code: Int(orderStr!)!, userInfo: ["retmsg": "打开支付宝失败"]), badNetWork: true)
+                } else {
+                    finished!(objc: orderStr, error: nil, badNetWork: false)
+                }
+            case .Failure(let error):
+                print(error)
+                finished!(objc: nil, error: error, badNetWork: true)
+            }
+        }
+    }
 }
 
 // MARK: - 返回结果处理

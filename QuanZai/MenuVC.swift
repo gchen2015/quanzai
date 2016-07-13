@@ -99,7 +99,7 @@ extension MenuVC {
         self.screenNameLabel = UILabel(frame: ccr(x, y, w, h),
                                        color: UIColor.whiteColor(),
                                        font: HS_FONT(15),
-                                       text: "任飞",
+                                       text: "",
                                        alignment: NSTextAlignment.Left,
                                        numberOfLines: 1)
         

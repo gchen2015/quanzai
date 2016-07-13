@@ -173,7 +173,13 @@ class ServiceApi: NSObject {
     
     //微信充值
     internal class func WxGetPayInfoUrl(totalFee: String) -> String {
-        let url = "\(host_online)/User/Api/RechargeUserAccount.action?totalFee=\(totalFee)"
+        let url = "\(host_online)/wxpay/getPayInfo?totalFee=\(totalFee)"
+        return self.encodeUrl(url)
+    }
+    
+    //支付宝充值
+    internal class func AliPayGetPayInfoUrl() -> String {
+        let url = "\(host_online)/alipay/getTradeUrl"
         return self.encodeUrl(url)
     }
     

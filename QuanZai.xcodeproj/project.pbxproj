@@ -40,6 +40,7 @@
 		48422B061D1A8FC8005A48D6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48422B051D1A8FC7005A48D6 /* LoginVC.swift */; };
 		48422B081D1A975C005A48D6 /* point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48422B071D1A975C005A48D6 /* point@2x.png */; };
 		48422B0A1D1AA1FE005A48D6 /* btn-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48422B091D1AA1FE005A48D6 /* btn-blue@2x.png */; };
+		48681E951D36326200761481 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48681E941D36326200761481 /* libWeChatSDK.a */; };
 		487B96A71D17A80F00786DA9 /* bussiness-car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 487B969A1D17A80F00786DA9 /* bussiness-car@2x.png */; };
 		487B96A81D17A80F00786DA9 /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 487B969B1D17A80F00786DA9 /* car@2x.png */; };
 		487B96A91D17A80F00786DA9 /* close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 487B969C1D17A80F00786DA9 /* close-btn@2x.png */; };
@@ -89,7 +90,6 @@
 		48ACFD9D1D2E234D00341061 /* PriceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9C1D2E234D00341061 /* PriceModel.swift */; };
 		48ACFD9F1D2E42CE00341061 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFD9E1D2E42CE00341061 /* StoreCell.swift */; };
 		48ACFDA21D2F410200341061 /* UserValidateInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFDA11D2F410200341061 /* UserValidateInfoModel.swift */; };
-		48ACFDA41D2F573F00341061 /* Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFDA31D2F573F00341061 /* Validate.swift */; };
 		48ACFDA61D2F742800341061 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACFDA51D2F742800341061 /* ProgressHUD.swift */; };
 		48B22ABE1D1B9C8100421936 /* login-close-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */; };
 		48B22AC31D1BA9D000421936 /* btn-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22AC21D1BA9D000421936 /* btn-white@2x.png */; };
@@ -103,7 +103,6 @@
 		48B22AD71D1CEC1B00421936 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22AD61D1CEC1B00421936 /* TextField.swift */; };
 		48B22ADC1D20E4DF00421936 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48B22ADB1D20E4DF00421936 /* avatar@2x.png */; };
 		48B22ADE1D20E68500421936 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B22ADD1D20E68500421936 /* ImageView.swift */; };
-		48BB2CFF1D354157000BA7B5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BB2CFA1D354157000BA7B5 /* libWeChatSDK.a */; };
 		48BB2D001D354157000BA7B5 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 48BB2CFB1D354157000BA7B5 /* README.txt */; };
 		48BB2D021D354271000BA7B5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BB2D011D354271000BA7B5 /* libsqlite3.0.tbd */; };
 		48BB2D041D35BEAE000BA7B5 /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BB2D031D35BEAE000BA7B5 /* PaymentHandler.swift */; };
@@ -171,6 +170,7 @@
 		48422B051D1A8FC7005A48D6 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		48422B071D1A975C005A48D6 /* point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point@2x.png"; sourceTree = "<group>"; };
 		48422B091D1AA1FE005A48D6 /* btn-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-blue@2x.png"; sourceTree = "<group>"; };
+		48681E941D36326200761481 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		487B969A1D17A80F00786DA9 /* bussiness-car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bussiness-car@2x.png"; sourceTree = "<group>"; };
 		487B969B1D17A80F00786DA9 /* car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@2x.png"; sourceTree = "<group>"; };
 		487B969C1D17A80F00786DA9 /* close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-btn@2x.png"; sourceTree = "<group>"; };
@@ -236,7 +236,6 @@
 		48ACFD9C1D2E234D00341061 /* PriceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceModel.swift; sourceTree = "<group>"; };
 		48ACFD9E1D2E42CE00341061 /* StoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		48ACFDA11D2F410200341061 /* UserValidateInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserValidateInfoModel.swift; sourceTree = "<group>"; };
-		48ACFDA31D2F573F00341061 /* Validate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validate.swift; sourceTree = "<group>"; };
 		48ACFDA51D2F742800341061 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		48B22ABD1D1B9C8100421936 /* login-close-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-close-btn@2x.png"; sourceTree = "<group>"; };
 		48B22AC21D1BA9D000421936 /* btn-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white@2x.png"; sourceTree = "<group>"; };
@@ -250,7 +249,6 @@
 		48B22AD61D1CEC1B00421936 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		48B22ADB1D20E4DF00421936 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		48B22ADD1D20E68500421936 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		48BB2CFA1D354157000BA7B5 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		48BB2CFB1D354157000BA7B5 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		48BB2CFC1D354157000BA7B5 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		48BB2CFD1D354157000BA7B5 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -283,11 +281,11 @@
 			files = (
 				48BB2D021D354271000BA7B5 /* libsqlite3.0.tbd in Frameworks */,
 				48D95B3E1D2D375E00197238 /* libz.tbd in Frameworks */,
+				48681E951D36326200761481 /* libWeChatSDK.a in Frameworks */,
 				48D95B3C1D2D375000197238 /* libc++.tbd in Frameworks */,
 				48D95B3A1D2D372C00197238 /* CoreMotion.framework in Frameworks */,
 				48D95B381D2D371E00197238 /* CoreGraphics.framework in Frameworks */,
 				48D95B361D2D371200197238 /* CoreText.framework in Frameworks */,
-				48BB2CFF1D354157000BA7B5 /* libWeChatSDK.a in Frameworks */,
 				48D95B341D2D370600197238 /* QuartzCore.framework in Frameworks */,
 				48D95B321D2D36F900197238 /* CoreTelephony.framework in Frameworks */,
 				48D95B301D2D36EA00197238 /* SystemConfiguration.framework in Frameworks */,
@@ -474,7 +472,6 @@
 				487B96F61D17C1F000786DA9 /* QuanZai-Prefix.pch */,
 				487B96F71D17C2E600786DA9 /* FastCodeDefines.h */,
 				487B96B91D17B49E00786DA9 /* swiftFastCode.swift */,
-				48ACFDA31D2F573F00341061 /* Validate.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -766,7 +763,6 @@
 		48BB2CF91D354157000BA7B5 /* OpenSDK1.7.1 */ = {
 			isa = PBXGroup;
 			children = (
-				48BB2CFA1D354157000BA7B5 /* libWeChatSDK.a */,
 				48BB2CFB1D354157000BA7B5 /* README.txt */,
 				48BB2CFC1D354157000BA7B5 /* WechatAuthSDK.h */,
 				48BB2CFD1D354157000BA7B5 /* WXApi.h */,
@@ -787,6 +783,7 @@
 		48D95B2A1D2D367E00197238 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				48681E941D36326200761481 /* libWeChatSDK.a */,
 				48BB2CF91D354157000BA7B5 /* OpenSDK1.7.1 */,
 				48D95B2B1D2D36B500197238 /* AlipaySDK.bundle */,
 				48D95B2C1D2D36B600197238 /* AlipaySDK.framework */,
@@ -1066,7 +1063,6 @@
 				480C1DB41D2FA563002DAFAA /* OrderModel.swift in Sources */,
 				48ACFDA21D2F410200341061 /* UserValidateInfoModel.swift in Sources */,
 				487B96DD1D17C0EA00786DA9 /* UIImage+PL.m in Sources */,
-				48ACFDA41D2F573F00341061 /* Validate.swift in Sources */,
 				48ABF2B91D22172900C16525 /* Label.swift in Sources */,
 				487B96EE1D17C0F200786DA9 /* NSArray+Additions.m in Sources */,
 				48216F281D25396200720A6B /* WalletView.swift in Sources */,
@@ -1195,8 +1191,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/QuanZai/OpenSDK1.7.1",
-					2,
+					"$(PROJECT_DIR)/QuanZai",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.i-chou.QuanZai";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1223,8 +1218,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/QuanZai/OpenSDK1.7.1",
-					2,
+					"$(PROJECT_DIR)/QuanZai",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.i-chou.QuanZai";
 				PRODUCT_NAME = "$(TARGET_NAME)";

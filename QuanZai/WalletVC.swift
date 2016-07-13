@@ -46,10 +46,13 @@ extension WalletVC {
         
         let request = Router.GetUserAccountBalance(user_id: self.user_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            let json = JSON(objc!)
-            if let account_balance = json["account_balance"].string {
-                self.infoView.moneyLabel.text = account_balance + "元"
+            if objc != nil {
+                let json = JSON(objc!)
+                if let account_balance = json["account_balance"].string {
+                    self.infoView.moneyLabel.text = account_balance + "元"
+                }
             }
+            
         }
     }
     

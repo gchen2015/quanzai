@@ -43,13 +43,13 @@ enum PaymentType: String {
 
 extension TopupVC : TopupViewProtocol {
     
-    func openAlipay() {
+    func openWechatPay() {
         guard Keychain(service: service)[k_UserID] != nil else {
             self.showLoginVC(true)
             return
         }
         let progressHUD = ProgressHUD()
-        progressHUD.showInWindow("正在充值...")
+        progressHUD.showInWindow("正在处理...")
         self.money = "0.01"
         let request = Router.WxGetPayInfo(totalFee: self.money!)
         APIClient.sharedAPIClient().wxPayRequest(request) { (objc, error, badNetWork) in
@@ -61,15 +61,33 @@ extension TopupVC : TopupViewProtocol {
                         return
                     }
                     self.alertPresenter(error.debugDescription, body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
-                } else {
-                    self.alertPresenter("充值成功", body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
                 }
             })
         }
     }
     
-    func openWechatPay() {
-//        self.rechargeUserAccount(self.money!, type: .WxPay)
+    func openAlipay() {
+        
+        guard let user_id = Keychain(service: service)[k_UserID] else {
+            self.showLoginVC(true)
+            return
+        }
+        let progressHUD = ProgressHUD()
+        progressHUD.showInWindow("正在处理...")
+        self.money = "0.01"
+        let request = Router.AliPayGetPayInfo(account: user_id, password: "", subject: "支付宝充值", body: "支付宝充值", price: self.money!)
+        APIClient.sharedAPIClient().aliPayRequest(request) { (objc, error, badNetWork) in
+            progressHUD.dismiss({ 
+                if objc != nil {
+                    let orderStr = objc as! String
+                    AlipaySDK.defaultService().payOrder(orderStr, fromScheme: "QuanZai", callback: { resultDic in
+                        print("resultDic = \(resultDic)")
+                    })
+                } else {
+                    self.alertPresenter("打开支付宝失败", body: "", cancelTitle: nil, okTitle: "确定", cancelActionHandler: nil, okActionHandler: nil)
+                }
+            })
+        }
     }
     
     func selectedButton(radioButton: DLRadioButton) {

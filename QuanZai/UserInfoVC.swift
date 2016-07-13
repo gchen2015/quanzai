@@ -142,10 +142,14 @@ extension UserInfoVC {
         APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: self.user_id)) { (objc, error, badNetWork) in
             if let userInfo = Mapper<UserModel>().map(objc) {
                 self.infoView.phoneTxt.text = userInfo.phone
-                self.infoView.genderBtn.titleLabel!.text = userInfo.gender
+                if userInfo.gender?.characters.count > 0 {
+                    self.infoView.genderBtn.setTitle(userInfo.gender, forState: .Normal)
+                    self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
+                }
                 self.infoView.avatarIMG.layer.cornerRadius = 20
                 self.infoView.avatarIMG.layer.masksToBounds = true
                 self.infoView.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))
+                self.avatar_url = userInfo.head_portrait
             }
         }
     }
@@ -153,10 +157,10 @@ extension UserInfoVC {
     //提交个人信息
     func setUserInfo() {
         
-        let user_id = self.user_id
-        let phone = self.infoView.phoneTxt.text!
-        let gender = self.infoView.genderBtn.titleLabel!.text!
-        let head_portrait = self.avatar_url!
+        guard let user_id = self.user_id else { return }
+        guard let phone = self.infoView.phoneTxt.text else { return }
+        guard let gender = self.infoView.genderBtn.titleLabel!.text else { return }
+        guard let head_portrait = self.avatar_url else { return }
         
         let request = Router.EditUserInfo(user_id: user_id, phone: phone, gender: gender, head_portrait: head_portrait)
         
