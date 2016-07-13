@@ -57,7 +57,8 @@ extension AppDelegate {
         
         self.alipay_delegate = PaymentHandler.sharedPaymentHandler()
         
-        AlipaySDK.defaultService().processOrderWithPaymentResult(url, standbyCallback: { resultDic in
+        AlipaySDK.defaultService().processOrderWithPaymentResult(url, standbyCallback: {
+            resultDic in
             self.alipay_delegate?.onAlipayResp(resultDic)
         })
     }
