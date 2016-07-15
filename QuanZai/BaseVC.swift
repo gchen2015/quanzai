@@ -9,7 +9,8 @@
 let service = "com.quanzai.com"
 let k_UserID = "user_id"
 let k_Token = "token"
-let k_phone = "phone"
+let k_Phone = "phone"
+let k_Login_Last_Time = "login_last_time"
 
 
 import ObjectMapper

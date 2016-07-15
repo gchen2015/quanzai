@@ -284,11 +284,11 @@ extension CarDetailVC : VerifyCodeViewProtocol {
     func rentTheCar(verifyCodeView: VerifyCodeView) {
         
         let keychain = Keychain(service: service)
-        if keychain[k_phone] == nil {
+        if keychain[k_Phone] == nil {
             Drop.down("未取得登录信息，请重新登录再试")
             return
         }
-        self.validateUser(keychain[k_phone]!, validatecode: verifyCodeView.codeTxt.text!)
+        self.validateUser(keychain[k_Phone]!, validatecode: verifyCodeView.codeTxt.text!)
     }
     
 }

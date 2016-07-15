@@ -178,7 +178,19 @@ extension LoginVC {
             if let userInfo = Mapper<UserModel>().map(objc) {
                 let keychain = Keychain(service: service)
                 keychain[k_UserID] = userInfo.id!
-                keychain[k_phone] = userInfo.phone!
+                keychain[k_Phone] = userInfo.phone!
+                //TODO: test code
+//                keychain[k_Token] = "xxx"
+                guard userInfo.token == nil else {
+                    keychain[k_Token] = userInfo.token
+                    return
+                }
+                
+                //记录最后一次登录的时间
+                let timeInterval: NSTimeInterval = NSDate().timeIntervalSince1970
+                let timeStamp = String(timeInterval)
+                keychain[k_Login_Last_Time] = timeStamp
+                
                 self.delegate?.loginSuccessed(userInfo)
             }
             self.resetCountDown()

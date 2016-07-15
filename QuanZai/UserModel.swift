@@ -13,6 +13,7 @@ class UserModel: BaseModel {
     var phone           : String?
     var gender          : String?
     var head_portrait   : String?
+    var token           : String?
     
     required init?(_ map: Map) {
         super.init(map)
@@ -24,5 +25,6 @@ class UserModel: BaseModel {
         phone <- map["phone"]
         gender <- map["gender"]
         head_portrait <- map["head_portrait"]
+        token <- map["token"]
     }
 }

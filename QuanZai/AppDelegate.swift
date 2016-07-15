@@ -9,6 +9,7 @@
 import UIKit
 import SlideMenuControllerSwift
 import SwiftyDrop
+import KeychainAccess
 
 let AmapKey = "b2e57bb4e9fa8b688ad1ca4c88e96787"
 let WxAppID = "wx22a7b4318a2ec245"
@@ -104,7 +105,25 @@ extension AppDelegate {
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        //登录24小时清除token
+        let keychain = Keychain(service: service)
+        guard keychain[k_Login_Last_Time] == nil || keychain[k_Token] == nil else {
+            
+            let now: NSTimeInterval = NSDate().timeIntervalSince1970
+            if let last = NSTimeInterval(keychain[k_Login_Last_Time]!) {
+                print(String(now - last))
+                
+                if now - last > 60*60*24 && keychain[k_Token] != nil {
+                    do {
+                        try keychain.removeAll()
+                    } catch {
+                        print("退出登录失败")
+                    }
+                }
+            }
+            return
+        }
     }
     
     func applicationWillTerminate(application: UIApplication) {
