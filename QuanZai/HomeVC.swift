@@ -204,7 +204,6 @@ extension HomeVC: actionProtocol {
             self.showLoginVC(true)
             return
         }
-        
         switch type {
         case .Open,
              .Lock:
@@ -430,16 +429,6 @@ extension HomeVC : MenuProtocol {
     
     func changeViewController(menu: LeftMenu) {
         switch menu {
-//        case .首页:
-//            break
-//        case .我的行程:
-//            guard let user_id = Keychain(service: service)[k_UserID] else {
-//                self.showLoginVC(true)
-//                return
-//            }
-//            let orderListVC = OrderListVC()
-//            orderListVC.user_id = user_id
-//            self.navigationController?.pushViewController(orderListVC, animated: true)
         case .账户余额:
             guard let user_id = Keychain(service: service)[k_UserID] else {
                 self.showLoginVC(true)
