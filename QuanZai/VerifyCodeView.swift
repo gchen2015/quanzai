@@ -46,10 +46,11 @@ protocol  VerifyCodeViewProtocol : class {
         if keychain[k_Phone] == nil {
             return
         }
-        self.startCountDown()
+        
         let request = Router.GetValidateCode(phone: keychain[k_Phone]!)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
         }
+        self.startCountDown()
     }
     
     func okBtnTapped () {
