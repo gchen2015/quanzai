@@ -186,9 +186,10 @@ class ServiceApi: NSObject {
         return self.encodeUrl(url)
     }
     
+    
     //支付宝充值
-    internal class func AliPayGetPayInfoUrl() -> String {
-        let url = "\(host_online)/alipay/getTradeUrl"
+    internal class func AliPayGetPayInfoUrl(account: String, password: String = "698d51a19d8a121ce581499d7b701668" , subject: String = "支付宝会员充值", body: String = "支付宝会员充值", price: String) -> String {
+        let url = "\(host_online)/alipay/getTradeUrl?account=\(account)&password=\(password)&subject=\(subject)&body=\(body)&price=\(price)"
         return self.encodeUrl(url)
     }
     

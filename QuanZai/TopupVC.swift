@@ -75,7 +75,10 @@ extension TopupVC : TopupViewProtocol {
         let progressHUD = ProgressHUD()
         progressHUD.showInWindow("正在处理...")
         self.money = "0.01"
-        let request = Router.AliPayGetPayInfo(account: user_id, password: "", subject: "支付宝充值", body: "支付宝充值", price: self.money!)
+        //TODO: 测试帐号
+        let testuser = "0004"
+        let password = "698d51a19d8a121ce581499d7b701668"
+        let request = Router.AliPayGetPayInfo(account: testuser, password: password, subject: "支付宝充值", body: "支付宝充值", price: self.money!)
         APIClient.sharedAPIClient().aliPayRequest(request) { (objc, error, badNetWork) in
             progressHUD.dismiss({ 
                 if objc != nil {

@@ -158,10 +158,11 @@ extension LoginVC {
             Drop.down("请输入手机号", state: .Info)
             return
         }
-        self.startCountDown()
+        
         let request = Router.GetValidateCode(phone: self.phoneTxt.text!)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
         }
+        self.startCountDown()
     }
     
     //登录

@@ -79,6 +79,12 @@ class CarDetailVC: BaseVC {
 extension CarDetailVC {
     
     func okTapped() {
+        
+        guard Keychain(service: service)[k_UserID] != nil else {
+            self.showLoginVC(true)
+            return
+        }
+        
         if self.selected_date_type_id == nil {
             Drop.down("请先选择租车类型")
             return

@@ -38,7 +38,7 @@ enum Router: URLRequestConvertible {
     case GetUserAccountDetail(user_id: String)
     case RechargeUserAccount(user_id: String, capital: String, type: String)
     case WxGetPayInfo(totalFee: String)
-    case AliPayGetPayInfo(account: String, password: String?, subject: String, body: String, price: String)
+    case AliPayGetPayInfo(account: String!, password: String!, subject: String, body: String, price: String)
     
     var method: Alamofire.Method {
         switch self {
@@ -107,8 +107,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.RechargeUserAccountUrl(user_id, capital: capital, type: type)
         case .WxGetPayInfo(let totalFee):
             return ServiceApi.WxGetPayInfoUrl(totalFee)
-        case .AliPayGetPayInfo(_,  _, _, _, _):
-            return ServiceApi.AliPayGetPayInfoUrl()
+        case .AliPayGetPayInfo(let account, let password, let subject, let body, let price):
+            return ServiceApi.AliPayGetPayInfoUrl(account, password: password, subject: subject, body: body, price: price)
         }
     }
     
@@ -123,10 +123,10 @@ enum Router: URLRequestConvertible {
 //        }
         
         switch self {
-        case .AliPayGetPayInfo(let account, _, let subject, let body, let price):
-            let postStr = "account=\(account)&subject=\(subject)&body=\(body)&price=\(price)"
+        case .AliPayGetPayInfo(let account, let password, let subject, let body, let price):
+            let postStr = "account=\(account)&password=\(password)&subject=\(subject)&body=\(body)&price=\(price)"
             let postData = postStr.dataUsingEncoding(NSUTF8StringEncoding)
-            mutableURLRequest.HTTPBody = postData
+            mutableURLRequest.HTTPBody = postData!
             return mutableURLRequest
         default:
             return mutableURLRequest

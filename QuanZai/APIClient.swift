@@ -119,7 +119,7 @@ extension APIClient {
         print("URLRequest : \(URLString.URLRequest)")
         print("URLRequest httpBody : \(URLString.URLRequest.HTTPBody)")
         
-        request(URLString).responseJSON { response in
+        request(URLString).responseData { response in
             switch response.result {
             case .Success:
                 let orderStr = String(data: response.data!, encoding: NSUTF8StringEncoding)
