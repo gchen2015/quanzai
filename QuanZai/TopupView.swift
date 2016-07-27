@@ -23,6 +23,8 @@ protocol TopupViewProtocol {
     @IBOutlet weak var alipayBtn: Button!
     @IBOutlet weak var wechatPayBtn: Button!
     
+    var selectedRadioBtn: DLRadioButton?
+    
     var selected_money : String?
 
     var delegate : TopupViewProtocol?
@@ -45,6 +47,7 @@ protocol TopupViewProtocol {
         let firstRadioButton = createRadioButton(frame, title: "100元")
         firstRadioButton.selected = true
         firstRadioButton.iconSquare = true
+        self.selectedRadioBtn = firstRadioButton
         
         var otherbuttons : [DLRadioButton] = []
         let titles = ["200元", "500元", "1000元"]
@@ -131,13 +134,21 @@ protocol TopupViewProtocol {
             }
         } else {
             print(String(format: "%@ is selected.\n", radioButton.selectedButton()!.titleLabel!.text!));
+            self.selectedRadioBtn = radioButton
+            self.otherMoneyTxt.endEditing(true)
+            self.otherMoneyTxt.text = ""
             self.delegate?.selectedButton(radioButton)
         }
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension TopupView : UITextFieldDelegate {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if string.characters.count > 0 {
+            self.selectedRadioBtn?.selected = false
+        }
         return true
     }
 }
