@@ -58,7 +58,9 @@ extension HomeVC {
                                              lat: String(self.userLocation.coordinate.latitude),
                                              type: String(type))
         APIClient.sharedAPIClient().sendRequest(request, finished: { (objc, error, badNetWork) in
-            
+            if error == nil {
+                Drop.down("还车成功", state: .Success)
+            }
         })
     }
     
