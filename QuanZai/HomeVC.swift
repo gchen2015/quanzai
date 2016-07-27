@@ -104,8 +104,10 @@ extension HomeVC {
         progressHUD.showInView(self.view, message: "车场验证成功，\n正在还车...")
         let request = Router.ReturnCar(user_id: user_id, car_id: car_id, store_id: store_id, order_id: order_id)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
-            progressHUD.dismiss({ 
-                Drop.down("还车成功", state: .Success)
+            progressHUD.dismiss({
+                if error == nil {
+                    Drop.down("还车成功", state: .Success)
+                }
             })
         }
     }

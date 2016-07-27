@@ -412,19 +412,19 @@ protocol CarDetailViewProtocol : class {
         unitPayTimeTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.equalTo(0)
-            make.width.equalTo(unitPayTimeTitle.superview!.width/3)
+            make.width.equalTo(80)
             make.height.equalTo(unitPayTimeTitle.superview!.snp_height)
         }
         unitPayTimePriceTitle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(unitPayTimeTitle.snp_right)
-            make.width.equalTo(unitPayTimePriceTitle.superview!.width/3)
+            make.centerX.equalTo(unitPayTimePriceTitle.superview!.snp_centerX)
+            make.width.equalTo(80)
             make.height.equalTo(unitPayTimePriceTitle.superview!.snp_height)
         }
         unitPayMileagePriceTItle.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(unitPayTimePriceTitle.snp_right)
-            make.width.equalTo(unitPayMileagePriceTItle.superview!.width/3)
+            make.right.equalTo(unitPayMileagePriceTItle.superview!.snp_right)
+            make.width.equalTo(80)
             make.height.equalTo(unitPayMileagePriceTItle.superview!.snp_height)
         }
         
@@ -443,13 +443,13 @@ protocol CarDetailViewProtocol : class {
         }
         unitPayRow1_TimePriceLabel.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(unitPayTimeTitle.snp_right)
+            make.centerX.equalTo(unitPayTimePriceTitle.snp_centerX)
             make.width.equalTo(unitPayTimePriceTitle.snp_width)
             make.height.equalTo(unitPayTimePriceTitle.snp_height)
         }
         unitPayRow1_MileagePriceLabel.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(unitPayTimePriceTitle.snp_right)
+            make.right.equalTo(unitPayMileagePriceTItle.snp_right)
             make.width.equalTo(unitPayMileagePriceTItle.snp_width)
             make.height.equalTo(unitPayMileagePriceTItle.snp_height)
         }
@@ -469,13 +469,13 @@ protocol CarDetailViewProtocol : class {
         }
         unitPayRow2_TimePriceLabel.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(unitPayTimeTitle.snp_right)
+            make.centerX.equalTo(unitPayTimePriceTitle.snp_centerX)
             make.width.equalTo(unitPayTimePriceTitle.snp_width)
             make.height.equalTo(unitPayTimePriceTitle.snp_height)
         }
         unitPayRow2_MileagePriceLabel.snp_makeConstraints { (make) in
             make.top.equalTo(0)
-            make.left.equalTo(unitPayTimePriceTitle.snp_right)
+            make.right.equalTo(unitPayMileagePriceTItle.snp_right)
             make.width.equalTo(unitPayMileagePriceTItle.snp_width)
             make.height.equalTo(unitPayMileagePriceTItle.snp_height)
         }

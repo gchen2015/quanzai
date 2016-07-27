@@ -61,9 +61,8 @@ class OrderDetailVC : BaseVC {
         self.infoView.rentTypeLabel.text = orderInfo.date_time_name
         self.infoView.startTimeLabel.text = orderInfo.real_start_time
         self.infoView.endTimeLabel.text = orderInfo.real_end_time
-        self.infoView.sumTimeLabel.text = orderInfo.total_time
-        self.infoView.sumMileageLabel.text = orderInfo.mileage_total
-        self.infoView.priceLabel.text = orderInfo.order_amount
+        self.infoView.sumMileageLabel.text = String(format: "\(orderInfo.mileage_total)公里")
+        self.infoView.priceLabel.text = String(format: "\(orderInfo.order_amount)元")
         self.infoView.addrLabel.text = orderInfo.address
         
         let paymentStatus = PaymentStatus(rawValue: Int(self.orderInfo!.payment_status!)!)!

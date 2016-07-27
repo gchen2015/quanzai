@@ -38,10 +38,10 @@ class OrderDetailView: UIView {
     @IBOutlet weak var endTimeLine: UIImageView!
     @IBOutlet weak var endTimeLabel: Label!
     
-    @IBOutlet weak var sumTimeView: View!
-    @IBOutlet weak var sumTimeTitle: UILabel!
-    @IBOutlet weak var sumTimeLine: UIImageView!
-    @IBOutlet weak var sumTimeLabel: Label!
+//    @IBOutlet weak var sumTimeView: View!
+//    @IBOutlet weak var sumTimeTitle: UILabel!
+//    @IBOutlet weak var sumTimeLine: UIImageView!
+//    @IBOutlet weak var sumTimeLabel: Label!
     
 //    @IBOutlet weak var startMileageView: View!
 //    @IBOutlet weak var startMileageTitle: UILabel!
@@ -213,30 +213,30 @@ class OrderDetailView: UIView {
         }
         
         
-        sumTimeView.snp_makeConstraints { (make) in
-            make.top.equalTo(endTimeView.snp_bottom).offset(10)
-            make.left.equalTo(numberView.snp_left)
-            make.right.equalTo(numberView.snp_right)
-            make.height.equalTo(numberView.snp_height)
-        }
-        sumTimeTitle.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.equalTo(numberTitle.snp_left)
-            make.width.equalTo(numberTitle.snp_width)
-            make.height.equalTo(numberTitle.snp_height)
-        }
-        sumTimeLine.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.equalTo(numberLine.snp_left)
-            make.width.equalTo(numberLine.snp_width)
-            make.height.equalTo(numberLine.snp_height)
-        }
-        sumTimeLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.equalTo(numberLabel.snp_left)
-            make.right.equalTo(numberLabel.snp_right)
-            make.height.equalTo(numberLabel.snp_height)
-        }
+//        sumTimeView.snp_makeConstraints { (make) in
+//            make.top.equalTo(endTimeView.snp_bottom).offset(10)
+//            make.left.equalTo(numberView.snp_left)
+//            make.right.equalTo(numberView.snp_right)
+//            make.height.equalTo(numberView.snp_height)
+//        }
+//        sumTimeTitle.snp_makeConstraints { (make) in
+//            make.top.equalTo(0)
+//            make.left.equalTo(numberTitle.snp_left)
+//            make.width.equalTo(numberTitle.snp_width)
+//            make.height.equalTo(numberTitle.snp_height)
+//        }
+//        sumTimeLine.snp_makeConstraints { (make) in
+//            make.top.equalTo(0)
+//            make.left.equalTo(numberLine.snp_left)
+//            make.width.equalTo(numberLine.snp_width)
+//            make.height.equalTo(numberLine.snp_height)
+//        }
+//        sumTimeLabel.snp_makeConstraints { (make) in
+//            make.top.equalTo(0)
+//            make.left.equalTo(numberLabel.snp_left)
+//            make.right.equalTo(numberLabel.snp_right)
+//            make.height.equalTo(numberLabel.snp_height)
+//        }
         
         
 //        startMileageView.snp_makeConstraints { (make) in
@@ -291,7 +291,7 @@ class OrderDetailView: UIView {
         
         
         sumMileageView.snp_makeConstraints { (make) in
-            make.top.equalTo(sumTimeView.snp_bottom).offset(10)
+            make.top.equalTo(endTimeView.snp_bottom).offset(10)
             make.left.equalTo(numberView.snp_left)
             make.right.equalTo(numberView.snp_right)
             make.height.equalTo(numberView.snp_height)

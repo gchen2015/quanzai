@@ -143,7 +143,7 @@ extension UserInfoVC {
             if let userInfo = Mapper<UserModel>().map(objc) {
                 self.infoView.phoneTxt.text = userInfo.phone
                 if userInfo.gender?.characters.count > 0 {
-                    self.infoView.genderBtn.setTitle(userInfo.gender, forState: .Normal)
+                    self.infoView.genderBtn.setTitle(userInfo.gender_display(), forState: .Normal)
                     self.infoView.genderBtn.setTitleColor( .blackColor(), forState: .Normal)
                 }
                 self.infoView.avatarIMG.layer.cornerRadius = 20
@@ -161,8 +161,14 @@ extension UserInfoVC {
         guard let phone = self.infoView.phoneTxt.text else { return }
         guard let gender = self.infoView.genderBtn.titleLabel!.text else { return }
         guard let head_portrait = self.avatar_url else { return }
+        let genderCode: String
+        if gender == "男" {
+            genderCode = "1"
+        } else {
+            genderCode = "2"
+        }
         
-        let request = Router.EditUserInfo(user_id: user_id, phone: phone, gender: gender, head_portrait: head_portrait)
+        let request = Router.EditUserInfo(user_id: user_id, phone: phone, gender: genderCode, head_portrait: head_portrait)
         
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if objc != nil {

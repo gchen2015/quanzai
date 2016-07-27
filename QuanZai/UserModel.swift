@@ -12,6 +12,7 @@ class UserModel: BaseModel {
     
     var phone           : String?
     var gender          : String?
+//    var gender_display  : String?
     var head_portrait   : String?
     var token           : String?
     
@@ -26,5 +27,21 @@ class UserModel: BaseModel {
         gender <- map["gender"]
         head_portrait <- map["head_portrait"]
         token <- map["token"]
+    }
+}
+
+extension UserModel {
+    
+    func gender_display() -> String {
+        if self.gender != nil {
+            if self.gender == "1" {
+                return "男"
+            } else if self.gender == "2" {
+                return "女"
+            } else {
+                return ""
+            }
+        }
+        return ""
     }
 }

@@ -219,45 +219,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view contentMode="scaleToFill" id="czL-XG-VpE" customClass="View" customModule="QuanZai" customModuleProvider="target">
-                    <rect key="frame" x="16" y="343" width="288" height="45"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总使用时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e6u-x8-8uR">
-                            <rect key="frame" x="0.0" y="-2" width="65" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="TcM-Df-Vtj">
-                            <rect key="frame" x="68" y="-5" width="1" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7XB-Af-uzd" customClass="Label" customModule="QuanZai" customModuleProvider="target">
-                            <rect key="frame" x="68" y="-2" width="220" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                    <real key="value" value="20"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="3"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                            <real key="value" value="0.0"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </view>
                 <view contentMode="scaleToFill" id="ICe-vn-qIA" customClass="View" customModule="QuanZai" customModuleProvider="target">
                     <rect key="frame" x="16" y="396" width="288" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -413,10 +374,6 @@
                 <outlet property="sumMileageLine" destination="QId-gg-bDF" id="8bS-z7-fkU"/>
                 <outlet property="sumMileageTitle" destination="1hj-nH-Xb3" id="1if-ha-t9G"/>
                 <outlet property="sumMileageView" destination="ICe-vn-qIA" id="47f-XS-Lws"/>
-                <outlet property="sumTimeLabel" destination="7XB-Af-uzd" id="hiE-BU-ZIh"/>
-                <outlet property="sumTimeLine" destination="TcM-Df-Vtj" id="07r-vK-oAR"/>
-                <outlet property="sumTimeTitle" destination="e6u-x8-8uR" id="LWx-2S-PsI"/>
-                <outlet property="sumTimeView" destination="czL-XG-VpE" id="DKh-6q-kKw"/>
             </connections>
             <point key="canvasLocation" x="567" y="591.5"/>
         </view>
