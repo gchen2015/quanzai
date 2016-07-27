@@ -44,14 +44,17 @@ enum PaymentType: String {
 extension TopupVC : TopupViewProtocol {
     
     func openWechatPay() {
-        guard Keychain(service: service)[k_UserID] != nil else {
+        guard let user_id = Keychain(service: service)[k_UserID] else {
             self.showLoginVC(true)
             return
         }
         let progressHUD = ProgressHUD()
         progressHUD.showInWindow("正在处理...")
-        self.money = "0.01"
-        let request = Router.WxGetPayInfo(totalFee: self.money!)
+        //TODO: 测试帐号
+        let testuser = "0004"
+        let password = "698d51a19d8a121ce581499d7b701668"
+        self.money = "1"
+        let request = Router.WxGetPayInfo(account: testuser, password: password, totalFee: self.money!)
         APIClient.sharedAPIClient().wxPayRequest(request) { (objc, error, badNetWork) in
             progressHUD.dismiss({
                 if error != nil {

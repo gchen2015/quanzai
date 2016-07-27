@@ -11,7 +11,8 @@ import KeychainAccess
 class ServiceApi: NSObject {
     
     static var host : String = "http://123.185.175.210:8081/RentCarManage"
-    static var host_online : String = "http://quanzai.com/wsbg"
+//    static var host_pay : String = "http://quanzai.com/wsbg"
+    static var host_pay : String = "http://123.56.67.177/wsbg"
     
     class func encodeUrl(url: String) -> String {
         return url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
@@ -32,14 +33,12 @@ class ServiceApi: NSObject {
     
     //登录
     internal class func loginUrl(phone: String, validateCode: String) -> String {
-        
         let url = "\(host)/User/Api/Login.action?phone=\(phone)&validateCode=\(validateCode)"
         return self.encodeUrl(url)
     }
     
     //获取短信验证码
     internal class func GetValidateCodeUrl(phone: String) -> String {
-        
         let url = "\(host)/User/Api/GetValidateCode.action?phone=\(phone)"
         return self.encodeUrl(url)
     }
@@ -47,7 +46,6 @@ class ServiceApi: NSObject {
     
     //获取租车类型
     internal class func GetDateTypeUrl(car_id: String) -> String {
-        
         let url = "\(host)/Car/Api/GetDateType.action?car_id=\(car_id)"
         return self.encodeUrl(url)
     }
@@ -55,7 +53,6 @@ class ServiceApi: NSObject {
     
     //获取车辆详情
     internal class func GetCarInfoUrl(car_id: String) -> String {
-        
         let url = "\(host)/Car/Api/GetCarInfo.action?car_id=\(car_id)"
         return self.encodeUrl(url)
     }
@@ -63,21 +60,18 @@ class ServiceApi: NSObject {
     
     //搜索车辆
     internal class func SearchCarUrl(lng: String, lat: String, type: String) -> String {
-        
         let url = "\(host)/Car/Api/SerachCar.action?lng=\(lng)&lat=\(lat)&type=\(type)"
         return self.encodeUrl(url)
     }
     
     //搜索车场
     internal class func SerachNearStoreUrl(lng: String, lat: String, type: String) -> String {
-        
         let url = "\(host)/Car/Api/SerachNearStore.action?lng=\(lng)&lat=\(lat)&type=\(type)"
         return self.encodeUrl(url)
     }
     
     //修改个人信息
     internal class func EditUserInfoUrl(user_id: String,phone: String,gender: String,head_portrait: String) -> String {
-
         let url = "\(host)/User/Api/EditUserInfo.action?user_id=\(user_id)&phone=\(phone)&gender=\(gender)&head_portrait=\(head_portrait)"
         return self.encodeUrl(appendToken(url))
     }
@@ -181,15 +175,15 @@ class ServiceApi: NSObject {
     }
     
     //微信充值
-    internal class func WxGetPayInfoUrl(totalFee: String) -> String {
-        let url = "\(host_online)/wxpay/getPayInfo?totalFee=\(totalFee)"
+    internal class func WxGetPayInfoUrl(account: String, password: String = "698d51a19d8a121ce581499d7b701668", totalFee: String) -> String {
+        let url = "\(host_pay)/wxpay/getPayInfo?account=\(account)&password=\(password)&totalFee=\(totalFee)"
         return self.encodeUrl(url)
     }
     
     
     //支付宝充值
     internal class func AliPayGetPayInfoUrl(account: String, password: String = "698d51a19d8a121ce581499d7b701668" , subject: String = "支付宝会员充值", body: String = "支付宝会员充值", price: String) -> String {
-        let url = "\(host_online)/alipay/getTradeUrl?account=\(account)&password=\(password)&subject=\(subject)&body=\(body)&price=\(price)"
+        let url = "\(host_pay)/alipay/getTradeUrl?account=\(account)&password=\(password)&subject=\(subject)&body=\(body)&price=\(price)"
         return self.encodeUrl(url)
     }
     

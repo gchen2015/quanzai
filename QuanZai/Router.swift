@@ -37,8 +37,8 @@ enum Router: URLRequestConvertible {
     case GetUserAccountBalance(user_id: String)
     case GetUserAccountDetail(user_id: String)
     case RechargeUserAccount(user_id: String, capital: String, type: String)
-    case WxGetPayInfo(totalFee: String)
-    case AliPayGetPayInfo(account: String!, password: String!, subject: String, body: String, price: String)
+    case WxGetPayInfo(account: String, password: String, totalFee: String)
+    case AliPayGetPayInfo(account: String, password: String, subject: String, body: String, price: String)
     
     var method: Alamofire.Method {
         switch self {
@@ -46,6 +46,7 @@ enum Router: URLRequestConvertible {
              .EditUserInfo,
              .UploadPicture,
              .EditValidateInfo,
+             .WxGetPayInfo,
              .AliPayGetPayInfo:
             return .POST
         default:
@@ -105,8 +106,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.GetUserAccountDetailUrl(user_id)
         case .RechargeUserAccount(let user_id, let capital, let type):
             return ServiceApi.RechargeUserAccountUrl(user_id, capital: capital, type: type)
-        case .WxGetPayInfo(let totalFee):
-            return ServiceApi.WxGetPayInfoUrl(totalFee)
+        case .WxGetPayInfo(let account, let password, let totalFee):
+            return ServiceApi.WxGetPayInfoUrl(account, password: password, totalFee: totalFee)
         case .AliPayGetPayInfo(let account, let password, let subject, let body, let price):
             return ServiceApi.AliPayGetPayInfoUrl(account, password: password, subject: subject, body: body, price: price)
         }
@@ -125,6 +126,11 @@ enum Router: URLRequestConvertible {
         switch self {
         case .AliPayGetPayInfo(let account, let password, let subject, let body, let price):
             let postStr = "account=\(account)&password=\(password)&subject=\(subject)&body=\(body)&price=\(price)"
+            let postData = postStr.dataUsingEncoding(NSUTF8StringEncoding)
+            mutableURLRequest.HTTPBody = postData!
+            return mutableURLRequest
+        case .WxGetPayInfo(let account, let password, let totalFee):
+            let postStr = "account=\(account)&password=\(password)&totalFee=\(totalFee)"
             let postData = postStr.dataUsingEncoding(NSUTF8StringEncoding)
             mutableURLRequest.HTTPBody = postData!
             return mutableURLRequest

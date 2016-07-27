@@ -12,7 +12,7 @@ import SwiftyDrop
 import KeychainAccess
 
 let AmapKey = "b2e57bb4e9fa8b688ad1ca4c88e96787"
-let WxAppID = "wx22a7b4318a2ec245"
+let WxAppID = "wx0d0aa10360e48ba9"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
