@@ -79,7 +79,7 @@ extension AppDelegate {
         if url.host == "safepay" {
             self.alipayResult(url)
         }
-        if url.host == "platformId=wechat" {
+        if url.host == "platformId=wechat" || url.host == "pay" {
             return WXApi.handleOpenURL(url, delegate: PaymentHandler.sharedPaymentHandler())
         }
         return true

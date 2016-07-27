@@ -56,14 +56,18 @@ extension PaymentHandler : AlipayDelegate {
     
     func onAlipayResp(resultDic: NSDictionary) {
         print("result = \(resultDic)")
-        guard resultDic["resultStatus"] == nil || resultDic["success"] == nil else {
+        guard resultDic["resultStatus"] == nil && resultDic["success"] == nil else {
             let resultStatus = resultDic["resultStatus"] as! String
-            let success = resultDic["success"] as! String
-            if resultStatus == "9000" && success == "true" {
+            var success = "false"
+            if resultDic["success"] != nil {
+                success = resultDic["success"] as! String
+            }
+            if resultStatus == "9000" || success == "true" {
                 Drop.down("支付成功", state: .Success)
             } else {
                 Drop.down("支付失败", state: .Error)
             }
+            
             return
         }
     }
