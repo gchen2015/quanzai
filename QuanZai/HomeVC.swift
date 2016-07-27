@@ -31,7 +31,7 @@ class HomeVC: BaseVC {
         super.viewDidLoad()
         
         self.slideMenuController()?.delegate = self
-        
+        self.title = "首页"
         self.setupNavBar()
         self.setupMapView()
         self.setupTimeShareVC()
@@ -59,7 +59,15 @@ extension HomeVC {
                                              type: String(type))
         APIClient.sharedAPIClient().sendRequest(request, finished: { (objc, error, badNetWork) in
             if error == nil {
-                Drop.down("还车成功", state: .Success)
+                switch type {
+                case ActionType.Open:
+                    Drop.down("开门成功", state: .Success)
+                case ActionType.Lock:
+                    Drop.down("锁门成功", state: .Success)
+                default:
+                    break
+                }
+                
             }
         })
     }
