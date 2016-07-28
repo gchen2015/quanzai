@@ -72,8 +72,8 @@ extension HomeVC {
         })
     }
     
-    //还车围栏验证
-    func returnCarAddressConfirm() {
+    //还车围栏验证：type=1 还车验证，type=2 结算验证
+    func returnCarAddressConfirm(type: ActionType = .ReturnCar) {
         
         guard let user_id = Keychain(service: service)[k_UserID] else {
             self.showLoginVC(true)
@@ -93,7 +93,14 @@ extension HomeVC {
                 }
                 self.current_order_id = store.order_id
                 progressHUD.dismiss()
-                self.returnCar(user_id, car_id: store.car_id!, store_id: store.id!, order_id: store.order_id!)
+                if type == .ReturnCar {
+                    self.returnCar(user_id, car_id: store.car_id!, store_id: store.id!, order_id: store.order_id!)
+                } else {
+                    let orderDetailVC = OrderDetailVC()
+                    orderDetailVC.order_id = store.order_id
+                    self.navigationController?.pushViewController(orderDetailVC, animated: true)
+                }
+                
             }
         }
     }
@@ -220,16 +227,9 @@ extension HomeVC: actionProtocol {
         case .Open,
              .Lock:
             self.ControlCarRight(type)
-        case .ReturnCar:
-            self.returnCarAddressConfirm()
-        case .Pay:
-            if self.current_order_id == nil {
-                Drop.down("您还没有租车订单需要结算")
-                return
-            }
-            let orderVC = OrderDetailVC()
-            orderVC.order_id = self.current_order_id
-            self.navigationController?.pushViewController(orderVC, animated: true)
+        case .ReturnCar,
+             .Pay:
+            self.returnCarAddressConfirm(type)
         }
     }
 }

@@ -93,7 +93,7 @@ extension OrderListVC : UITableViewDelegate, UITableViewDataSource {
         let order = self.orders[indexPath.row]
         
         let orderDetailVC = OrderDetailVC()
-        orderDetailVC.orderInfo = order
+        orderDetailVC.order_id = order.id
         self.navigationController?.pushViewController(orderDetailVC, animated: true)
         
     }

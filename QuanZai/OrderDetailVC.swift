@@ -65,10 +65,14 @@ class OrderDetailVC : BaseVC {
         self.infoView.priceLabel.text = String(format: "\(orderInfo.order_amount!)元")
         self.infoView.addrLabel.text = orderInfo.address
         
-        let paymentStatus = PaymentStatus(rawValue: Int(self.orderInfo!.payment_status!)!)!
-        let orderStatus = OrderStatus(rawValue: Int(self.orderInfo!.order_status!)!)!
+        let paymentStatus = PaymentStatus(rawValue: Int(orderInfo.payment_status!)!)!
+        let orderStatus = OrderStatus(rawValue: Int(orderInfo.order_status!)!)!
+        
+        if orderStatus == .Created {
+            Drop.down("请先还车再结算")
+        }
         //完成已还车 && 未支付 情况显示支付按钮
-        if paymentStatus == .UnPaid && orderStatus == .Returned {
+        if paymentStatus == .UnPaid && (orderStatus == .Returned || orderStatus == .Created) {
             okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
             okBtn.alpha = 1
         } else {
