@@ -294,8 +294,8 @@ extension CarDetailVC : VerifyCodeViewProtocol {
             Drop.down("未取得登录信息，请重新登录再试")
             return
         }
-//        self.validateUserRentRight()
-        self.validateUser(keychain[k_Phone]!, validatecode: verifyCodeView.codeTxt.text!)
+        self.validateUserRentRight()
+//        self.validateUser(keychain[k_Phone]!, validatecode: verifyCodeView.codeTxt.text!)
     }
     
 }

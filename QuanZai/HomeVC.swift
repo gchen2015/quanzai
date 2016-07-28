@@ -56,7 +56,7 @@ extension HomeVC {
         let request = Router.ControlCarRight(user_id: user_id,
                                              lng: String(self.userLocation.coordinate.longitude),
                                              lat: String(self.userLocation.coordinate.latitude),
-                                             type: String(type))
+                                             type: String(type.rawValue))
         APIClient.sharedAPIClient().sendRequest(request, finished: { (objc, error, badNetWork) in
             if error == nil {
                 switch type {
