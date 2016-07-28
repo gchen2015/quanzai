@@ -77,8 +77,16 @@ extension PaymentListVC : UITableViewDataSource {
         cell?.tradeTypeLabel.text = trade.trade_type_name
         cell?.tradeCapitalLabel.text = trade.trade_capital
         cell?.timeLabel.text = trade.ctime
-        cell?.setTradeType(TradeType(rawValue: Int(trade.trade_type!)!)!)
-        cell?.setTradeStatus(TradeStatus(rawValue: Int(trade.trade_status!)!)!)
+        var trade_type = 0
+        if trade.trade_type?.isEmpty == false {
+            trade_type = Int(trade.trade_type!)!
+        }
+        var trade_status = 0
+        if trade.trade_status?.isEmpty == false {
+            trade_status = Int(trade.trade_status!)!
+        }
+        cell?.setTradeType(TradeType(rawValue: trade_type)!)
+        cell?.setTradeStatus(TradeStatus(rawValue: trade_status)!)
         
         return cell!
         

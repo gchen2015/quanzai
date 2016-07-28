@@ -8,7 +8,8 @@
 
 //交易类型
 enum TradeType : Int {
-    case Topup = 1,     //充值
+    case Unknown = 0,
+         Topup = 1,     //充值
          PrePayDeposit, //预交保证金
          OrderPay,      //订单支付
          ReturnDeposit  //退还保证金
@@ -16,7 +17,8 @@ enum TradeType : Int {
 
 //交易状态
 enum TradeStatus : Int {
-    case TradeSuccessed = 1,  //成功
+    case Unknown = 0,
+         TradeSuccessed = 1,  //成功
          TradeFailed          //失败
 }
 
@@ -71,6 +73,8 @@ class PaymentCell: BaseCell {
             tradeTypeLabel.text = "订单支付"
         case .ReturnDeposit:
             tradeTypeLabel.text = "退还保证金"
+        default:
+            tradeTypeLabel.text = "其他"
         }
     }
     
@@ -82,6 +86,9 @@ class PaymentCell: BaseCell {
         case .TradeFailed:
             self.tradeStatusLabel.text = "失败"
             self.tradeStatusLabel.backgroundColor = UIColor.redColor()
+        default:
+            self.tradeStatusLabel.text = "未知"
+            self.tradeStatusLabel.backgroundColor = UIColor.lightGrayColor()
         }
     }
 }
