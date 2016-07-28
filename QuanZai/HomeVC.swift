@@ -24,7 +24,7 @@ class HomeVC: BaseVC {
     lazy var timeShareVC : TimeShareVC = self.setupTimeShareVC()
     var actionBar : ActionBar!
     var isFirstLoad : Bool = true
-    var current_order_id : String?
+    var currentOrderId : String?
     
     
     override func viewDidLoad() {
@@ -91,13 +91,13 @@ extension HomeVC {
                     })
                     return
                 }
-                self.current_order_id = store.order_id
+                self.currentOrderId = store.order_id
                 progressHUD.dismiss()
                 if type == .ReturnCar {
                     self.returnCar(user_id, car_id: store.car_id!, store_id: store.id!, order_id: store.order_id!)
                 } else {
                     let orderDetailVC = OrderDetailVC()
-                    orderDetailVC.order_id = store.order_id
+                    orderDetailVC.orderId = store.order_id
                     self.navigationController?.pushViewController(orderDetailVC, animated: true)
                 }
                 
@@ -254,6 +254,7 @@ extension HomeVC: TimeShareVCProtocol {
                     for car in cars {
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
+                        poi.title = car.car_licence_plates
                         pois.addObject(poi)
                     }
                     self.mapVC.setPoi(pois)
@@ -275,6 +276,7 @@ extension HomeVC: TimeShareVCProtocol {
                     for car in cars {
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
+                        poi.title = car.car_licence_plates
                         pois.addObject(poi)
                     }
                     self.mapVC.setPoi(pois)
@@ -296,6 +298,7 @@ extension HomeVC: TimeShareVCProtocol {
                     for store in stores {
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(store.lat!)!, Double(store.lng!)!)
+                        poi.title = store.name
                         pois.addObject(poi)
                     }
                     self.mapVC.setPoi(pois)
@@ -317,6 +320,7 @@ extension HomeVC: TimeShareVCProtocol {
                     for store in stores {
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(store.lat!)!, Double(store.lng!)!)
+                        poi.title = store.name
                         pois.addObject(poi)
                     }
                     self.mapVC.setPoi(pois)
@@ -338,6 +342,7 @@ extension HomeVC: TimeShareVCProtocol {
                     for car in cars {
                         let poi = MAPointAnnotation()
                         poi.coordinate = CLLocationCoordinate2DMake(Double(car.lat!)!, Double(car.lng!)!)
+                        poi.title = car.car_licence_plates
                         pois.addObject(poi)
                     }
                     self.mapVC.setPoi(pois)
@@ -447,7 +452,7 @@ extension HomeVC : MenuProtocol {
                 return
             }
             let walletVC = WalletVC()
-            walletVC.user_id = user_id
+            walletVC.userId = user_id
             self.navigationController?.pushViewController(walletVC, animated: true)
         case .个人信息修改:
             guard let user_id = Keychain(service: service)[k_UserID] else {
@@ -455,7 +460,7 @@ extension HomeVC : MenuProtocol {
                 return
             }
             let userInfoVC = UserInfoVC()
-            userInfoVC.user_id = user_id
+            userInfoVC.userId = user_id
             self.navigationController?.pushViewController(userInfoVC, animated: true)
         case .租车资格验证:
             guard let user_id = Keychain(service: service)[k_UserID] else {
@@ -463,7 +468,7 @@ extension HomeVC : MenuProtocol {
                 return
             }
             let qualificationInfoVC = QualificationInfoVC()
-            qualificationInfoVC.user_id = user_id
+            qualificationInfoVC.userId = user_id
             self.navigationController?.pushViewController(qualificationInfoVC, animated: true)
         case .关于:
             break

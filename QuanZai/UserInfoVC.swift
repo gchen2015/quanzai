@@ -14,8 +14,8 @@ import ObjectMapper
 class UserInfoVC: BaseVC {
     
     var infoView : UserInfoView!
-    var avatar_url : String?
-    var user_id : String!
+    var avatarUrl : String?
+    var userId : String!
     
     override func viewDidLoad() {
         
@@ -139,7 +139,7 @@ extension UserInfoVC {
     //加载用户信息
     func getUserInfo() {
         
-        APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: self.user_id)) { (objc, error, badNetWork) in
+        APIClient.sharedAPIClient().sendRequest(Router.GetUserInfo(user_id: self.userId)) { (objc, error, badNetWork) in
             if let userInfo = Mapper<UserModel>().map(objc) {
                 self.infoView.phoneTxt.text = userInfo.phone
                 if userInfo.gender?.characters.count > 0 {
@@ -149,7 +149,7 @@ extension UserInfoVC {
                 self.infoView.avatarIMG.layer.cornerRadius = 20
                 self.infoView.avatarIMG.layer.masksToBounds = true
                 self.infoView.avatarIMG.af_setImageWithURL(URL(userInfo.head_portrait!))
-                self.avatar_url = userInfo.head_portrait
+                self.avatarUrl = userInfo.head_portrait
             }
         }
     }
@@ -157,10 +157,10 @@ extension UserInfoVC {
     //提交个人信息
     func setUserInfo() {
         
-        guard let user_id = self.user_id else { return }
+        guard let user_id = self.userId else { return }
         guard let phone = self.infoView.phoneTxt.text else { return }
         guard let gender = self.infoView.genderBtn.titleLabel!.text else { return }
-        guard let head_portrait = self.avatar_url else { return }
+        guard let head_portrait = self.avatarUrl else { return }
         let genderCode: String
         if gender == "男" {
             genderCode = "1"
@@ -193,9 +193,9 @@ extension UserInfoVC {
                 self.infoView.avatarIMG.layer.cornerRadius = self.infoView.avatarIMG.width/2
                 self.infoView.avatarIMG.layer.masksToBounds = true
                 if objc != nil {
-                    self.avatar_url = String(objc!)
+                    self.avatarUrl = String(objc!)
                 } else {
-                    self.avatar_url = ""
+                    self.avatarUrl = ""
                 }
         }
     }

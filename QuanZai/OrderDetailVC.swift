@@ -17,7 +17,7 @@ class OrderDetailVC : BaseVC {
     var infoView : OrderDetailView!
     var paymentStatus : PaymentStatus!
     var orderInfo : OrderModel?
-    var order_id : String? = ""
+    var orderId : String? = ""
     var okBtn : UIButton!
     var scrollView : UIScrollView!
     
@@ -28,7 +28,7 @@ class OrderDetailVC : BaseVC {
         self.showTitle("订单详情")
         self.setupUI()
         if self.orderInfo == nil {
-            self.getOrderDetail(self.order_id!)
+            self.getOrderDetail(self.orderId!)
         } else {
           self.setData(self.orderInfo!)
         }
@@ -56,6 +56,7 @@ class OrderDetailVC : BaseVC {
 
     //画面数据初始化
     func setData(orderInfo : OrderModel) {
+        self.orderInfo = orderInfo
         self.infoView.numberLabel.text = orderInfo.car_licence_plates
         self.infoView.brandLabel.text = orderInfo.car_name! + orderInfo.car_type_name!
         self.infoView.rentTypeLabel.text = orderInfo.date_time_name
@@ -72,7 +73,7 @@ class OrderDetailVC : BaseVC {
             Drop.down("请先还车再结算")
         }
         //完成已还车 && 未支付 情况显示支付按钮
-        if paymentStatus == .UnPaid && (orderStatus == .Returned || orderStatus == .Created) {
+        if paymentStatus == .UnPaid && orderStatus == .Returned {
             okBtn.frame = ccr(30, CGRectGetMaxY(self.infoView.frame)+20, k_SCREEN_W-30*2, 40)
             okBtn.alpha = 1
         } else {

@@ -30,8 +30,6 @@ class MapVC: BaseVC {
         super.viewDidAppear(animated)
         
         mapView.userTrackingMode = MAUserTrackingMode.Follow
-//        mapView.setZoomLevel(14.1, animated: true)
-//        mapView.showsUserLocation = true
         self.startLocation()
     }
     
@@ -77,7 +75,7 @@ extension MapVC: MAMapViewDelegate {
             
             poiAnnotionView.image = IMG("point")
             poiAnnotionView.centerOffset = ccp(0, -18)
-            poiAnnotionView.canShowCallout = false
+            poiAnnotionView.canShowCallout = true
             
             return poiAnnotionView
         }
@@ -105,7 +103,7 @@ extension MapVC: MAMapViewDelegate {
     }
     
     func mapViewDidFinishLoadingMap(mapView: MAMapView!) {
-        self.startLocation()
+//        self.startLocation()
     }
     
     func mapView(mapView: MAMapView!, didFailToLocateUserWithError error: NSError!) {

@@ -13,16 +13,10 @@ import AlamofireImage
 import SwiftyDrop
 
 enum LeftMenu: Int {
-//    case 首页  = 0
-//    case 我的行程
-//    case 我的包裹
-//    case 活动中心
     case 账户余额 = 0
-//    case 开发票
     case 个人信息修改
     case 租车资格验证
     case 关于
-//    case 退出登录
 }
 
 protocol MenuProtocol : class {
@@ -32,14 +26,6 @@ protocol MenuProtocol : class {
 class MenuVC : BaseVC {
     
     var menus = ["账户余额", "个人信息修改", "租车资格验证" , "关于"]
-    
-//    var homeViewController : UIViewController!
-//    var qualificationInfoViewController : UIViewController!
-//    var userInfoViewController : UIViewController!
-//    var orderListViewController : UIViewController!
-//    var walletViewController : UIViewController!
-    
-//    var userInfoVC : UserInfoVC!
     
     var avatarIMG : UIImageView!
     var screenNameLabel : UILabel!
@@ -186,12 +172,6 @@ extension MenuVC {
     
     //加载用户信息
     func getUserInfo() {
-//        let keychain = Keychain(service: service)
-//        if keychain[k_UserID] == nil {
-//            logoutBtn.alpha = 0
-//            self.slideMenuController()?.removeLeftGestures()
-//            return
-//        }
         
         guard let user_id = Keychain(service: service)[k_UserID] else {
             logoutBtn.alpha = 0
@@ -207,9 +187,6 @@ extension MenuVC {
                 self.avatarIMG.layer.cornerRadius = self.avatarIMG.width/2
                 self.avatarIMG.layer.masksToBounds = true
                 self.screenNameLabel.text = userInfo.phone!
-//                self.userInfoVC.phone = userInfo.phone
-//                self.userInfoVC.gender = userInfo.gender
-//                self.userInfoVC.avatar_url = userInfo.head_portrait
             }
         }
     }
@@ -244,6 +221,5 @@ extension MenuVC {
         self.logoutBtn.alpha = 0
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.closeLeft()
-//        self.slideMenuController()?.changeMainViewController(self.homeViewController, close: true)
     }
 }

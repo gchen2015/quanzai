@@ -14,7 +14,7 @@ import SwiftyJSON
 class WalletVC: BaseVC {
     
     var infoView : WalletView!
-    var user_id : String!
+    var userId : String!
     
     override func viewDidLoad() {
         
@@ -44,7 +44,7 @@ extension WalletVC {
     
     func getUserAccountBalance() {
         
-        let request = Router.GetUserAccountBalance(user_id: self.user_id)
+        let request = Router.GetUserAccountBalance(user_id: self.userId)
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if objc != nil {
                 let json = JSON(objc!)

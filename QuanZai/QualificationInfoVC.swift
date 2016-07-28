@@ -13,8 +13,8 @@ import ObjectMapper
 class QualificationInfoVC : BaseVC {
     
     var infoView : QualificationView!
-    var pic_url : String?
-    var user_id : String!
+    var picUrl : String?
+    var userId : String!
     
     override func viewDidLoad() {
         
@@ -100,12 +100,7 @@ extension QualificationInfoVC {
     //TODO: 获取租车验证信息
     func getUserValidateInfo() {
         
-//        let keychain = Keychain(service: service)
-//        if keychain[k_UserID] == nil {
-//            Drop.down("未取得登录信息，请尝试重新登录")
-//            return
-//        }
-        let request = Router.GetUserValidateInfo(user_id: self.user_id)
+        let request = Router.GetUserValidateInfo(user_id: self.userId)
         
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if let validateInfo = Mapper<UserValidateInfoModel>().map(objc) {
@@ -140,9 +135,9 @@ extension QualificationInfoVC {
             self.infoView.plusIcon.frame = self.infoView.photoView.bounds
             self.infoView.plusIcon.image = image
             if objc != nil {
-                self.pic_url = String(objc!)
+                self.picUrl = String(objc!)
             } else {
-                self.pic_url = ""
+                self.picUrl = ""
             }
         }
     }
@@ -156,7 +151,7 @@ extension QualificationInfoVC {
         let real_name = self.infoView.nameTxt.text!
         let driving_license = self.infoView.IDTxt.text!
         
-        let request = Router.EditValidateInfo(user_id: user_id, real_name: real_name, driving_license: driving_license, dirving_picture: self.pic_url!)
+        let request = Router.EditValidateInfo(user_id: user_id, real_name: real_name, driving_license: driving_license, dirving_picture: self.picUrl!)
         
         APIClient.sharedAPIClient().sendRequest(request) { (objc, error, badNetWork) in
             if objc != nil {
