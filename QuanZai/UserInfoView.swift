@@ -51,12 +51,13 @@ protocol UserInfoViewProtocol: class {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setDelegates()
+        self.setupUI()
         self.layout()
     }
     
-    func setDelegates() {
+    func setupUI() {
         self.phoneTxt.delegate = self
+        self.phoneTxt.userInteractionEnabled = false
     }
     
     @IBAction func avatarTapped(sender: AnyObject) {
