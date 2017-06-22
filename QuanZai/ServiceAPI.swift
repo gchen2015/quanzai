@@ -175,14 +175,14 @@ class ServiceApi: NSObject {
     }
     
     //微信充值
-    internal class func WxGetPayInfoUrl(account: String, password: String = "698d51a19d8a121ce581499d7b701668", totalFee: String) -> String {
+    internal class func WxGetPayInfoUrl(account: String, password: String = "", totalFee: String) -> String {
         let url = "\(host_pay)/wxpay/getPayInfo?account=\(account)&password=\(password)&totalFee=\(totalFee)"
         return self.encodeUrl(url)
     }
     
     
     //支付宝充值
-    internal class func AliPayGetPayInfoUrl(account: String, password: String = "698d51a19d8a121ce581499d7b701668" , subject: String = "支付宝会员充值", body: String = "支付宝会员充值", price: String) -> String {
+    internal class func AliPayGetPayInfoUrl(account: String, password: String = "" , subject: String = "支付宝会员充值", body: String = "支付宝会员充值", price: String) -> String {
         let url = "\(host_pay)/alipay/getTradeUrl?account=\(account)&password=\(password)&subject=\(subject)&body=\(body)&price=\(price)"
         return self.encodeUrl(url)
     }

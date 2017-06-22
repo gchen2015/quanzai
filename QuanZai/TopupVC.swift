@@ -51,8 +51,8 @@ extension TopupVC : TopupViewProtocol {
         }
         
         //TODO: 测试帐号
-        let testuser = "0004"
-        let password = "698d51a19d8a121ce581499d7b701668"
+        let testuser = ""
+        let password = ""
         
         if self.infoView.otherMoneyTxt.text?.characters.count > 0 {
             self.money = self.infoView.otherMoneyTxt.text
@@ -92,8 +92,8 @@ extension TopupVC : TopupViewProtocol {
             return
         }
         //TODO: 测试帐号
-        let testuser = "0004"
-        let password = "698d51a19d8a121ce581499d7b701668"
+        let testuser = ""
+        let password = ""
         
         let progressHUD = ProgressHUD()
         progressHUD.showInWindow("正在处理...")

@@ -1198,6 +1198,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QuanZai/QuanZai-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				WARNING_CFLAGS = "";
 			};
 			name = Debug;
@@ -1227,6 +1228,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "QuanZai/QuanZai-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				WARNING_CFLAGS = "";
 			};
 			name = Release;

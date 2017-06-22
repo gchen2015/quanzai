@@ -22,8 +22,8 @@ class BaseVC: UIViewController {
     var blurEffectView : UIVisualEffectView!
     var closeBtn : UIButton!
     var alertView : UIView?
-    var cancelBlock:((alert: UIAlertController) -> ())?
-    var okBlock:((alert: UIAlertController) -> ())?
+    var cancelBlock:((_ alert: UIAlertController) -> ())?
+    var okBlock:((_ alert: UIAlertController) -> ())?
     var user_info : UserModel?
     
     override func viewDidLoad() {
